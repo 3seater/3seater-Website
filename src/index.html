@@ -18,14 +18,26 @@
       <a href="#/" data-nav="feed">SELECTED WORKS</a>
       <a href="#/archive" data-nav="archive">ARCHIVE</a>
       <a href="#/index" data-nav="index">INDEX</a>
-      <a href="#/info" data-nav="info">INFO</a>
     </nav>
   </header>
-  <main id="main" tabindex="-1"><div class="loading mono">Opening the archive<span class="loading-dot">.</span></div></main>
-  <section id="contact-footer" class="contact-footer" aria-label="Contact" hidden></section>
-  <footer class="site-footer">
-    <span class="mono">3SEATER © 2026</span>
-    <button class="text-button mono" id="back-top">TOP ↑</button>
+  <main id="main" tabindex="-1"><div class="loading utility">Opening the archive<span class="loading-dot">.</span></div></main>
+  <footer class="studio-footer" aria-label="Site footer">
+    <div class="footer-top">
+      <button class="text-button footer-top-link" id="back-top">Back to top ↑</button>
+      <div class="footer-directory">
+        <p>3seater<br>©2026</p>
+        <div class="footer-links" aria-label="Footer navigation">
+          <a href="#/archive">All projects <span id="footer-project-count"></span></a>
+          <a href="#/index">Project index</a>
+        </div>
+      </div>
+      <section id="contact-footer" class="footer-contact" aria-label="Contact" hidden></section>
+    </div>
+    <a class="footer-wordmark" href="#/" aria-label="3seater home">
+      <svg viewBox="0 0 1400 280" role="img" aria-label="3SEATER" focusable="false">
+        <text x="0" y="240">3SEATER</text>
+      </svg>
+    </a>
   </footer>
   <noscript><p class="noscript">Please enable JavaScript to browse the archive.</p></noscript>
 </body>

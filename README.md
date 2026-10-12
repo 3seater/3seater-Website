@@ -1,6 +1,6 @@
 # 3seater — Visual archive
 
-A portfolio with one cover per project in the homepage feed, a discipline index, clickable selected clients on Info, and individual project pages. Client links open the project directly when there is only one, or a client collection when there are several. Built with HTML, CSS, JavaScript, and a folder-based content pipeline.
+A portfolio with one cover per project in the homepage feed, a discipline index, a selected-client wheel, and individual project pages. Client links always open the client collection, including clients with only one project. Built with HTML, CSS, JavaScript, and a folder-based content pipeline.
 
 ## Preview
 
@@ -38,6 +38,59 @@ Keep client names consistent to group several projects on one client page. Leave
 Images: JPG, PNG, WebP, GIF, AVIF. Videos: MP4, MOV, WebM, M4V. Animated GIFs currently receive a still web image; use MP4 for motion. A filename containing `main` is the project cover and appears first inside the project. Otherwise Cover chooses the file, falling back to the first media file. Only that one item appears in the feed; additional media appears inside the project. Media order is optional. Featured projects are moved ahead of the initial curated feed order in `src/app.js`. New projects enter the feed automatically.
 
 ## Edit the site
+
+### Typography system
+
+All typography is defined in the final `Typography` section of `src/style.css`.
+Layout rules and responsive breakpoints must not introduce separate font sizes,
+weights, families, line heights, or tracking. Change a role token to adjust that
+role throughout the site.
+
+The October 12, 2026 audit found 131 size declarations containing 47 distinct
+values, 20 line-height values, and 25 tracking values. Many belonged to unused
+components or overridden rules, rather than 47 simultaneously visible sizes.
+The cleanup removed those declarations instead of layering another override on
+top. Non-typographic CSS declarations were compared before and after and retained
+in the same order.
+
+The reference, [Sturdy](https://sturdy.co/work/), declares FK Grotesk Neue Regular
+and FK Grotesk Mono Regular. Its navigation labels are 13px at weight 400, with
+line-height 1 and .02em tracking. Its smaller labels use 12px, while its mono body
+uses 12px/1.3. Much of its hierarchy comes from scale, spacing, and placement rather
+than bold weights. Its very large display scale is not appropriate for every
+page in this denser archive.
+
+Our system uses two explicit platform font stacks: Arial/Helvetica/sans-serif
+for interface and display text, and SF Mono/Menlo/Consolas/Liberation Mono/monospace
+only for project facts. These are fallback choices, not loaded FK Grotesk fonts.
+No external fonts are fetched. If webfonts are added later, change the family
+tokens and supply the files rather than adding component-specific families.
+
+| Role | Size | Line height | Usage |
+| --- | --- | --- | --- |
+| Label | 12px | 1.3 | Captions, category filters, year menu, index, footer, utility links |
+| Navigation | 13px | 1 | Main navigation pills |
+| Body | 14px | 1.45 | Description, social links, brand |
+| Title | 28–44px fluid | 1.02 | Project title, client collection title, empty-state heading |
+| Display | 32–88px fluid | 1 | Contact email |
+
+Project facts reuse the 12px size with the mono family and body line height.
+Every role uses weight 400. Label tracking is .02em, body −.01em, title −.035em,
+and display −.04em; mono facts use normal tracking. Mobile keeps the same readable
+label and navigation sizes and adapts the layout instead of shrinking the text.
+
+The client wheel preserves its original typography separately from the UI scale:
+Arial/Helvetica names at weight 400, line-height 1.1 and tracking −.04em, with the
+existing name-length and viewport bounds. Its heading uses 11px monospace at
+line-height 1.5; the static reduced-motion names remain 20px. Do not normalize
+these component-specific choices when changing the rest of the type system.
+The wheel size formula must resolve on `.wheel-name`, where the inline
+`--name-size` and `--name-fit` values exist. Moving this formula to `:root` makes
+those references invalid and causes the text to inherit the body size.
+
+The old `mono` markup class is now `utility`: ordinary interface labels are sans,
+so the class describes their purpose rather than suggesting a different font.
+The mute cursor, grid ordering, media sizing, and animation behavior are unaffected.
 
 - `src/style.css`: visual design and responsive layouts.
 - `src/app.js`: archive views, filters, feed sequencing, cursor, and video behavior.

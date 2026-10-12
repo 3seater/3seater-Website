@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3seater — Studio design audit</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f8f9fb;color:#17181a;font:15px/1.6 Arial,Helvetica,sans-serif}main{max-width:1020px;margin:auto;padding:64px 28px 100px}h1{font-size:48px;line-height:1;letter-spacing:-.045em;font-weight:400;margin:12px 0 24px}h2{font-size:25px;line-height:1.2;letter-spacing:-.025em;font-weight:400;margin:48px 0 18px}h3{font-size:16px;margin:24px 0 8px}p{max-width:82ch;margin:12px 0}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#6e7177}a{color:inherit;text-underline-offset:3px}table{width:100%;border-collapse:collapse;margin:22px 0;font-size:13px}th,td{text-align:left;vertical-align:top;padding:13px 12px;border-bottom:1px solid #d8dade}th{font-weight:400;color:#6e7177}th:first-child,td:first-child{padding-left:0}ul,ol{padding-left:22px}li{padding:4px 0;max-width:85ch}.lead{font-size:22px;line-height:1.4;letter-spacing:-.02em}.note{color:#6e7177;font-size:13px}section{border-top:1px solid #d8dade;margin-top:36px}code{font-size:12px}@media(max-width:650px){main{padding:32px 18px}h1{font-size:36px}table{font-size:11px}th,td{padding:9px 6px}.lead{font-size:19px}}@media print{body{background:white}main{padding:0}h2,h3{break-after:avoid}tr{break-inside:avoid}a{color:inherit}}
+</style></head><body><main>
+<div class="eyebrow">3seater / Design audit / October 12, 2026</div>
+<h1>More Sturdy. Keep the archive.</h1>
+<p class="lead">Give the controls a stronger identity, make typography consistent, and let the work carry the page. Preserve the staggered homepage, ordered category grids, compact index, and dark audio cursor.</p>
+<p>Reference review: <a href="https://sturdy.co/">Sturdy home</a>, <a href="https://sturdy.co/work/">work archive</a>, <a href="https://sturdy.co/work/bad-bunny-puerto-rico-residency/">project page</a>, and <a href="https://reubentimothy.com/">Reuben Timothy</a>. Measurements below come from live DOM/computed styles and delivered CSS. Our comparison uses the local source and supplied screenshots. Desktop reference measurements use a 1440px viewport; responsive rules were also inspected. Some measurements are fluid, not universal constants.</p>
+
+<section><h2>01 / What each reference contributes</h2>
+<p><strong>Sturdy:</strong> a strong contrast between small controls and large work, regular-weight grotesk typography, dark rounded navigation, and a consistent translucent circular interaction treatment. Its image edges remain square. Rounded shapes belong mainly to controls. The result feels deliberate because each shape has a job.</p>
+<p><strong>Reuben:</strong> dense image browsing, compact labels, centered text navigation, and a useful index. Its homepage uses five image columns with 10px gaps at large widths; its declared utility type is 11px with .06em tracking. Our existing navigation, grid density, project split view, and index structure closely follow that direction.</p>
+<p><strong>Recommended balance:</strong> retain our efficient browsing structure and use stronger controls, clearer type roles, and more intentional image selection to move toward a studio presentation. The work is already visually rich. Extra slogans, badges, decorative cards, and explanatory copy would dilute it.</p></section>
+
+<section><h2>02 / Measured reference details</h2>
+<table><thead><tr><th>Element</th><th>Sturdy</th><th>Implication for 3seater</th></tr></thead><tbody>
+<tr><td>Font families</td><td>FK Grotesk Neue Regular; FK Grotesk Mono Regular, defined as GroteskNeueWeb / GroteskMonoWeb.</td><td>A cohesive pair matters more than many named font roles. A font declaration alone does not supply a font.</td></tr>
+<tr><td>Navigation labels</td><td>13px; weight 400; line-height 1; .02em tracking.</td><td>Increase presence through size and button shape, without adding bold weight.</td></tr>
+<tr><td>Desktop buttons</td><td>38px measured height; 12px 16px 11px padding; 56px radius.</td><td>A compact dark pill gives the primary navigation a clear, repeatable shape.</td></tr>
+<tr><td>Utility / body</td><td>12px labels; mono body 12px / 1.3 with −.02em tracking.</td><td>Keep captions compact and readable; reduce our widely tracked utility text.</td></tr>
+<tr><td>Ground / ink</td><td>#eaeef4 / #000.</td><td>A subtle cool ground supports dark controls. Our pass uses a lighter #f8f9fb.</td></tr>
+<tr><td>Outer gutter</td><td>About 10.3px at 1440px; .71429vw desktop rule.</td><td>Keep the work close to the viewport edge, with one consistent alignment.</td></tr>
+<tr><td>Cursor</td><td>72px circle; black at .4 opacity; 10px backdrop blur; .35s scale transition.</td><td>Our 68px audio orb is already close. Retain its stronger .76 opacity and 8px blur.</td></tr>
+<tr><td>Work composition</td><td>Desktop sequence: two half-width projects, then four quarter-width projects.</td><td>Image scale variation creates hierarchy. It is a different system from our masonry columns.</td></tr>
+</tbody></table>
+<p class="note">These are observations, not a requirement to duplicate every value. Sturdy’s huge archive heading, large caption fields, theatrical page transitions, and window-like filter dialog would substantially alter our browsing experience.</p></section>
+
+<section><h2>03 / Typography audit</h2>
+<p>Our source named Helvetica Now Display, NB Akademie Std, and PP Supply Mono without supplying their webfont files. On this Windows environment, those stacks can fall through to Arial or Consolas. The intended type system therefore was not reliably the rendered type system.</p>
+<p>The first pass makes the sans choice explicit: Arial with Helvetica and sans-serif fallbacks. It is a dependable baseline, not an exact substitute for FK Grotesk. Obtaining and properly loading a chosen webfont remains the clearest next typography improvement. The pass does not copy reference-site font files.</p>
+<table><thead><tr><th>Role</th><th>Previous</th><th>Applied</th></tr></thead><tbody>
+<tr><td>Main navigation</td><td>11px, .06em, bare text</td><td>12px, .02em, regular; 11px on mobile</td></tr>
+<tr><td>Project captions</td><td>11px / 1.4, .025em</td><td>12px / 1.3, .01em; 11px on mobile</td></tr>
+<tr><td>Category labels</td><td>Utility tracking .06em</td><td>11px / 1.3, .02em</td></tr>
+<tr><td>Project title</td><td>Weight 500, line-height .98</td><td>Weight 400, line-height 1.02</td></tr>
+<tr><td>Contact email</td><td>Weight 500; up to 100px</td><td>Weight 400; up to 88px</td></tr>
+<tr><td>Year metadata</td><td>#a0a0a0</td><td>#6e7177 for clearer small text</td></tr>
+</tbody></table>
+<p>Regular weights and modest tracking give the labels enough clarity without making every item compete. Use larger type selectively where it identifies the project; captions should continue to function as captions.</p></section>
+
+<section><h2>04 / Navigation and controls</h2>
+<p>The main navigation now sits to the right of the brand in dark pills. The active page has a lighter charcoal fill; hovering uses a separate charcoal state. The pills retain visible keyboard focus. On mobile, navigation moves onto its own row and uses a 44px minimum height.</p>
+<p>Category filters remain a quieter, underlined second tier. Making every category another dark pill would give the top of the archive too much visual weight. The primary navigation identifies destinations; filters refine the current destination. They should be easy to distinguish.</p>
+<p>The existing orange accent remains available for project links and filters, while the main navigation stays monochrome. A restrained accent can retain our identity without competing with the artwork.</p>
+<p><strong>Keep the audio orb:</strong> its dark circular surface and white icon already give a clear action over changing video frames. Its tracking, mute behavior, keyboard treatment, and touch fallback are unchanged. If we later extend that visual treatment to project thumbnails, use a directional icon only over linked media, and keep the native cursor elsewhere.</p></section>
+
+<section><h2>05 / Grid, padding, and image hierarchy</h2>
+<p>The homepage and archive now deliberately serve different browsing modes. The homepage retains shortest-column masonry for a tightly packed arrangement of mixed aspect ratios. Category pages retain row-major ordering, so a sixth item in a five-column layout starts at the left. This separation stays intact.</p>
+<p>The pass uses 10px horizontal image gaps and 24px between project groups, reduced from 30px. Captions stay 8px below their images. Outer padding is a bounded 12–20px. The header uses a 76px minimum height on desktop, and the archive begins 24px below it. These repeated distances give the page a steadier rhythm.</p>
+<p><strong>The largest unimplemented opportunity is selection.</strong> Our “Selected Works” route currently includes all projects, just as the unfiltered archive does. Prioritizing roughly 10–14 representative projects would make the homepage feel edited and give visitors a reason to use the archive. That is a content decision worth making deliberately, rather than silently hiding work.</p>
+<p>A later layout pass could enlarge a small number of chosen homepage projects while preserving the staggered composition. Avoid assigning importance solely from image height or file order. Preserve artwork aspect ratios; any crop for a thumbnail should be explicitly art-directed.</p></section>
+
+<section><h2>06 / Motion and performance</h2>
+<p>The category fade remains confined to the work grid. Navigation should respond immediately and stay visually stationary during filtering. Keep the existing short fade durations rather than introducing longer transitions that delay browsing.</p>
+<p>Several visible videos can currently play together, and the feed loads full video sources when they enter view. The build also creates short previews. A future optimization should compare those previews against the originals for sharpness and then use them where quality is sufficient. This pass does not change playback quality or introduce hover-only playback.</p>
+<p>The client wheel is already the page’s prominent motion feature. Its scroll region grows by 70px per client, in addition to 85vh. That deserves a later pacing review: a large client list can make reaching contact feel slow. Keep it as the single expressive feature before adding any further motion.</p>
+<p>Reduced-motion support remains in place. The new navigation color transition also explicitly switches off under that preference.</p></section>
+
+<section><h2>07 / Structure and maintenance findings</h2>
+<p>The stylesheet contains multiple historical versions of header, type, grid, and breakpoint rules, including unused hero styles. That makes broad adjustments prone to cross-page effects—the homepage/category regression was an example of why route-specific layout rules matter.</p>
+<p>The current pass is intentionally bounded. A subsequent cleanup should consolidate each component’s final rules, remove confirmed dead selectors, and retain separate homepage, archive, index, and project layout scopes. Treat the index as a directory and project pages as media viewers; neither needs generic cards or extra narrative text.</p>
+<p>Also keep the distinction between project dates and filter years. A project spanning several years can retain that honest date caption while appearing under each individual year filter.</p></section>
+
+<section><h2>08 / Delivered and remaining</h2>
+<p><strong>Applied locally:</strong> dark pill navigation, explicit sans stack, regular title weights, clearer caption and year text, a cool-white ground, consistent smaller gaps, restrained contact sizing, and mobile navigation sizing. No new page sections or marketing copy were added. The audio orb and both grid algorithms are unchanged.</p>
+<ol>
+<li><strong>Next highest value:</strong> curate the homepage project selection and sequence.</li>
+<li><strong>Typography:</strong> choose and load a real webfont with appropriate usage rights; compare it at caption size before committing.</li>
+<li><strong>Image hierarchy:</strong> test a few deliberate larger homepage placements without flattening the masonry into rows.</li>
+<li><strong>Technical polish:</strong> consolidate CSS, review video preview quality, and shorten the client-wheel scroll distance if it delays contact.</li>
+</ol>
+<p class="note">Validation: JavaScript syntax and the existing archive verification pass for 27 projects and 44 media entries. Local browser visual QA was unavailable because browser access to the dev preview was previously blocked; the reference sites were inspected live. Review the local preview before treating the new spacing as visually signed off. No hosted deployment was performed.</p>
+</section>
+</main></body></html>
