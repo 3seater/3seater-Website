@@ -76,3 +76,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline-color:var(--ac
 .project-media-grid figure{min-width:0}
 .project-media-grid img,.project-media-grid video{aspect-ratio:auto;object-fit:contain;background:var(--paper)}
 @media(max-width:700px){.project-media.project-media-grid{gap:12px}.project-media-grid figcaption{font-size:8px;gap:4px}}
+
+.home-feed .tile-caption,.tile-caption{display:block;font-family:var(--utility);font-size:11px;font-weight:400;line-height:1.4;letter-spacing:.025em;padding-top:8px;text-transform:uppercase}
+.tile-caption .year{color:#a0a0a0;white-space:nowrap}
+.home-feed .work-tile{margin-bottom:20px}
+.work-tile:is(:hover,:focus-visible) .tile-caption,.work-tile:is(:hover,:focus-visible) .tile-caption .year{color:var(--accent)}
