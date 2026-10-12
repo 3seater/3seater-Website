@@ -80,7 +80,10 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline-color:var(--ac
 .home-feed .tile-caption,.tile-caption{display:block;font-family:var(--utility);font-size:11px;font-weight:400;line-height:1.4;letter-spacing:.025em;padding-top:8px;text-transform:uppercase}
 .tile-caption .year{color:#a0a0a0;white-space:nowrap}
 .home-feed .work-tile{margin-bottom:20px}
-.feed-grid .work-tile{border:1px solid var(--line)}
+.feed-grid{gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);border-bottom:1px solid var(--line);align-items:stretch}
+.feed-grid .feed-column{border-right:1px solid var(--line)}
+.feed-grid .work-tile{border-bottom:1px solid var(--line);margin:0}
+.feed-grid .work-tile:last-child{border-bottom:0}
 .feed-grid .tile-media::after{border:0}
 .feed-grid .tile-caption{padding:9px 10px;border-top:1px solid var(--line)}
 .year-picker{position:relative;z-index:10;font-family:var(--utility);font-weight:400;font-size:11px;letter-spacing:.06em;line-height:1.3;text-transform:uppercase}
