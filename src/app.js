@@ -55,7 +55,7 @@
     if (!grid) return;
     observer?.disconnect(); visibleVideos.clear();
     grid.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
-    const count = window.innerWidth <= 700 ? 2 : density === 'wide' ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
+    const count = window.innerWidth <= 700 ? 2 : density === 'wide' ? 2 : window.innerWidth <= 1050 ? 3 : 4;
     grid.classList.toggle('wide', density === 'wide');
     const columns = Array.from({ length: count }, () => []), heights = Array(count).fill(0);
     items.forEach((item, i) => {
@@ -104,10 +104,10 @@
     }));
     main.querySelector('#reset-filters')?.addEventListener('click', () => { location.hash = '/archive'; });
     gridObserver = { disconnect() { window.removeEventListener('resize', resize); } };
-    let previousCount = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
+    let previousCount = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : 4;
     function resize() {
       clearTimeout(resizeTimer); resizeTimer = setTimeout(() => {
-        const count = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
+        const count = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : 4;
         if (count !== previousCount) { previousCount = count; buildGrid(items); }
       }, 150);
     }
