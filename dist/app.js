@@ -2,7 +2,6 @@
   'use strict';
   const main = document.querySelector('#main');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const touch = window.matchMedia('(pointer: coarse)');
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const slug = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const encode = encodeURIComponent;
@@ -185,19 +184,6 @@
     // Route changes also have a sensible keyboard focus destination.
     main.focus({preventScroll:true});
   }
-  function initCursor() {
-    if (touch.matches || reduced.matches) return;
-    const cursor = document.querySelector('#cursor');
-    document.body.classList.add('cursor-active');
-    document.addEventListener('pointermove', e => {
-      if (e.pointerType === 'touch') return;
-      const native = e.target.closest('video[controls],select,input');
-      cursor.classList.toggle('visible', !native);
-      cursor.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0)`;
-    }, {passive:true});
-    document.addEventListener('pointerleave', () => cursor.classList.remove('visible'));
-    document.addEventListener('keydown', e => {if (e.key === 'Tab') cursor.classList.remove('visible');});
-  }
   document.querySelector('#back-top').addEventListener('click', () => window.scrollTo({top:0,behavior:reduced.matches ? 'instant' : 'smooth'}));
   document.querySelector('.skip-link').addEventListener('click', e => {e.preventDefault();main.focus();main.scrollIntoView({behavior:'instant'});});
   document.addEventListener('visibilitychange', () => {
@@ -207,6 +193,6 @@
   history.scrollRestoration = 'manual';
   Promise.all([fetch('data.json').then(r => {if (!r.ok) throw new Error('Archive data unavailable'); return r.json();}), fetch('site.json').then(r => r.json())]).then(([data, settings]) => {
     projects = data.projects; config = settings;
-    render(); renderContact(); initCursor(); window.addEventListener('hashchange', render);
+    render(); renderContact(); window.addEventListener('hashchange', render);
   }).catch(error => {main.innerHTML = `<div class="empty-state"><h2>The archive couldn’t load.</h2><p>Please refresh to try again.</p></div>`; console.error(error);});
 })();
