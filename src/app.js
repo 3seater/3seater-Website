@@ -118,7 +118,7 @@
     const groups = labels.map(label => ({label, projects: projects.filter(p => p.categories.includes(label))}));
     const uncategorized = projects.filter(p => !p.categories.length);
     if (uncategorized.length) groups.push({ label: 'Other work', projects: uncategorized });
-    main.innerHTML = `<div class="page-heading"><h1>Index<span class="heading-sup">(${numbered(projects.length)})</span></h1></div>${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)} <span>(${numbered(group.projects.length)})</span></h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}`;
+    main.innerHTML = `<h1 class="sr-only">Project index</h1><div class="project-index">${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)} <span>(${numbered(group.projects.length)})</span></h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}</div>`;
     const preview = document.createElement('div'); preview.className = 'index-preview'; preview.setAttribute('aria-hidden', 'true'); document.body.append(preview);
     main.querySelectorAll('[data-preview-id]').forEach(row => {
       const p = projects.find(x => x.id === row.dataset.previewId);
