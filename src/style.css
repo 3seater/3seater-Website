@@ -37,6 +37,11 @@ body{font-family:var(--sans)}
 .project-info h1{font-family:var(--sans);font-size:clamp(28px,3.6vw,46px);font-weight:500;letter-spacing:-.03em;line-height:.98;margin:18px 0 22px}.project-meta dd{font-family:var(--sans);font-size:14px;line-height:1.4;letter-spacing:-.01em}.project-description{font-family:var(--sans);font-size:15px;line-height:1.4}.project-next strong{font-family:var(--mono);font-size:13px;font-weight:400;letter-spacing:.02em;text-transform:uppercase}.info-copy p{font-size:15px;line-height:1.4;letter-spacing:-.01em}
 @media(max-width:700px){.home-index{margin-top:50px}.home-index-row{grid-template-columns:1fr 55px;gap:14px;font-size:12px;padding:6px 0}.home-index-row .index-year{display:none}.index-view{font-size:9px;padding:3px 10px}.home-index-heading{font-size:10px}.directory-name,.directory-year{font-size:12px}.directory-row{grid-template-columns:1fr 40px 12px}.client-row{grid-template-columns:20px 1fr 65px 12px;gap:10px}.client-row .client-name{font-size:12px}.client-row .mono{font-size:10px}.project-info h1{font-size:36px}.page-heading h1{font-size:28px}.contact-footer{margin-top:60px}}
 
-.project-index{padding-top:28px}.project-index .directory-section{padding:0 0 24px}.project-index .directory-label{margin:4px 0 0}.project-index .directory-row{padding:2px 0;align-items:baseline}.project-index .directory-name,.project-index .directory-year{line-height:1.4}.project-index .directory-arrow{line-height:1.4}
-@media(max-width:700px){.project-index{padding-top:24px}.project-index .directory-section{gap:8px;padding-bottom:24px}.project-index .directory-label{margin:0}}
-.project-index .directory-row{grid-template-columns:minmax(0,1fr) 72px 16px}.project-index .directory-year{white-space:nowrap;text-align:right}
+.project-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:44px;row-gap:76px;padding:150px 0 60px;align-items:start}
+.project-index .directory-section{display:grid;grid-template-columns:26% minmax(0,1fr);gap:16px;padding:0;border:0;align-items:start}
+.project-index .directory-label{font-family:var(--utility);font-size:10px;line-height:1.5;letter-spacing:.025em;margin:3px 0 0;color:#8c8c8c}
+.project-index .directory-row{display:block;padding:3px 0;font-family:var(--utility);font-size:12px;line-height:1.55;text-transform:uppercase}
+.project-index .directory-name,.project-index .directory-year{font-family:inherit;font-size:inherit;line-height:inherit;letter-spacing:0;font-weight:400}
+.project-index .directory-year{color:#a0a0a0;white-space:nowrap}
+@media(max-width:1400px){.project-index{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;padding-top:100px}}
+@media(max-width:800px){.project-index{grid-template-columns:1fr;padding-top:60px;row-gap:38px}.project-index .directory-section{grid-template-columns:26% minmax(0,1fr);gap:16px}.project-index .directory-label{margin-top:3px}}

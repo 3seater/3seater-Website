@@ -111,7 +111,7 @@
     window.addEventListener('resize', resize);
   }
   function indexRow(p) {
-    return `<a class="directory-row" href="${projectHref(p)}" data-preview-id="${escape(p.id)}" data-cursor="View"><span class="directory-name">${escape(p.title)}</span><span class="directory-year">${escape(p.year || '—')}</span><span class="directory-arrow" aria-hidden="true">↗</span></a>`;
+    return `<a class="directory-row" href="${projectHref(p)}" data-preview-id="${escape(p.id)}" data-cursor="View"><span class="directory-name">${escape(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}</a>`;
   }
   function renderIndex() {
     const labels = [...new Set(projects.flatMap(p => p.categories))].sort((a,b) => a.localeCompare(b));
