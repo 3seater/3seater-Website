@@ -8,7 +8,7 @@
   let projects = [], config = {}, observer, gridObserver;
   let density = 'grid', routeKey = '', lastListKey = '/', resizeTimer;
   const positions = new Map(), visibleVideos = new Set();
-  const firstOrder = ['pink-pantheress', 'doji', 'yung-bans', '2hollis', 'don-toliver', 'polydupe', 'faze', 'personal-work', 'burna-boy', 'snoop-dogg', 'busta-rhymes-young-thug'];
+  const firstOrder = ['2hollis', 'faze', 'busta-rhymes-young-thug', 'pink-pantheress', 'personal-work-iceman', 'personal-work-coded', 'g-herbo', 'personal-work-playboi-carti', 'nba-youngboy', 'personal-work-yeat', 'doji', 'yung-bans', 'don-toliver', 'polydupe', 'burna-boy', 'snoop-dogg'];
   const allMedia = () => projects.reduce((n, p) => n + p.media.length, 0);
   const projectHref = p => `#/project/${encode(p.id)}`;
   const clientHref = name => {
