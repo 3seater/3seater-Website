@@ -62,3 +62,17 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline-color:var(--ac
 .archive-page{padding-top:36px}
 .feed-label a{color:var(--ink)}
 @media(max-width:700px){.site-header nav{flex-wrap:wrap;row-gap:4px}.archive-page{padding-top:24px}}
+
+.project-index{isolation:isolate}
+.project-index .directory-row{position:relative}
+.project-index .directory-name,.project-index .directory-year{position:relative;z-index:1}
+.index-inline-preview{display:none;position:absolute;left:var(--preview-left,calc(100% - 24px));top:50%;width:min(360px,calc(100vw - 40px));height:300px;pointer-events:none;z-index:0;transform:translateY(-50%)}
+.index-inline-preview img,.index-inline-preview video{display:block;width:100%;height:100%;object-fit:contain}
+.project-index .directory-row:is(:hover,:focus-visible) .index-inline-preview{display:block}
+.project-index .directory-row:is(:hover,:focus-visible) .directory-name{text-shadow:0 0 3px var(--paper)}
+@media(hover:none){.project-index .directory-row:is(:hover,:focus-visible) .index-inline-preview{display:none}}
+
+.project-media.project-media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.project-media-grid figure{min-width:0}
+.project-media-grid img,.project-media-grid video{aspect-ratio:1;object-fit:contain;background:var(--paper)}
+@media(max-width:700px){.project-media.project-media-grid{gap:12px}.project-media-grid figcaption{font-size:8px;gap:4px}}

@@ -109,7 +109,7 @@
     window.addEventListener('resize', resize);
   }
   function indexRow(p) {
-    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${escape(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}</a>`;
+    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${escape(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}<span class="index-inline-preview" aria-hidden="true">${p.media[p.cover].type === 'video' ? `<video data-preview="${escape(p.media[p.cover].preview)}" poster="${escape(p.media[p.cover].poster)}" muted loop playsinline preload="none" tabindex="-1"></video>` : `<img data-src="${escape(p.media[p.cover].poster)}" alt="" width="${p.media[p.cover].width}" height="${p.media[p.cover].height}">`}</span></a>`;
   }
   function renderIndex() {
     const labels = [...new Set(projects.flatMap(p => p.categories))].sort((a,b) => a.localeCompare(b));
@@ -117,7 +117,28 @@
     const uncategorized = projects.filter(p => !p.categories.length);
     if (uncategorized.length) groups.push({ label: 'Other work', projects: uncategorized });
     main.innerHTML = `<h1 class="sr-only">Project index</h1><div class="project-index">${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)} <span>(${numbered(group.projects.length)})</span></h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}</div>`;
-
+    main.querySelectorAll('.directory-row').forEach(row => {
+      const showPreview = () => {
+        if (!window.matchMedia('(hover: hover)').matches) return;
+        const img = row.querySelector('.index-inline-preview img');
+        if (img && !img.src) img.src = img.dataset.src;
+        const video = row.querySelector('video');
+        if (video) { visibleVideos.add(video); updatePlayback(); }
+        const rect = row.getBoundingClientRect();
+        const width = Math.min(360, window.innerWidth - 40);
+        const left = Math.max(20 - rect.left, Math.min(rect.width - 24, window.innerWidth - rect.left - width - 20));
+        row.style.setProperty('--preview-left', `${left}px`);
+      };
+      row.addEventListener('pointerenter', showPreview);
+      row.addEventListener('focus', showPreview);
+      const hidePreview = () => {
+        if (row.matches(':hover,:focus-visible')) return;
+        const video = row.querySelector('video');
+        if (video) { visibleVideos.delete(video); video.pause(); }
+      };
+      row.addEventListener('pointerleave', hidePreview);
+      row.addEventListener('blur', hidePreview);
+    });
   }
   function renderClients(clientSlug) {
     const clients = uniqueClients();
@@ -142,7 +163,7 @@
     const number = projects.indexOf(p), next = projects[(number + 1) % projects.length];
     const back = lastListKey;
     const rows = [[ 'Year', escape(p.year)], ['Client', p.client ? `<a href="${clientHref(p.client)}">${escape(p.client)} ↗</a>` : ''], ['Category', p.categories.map(c => `<a href="${escape(feedHref(c, ''))}">${escape(c)}</a>`).join(', ')], ['Role', escape(p.role)]];
-    main.innerHTML = `<a class="back-link mono" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<video autoplay muted loop playsinline preload="metadata" data-preview="${escape(m.src)}" poster="${escape(m.poster)}" src="${escape(m.src)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}<figcaption class="mono"><span>${numbered(i + 1)} / ${numbered(p.media.length)}</span><span>${m.type === 'video' ? 'Motion' : 'Still'}${p.year ? ' / ' + escape(p.year) : ''}</span></figcaption></figure>`).join('')}</section></div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="mono">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
+    main.innerHTML = `<a class="back-link mono" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media${p.media.length >= 4 ? ' project-media-grid' : ''}" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<video autoplay muted loop playsinline preload="metadata" data-preview="${escape(m.src)}" poster="${escape(m.poster)}" src="${escape(m.src)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}<figcaption class="mono"><span>${numbered(i + 1)} / ${numbered(p.media.length)}</span><span>${m.type === 'video' ? 'Motion' : 'Still'}${p.year ? ' / ' + escape(p.year) : ''}</span></figcaption></figure>`).join('')}</section></div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="mono">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
     initVideos();
   }
   function renderInfo() {
