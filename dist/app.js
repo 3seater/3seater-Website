@@ -25,7 +25,7 @@
     const params = new URLSearchParams();
     if (category && category !== 'All') params.set('category', category);
     if (year) params.set('year', year);
-    return `#/${params.size ? '?' + params.toString() : ''}`;
+    return `#/archive${params.size ? '?' + params.toString() : ''}`;
   }
   function cleanup() {
     observer?.disconnect(); gridObserver?.disconnect(); previewObserver?.disconnect();
@@ -86,20 +86,20 @@
       } else video.pause();
     }
   }
-  function renderFeed(params) {
-    const category = params.get('category') || 'All', year = params.get('year') || '';
+  function renderFeed(params, archive = false) {
+    const category = archive ? params.get('category') || 'All' : 'All', year = archive ? params.get('year') || '' : '';
     const list = projects.filter(p => (category === 'All' || p.filters.includes(category)) && (!year || p.year === year));
     const items = coverItems(list);
-    main.innerHTML = `<h1 class="sr-only">3seater — Selected works</h1><section class="archive-intro" aria-label="Introduction"><p>A collection of selected works across graphic design, motion design, and 3D.</p><p>Based in USA.</p></section>${filterBar(category, year)}<div class="feed-label mono"><span>Selected work — Archive</span><span aria-live="polite">${numbered(list.length)} projects</span></div>${items.length ? '<section id="feed-grid" class="feed-grid home-feed" aria-label="Work archive"></section>' : '<div class="empty-state"><h2>No work in this selection.</h2><button id="reset-filters" class="mono">View all work ↗</button></div>'}${items.length ? `<section class="home-index" aria-label="Selected projects"><div class="home-index-heading"><span>Index — Selected projects</span><a href="#/index">Full index →</a></div>${items.slice(0, 8).map(({project: p}) => `<a class="home-index-row" href="${projectHref(p)}" data-cursor="View"><span>${escape(p.title)}${p.categories.length ? ' — ' + escape(p.categories.join(' / ')) : ''}</span><span class="index-year">${escape(p.year)}</span><span class="index-view">View</span></a>`).join('')}</section>` : ''}`;
+    main.innerHTML = `<h1 class="sr-only">${archive ? 'All work' : '3seater — Selected works'}</h1>${archive ? '' : `<section class="archive-intro" aria-label="Introduction"><p>A collection of selected works across graphic design, motion design, and 3D.</p><p>Based in USA.</p></section>`}${archive ? filterBar(category, year) : ''}<div class="feed-label mono"><span>${archive ? 'Archive' : 'Selected work — Archive'}</span>${archive ? `<span aria-live="polite">${numbered(list.length)} projects</span>` : '<a href="#/archive">All work / filter →</a>'}</div>${items.length ? '<section id="feed-grid" class="feed-grid home-feed" aria-label="Work archive"></section>' : '<div class="empty-state"><h2>No work in this selection.</h2><button id="reset-filters" class="mono">View all work ↗</button></div>'}${!archive && items.length ? `<section class="home-index" aria-label="Selected projects"><div class="home-index-heading"><span>Index — Selected projects</span><a href="#/index">Full index →</a></div>${items.slice(0, 8).map(({project: p}) => `<a class="home-index-row" href="${projectHref(p)}" data-cursor="View"><span>${escape(p.title)}${p.categories.length ? ' — ' + escape(p.categories.join(' / ')) : ''}</span><span class="index-year">${escape(p.year)}</span><span class="index-view">View</span></a>`).join('')}</section>` : ''}`;
     buildGrid(items);
     main.querySelectorAll('[data-category]').forEach(b => b.addEventListener('click', () => { location.hash = feedHref(b.dataset.category, year); }));
-    main.querySelector('#year-filter').addEventListener('change', e => { location.hash = feedHref(category, e.target.value); });
+    main.querySelector('#year-filter')?.addEventListener('change', e => { location.hash = feedHref(category, e.target.value); });
     main.querySelectorAll('[data-density]').forEach(b => b.addEventListener('click', () => {
       density = b.dataset.density;
       main.querySelectorAll('[data-density]').forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.density === density));
       buildGrid(items);
     }));
-    main.querySelector('#reset-filters')?.addEventListener('click', () => { location.hash = '/'; });
+    main.querySelector('#reset-filters')?.addEventListener('click', () => { location.hash = '/archive'; });
     gridObserver = { disconnect() { window.removeEventListener('resize', resize); } };
     let previousCount = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
     function resize() {
@@ -169,6 +169,7 @@
     const {path, params, key} = route();
     if (routeKey) positions.set(routeKey, window.scrollY);
     cleanup(); routeKey = key;
+    main.classList.toggle('archive-page', path[0] === 'archive');
     document.title = '3seater — Visual archive';
     const section = path[0] || 'feed';
     if (section !== 'project') lastListKey = key;
@@ -176,6 +177,7 @@
       if (a.dataset.nav === (section === 'project' ? 'feed' : section)) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     if (!path.length) renderFeed(params);
+    else if (section === 'archive') renderFeed(params, true);
     else if (section === 'index') renderIndex();
     else if (section === 'clients') renderClients(path[1]);
     else if (section === 'project') renderProject(path[1], params);

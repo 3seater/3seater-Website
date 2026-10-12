@@ -55,3 +55,10 @@ a:is(:hover,:focus-visible) :is(.directory-year,.index-year,.client-count,.year,
 .site-header nav a:hover::after{background:var(--accent)}
 a:focus-visible,button:focus-visible,select:focus-visible{outline-color:var(--accent)}
 ::selection{background:var(--accent);color:#fff}
+
+.site-header nav a::after{content:none}
+.site-header nav a{transition:none;text-decoration:none}
+.site-header nav a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.archive-page{padding-top:36px}
+.feed-label a{color:var(--ink)}
+@media(max-width:700px){.site-header nav{flex-wrap:wrap;row-gap:4px}.archive-page{padding-top:24px}}
