@@ -11,7 +11,10 @@
   const firstOrder = ['pink-pantheress', 'doji', 'yung-bans', '2hollis', 'don-toliver', 'polydupe', 'faze', 'personal-work', 'burna-boy', 'snoop-dogg', 'busta-rhymes-young-thug'];
   const allMedia = () => projects.reduce((n, p) => n + p.media.length, 0);
   const projectHref = p => `#/project/${encode(p.id)}`;
-  const clientHref = name => `#/clients/${encode(slug(name))}`;
+  const clientHref = name => {
+    const matches = projects.filter(p => p.client === name);
+    return matches.length === 1 ? projectHref(matches[0]) : `#/clients/${encode(slug(name))}`;
+  };
   const uniqueClients = () => [...new Set(projects.map(p => p.client).filter(Boolean))].sort((a, b) => a.localeCompare(b));
   const yearRange = () => { const years = projects.map(p => p.year).filter(Boolean).sort(); return years.length ? `${years[0]}—${years.at(-1)}` : 'Ongoing'; };
   const numbered = n => String(n).padStart(2, '0');
@@ -36,7 +39,7 @@
   }
   function filterBar(category, year) {
     const years = [...new Set(projects.map(p => p.year).filter(Boolean))].sort().reverse();
-    return `<div class="archive-bar"><div class="filter-list" role="group" aria-label="Filter by category">${categories().map(c => `<button class="filter-button" data-category="${escape(c)}" aria-pressed="${c === category}">${escape(c === 'All' ? 'All work' : c)}</button>`).join('')}</div><div class="archive-tools"><label><span class="sr-only">Filter by year</span><select class="year-select" id="year-filter" aria-label="Filter by year"><option value="">All years</option>${years.map(y => `<option ${y === year ? 'selected' : ''} value="${escape(y)}">${escape(y)}</option>`).join('')}</select></label><div class="view-options" role="group" aria-label="Feed layout"><button class="view-button" data-density="wide" aria-label="Two column view" aria-pressed="${density === 'wide'}"><span class="grid-icon wide" aria-hidden="true"><i></i><i></i></span></button><button class="view-button" data-density="grid" aria-label="Dense grid view" aria-pressed="${density === 'grid'}"><span class="grid-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div></div></div>`;
+    return `<div class="archive-bar"><div class="filter-list" role="group" aria-label="Filter by category">${categories().map(c => `<button class="filter-button" data-category="${escape(c)}" aria-pressed="${c === category}">${escape(c === 'All' ? 'All work' : c)}</button>`).join('')}</div><div class="archive-tools"><details class="year-picker"><summary class="year-trigger" aria-label="Filter by year: ${escape(year || 'All years')}"><span>${escape(year || 'All years')}</span><svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="m1 1 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></summary><div class="year-menu" aria-label="Filter by year">${['', ...years].map(y => `<a class="year-option" href="${escape(feedHref(category, y))}"${y === year ? ' aria-current="true"' : ''}><span>${escape(y || 'All years')}</span><span class="year-check" aria-hidden="true">${y === year ? '✓' : ''}</span></a>`).join('')}</div></details><div class="view-options" role="group" aria-label="Feed layout"><button class="view-button" data-density="wide" aria-label="Two column view" aria-pressed="${density === 'wide'}"><span class="grid-icon wide" aria-hidden="true"><i></i><i></i></span></button><button class="view-button" data-density="grid" aria-label="Dense grid view" aria-pressed="${density === 'grid'}"><span class="grid-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div></div></div>`;
   }
   function coverItems(list) {
     const ordered = [...list].sort((a,b) => (b.featured - a.featured) || ((firstOrder.indexOf(a.id) < 0 ? 99 : firstOrder.indexOf(a.id)) - (firstOrder.indexOf(b.id) < 0 ? 99 : firstOrder.indexOf(b.id))));
@@ -88,10 +91,12 @@
     const category = archive ? params.get('category') || 'All' : 'All', year = archive ? params.get('year') || '' : '';
     const list = projects.filter(p => (category === 'All' || p.categories.includes(category)) && (!year || p.year === year));
     const items = coverItems(list);
-    main.innerHTML = `<h1 class="sr-only">${archive ? 'All work' : '3seater — Selected works'}</h1>${archive ? '' : `<section class="archive-intro" aria-label="Introduction"><p>A collection of selected works across graphic design, motion design, and 3D.</p><p>Based in USA.</p></section>`}${archive ? filterBar(category, year) : ''}<div class="feed-label mono"><span>${archive ? 'Archive' : 'Selected work — Archive'}</span>${archive ? `<span aria-live="polite">${numbered(list.length)} projects</span>` : '<a href="#/archive">All work / filter →</a>'}</div>${items.length ? '<section id="feed-grid" class="feed-grid home-feed" aria-label="Work archive"></section>' : '<div class="empty-state"><h2>No work in this selection.</h2><button id="reset-filters" class="mono">View all work ↗</button></div>'}${!archive && items.length ? `<section class="home-index" aria-label="Selected projects"><div class="home-index-heading"><span>Index — Selected projects</span><a href="#/index">Full index →</a></div>${items.slice(0, 8).map(({project: p}) => `<a class="home-index-row" href="${projectHref(p)}" data-cursor="View"><span>${escape(p.title)}${p.categories.length ? ' — ' + escape(p.categories.join(' / ')) : ''}</span><span class="index-year">${escape(p.year)}</span><span class="index-view">View</span></a>`).join('')}</section>` : ''}`;
+    main.innerHTML = `<h1 class="sr-only">${archive ? 'All work' : '3seater — Selected works'}</h1>${archive ? filterBar(category, year) : ''}<div class="feed-label mono"><span>${archive ? 'Archive' : 'Selected work — Archive'}</span>${archive ? `<span aria-live="polite">${numbered(list.length)} projects</span>` : '<a href="#/archive">All work / filter →</a>'}</div>${items.length ? '<section id="feed-grid" class="feed-grid home-feed" aria-label="Work archive"></section>' : '<div class="empty-state"><h2>No work in this selection.</h2><button id="reset-filters" class="mono">View all work ↗</button></div>'}${!archive && items.length ? `<section class="home-index" aria-label="Selected projects"><div class="home-index-heading"><span>Index — Selected projects</span><a href="#/index">Full index →</a></div>${items.slice(0, 8).map(({project: p}) => `<a class="home-index-row" href="${projectHref(p)}" data-cursor="View"><span>${escape(p.title)}${p.categories.length ? ' — ' + escape(p.categories.join(' / ')) : ''}</span><span class="index-year">${escape(p.year)}</span><span class="index-view">View</span></a>`).join('')}</section>` : ''}`;
     buildGrid(items);
     main.querySelectorAll('[data-category]').forEach(b => b.addEventListener('click', () => { location.hash = feedHref(b.dataset.category, year); }));
-    main.querySelector('#year-filter')?.addEventListener('change', e => { location.hash = feedHref(category, e.target.value); });
+    main.querySelectorAll('.year-option').forEach(link => link.addEventListener('click', () => {
+      main.querySelector('.year-picker').open = false;
+    }));
     main.querySelectorAll('[data-density]').forEach(b => b.addEventListener('click', () => {
       density = b.dataset.density;
       main.querySelectorAll('[data-density]').forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.density === density));
@@ -146,16 +151,13 @@
       const name = clients.find(c => slug(c) === clientSlug);
       if (!name) return renderMissing();
       const list = projects.filter(p => p.client === name), items = coverItems(list);
-      main.innerHTML = `<a class="back-link mono" href="#/clients">← All clients</a><div class="page-heading client-view-heading"><h1>${escape(name)}</h1></div><section id="feed-grid" class="feed-grid" aria-label="Work for ${escape(name)}"></section>`;
+      main.innerHTML = `<a class="back-link mono" href="#/info">← Back to info</a><div class="page-heading client-view-heading"><h1>${escape(name)}</h1></div><section id="feed-grid" class="feed-grid" aria-label="Work for ${escape(name)}"></section>`;
       buildGrid(items);
       const resize = () => {clearTimeout(resizeTimer); resizeTimer = setTimeout(() => buildGrid(items), 150);};
       window.addEventListener('resize', resize); gridObserver = {disconnect() {window.removeEventListener('resize', resize);}};
       return;
     }
-    main.innerHTML = `<div class="page-heading"><h1>Clients<span class="heading-sup">(${numbered(clients.length)})</span></h1></div><section class="client-directory" aria-label="Client directory">${clients.map((name, i) => {
-      const count = projects.filter(p => p.client === name).length;
-      return `<a class="client-row" href="${clientHref(name)}" data-cursor="Explore"><span class="mono">${numbered(i + 1)}</span><span class="client-name">${escape(name)}</span><span class="mono client-count">${numbered(count)} ${count === 1 ? 'collection' : 'collections'}</span><span class="directory-arrow" aria-hidden="true">↗</span></a>`;
-    }).join('')}</section>`;
+    return renderInfo();
   }
   function renderProject(id, params) {
     const p = projects.find(x => x.id === id); if (!p) return renderMissing();
@@ -167,7 +169,7 @@
     initVideos();
   }
   function renderInfo() {
-    main.innerHTML = `<div class="page-heading"><h1>Info</h1></div><div class="info-layout"><span class="mono">3SEATER</span><div class="info-copy"><p>Graphic design, motion design, and 3D.</p><p>Based in USA.</p></div></div>`;
+    main.innerHTML = `<div class="page-heading"><h1>Info</h1></div><div class="info-layout"><span class="mono">3SEATER</span><div class="info-copy"><p>Graphic design, motion design, and 3D.</p></div></div><section class="info-layout info-clients" aria-labelledby="selected-clients"><h2 class="mono" id="selected-clients">Selected clients</h2><ul class="info-client-list">${uniqueClients().map(name => `<li><a href="${clientHref(name)}">${escape(name)} <span aria-hidden="true">↗</span></a></li>`).join('')}</ul></section>`;
   }
   function renderContact() {
     const contact = document.querySelector('#contact-footer');
@@ -188,7 +190,7 @@
     const section = path[0] || 'feed';
     if (section !== 'project') lastListKey = key;
     document.querySelectorAll('[data-nav]').forEach(a => {
-      if (a.dataset.nav === (section === 'project' ? 'feed' : section)) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      if (a.dataset.nav === (section === 'project' ? 'feed' : section === 'clients' ? 'info' : section)) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     if (!path.length) renderFeed(params);
     else if (section === 'archive') renderFeed(params, true);
@@ -207,6 +209,21 @@
   }
   document.querySelector('#back-top').addEventListener('click', () => window.scrollTo({top:0,behavior:reduced.matches ? 'instant' : 'smooth'}));
   document.querySelector('.skip-link').addEventListener('click', e => {e.preventDefault();main.focus();main.scrollIntoView({behavior:'instant'});});
+  document.addEventListener('pointerdown', e => {
+    const picker = main.querySelector('.year-picker[open]');
+    if (picker && !picker.contains(e.target)) picker.open = false;
+  });
+  document.addEventListener('keydown', e => {
+    const picker = main.querySelector('.year-picker[open]');
+    if (e.key === 'Escape' && picker) {
+      picker.open = false;
+      picker.querySelector('summary').focus();
+    }
+  });
+  main.addEventListener('focusout', e => {
+    const picker = main.querySelector('.year-picker[open]');
+    if (picker && e.relatedTarget && !picker.contains(e.relatedTarget)) picker.open = false;
+  });
   document.addEventListener('visibilitychange', () => {
     updatePlayback(); if (document.hidden) main.querySelectorAll('video').forEach(v => v.pause());
   });

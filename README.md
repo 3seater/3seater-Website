@@ -1,6 +1,6 @@
 # 3seater — Visual archive
 
-A portfolio with one cover per project in the homepage feed, a discipline index, a client directory, and individual project pages. Built with HTML, CSS, JavaScript, and a folder-based content pipeline.
+A portfolio with one cover per project in the homepage feed, a discipline index, clickable selected clients on Info, and individual project pages. Client links open the project directly when there is only one, or a client collection when there are several. Built with HTML, CSS, JavaScript, and a folder-based content pipeline.
 
 ## Preview
 
