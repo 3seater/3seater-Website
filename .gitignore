@@ -1,0 +1,6 @@
+.cache/
+*.zip
+*.tar.gz
+*.log
+__pycache__/
+node_modules/

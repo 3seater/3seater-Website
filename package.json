@@ -1,0 +1,10 @@
+{
+  "name": "3seater-archive",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "python scripts/build.py",
+    "dev": "node scripts/serve.mjs",
+    "check": "node --check src/app.js && node --check scripts/serve.mjs && python scripts/verify.py"
+  }
+}
