@@ -74,5 +74,5 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline-color:var(--ac
 
 .project-media.project-media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
 .project-media-grid figure{min-width:0}
-.project-media-grid img,.project-media-grid video{aspect-ratio:1;object-fit:contain;background:var(--paper)}
+.project-media-grid img,.project-media-grid video{aspect-ratio:auto;object-fit:contain;background:var(--paper)}
 @media(max-width:700px){.project-media.project-media-grid{gap:12px}.project-media-grid figcaption{font-size:8px;gap:4px}}
