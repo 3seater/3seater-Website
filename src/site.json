@@ -1,6 +1,7 @@
 {
   "name": "3seater",
-  "email": "",
-  "instagram": "",
-  "intro": "An ongoing collection of graphic design, motion, and 3D work."
+  "email": "contact@3seater.com",
+  "instagram": "https://www.instagram.com/3seater",
+  "socials": [{"label":"YouTube","url":"https://www.youtube.com/3seater"}],
+  "intro": "A collection of selected works across graphic design, motion design, and 3D."
 }

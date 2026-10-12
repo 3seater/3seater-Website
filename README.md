@@ -1,6 +1,6 @@
 # 3seater — Visual archive
 
-A lightweight portfolio with a mixed media feed, discipline index, client directory, and individual project pages. Built with HTML, CSS, JavaScript, and a folder-based content pipeline. No JavaScript dependencies or CMS account required.
+A portfolio with one cover per project in the homepage feed, a discipline index, a client directory, and individual project pages. Built with HTML, CSS, JavaScript, and a folder-based content pipeline.
 
 ## Preview
 
@@ -33,14 +33,14 @@ Only the media is essential. Missing titles use the folder name. Blank years, de
 
 Keep client names consistent to group several projects on one client page. Leave Client blank for personal work. The older Type field is accepted but not used. Categories are kept verbatim in the index; the homepage derives broader filters from common terms (3D, Motion, Graphic Design, UI).
 
-Images: JPG, PNG, WebP, GIF, AVIF. Videos: MP4, MOV, WebM, M4V. Animated GIFs currently receive a still web image; use MP4 for motion. Media order and Cover are optional filenames. A filename ending in `- main` (before the extension) becomes the default cover; an explicit Cover field takes priority. Featured projects are moved ahead of the initial curated feed order in `src/app.js`. New projects enter the feed automatically.
+Images: JPG, PNG, WebP, GIF, AVIF. Videos: MP4, MOV, WebM, M4V. Animated GIFs currently receive a still web image; use MP4 for motion. A filename containing `main` is the project cover and appears first inside the project. Otherwise Cover chooses the file, falling back to the first media file. Only that one item appears in the feed; additional media appears inside the project. Media order is optional. Featured projects are moved ahead of the initial curated feed order in `src/app.js`. New projects enter the feed automatically.
 
 ## Edit the site
 
 - `src/style.css`: visual design and responsive layouts.
 - `src/app.js`: archive views, filters, feed sequencing, cursor, and video behavior.
 - `src/index.html`: shell, navigation, metadata, and footer.
-- `src/site.json`: email and Instagram contact links. These are blank until provided, and no dummy links are shown.
+- `src/site.json`: email, Instagram, and other social links (`socials: [{"label": "Vimeo", "url": "https://..."}]`). Blank contact details are omitted. These populate the large email and social-link footer.
 - `scripts/build.py`: imports content and generates web media into `dist/`.
 - `scripts/serve.mjs`: local server with video range-request support.
 

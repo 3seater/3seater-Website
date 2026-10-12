@@ -92,8 +92,10 @@ with ThreadPoolExecutor(max_workers=2) as executor:
 for project in projects:
     project['media'].sort(key=lambda m: m['order'])
     cover_name = project.pop('coverName', '').lower()
-    fallback = next((i for i, m in enumerate(project['media']) if re.search(r'[-_ ]main\.[^.]+$', m['filename'], re.I)), 0)
-    project['cover'] = next((i for i, m in enumerate(project['media']) if m['filename'].lower() == cover_name), fallback)
+    main_index = next((i for i, m in enumerate(project['media']) if 'main' in m['filename'].lower()), None)
+    project['cover'] = main_index if main_index is not None else next((i for i, m in enumerate(project['media']) if m['filename'].lower() == cover_name), 0)
+    project['media'].insert(0, project['media'].pop(project['cover']))
+    project['cover'] = 0
 projects.sort(key=lambda p: (not p['featured'], -(int(p['year'][:4]) if p['year'][:4].isdigit() else 0), p['title'].lower()))
 (DIST / 'data.json').write_text(json.dumps({'projects': projects}, ensure_ascii=False), encoding='utf-8')
 # Remove only this builder's obsolete derived files inside its verified output directory.

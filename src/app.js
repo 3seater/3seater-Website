@@ -40,15 +40,9 @@
     const years = [...new Set(projects.map(p => p.year).filter(Boolean))].sort().reverse();
     return `<div class="archive-bar"><div class="filter-list" role="group" aria-label="Filter by discipline">${categories().map(c => `<button class="filter-button" data-category="${escape(c)}" aria-pressed="${c === category}">${escape(c === 'All' ? 'All work' : c)}</button>`).join('')}</div><div class="archive-tools"><label><span class="sr-only">Filter by year</span><select class="year-select" id="year-filter" aria-label="Filter by year"><option value="">All years</option>${years.map(y => `<option ${y === year ? 'selected' : ''} value="${escape(y)}">${escape(y)}</option>`).join('')}</select></label><div class="view-options" role="group" aria-label="Feed layout"><button class="view-button" data-density="wide" aria-label="Two column view" aria-pressed="${density === 'wide'}"><span class="grid-icon wide" aria-hidden="true"><i></i><i></i></span></button><button class="view-button" data-density="grid" aria-label="Dense grid view" aria-pressed="${density === 'grid'}"><span class="grid-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div></div></div>`;
   }
-  function interleave(list) {
+  function coverItems(list) {
     const ordered = [...list].sort((a,b) => (b.featured - a.featured) || ((firstOrder.indexOf(a.id) < 0 ? 99 : firstOrder.indexOf(a.id)) - (firstOrder.indexOf(b.id) < 0 ? 99 : firstOrder.indexOf(b.id))));
-    const items = [];
-    const max = Math.max(0, ...ordered.map(p => p.media.length));
-    for (let i = 0; i < max; i++) for (const p of ordered) {
-      const sequence = [p.cover, ...p.media.map((_, j) => j).filter(j => j !== p.cover)];
-      if (sequence[i] !== undefined) items.push({ project: p, media: p.media[sequence[i]], index: sequence[i] });
-    }
-    return items;
+    return ordered.map(p => ({project: p, media: p.media[p.cover], index: p.cover}));
   }
   function tile(item, number) {
     const { project: p, media: m, index } = item;
@@ -60,7 +54,7 @@
     if (!grid) return;
     observer?.disconnect(); visibleVideos.clear();
     grid.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
-    const count = window.innerWidth <= 700 ? 2 : density === 'wide' ? 2 : window.innerWidth <= 1050 ? 3 : 4;
+    const count = window.innerWidth <= 700 ? 2 : density === 'wide' ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
     grid.classList.toggle('wide', density === 'wide');
     const columns = Array.from({ length: count }, () => []), heights = Array(count).fill(0);
     items.forEach((item, i) => {
@@ -96,8 +90,8 @@
   function renderFeed(params) {
     const category = params.get('category') || 'All', year = params.get('year') || '';
     const list = projects.filter(p => (category === 'All' || p.filters.includes(category)) && (!year || p.year === year));
-    const items = interleave(list);
-    main.innerHTML = `<section class="hero" aria-label="Introduction"><div><div class="hero-overline mono"><span class="status-dot"></span>Visual archive <span>/</span> ${escape(yearRange())}</div><h1 class="hero-title">3seater<span aria-hidden="true">✳</span></h1></div><div class="hero-aside"><p>Work, experiments,<br>and everything<br>in between.</p><span class="mono">Graphic design<br>Motion design & 3D</span></div></section>${filterBar(category, year)}<div class="feed-label mono"><span aria-live="polite">${numbered(items.length)} pieces / ${numbered(list.length)} collections</span><span>A little bit of everything ↓</span></div>${items.length ? '<section id="feed-grid" class="feed-grid" aria-label="Work archive"></section>' : '<div class="empty-state"><h2>No work in this selection.</h2><button id="reset-filters" class="mono">View all work ↗</button></div>'}<div class="collection-end"><p>Always in progress.</p><a href="#/index" class="mono">Explore the index ↗</a></div>`;
+    const items = coverItems(list);
+    main.innerHTML = `<h1 class="sr-only">3seater — Selected works</h1><section class="archive-intro" aria-label="Introduction"><p>A collection of selected works across graphic design, motion design, and 3D.</p><p>Based in USA.</p></section>${filterBar(category, year)}<div class="feed-label mono"><span>Selected work — Archive</span><span aria-live="polite">${numbered(list.length)} projects</span></div>${items.length ? '<section id="feed-grid" class="feed-grid home-feed" aria-label="Work archive"></section>' : '<div class="empty-state"><h2>No work in this selection.</h2><button id="reset-filters" class="mono">View all work ↗</button></div>'}`;
     buildGrid(items);
     main.querySelectorAll('[data-category]').forEach(b => b.addEventListener('click', () => { location.hash = feedHref(b.dataset.category, year); }));
     main.querySelector('#year-filter').addEventListener('change', e => { location.hash = feedHref(category, e.target.value); });
@@ -108,10 +102,10 @@
     }));
     main.querySelector('#reset-filters')?.addEventListener('click', () => { location.hash = '/'; });
     gridObserver = { disconnect() { window.removeEventListener('resize', resize); } };
-    let previousCount = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : 4;
+    let previousCount = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
     function resize() {
       clearTimeout(resizeTimer); resizeTimer = setTimeout(() => {
-        const count = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : 4;
+        const count = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
         if (count !== previousCount) { previousCount = count; buildGrid(items); }
       }, 150);
     }
@@ -125,7 +119,7 @@
     const groups = labels.map(label => ({label, projects: projects.filter(p => p.categories.includes(label))}));
     const uncategorized = projects.filter(p => !p.categories.length);
     if (uncategorized.length) groups.push({ label: 'Other work', projects: uncategorized });
-    main.innerHTML = `<div class="page-heading"><h1>Index<span class="heading-sup">(${numbered(projects.length)})</span></h1><p class="mono">An overview by discipline.<br>Different ways into the same work.</p></div>${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)} <span>(${numbered(group.projects.length)})</span></h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}`;
+    main.innerHTML = `<div class="page-heading"><h1>Index<span class="heading-sup">(${numbered(projects.length)})</span></h1></div>${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)} <span>(${numbered(group.projects.length)})</span></h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}`;
     const preview = document.createElement('div'); preview.className = 'index-preview'; preview.setAttribute('aria-hidden', 'true'); document.body.append(preview);
     main.querySelectorAll('[data-preview-id]').forEach(row => {
       const p = projects.find(x => x.id === row.dataset.previewId);
@@ -139,14 +133,14 @@
     if (clientSlug) {
       const name = clients.find(c => slug(c) === clientSlug);
       if (!name) return renderMissing();
-      const list = projects.filter(p => p.client === name), items = interleave(list);
-      main.innerHTML = `<a class="back-link mono" href="#/clients">← All clients</a><div class="page-heading client-view-heading"><h1>${escape(name)}</h1><p class="mono">${numbered(items.length)} pieces / ${numbered(list.length)} collections<br>${escape([...new Set(list.flatMap(p => p.categories))].join(' / '))}</p></div><section id="feed-grid" class="feed-grid" aria-label="Work for ${escape(name)}"></section><div class="collection-end"><span class="mono">Part of the archive.</span><a href="#/" class="mono">Back to the feed ↗</a></div>`;
+      const list = projects.filter(p => p.client === name), items = coverItems(list);
+      main.innerHTML = `<a class="back-link mono" href="#/clients">← All clients</a><div class="page-heading client-view-heading"><h1>${escape(name)}</h1></div><section id="feed-grid" class="feed-grid" aria-label="Work for ${escape(name)}"></section>`;
       buildGrid(items);
       const resize = () => {clearTimeout(resizeTimer); resizeTimer = setTimeout(() => buildGrid(items), 150);};
       window.addEventListener('resize', resize); gridObserver = {disconnect() {window.removeEventListener('resize', resize);}};
       return;
     }
-    main.innerHTML = `<div class="page-heading"><h1>Clients<span class="heading-sup">(${numbered(clients.length)})</span></h1><p class="mono">Artists, brands & collaborators.<br>Browse the work by name.</p></div><section class="client-directory" aria-label="Client directory">${clients.map((name, i) => {
+    main.innerHTML = `<div class="page-heading"><h1>Clients<span class="heading-sup">(${numbered(clients.length)})</span></h1></div><section class="client-directory" aria-label="Client directory">${clients.map((name, i) => {
       const count = projects.filter(p => p.client === name).length;
       return `<a class="client-row" href="${clientHref(name)}" data-cursor="Explore"><span class="mono">${numbered(i + 1)}</span><span class="client-name">${escape(name)}</span><span class="mono client-count">${numbered(count)} ${count === 1 ? 'collection' : 'collections'}</span><span class="directory-arrow" aria-hidden="true">↗</span></a>`;
     }).join('')}</section>`;
@@ -166,9 +160,16 @@
     });
   }
   function renderInfo() {
-    const safeInstagram = /^https:\/\/(www\.)?instagram\.com\//.test(config.instagram || '') ? config.instagram : '';
-    const safeEmail = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(config.email || '') ? config.email : '';
-    main.innerHTML = `<div class="page-heading"><h1>Info<span class="heading-sup">/ 3seater</span></h1><p class="mono">Independent designer.<br>Across disciplines.</p></div><div class="info-layout"><p class="info-statement">Graphic design.<br>Moving images.<br>Three dimensions.<br><span style="color:var(--muted)">One practice.</span></p><div class="info-copy"><p>I’m 3seater. I work across graphic design, motion design, and 3D.</p><p>This is an ongoing collection of my work. Client projects sit alongside personal experiments, stills, and things in motion.</p><span class="mono">Disciplines</span><div class="info-disciplines"><span>Graphic design</span><span>Motion design</span><span>3D & character design</span></div>${safeEmail || safeInstagram ? `<div class="info-contact"><span class="mono">Get in touch</span>${safeEmail ? `<a href="mailto:${escape(safeEmail)}">${escape(safeEmail)} ↗</a>` : ''}${safeInstagram ? `<a href="${escape(safeInstagram)}" target="_blank" rel="noopener">Instagram ↗</a>` : ''}</div>` : ''}<a class="info-link mono" href="#/clients"><span>Clients & collaborators</span><span>${numbered(uniqueClients().length)} ↗</span></a><a class="info-link mono" href="#/"><span>Explore the archive</span><span>${numbered(allMedia())} pieces ↗</span></a></div></div>`;
+    main.innerHTML = `<div class="page-heading"><h1>Info</h1></div><div class="info-layout"><span class="mono">3SEATER</span><div class="info-copy"><p>Graphic design, motion design, and 3D.</p><p>Based in USA.</p></div></div>`;
+  }
+  function renderContact() {
+    const contact = document.querySelector('#contact-footer');
+    const email = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(config.email || '') ? config.email : '';
+    const socials = [...(Array.isArray(config.socials) ? config.socials : [])];
+    if (config.instagram) socials.unshift({label:'Instagram',url:config.instagram});
+    const links = socials.filter(s => s.label && /^https:\/\//.test(s.url || ''));
+    contact.hidden = !email && !links.length;
+    contact.innerHTML = `<div class="mono contact-label">GET IN TOUCH</div>${email ? `<a class="contact-email" href="mailto:${escape(email)}">${escape(email)}</a>` : ''}<div class="contact-socials">${links.map(s => `<a href="${escape(s.url)}" target="_blank" rel="noopener">${escape(s.label)} ↗</a>`).join('')}</div>`;
   }
   function renderMissing() {main.innerHTML = '<div class="empty-state"><h2>This collection isn’t here.</h2><a class="mono" href="#/">Back to the archive ↗</a></div>';}
   function render() {
@@ -218,6 +219,6 @@
   history.scrollRestoration = 'manual';
   Promise.all([fetch('data.json').then(r => {if (!r.ok) throw new Error('Archive data unavailable'); return r.json();}), fetch('site.json').then(r => r.json())]).then(([data, settings]) => {
     projects = data.projects; config = settings;
-    render(); initCursor(); window.addEventListener('hashchange', render);
+    render(); renderContact(); initCursor(); window.addEventListener('hashchange', render);
   }).catch(error => {main.innerHTML = `<div class="empty-state"><h2>The archive couldn’t load.</h2><p>Please refresh to try again.</p></div>`; console.error(error);});
 })();
