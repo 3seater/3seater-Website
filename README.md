@@ -17,6 +17,8 @@ Open the Local URL printed by the server (port 4173 by default). `PORT` can sele
 
 Keep each project in its own folder inside the existing `../Work` folder. Add images or videos beside `project.txt`, then run `npm run build` and refresh the browser. To build from a different content folder, use `python scripts/build.py "D:/path/to/Work"`.
 
+Projects can also be nested under an artist folder, such as `Work/03 Greedo/Free 03/` and `Work/03 Greedo/Halfway There/`. Each folder with its own media becomes one project; artist folders that only contain subfolders do not create extra projects. Each project's `Client:` field controls client grouping. The full relative folder path generates its unique project URL, so two artists can both have a project named `Cover Art`. Existing flat project folders continue to work.
+
 ```text
 Title: Project Name
 Year: 2026

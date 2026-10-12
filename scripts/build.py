@@ -74,15 +74,18 @@ def broad_categories(categories):
     return result
 
 projects, tasks = [], []
-for folder in sorted(WORK.iterdir()):
-    if not folder.is_dir(): continue
-    files = sorted((p for p in folder.iterdir() if p.suffix.lower() in VIDEO | IMAGE), key=lambda p: p.name.lower())
+for folder in sorted(WORK.rglob('*')):
+    if not folder.is_dir() or folder.is_symlink(): continue
+    if not folder.resolve().is_relative_to(WORK.resolve()): continue
+    files = sorted((p for p in folder.iterdir() if p.is_file() and p.suffix.lower() in VIDEO | IMAGE), key=lambda p: p.name.lower())
     if not files: continue
     meta = read_meta(folder)
     order = [v.strip().lower() for v in meta.get('media order', '').split(',') if v.strip()]
     files.sort(key=lambda p: (order.index(p.name.lower()) if p.name.lower() in order else len(order), p.name.lower()))
     categories = [v.strip() for v in meta.get('categories', '').split(',') if v.strip()]
-    project_id = slug(folder.name)
+    project_id = slug('/'.join(folder.relative_to(WORK).parts))
+    if any(p['id'] == project_id for p in projects):
+        raise ValueError(f'Project URL collision for {folder.relative_to(WORK)}; rename one of the conflicting folders.')
     project = {'id': project_id, 'title': meta.get('title') or folder.name, 'year': meta.get('year', ''), 'client': meta.get('client', '').replace('—', '').strip(), 'categories': categories, 'filters': broad_categories(categories), 'description': meta.get('description', ''), 'role': meta.get('my role', meta.get('role', '')), 'featured': meta.get('featured', '').lower() == 'yes', 'coverName': meta.get('cover', ''), 'media': []}
     projects.append(project)
     tasks.extend((p, project_id, i) for i, p in enumerate(files))
