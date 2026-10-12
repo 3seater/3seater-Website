@@ -78,9 +78,8 @@
   }
   function updatePlayback() {
     const canPlay = !document.hidden && !reduced.matches && !navigator.connection?.saveData;
-    let count = 0;
     for (const video of visibleVideos) {
-      if (canPlay && count++ < (touch.matches ? 1 : 4)) {
+      if (canPlay) {
         if (!video.src) video.src = video.dataset.preview;
         video.muted = true;
         video.play().then(() => video.classList.add('playing')).catch(() => video.classList.remove('playing'));

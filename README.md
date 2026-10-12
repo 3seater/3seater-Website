@@ -46,7 +46,7 @@ Images: JPG, PNG, WebP, GIF, AVIF. Videos: MP4, MOV, WebM, M4V. Animated GIFs cu
 - `scripts/build.py`: imports content and generates web media into `dist/`.
 - `scripts/serve.mjs`: local server with video range-request support.
 
-The first build optimizes media; subsequent builds reuse `.cache` entries for unchanged files. It creates full-length compressed video, an eight-second muted feed preview, and a WebP poster for each video. Images become web-sized WebP files. Full videos retain any original audio and use native playback controls. Feed videos honor reduced motion and data-saving preferences, and pause offscreen; simultaneous previews are capped at four on desktop and one on touch devices.
+The first build optimizes media; subsequent builds reuse `.cache` entries for unchanged files. It creates full-length compressed video, an eight-second muted feed preview, and a WebP poster for each video. Images become web-sized WebP files. Full videos retain any original audio and use native playback controls. All visible feed videos play automatically, with no simultaneous-playback cap. They honor reduced motion and data-saving preferences and pause offscreen.
 
 `dist/` is the deployable static site and is retained in the hosted source so it can be restored without uploading your original Work folder. Local Work changes require rebuilding and redeploying before the hosted site changes. The builder removes its obsolete generated media from dist when files are renamed or projects are removed; your original files are never deleted.
 
