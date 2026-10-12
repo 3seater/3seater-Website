@@ -6,7 +6,7 @@
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const slug = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const encode = encodeURIComponent;
-  let projects = [], config = {}, observer, gridObserver, previewObserver;
+  let projects = [], config = {}, observer, gridObserver;
   let density = 'grid', routeKey = '', lastListKey = '/', resizeTimer;
   const positions = new Map(), visibleVideos = new Set();
   const firstOrder = ['pink-pantheress', 'doji', 'yung-bans', '2hollis', 'don-toliver', 'polydupe', 'faze', 'personal-work', 'burna-boy', 'snoop-dogg', 'busta-rhymes-young-thug'];
@@ -28,17 +28,16 @@
     return `#/archive${params.size ? '?' + params.toString() : ''}`;
   }
   function cleanup() {
-    observer?.disconnect(); gridObserver?.disconnect(); previewObserver?.disconnect();
+    observer?.disconnect(); gridObserver?.disconnect();
     main.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
     visibleVideos.clear();
   }
   function categories() {
-    const preferred = ['Graphic Design', 'Motion', '3D', 'UI'];
-    return ['All', ...preferred.filter(c => projects.some(p => p.filters.includes(c)))];
+    return ['All', ...new Set(projects.flatMap(p => p.categories))].sort((a, b) => a === 'All' ? -1 : b === 'All' ? 1 : a.localeCompare(b));
   }
   function filterBar(category, year) {
     const years = [...new Set(projects.map(p => p.year).filter(Boolean))].sort().reverse();
-    return `<div class="archive-bar"><div class="filter-list" role="group" aria-label="Filter by discipline">${categories().map(c => `<button class="filter-button" data-category="${escape(c)}" aria-pressed="${c === category}">${escape(c === 'All' ? 'All work' : c)}</button>`).join('')}</div><div class="archive-tools"><label><span class="sr-only">Filter by year</span><select class="year-select" id="year-filter" aria-label="Filter by year"><option value="">All years</option>${years.map(y => `<option ${y === year ? 'selected' : ''} value="${escape(y)}">${escape(y)}</option>`).join('')}</select></label><div class="view-options" role="group" aria-label="Feed layout"><button class="view-button" data-density="wide" aria-label="Two column view" aria-pressed="${density === 'wide'}"><span class="grid-icon wide" aria-hidden="true"><i></i><i></i></span></button><button class="view-button" data-density="grid" aria-label="Dense grid view" aria-pressed="${density === 'grid'}"><span class="grid-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div></div></div>`;
+    return `<div class="archive-bar"><div class="filter-list" role="group" aria-label="Filter by category">${categories().map(c => `<button class="filter-button" data-category="${escape(c)}" aria-pressed="${c === category}">${escape(c === 'All' ? 'All work' : c)}</button>`).join('')}</div><div class="archive-tools"><label><span class="sr-only">Filter by year</span><select class="year-select" id="year-filter" aria-label="Filter by year"><option value="">All years</option>${years.map(y => `<option ${y === year ? 'selected' : ''} value="${escape(y)}">${escape(y)}</option>`).join('')}</select></label><div class="view-options" role="group" aria-label="Feed layout"><button class="view-button" data-density="wide" aria-label="Two column view" aria-pressed="${density === 'wide'}"><span class="grid-icon wide" aria-hidden="true"><i></i><i></i></span></button><button class="view-button" data-density="grid" aria-label="Dense grid view" aria-pressed="${density === 'grid'}"><span class="grid-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div></div></div>`;
   }
   function coverItems(list) {
     const ordered = [...list].sort((a,b) => (b.featured - a.featured) || ((firstOrder.indexOf(a.id) < 0 ? 99 : firstOrder.indexOf(a.id)) - (firstOrder.indexOf(b.id) < 0 ? 99 : firstOrder.indexOf(b.id))));
@@ -88,7 +87,7 @@
   }
   function renderFeed(params, archive = false) {
     const category = archive ? params.get('category') || 'All' : 'All', year = archive ? params.get('year') || '' : '';
-    const list = projects.filter(p => (category === 'All' || p.filters.includes(category)) && (!year || p.year === year));
+    const list = projects.filter(p => (category === 'All' || p.categories.includes(category)) && (!year || p.year === year));
     const items = coverItems(list);
     main.innerHTML = `<h1 class="sr-only">${archive ? 'All work' : '3seater — Selected works'}</h1>${archive ? '' : `<section class="archive-intro" aria-label="Introduction"><p>A collection of selected works across graphic design, motion design, and 3D.</p><p>Based in USA.</p></section>`}${archive ? filterBar(category, year) : ''}<div class="feed-label mono"><span>${archive ? 'Archive' : 'Selected work — Archive'}</span>${archive ? `<span aria-live="polite">${numbered(list.length)} projects</span>` : '<a href="#/archive">All work / filter →</a>'}</div>${items.length ? '<section id="feed-grid" class="feed-grid home-feed" aria-label="Work archive"></section>' : '<div class="empty-state"><h2>No work in this selection.</h2><button id="reset-filters" class="mono">View all work ↗</button></div>'}${!archive && items.length ? `<section class="home-index" aria-label="Selected projects"><div class="home-index-heading"><span>Index — Selected projects</span><a href="#/index">Full index →</a></div>${items.slice(0, 8).map(({project: p}) => `<a class="home-index-row" href="${projectHref(p)}" data-cursor="View"><span>${escape(p.title)}${p.categories.length ? ' — ' + escape(p.categories.join(' / ')) : ''}</span><span class="index-year">${escape(p.year)}</span><span class="index-view">View</span></a>`).join('')}</section>` : ''}`;
     buildGrid(items);
@@ -143,14 +142,9 @@
     document.title = `${p.title} — 3seater`;
     const number = projects.indexOf(p), next = projects[(number + 1) % projects.length];
     const back = lastListKey;
-    const rows = [[ 'Year', escape(p.year)], ['Client', p.client ? `<a href="${clientHref(p.client)}">${escape(p.client)} ↗</a>` : ''], ['Discipline', escape(p.categories.join(', '))], ['Role', escape(p.role)]];
-    main.innerHTML = `<a class="back-link mono" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><span class="project-number mono">Collection ${numbered(number + 1)} / ${numbered(projects.length)}</span><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<video controls playsinline preload="none" poster="${escape(m.poster)}" src="${escape(m.src)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}<figcaption class="mono"><span>${numbered(i + 1)} / ${numbered(p.media.length)}</span><span>${m.type === 'video' ? 'Motion' : 'Still'}${p.year ? ' / ' + escape(p.year) : ''}</span></figcaption></figure>`).join('')}</section></div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="mono">Next collection</span><strong>${escape(next.title)} ↗</strong></a>`;
-    // Native controls remain available. Pause media when it leaves the screen.
-    previewObserver = new IntersectionObserver(entries => entries.forEach(e => {if (!e.isIntersecting) e.target.pause();}), {threshold: .05});
-    main.querySelectorAll('video').forEach(v => {
-      previewObserver.observe(v);
-      v.addEventListener('play', () => main.querySelectorAll('video').forEach(other => {if (other !== v) other.pause();}));
-    });
+    const rows = [[ 'Year', escape(p.year)], ['Client', p.client ? `<a href="${clientHref(p.client)}">${escape(p.client)} ↗</a>` : ''], ['Category', p.categories.map(c => `<a href="${escape(feedHref(c, ''))}">${escape(c)}</a>`).join(', ')], ['Role', escape(p.role)]];
+    main.innerHTML = `<a class="back-link mono" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<video autoplay muted loop playsinline preload="metadata" data-preview="${escape(m.src)}" poster="${escape(m.poster)}" src="${escape(m.src)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}<figcaption class="mono"><span>${numbered(i + 1)} / ${numbered(p.media.length)}</span><span>${m.type === 'video' ? 'Motion' : 'Still'}${p.year ? ' / ' + escape(p.year) : ''}</span></figcaption></figure>`).join('')}</section></div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="mono">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
+    initVideos();
   }
   function renderInfo() {
     main.innerHTML = `<div class="page-heading"><h1>Info</h1></div><div class="info-layout"><span class="mono">3SEATER</span><div class="info-copy"><p>Graphic design, motion design, and 3D.</p><p>Based in USA.</p></div></div>`;
