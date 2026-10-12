@@ -30,7 +30,7 @@
   function cleanup() {
     observer?.disconnect(); gridObserver?.disconnect(); previewObserver?.disconnect();
     main.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
-    visibleVideos.clear(); document.querySelector('.index-preview')?.remove();
+    visibleVideos.clear();
   }
   function categories() {
     const preferred = ['Graphic Design', 'Motion', '3D', 'UI'];
@@ -111,7 +111,7 @@
     window.addEventListener('resize', resize);
   }
   function indexRow(p) {
-    return `<a class="directory-row" href="${projectHref(p)}" data-preview-id="${escape(p.id)}" data-cursor="View"><span class="directory-name">${escape(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}</a>`;
+    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${escape(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}</a>`;
   }
   function renderIndex() {
     const labels = [...new Set(projects.flatMap(p => p.categories))].sort((a,b) => a.localeCompare(b));
@@ -119,13 +119,7 @@
     const uncategorized = projects.filter(p => !p.categories.length);
     if (uncategorized.length) groups.push({ label: 'Other work', projects: uncategorized });
     main.innerHTML = `<h1 class="sr-only">Project index</h1><div class="project-index">${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)} <span>(${numbered(group.projects.length)})</span></h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}</div>`;
-    const preview = document.createElement('div'); preview.className = 'index-preview'; preview.setAttribute('aria-hidden', 'true'); document.body.append(preview);
-    main.querySelectorAll('[data-preview-id]').forEach(row => {
-      const p = projects.find(x => x.id === row.dataset.previewId);
-      const show = () => { preview.innerHTML = `<img src="${escape(p.media[p.cover].poster)}" alt=""><span class="mono">${escape(p.title)}</span>`; preview.classList.add('visible'); };
-      const hide = () => preview.classList.remove('visible');
-      row.addEventListener('mouseenter', show); row.addEventListener('mouseleave', hide); row.addEventListener('focus', show); row.addEventListener('blur', hide);
-    });
+
   }
   function renderClients(clientSlug) {
     const clients = uniqueClients();
@@ -197,14 +191,13 @@
   }
   function initCursor() {
     if (touch.matches || reduced.matches) return;
-    const cursor = document.querySelector('#cursor'), label = cursor.querySelector('.cursor-label');
+    const cursor = document.querySelector('#cursor');
     document.body.classList.add('cursor-active');
     document.addEventListener('pointermove', e => {
       if (e.pointerType === 'touch') return;
       const native = e.target.closest('video[controls],select,input');
       cursor.classList.toggle('visible', !native);
       cursor.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0)`;
-      label.textContent = e.target.closest('[data-cursor]')?.dataset.cursor || '';
     }, {passive:true});
     document.addEventListener('pointerleave', () => cursor.classList.remove('visible'));
     document.addEventListener('keydown', e => {if (e.key === 'Tab') cursor.classList.remove('visible');});
