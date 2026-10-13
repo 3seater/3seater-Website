@@ -44,7 +44,7 @@ const server = http.createServer((req, res) => {
     req.on('close', () => { clearInterval(heartbeat); clients.delete(res); });
     return;
   }
-  const file = path.resolve(root, '.' + (relative === '/' ? '/index.html' : relative));
+  const file = path.resolve(root, '.' + (relative.endsWith('/') ? relative + 'index.html' : relative));
   if (file !== root && !file.startsWith(root + path.sep)) {res.writeHead(403).end();return;}
   fs.stat(file, (err, stat) => {
     if (err || !stat.isFile()) {res.writeHead(404).end('Not found');return;}
