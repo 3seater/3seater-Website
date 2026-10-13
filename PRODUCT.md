@@ -11,7 +11,7 @@ web
 Preserve Work, Archive and Index navigation, all projects, project media, metadata, client collections, category/year filtering and contact links. Never invent portfolio facts or add sales copy.
 
 ## Brand Commitments
-Black, white, neutral off-white/off-black and grayscale only. Arial/Helvetica-like grotesks and the existing restrained mono metadata. System sans is explicitly permitted for iOS-inspired explorations. Reuben Timothy and Sturdy are references. Minimal, creative, tech-aware, noncorporate.
+Interface: black, white, neutral off-white/off-black and grayscale only. Artwork, videos and thumbnails must retain their original colors. Arial/Helvetica-like grotesks and the existing restrained mono metadata. System sans is explicitly permitted for iOS-inspired explorations. Reuben Timothy and Sturdy are references. Minimal, creative, tech-aware, noncorporate.
 
 ## Evidence on Hand
 src/site.json, dist/data.json and the user's Work directory are authoritative. Existing site uses Arial/Helvetica and SF Mono/Menlo/Consolas fallback stacks. Thirty projects currently exist.
