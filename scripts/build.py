@@ -5,6 +5,8 @@ import hashlib, json, re, shutil, subprocess, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 WORK = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT.parent / 'Work'
+if not WORK.is_dir():
+    raise SystemExit(f'Work folder not found: {WORK}. Build locally with the original media; deploy the committed dist folder. Existing output was not changed.')
 DIST = ROOT / 'dist'
 MEDIA = DIST / 'media'
 CACHE = ROOT / '.cache'
@@ -89,6 +91,8 @@ for folder in sorted(WORK.rglob('*')):
     project = {'id': project_id, 'title': meta.get('title') or folder.name, 'year': meta.get('year', ''), 'client': meta.get('client', '').replace('—', '').strip(), 'categories': categories, 'filters': broad_categories(categories), 'description': meta.get('description', ''), 'link': meta.get('link', ''), 'role': meta.get('my role', meta.get('role', '')), 'featured': meta.get('featured', '').lower() == 'yes', 'coverName': meta.get('cover', ''), 'media': []}
     projects.append(project)
     tasks.extend((p, project_id, i) for i, p in enumerate(files))
+if not projects:
+    raise SystemExit(f'No projects with supported media found in {WORK}. Existing output was not changed.')
 with ThreadPoolExecutor(max_workers=2) as executor:
     for task, media in zip(tasks, executor.map(process_media, tasks)):
         next(p for p in projects if p['id'] == task[1])['media'].append(media)

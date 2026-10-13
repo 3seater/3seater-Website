@@ -3,6 +3,7 @@ import json
 root = Path(__file__).resolve().parents[1]
 dist = root / 'dist'
 data = json.loads((dist / 'data.json').read_text(encoding='utf-8'))
+assert data.get('projects'), 'Archive is empty; rebuild locally with the original Work folder before deploying.'
 ids = set()
 for p in data['projects']:
     assert p['id'] not in ids, f'Duplicate ID: {p["id"]}'

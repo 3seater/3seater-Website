@@ -114,4 +114,10 @@ The first build optimizes media; subsequent builds reuse `.cache` entries for un
 
 `dist/` is the deployable static site and is retained in the hosted source so it can be restored without uploading your original Work folder. Local Work changes require rebuilding and redeploying before the hosted site changes. The builder removes its obsolete generated media from dist when files are renamed or projects are removed; your original files are never deleted.
 
+Vercel deploys the committed `dist/` directory using `vercel.json`. Its build command
+is `npm run check`, which validates that archive instead of regenerating it without
+the local `Work` folder. Run `npm run build` locally and commit the updated `dist/`
+before pushing content changes. Missing or empty source folders now fail without
+replacing the existing archive, and validation rejects an empty archive.
+
 The Site starts owner-private. Hosting identity is in `.openai/hosting.json`; keep it when publishing updates. Original Work files and build caches are not included in the hosted source.
