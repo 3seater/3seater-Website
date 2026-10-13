@@ -10,4 +10,8 @@ The UI and media presentation are grayscale. The original media files remain unc
 
 The comparison directory's names/descriptions are review-only content and do not appear within the portfolio variants. The existing site entry point is unchanged. Separate Sites publication is staged in ../ui-explorations, with its own hosting identity.
 
-Impeccable 4.5.2 was installed globally. Its Windows launcher failed with `cache_directory_failed`; design guidance was read directly. No Impeccable automated audit is claimed.
+Impeccable skill 4.5.2 was installed globally. Its first Windows launcher attempt failed with `cache_directory_failed`; design guidance was read directly. The official engine was subsequently initialized with the required filesystem permission and verified as version 4.0.0. No Impeccable automated audit is claimed.
+
+Validation: all twenty home routes were inspected at desktop and 390px mobile widths with no horizontal document overflow. All twenty desktop compositions and representative mobile compositions were visually reviewed. Archive category/year filtering, the empty state, Index links, project media, spotlight selection, and keyboard skip navigation were exercised. `npm run check` validates all 30 projects, 51 media entries and asset paths. JavaScript syntax checks pass.
+
+Windows hosting packaging requires Git Bash on PATH and `TAR_OPTIONS=--force-local` so GNU tar interprets drive-letter paths locally.
