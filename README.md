@@ -13,6 +13,10 @@ npm run dev
 
 Open the Local URL printed by the server (port 4173 by default). `PORT` can select another port. Requires Node.js, Python 3, ffmpeg, and ffprobe on PATH. `npm run check` checks JavaScript syntax, generated content, media paths, and static-hosting asset limits.
 
+The local server watches `Work` and `src`, rebuilds after saves settle, and refreshes
+connected browser tabs after a successful build. New videos need time to process.
+Live refresh is injected only by the local server; it is not part of the deployed site.
+
 ## Add or change work
 
 Keep each project in its own folder inside the existing `../Work` folder. Add images or videos beside `project.txt`, then run `npm run build` and refresh the browser. To build from a different content folder, use `python scripts/build.py "D:/path/to/Work"`.
@@ -79,14 +83,21 @@ Every role uses weight 400. Label tracking is .02em, body −.01em, title −.03
 and display −.04em; mono facts use normal tracking. Mobile keeps the same readable
 label and navigation sizes and adapts the layout instead of shrinking the text.
 
-The client wheel preserves its original typography separately from the UI scale:
-Arial/Helvetica names at weight 400, line-height 1.1 and tracking −.04em, with the
-existing name-length and viewport bounds. Its heading uses 11px monospace at
-line-height 1.5; the static reduced-motion names remain 20px. Do not normalize
-these component-specific choices when changing the rest of the type system.
-The wheel size formula must resolve on `.wheel-name`, where the inline
-`--name-size` and `--name-fit` values exist. Moving this formula to `:root` makes
-those references invalid and causes the text to inherit the body size.
+The client wheel keeps Arial/Helvetica at weight 400. Its desktop geometry follows
+Sturdy's measured cylinder: 18-degree spacing, 1000px perspective, and a 280px
+forward radius (240px at smaller desktop sizes). Base text is 100px/88px with
+−.03em tracking, reduced to 75px at smaller desktop sizes. Long names are fitted
+before perspective scaling. The heading uses 12px monospace; reduced-motion mode
+shows a static list with 20px names.
+
+The wheel's sticky viewport begins one screen before the client track, stays at
+`top: 0`, and extends one screen beyond it. Scroll maps directly from −80 degrees
+to 90 degrees past the final client, without a separate fade, translation, or
+spring. Track length preserves the reference's angular scroll speed for our
+longer client list. Front-half visibility prevents names repeating after one full
+turn. A flat rectangular hit area follows the emphasized name, and hover is
+paused for 140ms after scrolling. Mobile retains our compact cylinder rather
+than Sturdy's flat mobile list.
 
 The old `mono` markup class is now `utility`: ordinary interface labels are sans,
 so the class describes their purpose rather than suggesting a different font.

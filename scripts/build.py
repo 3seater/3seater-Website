@@ -86,7 +86,7 @@ for folder in sorted(WORK.rglob('*')):
     project_id = slug('/'.join(folder.relative_to(WORK).parts))
     if any(p['id'] == project_id for p in projects):
         raise ValueError(f'Project URL collision for {folder.relative_to(WORK)}; rename one of the conflicting folders.')
-    project = {'id': project_id, 'title': meta.get('title') or folder.name, 'year': meta.get('year', ''), 'client': meta.get('client', '').replace('—', '').strip(), 'categories': categories, 'filters': broad_categories(categories), 'description': meta.get('description', ''), 'role': meta.get('my role', meta.get('role', '')), 'featured': meta.get('featured', '').lower() == 'yes', 'coverName': meta.get('cover', ''), 'media': []}
+    project = {'id': project_id, 'title': meta.get('title') or folder.name, 'year': meta.get('year', ''), 'client': meta.get('client', '').replace('—', '').strip(), 'categories': categories, 'filters': broad_categories(categories), 'description': meta.get('description', ''), 'link': meta.get('link', ''), 'role': meta.get('my role', meta.get('role', '')), 'featured': meta.get('featured', '').lower() == 'yes', 'coverName': meta.get('cover', ''), 'media': []}
     projects.append(project)
     tasks.extend((p, project_id, i) for i, p in enumerate(files))
 with ThreadPoolExecutor(max_workers=2) as executor:

@@ -2,6 +2,7 @@
   'use strict';
   const main = document.querySelector('#main');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const stopSmoothScroll = initSmoothScroll();
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const slug = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const encode = encodeURIComponent;
@@ -29,11 +30,61 @@
     return `#/archive${params.size ? '?' + params.toString() : ''}`;
   }
   function cleanup() {
+    stopSmoothScroll();
     projectCursorCleanup?.();
     videoControlCleanup.splice(0).forEach(dispose => dispose());
     observer?.disconnect(); gridObserver?.disconnect();
     main.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
     visibleVideos.clear();
+  }
+  function initSmoothScroll() {
+    let frame = 0, target = window.scrollY, current = target, written = target, previous = 0, direction = 0;
+    const stop = () => {
+      cancelAnimationFrame(frame);
+      frame = 0; previous = 0; direction = 0;
+      target = current = written = window.scrollY;
+    };
+    const limit = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const tick = time => {
+      const dt = Math.min(64, time - previous || 16);
+      previous = time;
+      target = Math.max(0, Math.min(limit(), target));
+      const distance = target - current;
+      current = Math.abs(distance) < .75 ? target : current + distance * (1 - Math.exp(-dt / 90));
+      window.scrollTo({top: current, behavior: 'instant'});
+      written = window.scrollY;
+      if (Math.abs(target - written) < 1) { stop(); return; }
+      frame = requestAnimationFrame(tick);
+    };
+    window.addEventListener('wheel', event => {
+      if (reduced.matches || event.defaultPrevented || !event.cancelable || event.ctrlKey || event.metaKey || event.shiftKey || Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return;
+      // Let nested scrollers, form controls and native media keep their own input.
+      for (const element of event.composedPath()) {
+        if (!(element instanceof Element) || element === document.body || element === document.documentElement) continue;
+        if (element.matches('input, textarea, select, [contenteditable], video[controls], [data-native-scroll]')) { stop(); return; }
+        if (element.scrollHeight > element.clientHeight + 1 && /auto|scroll/.test(getComputedStyle(element).overflowY)) { stop(); return; }
+      }
+      const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1);
+      if (!delta) return;
+      const nextDirection = Math.sign(delta);
+      if (!frame || nextDirection !== direction) target = current = window.scrollY;
+      direction = nextDirection;
+      target = Math.max(0, Math.min(limit(), target + delta));
+      event.preventDefault();
+      if (!frame) { previous = performance.now(); frame = requestAnimationFrame(tick); }
+    }, {passive:false});
+    // Keyboard, scrollbar dragging, anchors and route restoration can interrupt.
+    window.addEventListener('scroll', () => { if (frame && Math.abs(window.scrollY - written) > 2) stop(); }, {passive:true});
+    window.addEventListener('pointerdown', stop, {passive:true});
+    window.addEventListener('touchstart', stop, {passive:true});
+    window.addEventListener('resize', stop, {passive:true});
+    window.addEventListener('hashchange', stop);
+    document.addEventListener('keydown', event => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) stop();
+    });
+    document.addEventListener('visibilitychange', stop);
+    reduced.addEventListener('change', stop);
+    return stop;
   }
   function categories() {
     return ['All', ...new Set(projects.flatMap(p => p.categories))].sort((a, b) => a === 'All' ? -1 : b === 'All' ? 1 : a.localeCompare(b));
@@ -52,10 +103,11 @@
     const ordered = [...list].sort((a,b) => (b.featured - a.featured) || ((firstOrder.indexOf(a.id) < 0 ? 99 : firstOrder.indexOf(a.id)) - (firstOrder.indexOf(b.id) < 0 ? 99 : firstOrder.indexOf(b.id))));
     return ordered.map(p => ({project: p, media: p.media[p.cover], index: p.cover}));
   }
+  const projectTitleMarkup = title => escape(title).replace(/(\s+[-–—]\s+)/g, '<span class="title-separator">$1</span>');
   function tile(item, number) {
     const { project: p, media: m, index } = item;
     const label = `${p.title}${p.year ? ', ' + p.year : ''} — ${m.type === 'video' ? 'video' : 'image'} ${index + 1}`;
-    return `<a class="work-tile" href="${projectHref(p)}?media=${index}" data-cursor="View" aria-label="${escape(label)}" style="--delay:${Math.min(number, 8) * 25}ms"><div class="tile-media" style="--ratio:${m.width}/${m.height}"><img src="${escape(m.poster)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)} — ${escape(p.categories.join(', ') || 'work study')}" loading="${number < 4 ? 'eager' : 'lazy'}" decoding="async">${m.type === 'video' ? `<video data-preview="${escape(m.src)}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>` : ''}<span class="tile-open" aria-hidden="true">↗</span></div><div class="tile-caption"><span>${escape(p.title)}</span>${p.year ? `<span class="year"> — ${escape(p.year)}</span>` : ''}</div></a>`;
+    return `<a class="work-tile" href="${projectHref(p)}?media=${index}" data-cursor="View" aria-label="${escape(label)}" style="--delay:${Math.min(number, 8) * 25}ms"><div class="tile-media" style="--ratio:${m.width}/${m.height}"><img src="${escape(m.poster)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)} — ${escape(p.categories.join(', ') || 'work study')}" loading="${number < 4 ? 'eager' : 'lazy'}" decoding="async">${m.type === 'video' ? `<video data-preview="${escape(m.src)}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>` : ''}<span class="tile-open" aria-hidden="true">↗</span></div><div class="tile-caption"><span class="tile-title">${projectTitleMarkup(p.title)}</span>${p.year ? `<span class="year"> — ${escape(p.year)}</span>` : ''}</div></a>`;
   }
   function buildGrid(items) {
     projectCursorCleanup?.();
@@ -66,6 +118,7 @@
     grid.classList.toggle('wide', density === 'wide');
     const masonry = route().path.length === 0;
     grid.classList.toggle('masonry', masonry);
+    grid.style.removeProperty('grid-template-columns');
     if (masonry) {
       const count = window.innerWidth <= 700 ? 2 : density === 'wide' ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
       const columns = Array.from({length: count}, () => []), heights = Array(count).fill(0);
@@ -75,11 +128,47 @@
         heights[column] += item.media.height / item.media.width + 0.18;
       });
       grid.innerHTML = columns.map(column => `<div class="feed-column">${column.join('')}</div>`).join('');
+      alignMasonryBottom(grid);
     } else {
       grid.innerHTML = items.map((item, i) => tile(item, i)).join('');
     }
     initVideos();
     if (masonry) initProjectCursor(grid);
+  }
+  function alignMasonryBottom(grid) {
+    if (!grid?.classList.contains('masonry')) return;
+    const columns = [...grid.querySelectorAll('.feed-column')];
+    if (!columns.length || columns.some(column => !column.children.length)) return;
+    grid.style.removeProperty('grid-template-columns');
+    const captions = [...grid.querySelectorAll('.tile-caption')];
+    captions.forEach(caption => { caption.style.minHeight = ''; });
+    const gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
+    const available = grid.clientWidth - gap * (columns.length - 1);
+    if (available <= 0) return;
+    // Solve width × total aspect ratio + caption/gap space = one shared bottom.
+    // Re-measure wrapping as widths change; retain caption space to avoid oscillation.
+    for (let pass = 0; pass < 8; pass++) {
+      captions.forEach(caption => {
+        caption.style.minHeight = `${caption.getBoundingClientRect().height}px`;
+      });
+      const metrics = columns.map(column => {
+        const media = [...column.querySelectorAll('.tile-media')];
+        const ratio = media.reduce((sum, item) => {
+          const image = item.querySelector('img');
+          return sum + Number(image.getAttribute('height')) / Number(image.getAttribute('width'));
+        }, 0);
+        const mediaHeight = media.reduce((sum, item) => sum + item.getBoundingClientRect().height, 0);
+        const lastCaption = column.lastElementChild.querySelector('.tile-caption').getBoundingClientRect().height;
+        return {ratio, offset:column.getBoundingClientRect().height - mediaHeight - lastCaption};
+      });
+      const baseline = (available + metrics.reduce((sum, item) => sum + item.offset / item.ratio, 0)) /
+        metrics.reduce((sum, item) => sum + 1 / item.ratio, 0);
+      const widths = metrics.map(item => (baseline - item.offset) / item.ratio);
+      if (widths.some(width => !Number.isFinite(width) || width <= 0)) break;
+      const settled = columns.every((column, index) => Math.abs(column.getBoundingClientRect().width - widths[index]) < .05);
+      grid.style.gridTemplateColumns = widths.map(width => `${width}px`).join(' ');
+      if (settled) break;
+    }
   }
   function initProjectCursor(grid) {
     const orb = document.createElement('span');
@@ -188,12 +277,13 @@
       buildGrid(items);
     }));
     main.querySelector('#reset-filters')?.addEventListener('click', () => { location.hash = '/archive'; });
-    gridObserver = { disconnect() { window.removeEventListener('resize', resize); } };
+    gridObserver = { disconnect() { clearTimeout(resizeTimer); window.removeEventListener('resize', resize); } };
     let previousCount = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
     function resize() {
       clearTimeout(resizeTimer); resizeTimer = setTimeout(() => {
         const count = window.innerWidth <= 700 ? 2 : window.innerWidth <= 1050 ? 3 : window.innerWidth <= 1200 ? 4 : 5;
         if (count !== previousCount) { previousCount = count; buildGrid(items); }
+        else alignMasonryBottom(main.querySelector('#feed-grid'));
       }, 150);
     }
     window.addEventListener('resize', resize);
@@ -202,68 +292,127 @@
     const preferred = ['2hollis', 'faze', 'pink-pantheress', 'busta-rhymes-young-thug', 'g-herbo', 'nba-youngboy', 'don-toliver', 'burna-boy', 'snoop-dogg', 'mlb'];
     const names = [...new Set([...preferred.map(id => projects.find(p => p.id === id)?.client).filter(Boolean), ...uniqueClients()])];
     if (!names.length) return '';
-    return `<section class="client-wheel" aria-labelledby="wheel-heading"><div class="client-wheel-sticky"><div class="wheel-heading utility"><h2 id="wheel-heading">Featured clients</h2></div><div class="wheel-stage"><div class="wheel-drum">${names.map(name => `<a class="wheel-name" href="${clientHref(name)}" style="--name-size:${Math.min(110, 2000 / name.length)}px;--name-fit:${160 / name.length}vw">${escape(name)}</a>`).join('')}</div></div></div></section>`;
+    return `<section class="client-wheel" aria-labelledby="wheel-heading"><div class="wheel-heading utility"><h2 id="wheel-heading">Featured clients</h2></div><div class="wheel-track"><div class="wheel-runway"><div class="client-wheel-sticky"><div class="wheel-stage"><div class="wheel-drum">${names.map(name => `<a class="wheel-name" href="${clientHref(name)}">${escape(name)}</a>`).join('')}</div></div></div></div></div></section>`;
   }
   function initClientWheel() {
     const section = main.querySelector('.client-wheel');
     if (!section) return;
-    const sticky = section.querySelector('.client-wheel-sticky');
+    const track = section.querySelector('.wheel-track');
     const links = [...section.querySelectorAll('.wheel-name')];
+    const stage = section.querySelector('.wheel-stage');
+    const guideTrack = document.createElement('div');
+    guideTrack.className = 'wheel-guide-track';
+    guideTrack.setAttribute('aria-hidden', 'true');
+    const guide = document.createElement('div');
+    guide.className = 'wheel-guide';
+    guideTrack.append(guide);
+    track.append(guideTrack);
+    const sideLabel = document.createElement('span');
+    sideLabel.className = 'wheel-side-label utility';
+    sideLabel.textContent = section.querySelector('.wheel-heading').textContent;
+    sideLabel.setAttribute('aria-hidden', 'true');
+    guide.append(sideLabel);
+    const progressTrack = document.createElement('div');
+    progressTrack.className = 'wheel-progress';
+    progressTrack.setAttribute('aria-hidden', 'true');
+    const progressFill = document.createElement('span');
+    progressTrack.append(progressFill);
+    guide.append(progressTrack);
+    const hitbox = document.createElement('a');
+    hitbox.className = 'wheel-hitbox';
+    hitbox.tabIndex = -1;
+    hitbox.setAttribute('aria-hidden', 'true');
+    stage.append(hitbox);
     section.style.setProperty('--client-count', links.length);
-    let current = 0, target = 0, frame = 0, previousTime = 0;
-    const paint = () => {
-      const active = Math.round(current);
-      const radius = window.innerWidth <= 700 ? 170 : 270;
-      links.forEach((link, i) => {
-        const angle = (i - current) * 24;
-        const radians = angle * Math.PI / 180;
-        const visible = Math.abs(angle) < 85;
-        link.style.transform = `translate(-50%, -50%) translate3d(0, ${Math.sin(radians) * radius}px, ${(Math.cos(radians) - 1) * radius}px) rotateX(${-angle}deg)`;
-        link.style.opacity = visible ? (i === active ? '1' : String(Math.max(.12, .38 - Math.abs(angle) / 350))) : '0';
-        link.style.visibility = visible ? 'visible' : 'hidden';
-        link.classList.toggle('is-active', i === active);
-        link.tabIndex = reduced.matches || i === active ? 0 : -1;
-        if (reduced.matches || i === active) link.removeAttribute('aria-hidden'); else link.setAttribute('aria-hidden', 'true');
+    let frame = 0, settleTimer = 0;
+    const typeMeasure = document.createElement('canvas').getContext('2d');
+    const fitNames = () => {
+      const radius = window.innerWidth >= 1240 ? 280 : window.innerWidth >= 1024 ? 240 : Math.min(210, window.innerHeight * .3);
+      section.style.setProperty('--wheel-radius', `${radius}px`);
+      const line = parseFloat(getComputedStyle(section).getPropertyValue('--wheel-line'));
+      // Preserve the reference's scroll distance per degree with our longer list.
+      const span = Math.max(0, links.length - 1) * 18 + 170;
+      track.style.height = reduced.matches ? '' : `${Math.max(line, span / 368 * (12 * line + .7 * window.innerHeight) - .7 * window.innerHeight)}px`;
+      typeMeasure.font = '400 100px Arial, Helvetica, sans-serif';
+      links.forEach(link => {
+        const label = link.textContent.toUpperCase();
+        const width = typeMeasure.measureText(label).width - 3 * Math.max(0, label.length - 1);
+        // Account for the forward cylinder's perspective magnification.
+        const sideSpace = sideLabel.offsetWidth ? sideLabel.offsetWidth + 40 : stage.clientWidth * .02;
+        link.style.setProperty('--name-fit', `${Math.max(1, stage.clientWidth - 2 * sideSpace) * (1 - radius / 1000) * 100 / Math.max(1, width)}px`);
       });
     };
-    const tick = time => {
-      const amount = 1 - Math.exp(-Math.min(time - previousTime || 16, 64) / 90);
-      previousTime = time;
-      current += (target - current) * amount;
-      if (Math.abs(target - current) < .002) current = target;
-      paint();
-      frame = current !== target ? requestAnimationFrame(tick) : 0;
+    const paint = () => {
+      frame = 0;
+      const isStatic = reduced.matches;
+      section.classList.toggle('is-static', isStatic);
+      const viewport = window.innerHeight;
+      const bounds = track.getBoundingClientRect();
+      // Match the reference: the full-screen stage starts one viewport before
+      // the section; rotation starts when its top has passed -30vh.
+      const progress = Math.max(0, Math.min(1, (.7 * viewport - bounds.top) / (track.offsetHeight + .7 * viewport)));
+      const lastAngle = Math.max(0, links.length - 1) * 18;
+      const rotation = -80 + progress * (lastAngle + 170);
+      const radius = parseFloat(getComputedStyle(section).getPropertyValue('--wheel-radius'));
+      const inRange = bounds.top < viewport && bounds.bottom > -viewport * .05;
+      section.classList.toggle('is-outside', !inRange && !isStatic);
+      // A separate bounded sticky row enters, pins at the cylinder axis, then
+      // releases with the section, like the reference's side arrows.
+      const guideTop = guide.getBoundingClientRect().top;
+      const reveal = Math.max(0, Math.min(1, (.85 * viewport - guideTop) / (.35 * viewport), guideTop / (.5 * viewport)));
+      guide.style.opacity = isStatic ? '0' : `${reveal * reveal * (3 - 2 * reveal)}`;
+      // The reference emphasizes the name just below the axis during its roll in.
+      const active = Math.round((rotation + 30.32) / (lastAngle + 43.04) * Math.max(0, links.length - 1));
+      progressFill.style.transform = `scaleY(${Math.max(0, Math.min(1, rotation / Math.max(18, lastAngle)))})`;
+      links.forEach((link, i) => {
+        const angle = i * 18 - rotation;
+        const radians = angle * Math.PI / 180;
+        // Use the forward half of one turn only, so >20 clients cannot overlap.
+        const visible = isStatic || (Math.abs(angle) < 90 && inRange);
+        const selected = visible && i === active;
+        link.style.transform = `translate(-50%, -50%) translate3d(0, ${Math.sin(radians) * radius}px, ${Math.cos(radians) * radius}px) rotateX(${-angle}deg)`;
+        link.style.visibility = visible ? 'visible' : 'hidden';
+        link.classList.toggle('is-active', selected);
+        link.tabIndex = isStatic || selected ? 0 : -1;
+        if (isStatic || selected) link.removeAttribute('aria-hidden'); else link.setAttribute('aria-hidden', 'true');
+      });
+      const selected = links[active];
+      hitbox.hidden = isStatic || !inRange || !selected;
+      if (!hitbox.hidden) {
+        const rect = selected.getBoundingClientRect();
+        const origin = stage.getBoundingClientRect();
+        hitbox.href = selected.href;
+        hitbox.style.left = `${rect.left - origin.left - 8}px`;
+        hitbox.style.top = `${rect.top - origin.top - 8}px`;
+        hitbox.style.width = `${rect.width + 16}px`;
+        hitbox.style.height = `${rect.height + 16}px`;
+      }
     };
-    const measure = (snap = false) => {
-      section.classList.toggle('is-static', reduced.matches);
-      if (reduced.matches) { cancelAnimationFrame(frame); frame = 0; paint(); return; }
-      const rect = section.getBoundingClientRect();
-      const top = parseFloat(getComputedStyle(sticky).top) || 0;
-      const travel = Math.max(1, section.offsetHeight - sticky.offsetHeight);
-      const distance = top - rect.top;
-      const progress = Math.max(0, Math.min(1, distance / travel));
-      // Continue turning as the sticky section releases and contact enters view.
-      const exit = Math.max(0, Math.min(1, (distance - travel) / (sticky.offsetHeight * .65)));
-      target = progress * (links.length - 1) + exit * 4;
-      if (snap) { current = target; paint(); }
-      else if (!frame) { previousTime = performance.now(); frame = requestAnimationFrame(tick); }
+    const onScroll = () => {
+      if (!reduced.matches) {
+        section.classList.add('is-scrolling');
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(() => section.classList.remove('is-scrolling'), 140);
+      }
+      if (!frame) frame = requestAnimationFrame(paint);
     };
-    const onScroll = () => measure();
-    const onResize = () => measure(true);
+    const onResize = () => { fitNames(); paint(); };
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', onResize);
     reduced.addEventListener('change', onResize);
     const sizeObserver = new ResizeObserver(onResize);
     sizeObserver.observe(main);
-    measure(true);
+    onResize();
     videoControlCleanup.push(() => {
+      clearTimeout(settleTimer);
       cancelAnimationFrame(frame); sizeObserver.disconnect();
       window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize);
       reduced.removeEventListener('change', onResize);
     });
   }
+
   function indexRow(p) {
-    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${escape(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}<span class="index-inline-preview" aria-hidden="true">${p.media[p.cover].type === 'video' ? `<video data-preview="${escape(p.media[p.cover].preview)}" poster="${escape(p.media[p.cover].poster)}" muted loop playsinline preload="none" tabindex="-1"></video>` : `<img data-src="${escape(p.media[p.cover].poster)}" alt="" width="${p.media[p.cover].width}" height="${p.media[p.cover].height}">`}</span></a>`;
+    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${projectTitleMarkup(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}<span class="index-inline-preview" aria-hidden="true">${p.media[p.cover].type === 'video' ? `<video data-preview="${escape(p.media[p.cover].preview)}" poster="${escape(p.media[p.cover].poster)}" muted loop playsinline preload="none" tabindex="-1"></video>` : `<img data-src="${escape(p.media[p.cover].poster)}" alt="" width="${p.media[p.cover].width}" height="${p.media[p.cover].height}">`}</span></a>`;
   }
   function renderIndex() {
     const labels = [...new Set(projects.flatMap(p => p.categories))].sort((a,b) => a.localeCompare(b));
@@ -271,6 +420,33 @@
     const uncategorized = projects.filter(p => !p.categories.length);
     if (uncategorized.length) groups.push({ label: 'Other work', projects: uncategorized });
     main.innerHTML = `<h1 class="sr-only">Project index</h1><div class="project-index">${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)} <span>(${numbered(group.projects.length)})</span></h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}</div>`;
+    let previewRow = null, previewFrame = 0;
+    const positionPreview = row => {
+      const rect = row.getBoundingClientRect();
+      const width = Math.min(360, window.innerWidth - 40);
+      const left = Math.max(20 - rect.left, Math.min(rect.width - 24, window.innerWidth - rect.left - width - 20));
+      const safeTop = Math.max(20, document.querySelector('.site-header').getBoundingClientRect().bottom + 20);
+      row.querySelector('.index-inline-preview').style.visibility = rect.bottom > safeTop && rect.top < window.innerHeight - 20 ? '' : 'hidden';
+      const height = Math.min(300, Math.max(0, window.innerHeight - safeTop - 20));
+      const top = Math.max(safeTop, Math.min(rect.top + rect.height / 2 - height / 2, window.innerHeight - height - 20));
+      row.style.setProperty('--preview-left', `${left}px`);
+      row.style.setProperty('--preview-top', `${top - rect.top}px`);
+      row.style.setProperty('--preview-height', `${height}px`);
+    };
+    const repositionPreview = () => {
+      if (!previewRow || previewFrame) return;
+      previewFrame = requestAnimationFrame(() => {
+        previewFrame = 0;
+        if (previewRow) positionPreview(previewRow);
+      });
+    };
+    window.addEventListener('scroll', repositionPreview, {passive:true});
+    window.addEventListener('resize', repositionPreview);
+    videoControlCleanup.push(() => {
+      cancelAnimationFrame(previewFrame);
+      window.removeEventListener('scroll', repositionPreview);
+      window.removeEventListener('resize', repositionPreview);
+    });
     main.querySelectorAll('.directory-row').forEach(row => {
       const showPreview = () => {
         if (!window.matchMedia('(hover: hover)').matches) return;
@@ -278,15 +454,14 @@
         if (img && !img.src) img.src = img.dataset.src;
         const video = row.querySelector('video');
         if (video) { visibleVideos.add(video); updatePlayback(); }
-        const rect = row.getBoundingClientRect();
-        const width = Math.min(360, window.innerWidth - 40);
-        const left = Math.max(20 - rect.left, Math.min(rect.width - 24, window.innerWidth - rect.left - width - 20));
-        row.style.setProperty('--preview-left', `${left}px`);
+        previewRow = row;
+        positionPreview(row);
       };
       row.addEventListener('pointerenter', showPreview);
       row.addEventListener('focus', showPreview);
       const hidePreview = () => {
         if (row.matches(':hover,:focus-visible')) return;
+        if (previewRow === row) previewRow = null;
         const video = row.querySelector('video');
         if (video) { visibleVideos.delete(video); video.pause(); }
       };
@@ -308,13 +483,25 @@
     }
     return renderFeed(new URLSearchParams());
   }
+  function youtubeEmbedUrl(link) {
+    try {
+      const url = new URL(link);
+      if (!['https:', 'http:'].includes(url.protocol)) return '';
+      const host = url.hostname.toLowerCase().replace(/^www\./, '');
+      const parts = url.pathname.split('/').filter(Boolean);
+      const id = host === 'youtu.be' ? parts[0] : ['youtube.com', 'm.youtube.com', 'youtube-nocookie.com'].includes(host) ? (url.pathname === '/watch' ? url.searchParams.get('v') : ['embed', 'shorts'].includes(parts[0]) ? parts[1] : '') : '';
+      return /^[\w-]{11}$/.test(id || '') ? `https://www.youtube-nocookie.com/embed/${id}` : '';
+    } catch { return ''; }
+  }
   function renderProject(id, params) {
     const p = projects.find(x => x.id === id); if (!p) return renderMissing();
     document.title = `${p.title} — 3seater`;
     const number = projects.indexOf(p), next = projects[(number + 1) % projects.length];
     const back = lastListKey;
-    const rows = [[ 'Year', escape(p.year)], ['Client', p.client ? `<a href="${clientHref(p.client)}">${escape(p.client)} ↗</a>` : ''], ['Category', p.categories.map(c => `<a href="${escape(feedHref(c, ''))}">${escape(c)}</a>`).join(', ')], ['Role', escape(p.role)]];
-    main.innerHTML = `<a class="back-link utility" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media${p.media.length >= 4 ? ' project-media-grid' : ''}" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<video autoplay muted loop playsinline preload="metadata" data-preview="${escape(m.src)}" poster="${escape(m.poster)}" src="${escape(m.src)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}</figure>`).join('')}</section></div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="utility">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
+    const embed = youtubeEmbedUrl(p.link);
+    const projectLink = embed ? `<iframe class="project-youtube" src="${embed}" title="${escape(p.title)} — YouTube video" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>` : /^https?:\/\//i.test(p.link || '') ? `<a href="${escape(p.link)}" target="_blank" rel="noopener noreferrer">View project</a>` : '';
+    const rows = [[ 'Year', escape(p.year)], ['Client', p.client ? `<a href="${clientHref(p.client)}">${escape(p.client)}</a>` : ''], ['Category', p.categories.map(c => `<a href="${escape(feedHref(c, ''))}">${escape(c)}</a>`).join(', ')], ['Role', escape(p.role)], ['Link', projectLink]];
+    main.innerHTML = `<a class="back-link utility" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media${p.media.length >= 2 ? ' project-media-grid' : ''}" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<video autoplay muted loop playsinline preload="metadata" data-preview="${escape(m.src)}" poster="${escape(m.poster)}" src="${escape(m.src)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}</figure>`).join('')}</section></div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="utility">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
     initVideos();
     initProjectAudio();
   }
@@ -348,6 +535,7 @@
     const svg = wordmark.querySelector('svg');
     const text = svg.querySelector('text');
     const measure = document.createElement('canvas').getContext('2d');
+    const fitPressure = initFooterPressure(svg, text);
     const fit = () => {
       wordmark.style.setProperty('--viewport-width', `${document.documentElement.clientWidth}px`);
       // SVG text bounds include unused font descent. Measure the painted letters
@@ -361,11 +549,104 @@
         const top = baseline - metrics.actualBoundingBoxAscent;
         const height = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
         svg.setAttribute('viewBox', `${bounds.x - .5} ${top - .5} ${bounds.width + 1} ${height + .5}`);
+        fitPressure();
       }
     };
     fit();
     document.fonts.ready.then(fit);
     window.addEventListener('resize', fit, {passive:true});
+  }
+  function initFooterPressure(svg, text) {
+    const ns = 'http://www.w3.org/2000/svg';
+    const defs = document.createElementNS(ns, 'defs');
+    // A local displacement field, feathered to zero along all four outer edges.
+    defs.innerHTML = `<filter id="footer-pressure" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-color="rgb(128,128,128)" result="neutral"/><feImage result="lens" preserveAspectRatio="none"/><feImage result="edges" preserveAspectRatio="none"/><feComposite in="lens" in2="edges" operator="in" result="anchored"/><feMerge result="field"><feMergeNode in="neutral"/><feMergeNode in="anchored"/></feMerge><feDisplacementMap in="SourceGraphic" in2="field" xChannelSelector="R" yChannelSelector="G" scale="0"/><feGaussianBlur stdDeviation=".3"/></filter>`;
+    svg.prepend(defs);
+    const filter = defs.querySelector('filter');
+    const [lens, edges] = defs.querySelectorAll('feImage');
+    const displacement = defs.querySelector('feDisplacementMap');
+    const map = document.createElement('canvas');
+    map.width = map.height = 96;
+    const ctx = map.getContext('2d');
+    const pixels = ctx.createImageData(96, 96);
+    for (let y = 0; y < 96; y++) for (let x = 0; x < 96; x++) {
+      const dx = (x - 47.5) / 47.5, dy = (y - 47.5) / 47.5;
+      const weight = Math.pow(Math.max(0, 1 - dx * dx - dy * dy), 2) * 1.75;
+      const i = (y * 96 + x) * 4;
+      pixels.data[i] = Math.round(128 + 255 * dx * weight);
+      pixels.data[i + 1] = Math.round(128 + 255 * dy * weight);
+      pixels.data[i + 2] = 128; pixels.data[i + 3] = 255;
+    }
+    ctx.putImageData(pixels, 0, 0);
+    lens.setAttribute('href', map.toDataURL());
+    const edgeMap = document.createElement('canvas');
+    edgeMap.width = 256; edgeMap.height = 64;
+    const edgeCtx = edgeMap.getContext('2d');
+    const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
+    let frame = 0, previous = 0, strength = 0, desired = 0, x = 0, y = 0, targetX = 0, targetY = 0;
+    let pointer = null, units = 1;
+    const paint = time => {
+      frame = 0;
+      const dt = Math.min(64, time - previous || 16); previous = time;
+      const ease = 1 - Math.exp(-dt / 105);
+      x += (targetX - x) * ease; y += (targetY - y) * ease;
+      strength += (desired - strength) * ease;
+      if (strength < .002 && !desired) {
+        text.removeAttribute('filter'); strength = 0; previous = 0; return;
+      }
+      const radius = Math.min(130, svg.clientWidth * .16) * units;
+      lens.setAttribute('x', x - radius); lens.setAttribute('y', y - radius);
+      lens.setAttribute('width', radius * 2); lens.setAttribute('height', radius * 2);
+      displacement.setAttribute('scale', 12 * units * strength);
+      text.setAttribute('filter', 'url(#footer-pressure)');
+      if (Math.abs(desired - strength) > .002 || Math.abs(targetX - x) + Math.abs(targetY - y) > .05) frame = requestAnimationFrame(paint);
+      else previous = 0;
+    };
+    const start = () => { if (!frame) frame = requestAnimationFrame(paint); };
+    const update = () => {
+      desired = 0;
+      if (pointer && finePointer.matches && !reduced.matches && !document.hidden) {
+        const rect = svg.getBoundingClientRect(), box = svg.viewBox.baseVal;
+        const distance = Math.hypot(Math.max(rect.left - pointer.x, 0, pointer.x - rect.right), Math.max(rect.top - pointer.y, 0, pointer.y - rect.bottom));
+        if (rect.bottom > 0 && rect.top < window.innerHeight && distance < 56) {
+          desired = 1 - distance / 56;
+          targetX = box.x + (pointer.x - rect.left) * units;
+          targetY = box.y + (pointer.y - rect.top) * units;
+          if (!strength) { x = targetX; y = targetY; }
+        }
+      }
+      if (desired || strength) start();
+    };
+    document.addEventListener('pointermove', event => {
+      pointer = event.pointerType === 'mouse' ? {x:event.clientX, y:event.clientY} : null;
+      update();
+    }, {passive:true});
+    const leave = () => { pointer = null; update(); };
+    document.addEventListener('pointerleave', leave);
+    window.addEventListener('blur', leave);
+    window.addEventListener('scroll', update, {passive:true});
+    document.addEventListener('visibilitychange', leave);
+    reduced.addEventListener('change', () => {
+      cancelAnimationFrame(frame); frame = 0; strength = 0; desired = 0;
+      text.removeAttribute('filter');
+    });
+    return () => {
+      const box = svg.viewBox.baseVal;
+      units = box.width / Math.max(1, svg.clientWidth);
+      defs.querySelector('feGaussianBlur').setAttribute('stdDeviation', .3 * units);
+      for (const node of [filter, edges]) {
+        for (const key of ['x', 'y', 'width', 'height']) node.setAttribute(key, box[key]);
+      }
+      const mask = edgeCtx.createImageData(256, 64);
+      for (let row = 0; row < 64; row++) for (let col = 0; col < 256; col++) {
+        const edgeDistance = Math.min(col / 255 * svg.clientWidth, (255 - col) / 255 * svg.clientWidth, row / 63 * svg.clientHeight, (63 - row) / 63 * svg.clientHeight);
+        const fade = Math.min(1, edgeDistance / 24);
+        mask.data[(row * 256 + col) * 4 + 3] = Math.round(255 * fade * fade * (3 - 2 * fade));
+      }
+      edgeCtx.putImageData(mask, 0, 0);
+      edges.setAttribute('href', edgeMap.toDataURL());
+      update();
+    };
   }
   function renderContact() {
     const contact = document.querySelector('#contact-footer');
@@ -384,6 +665,7 @@
     if (routeKey) positions.set(routeKey, window.scrollY);
     cleanup(); routeKey = key;
     main.classList.toggle('archive-page', path[0] === 'archive');
+    main.classList.toggle('listing-page', !path.length || ['archive', 'index'].includes(path[0]));
     document.title = '3seater — Visual archive';
     const section = path[0] || 'feed';
     if (section !== 'project') lastListKey = key;
