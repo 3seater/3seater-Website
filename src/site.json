@@ -1,5 +1,22 @@
 {
   "name": "3seater",
+  "featuredClientExclusions": ["Antonym", "Doji", "Polydupe"],
+  "homeProjectOrder": [
+    "faze",
+    "busta-rhymes-young-thug",
+    "2hollis",
+    "pink-pantheress",
+    "personal-work-iceman",
+    "g-herbo",
+    "personal-work-coded",
+    "personal-work-playboi-carti",
+    "doji",
+    "yung-bans",
+    "antonym",
+    "trippie-redd-mp5",
+    "lil-tjay",
+    "lil-durk-loyal-bros"
+  ],
   "email": "contact@3seater.com",
   "instagram": "https://www.instagram.com/3seater",
   "socials": [{"label":"YouTube","url":"https://www.youtube.com/3seater"}],

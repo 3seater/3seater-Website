@@ -101,6 +101,10 @@
   }
   function coverItems(list) {
     const ordered = [...list].sort((a,b) => (b.featured - a.featured) || ((firstOrder.indexOf(a.id) < 0 ? 99 : firstOrder.indexOf(a.id)) - (firstOrder.indexOf(b.id) < 0 ? 99 : firstOrder.indexOf(b.id))));
+    if (!route().path.length) {
+      const priorities = new Map((config.homeProjectOrder || []).map((id, index) => [id, index]));
+      ordered.sort((a, b) => (priorities.get(a.id) ?? priorities.size) - (priorities.get(b.id) ?? priorities.size));
+    }
     return ordered.map(p => ({project: p, media: p.media[p.cover], index: p.cover}));
   }
   const projectTitleMarkup = title => escape(title).replace(/(\s+[-–—]\s+)/g, '<span class="title-separator">$1</span>');
@@ -290,7 +294,8 @@
   }
   function clientWheelMarkup() {
     const preferred = ['2hollis', 'faze', 'pink-pantheress', 'busta-rhymes-young-thug', 'g-herbo', 'nba-youngboy', 'don-toliver', 'burna-boy', 'snoop-dogg', 'mlb'];
-    const names = [...new Set([...preferred.map(id => projects.find(p => p.id === id)?.client).filter(Boolean), ...uniqueClients()])];
+    const excluded = new Set((config.featuredClientExclusions || []).map(slug));
+    const names = [...new Set([...preferred.map(id => projects.find(p => p.id === id)?.client).filter(Boolean), ...uniqueClients()])].filter(name => !excluded.has(slug(name)));
     if (!names.length) return '';
     return `<section class="client-wheel" aria-labelledby="wheel-heading"><div class="wheel-heading utility"><h2 id="wheel-heading">Featured clients</h2></div><div class="wheel-track"><div class="wheel-runway"><div class="client-wheel-sticky"><div class="wheel-stage"><div class="wheel-drum">${names.map(name => `<a class="wheel-name" href="${clientHref(name)}">${escape(name)}</a>`).join('')}</div></div></div></div></div></section>`;
   }
@@ -419,7 +424,7 @@
     const groups = labels.map(label => ({label, projects: projects.filter(p => p.categories.includes(label))}));
     const uncategorized = projects.filter(p => !p.categories.length);
     if (uncategorized.length) groups.push({ label: 'Other work', projects: uncategorized });
-    main.innerHTML = `<h1 class="sr-only">Project index</h1><div class="project-index">${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)} <span>(${numbered(group.projects.length)})</span></h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}</div>`;
+    main.innerHTML = `<h1 class="sr-only">Project index</h1><div class="project-index">${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)}</h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}</div>`;
     let previewRow = null, previewFrame = 0;
     const positionPreview = row => {
       const rect = row.getBoundingClientRect();

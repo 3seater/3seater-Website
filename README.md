@@ -39,6 +39,15 @@ Only the media is essential. Missing titles use the folder name. Blank years, de
 
 Keep client names consistent to group several projects on one client page. Leave Client blank for personal work. The older Type field is accepted but not used. Categories are kept verbatim in the index; the homepage derives broader filters from common terms (3D, Motion, Graphic Design, UI).
 
+New nonblank client names automatically join the Featured clients cylinder. Keep
+this default when adding work; exclude clients only when requested. The
+`featuredClientExclusions` list in `src/site.json` currently excludes Antonym,
+Doji, and Polydupe from the cylinder only, retaining their projects and client pages.
+
+`homeProjectOrder` in `src/site.json` lists the projects to place first in Home's
+bento layout. Keep these ahead of other projects when adding work. This setting
+does not change Archive or client-page ordering.
+
 Images: JPG, PNG, WebP, GIF, AVIF. Videos: MP4, MOV, WebM, M4V. Animated GIFs currently receive a still web image; use MP4 for motion. A filename containing `main` is the project cover and appears first inside the project. Otherwise Cover chooses the file, falling back to the first media file. Only that one item appears in the feed; additional media appears inside the project. Media order is optional. Featured projects are moved ahead of the initial curated feed order in `src/app.js`. New projects enter the feed automatically.
 
 ## Edit the site
