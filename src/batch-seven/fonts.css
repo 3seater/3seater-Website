@@ -1,0 +1,2 @@
+@font-face{font-family:Anton;src:url(fonts/anton/font.ttf) format('truetype');font-display:swap;font-weight:400}@font-face{font-family:Plex;src:url(fonts/ibmplexmono/font.ttf) format('truetype');font-display:swap;font-weight:400}
+:root{--font-mono:Plex,monospace}.wheel-heading,.wheel-side-label{font-family:Plex,monospace}.wheel-name{font-family:Anton,sans-serif}.footer-wordmark text{font-family:Anton,sans-serif;font-weight:400}

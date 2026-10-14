@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Original / New Type",
+    "idea": "The main site, copied directly. Only Anton and Plex font substitutions.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 2,
+    "name": "Frosted Rounds",
+    "idea": "Separate dark frosted pills, close to the original navigation.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 3,
+    "name": "Soft Capsule",
+    "idea": "One opaque frosted capsule with a quiet active segment.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 4,
+    "name": "Milk Glass",
+    "idea": "Pale frosted pills over framed project names.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 5,
+    "name": "Graphite Bar",
+    "idea": "A compact rounded graphite bar with uppercase labels.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 6,
+    "name": "Square Frost",
+    "idea": "Softly frosted rectangular buttons with restrained corners.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 7,
+    "name": "Floating Dock",
+    "idea": "A rounded bottom dock and the original archive toolbar.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 8,
+    "name": "Quiet Tabs",
+    "idea": "Minimal uppercase tabs with a clear underline.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 9,
+    "name": "Inset Glass",
+    "idea": "A pale capsule with a dark inset current tab.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  },
+  {
+    "id": 10,
+    "name": "Original / Framed",
+    "idea": "Original dark pill navigation with name-only framed work.",
+    "bg": "#f8f9fb",
+    "fg": "#17181a"
+  }
+]

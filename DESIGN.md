@@ -1201,3 +1201,7 @@ Keyboard-visible outlines use current color (3px with 5px offset). Buttons dim w
 
 ``````
 </details>
+
+## Batch Seven — Scoped Continuation
+
+Batch seven is documented in [src/batch-seven/DESIGN.md](src/batch-seven/DESIGN.md), including normative YAML tokens, source-derived layouts, navigation variants and the version 01 fidelity exception. Its scope is only /batch-seven/01/ through /batch-seven/10/. The earlier frontmatter and historical records above remain unchanged and do not govern batch seven. Sidecar details are appended at extensions.batchSeven; no earlier record is replaced.

@@ -1,0 +1,14 @@
+{
+  "source": "src/index.html, src/app.js, src/style.css",
+  "source_hashes": {
+    "src/index.html": "45810647751bec4c0f9c9c4ea2b5d733ccfa63bd59df023ca5a6a85f90c98334",
+    "src/app.js": "59329954b4cbbb2c631580a189e9a57411369f8a2979e4fca4039b7bddfc2391",
+    "src/style.css": "67f4a43f89f773fd8087a6c28fcde2ffef293f7363c05d42d4b3909337a95275"
+  },
+  "version01_changes": [
+    "Font faces: footer and cylinder Anton; mono Plex",
+    "Canvas cylinder measurement uses Anton; startup waits for font metrics",
+    "Relative URLs relocated to batch route; source data unchanged"
+  ],
+  "version01_layout_changes": []
+}

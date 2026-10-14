@@ -1,0 +1,81 @@
+{
+  "mobile": [
+    {
+      "id": "1",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "2",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "3",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "4",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "5",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "6",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "7",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "8",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "9",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "10",
+      "overflow": false,
+      "width": 390
+    }
+  ],
+  "baseline": {
+    "columns": [
+      232.984375,
+      248.21875,
+      237.734375,
+      236.46875,
+      237.546875
+    ],
+    "nav": [
+      {
+        "w": 81.484375,
+        "x": 493.4375
+      },
+      {
+        "w": 99.609375,
+        "x": 582.921875
+      },
+      {
+        "w": 81.03125,
+        "x": 690.53125
+      }
+    ]
+  },
+  "originalCopy": "Grid column widths and nav positions identical to baseline; fonts Anton footer/cylinder, Plexmono confirmed.",
+  "triptych": "Antonym left586.078px right585.875px naturalmedia; mobile351px singlecolumn",
+  "four": "4figures 2columns413.875/413.891px",
+  "archive": "3D16results then2025 five. Two-column wide class anddense reset confirmed."
+}
