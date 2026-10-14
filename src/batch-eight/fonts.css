@@ -1,0 +1,9 @@
+@font-face{font-family:Anton;src:url(fonts/anton/font.ttf) format('truetype');font-display:swap;font-weight:400}@font-face{font-family:Plex;src:url(fonts/ibmplexmono/font.ttf) format('truetype');font-display:swap;font-weight:400}
+:root{--font-mono:Plex,monospace}.wheel-heading,.wheel-side-label{font-family:Plex,monospace}.wheel-name{font-family:Anton,sans-serif}.footer-wordmark text{font-family:Anton,sans-serif;font-weight:400}
+
+/* Version 01: full requested typography swap, original layout retained. */
+body.v1{--font-sans:Plex,monospace;--font-mono:Plex,monospace;font-family:Plex,monospace}
+body.v1 .utility,body.v1 button,body.v1 input,body.v1 select,body.v1 textarea,body.v1 .site-header nav a,body.v1 .filter-button,body.v1 .feed-label,body.v1 .year-picker,body.v1 .year-check,body.v1 .tile-caption,body.v1 .tile-category,body.v1 .media-count,body.v1 .directory-label,body.v1 .directory-row,body.v1 .project-meta dt,body.v1 .project-meta dd,body.v1 .project-next strong,body.v1 .project-media figcaption,body.v1 .project-description,body.v1 .contact-socials,body.v1 .footer-top{font-family:Plex,monospace}
+body.v1 .page-heading h1,body.v1 .project-info h1,body.v1 .empty-state h2,body.v1 .contact-email{font-family:Anton,sans-serif;font-weight:400}
+
+body.v1 .project-info h1{text-transform:uppercase}

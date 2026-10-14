@@ -1,0 +1,10 @@
+{
+  "disposition": "ship",
+  "initial": "fix",
+  "fixes": [
+    "readable settled direction14 active nav",
+    "ink/paper hover and selection contrast minimum5.17"
+  ],
+  "reviewer": "eight_finish_reviewer",
+  "scope": "fifteen directions plus original uppercase title; finalverdict checks twofixes"
+}

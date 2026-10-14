@@ -3939,6 +3939,186 @@
         "overview": "This is a scoped record of the approved original-site continuation, not a new portfolio-wide identity. The shared world is an immediate natural-ratio work feed, restrained factual interface, and emphatic Anton client cylinder and footer. Versions 02–10 explore navigation treatments within that world.",
         "northStar": "Original With New Type"
       }
+    },
+    "batchEight": {
+      "schemaVersion": 2,
+      "generatedAt": "2026-10-14T10:14:11.7008180Z",
+      "title": "Design System: 3seater — Batch Eight",
+      "scope": "src/batch-eight only; fifteen additional directions; batch-seven/01 reference gains uppercase project titles only",
+      "tokenAuthority": "src/batch-eight/DESIGN.md YAML frontmatter",
+      "sources": [
+        "src/batch-eight/directions.json",
+        "src/batch-eight/directions.css",
+        "src/batch-eight/structure.css",
+        "src/batch-eight/variants.css",
+        "src/batch-eight/fonts.css",
+        "src/batch-eight/DIRECTION-CONTRACT.txt"
+      ],
+      "reviewStatus": "Coordinating agent reports ship after two fixes resolved. Documentation reflects final navigation contrast and disabled transitions.",
+      "routeVariants": [
+        {
+          "id": 1,
+          "name": "Acid Poster",
+          "layout": "mosaic",
+          "nav": "tabs",
+          "rows": "poster",
+          "cols": 6
+        },
+        {
+          "id": 2,
+          "name": "Cobalt Contact",
+          "layout": "sheet",
+          "nav": "bar",
+          "rows": "compact",
+          "cols": 5
+        },
+        {
+          "id": 3,
+          "name": "Soft Signal",
+          "layout": "masonry",
+          "nav": "capsule",
+          "rows": "poster",
+          "cols": 4
+        },
+        {
+          "id": 4,
+          "name": "Carbon Film",
+          "layout": "film",
+          "nav": "dock",
+          "rows": "reverse",
+          "cols": 5
+        },
+        {
+          "id": 5,
+          "name": "Vermilion Board",
+          "layout": "bento",
+          "nav": "square",
+          "rows": "poster",
+          "cols": 6
+        },
+        {
+          "id": 6,
+          "name": "Mint Ledger",
+          "layout": "ledger",
+          "nav": "tabs",
+          "rows": "compact",
+          "cols": 4
+        },
+        {
+          "id": 7,
+          "name": "Ultraviolet Rail",
+          "layout": "mosaic",
+          "nav": "rail",
+          "rows": "poster",
+          "cols": 6
+        },
+        {
+          "id": 8,
+          "name": "Bone Contact",
+          "layout": "sheet",
+          "nav": "split",
+          "rows": "poster",
+          "cols": 5
+        },
+        {
+          "id": 9,
+          "name": "Lemon Strip",
+          "layout": "film",
+          "nav": "capsule",
+          "rows": "compact",
+          "cols": 5
+        },
+        {
+          "id": 10,
+          "name": "Blue Hour",
+          "layout": "masonry",
+          "nav": "dock",
+          "rows": "poster",
+          "cols": 6
+        },
+        {
+          "id": 11,
+          "name": "Pink Matrix",
+          "layout": "bento",
+          "nav": "bar",
+          "rows": "reverse",
+          "cols": 6
+        },
+        {
+          "id": 12,
+          "name": "White Margin",
+          "layout": "ledger",
+          "nav": "rail",
+          "rows": "poster",
+          "cols": 4
+        },
+        {
+          "id": 13,
+          "name": "Oxide Index",
+          "layout": "masonry",
+          "nav": "split",
+          "rows": "compact",
+          "cols": 4
+        },
+        {
+          "id": 14,
+          "name": "Silver Screen",
+          "layout": "sheet",
+          "nav": "glass",
+          "rows": "poster",
+          "cols": 6
+        },
+        {
+          "id": 15,
+          "name": "Yellow / Black",
+          "layout": "bento",
+          "nav": "dock",
+          "rows": "reverse",
+          "cols": 6
+        }
+      ],
+      "breakpoints": [
+        {
+          "name": "home-compact",
+          "value": "800px"
+        },
+        {
+          "name": "inherited-project-phone",
+          "value": "700px"
+        }
+      ],
+      "shadows": [
+        {
+          "name": "dock",
+          "value": "0 8px 24px #0003"
+        },
+        {
+          "name": "glass",
+          "value": "0 4px 20px #0002"
+        }
+      ],
+      "motion": [
+        {
+          "purpose": "Prevent inherited initial background flash",
+          "value": "none",
+          "name": "navigation"
+        },
+        {
+          "purpose": "Inherited continuous moving previews",
+          "value": "loop",
+          "name": "native-previews"
+        }
+      ],
+      "narrative": {
+        "northStar": "Existing Anton/Plex World",
+        "overview": "Dense work, aligned selected rows with inline moving media, then the client cylinder. Fifteen compositions preserve factual original Archive and project details."
+      },
+      "contracts": [
+        "Six home layout families and eight navigation styles; preserve route combinations.",
+        "Final nav hover and selection use ink/paper pairs, reviewed minimum contrast 5.17:1.",
+        "Unboxed natural-ratio project media and original archive controls inherited from batch seven.",
+        "No changes to main site or older batches except uppercase project titles in batch-seven/01."
+      ]
     }
   },
   "components": [
