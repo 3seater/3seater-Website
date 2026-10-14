@@ -71,7 +71,7 @@ components:
 
 This is a scoped record of the approved original-site continuation, not a new portfolio-wide identity. The shared world is an immediate natural-ratio work feed, restrained factual interface, and emphatic Anton client cylinder and footer. Versions 02–10 explore navigation treatments within that world.
 
-The frontmatter typography and component tokens describe 02–10. Version 01 retains the original structure, styling and behavior: only original mono roles become Plex and the footer/client names become Anton, with corresponding font measurement changes. Do not apply the experimental overrides to 01.
+The frontmatter typography and component tokens describe 02–10. Version 01 retains the original structure, layout and behavior with a fuller typography swap scoped to body.v1: Anton carries project/page headings, empty-state headings, contact display, footer wordmark and client names; Plex carries body copy, metadata labels and values, navigation, footer details and all supporting text. Corresponding font loading and cylinder measurement follow the substitutions. This changes the batch-seven copy only, not the main site. Do not apply the experimental layout overrides to 01.
 
 **Key Characteristics:**
 
@@ -119,3 +119,4 @@ Home tile captions show only project names in 02–10. Selected rows use thin ru
 - Do keep selected rows aligned before the client cylinder.
 - Don't carry batch-six project boxes into batch-seven details.
 - Don't turn these scoped rules into changes to production or prior batches.
+

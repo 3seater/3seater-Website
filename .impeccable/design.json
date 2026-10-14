@@ -3771,7 +3771,7 @@
     ],
     "batchSeven": {
       "schemaVersion": 2,
-      "generatedAt": "2026-10-14T08:58:56.8657022Z",
+      "generatedAt": "2026-10-14T09:22:36.1125762Z",
       "title": "Design System: 3seater — Batch Seven",
       "scope": "src/batch-seven only; 01 faithful copy, 02–10 experimental variants",
       "tokenAuthority": "src/batch-seven/DESIGN.md YAML frontmatter",
@@ -3782,7 +3782,7 @@
         "src/batch-seven/app.js",
         "src/batch-seven/DIRECTION-CONTRACT.txt"
       ],
-      "reviewStatus": "Final reviewer disposition: ship, no fixes (reported by coordinating agent). Documentation-only pass.",
+      "reviewStatus": "Final reviewer disposition: ship, including fuller version 01 typography correction (reported by coordinating agent). Documentation-only amendment.",
       "breakpoints": [
         {
           "value": "700px",
@@ -3883,7 +3883,7 @@
         }
       ],
       "contracts": [
-        "01: preserve original structure, CSS and runtime except Anton/Plex font substitutions and their measurement/loading support.",
+        "01: preserve original structure, layout and runtime. Scoped body.v1 typography uses Anton for project/page headings, empty-state headings, contact display, footer wordmark and client names; Plex for body, metadata labels and values, navigation, footer details and supporting text. Font loading and cylinder measurements follow substitutions. Batch-seven copy only; main site unchanged.",
         "02–10: uppercase WORK/ARCHIVE/INDEX; name-only home captions; original archive controls and filters.",
         "Unboxed natural-ratio project media: 1 column, 2 columns, 2x2; 3 uses two left and one right balanced including gap.",
         "At <=700px stack media in original order; secondary embeds below primary media.",

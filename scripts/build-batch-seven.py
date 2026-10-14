@@ -49,6 +49,7 @@ for i,(name,idea) in enumerate(names,1):
  d=dict(id=i,name=name,idea=idea,bg='#f8f9fb',fg='#17181a');dirs.append(d)
  target=s/f'{i:02}';target.mkdir(exist_ok=True)
  h=markup.replace('href="favicon.svg"','href="/favicon.svg"').replace('href="style.css"','href="../original.css"><link rel="stylesheet" href="../fonts.css"'+('' if i==1 else '><link rel="stylesheet" href="../variants.css"')).replace('src="app.js"',f'src="../{"original-fonts.js" if i==1 else "app.js"}"').replace('<body>',f'<body class="v{i}" data-direction="{i}">')
+ if i==1:h=h.replace('../fonts.css"','../fonts.css?revision=3"')
  h=h.replace('../app.js"','../app.js?revision=2"')
  h=h.replace('<title>3seater — Visual archive</title>',f'<title>3seater — {name}</title>')
  (target/'index.html').write_text(h,encoding='utf-8');(target/'data.json').write_text(json.dumps(data),encoding='utf-8');shutil.copy2(r/'src/site.json',target/'site.json')

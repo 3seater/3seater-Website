@@ -1205,3 +1205,5 @@ Keyboard-visible outlines use current color (3px with 5px offset). Buttons dim w
 ## Batch Seven — Scoped Continuation
 
 Batch seven is documented in [src/batch-seven/DESIGN.md](src/batch-seven/DESIGN.md), including normative YAML tokens, source-derived layouts, navigation variants and the version 01 fidelity exception. Its scope is only /batch-seven/01/ through /batch-seven/10/. The earlier frontmatter and historical records above remain unchanged and do not govern batch seven. Sidecar details are appended at extensions.batchSeven; no earlier record is replaced.
+
+Version 01 typography amendment: the batch-seven copy uses Anton for project/page headings, empty-state headings, contact display, footer wordmark and client names; Plex covers body, metadata labels and values, navigation, footer details and supporting text. The body.v1 font overrides preserve original layout and behavior and do not modify the main site.
