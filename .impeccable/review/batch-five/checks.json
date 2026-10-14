@@ -1,0 +1,208 @@
+{
+  "desktop": [
+    {
+      "direction": "1",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 18
+    },
+    {
+      "direction": "2",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "3",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 24
+    },
+    {
+      "direction": "4",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 18
+    },
+    {
+      "direction": "5",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "6",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "7",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 19
+    },
+    {
+      "direction": "8",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 24
+    },
+    {
+      "direction": "9",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 18
+    },
+    {
+      "direction": "10",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 24
+    },
+    {
+      "direction": "11",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "12",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "13",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "14",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 24
+    },
+    {
+      "direction": "15",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "16",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "17",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 24
+    },
+    {
+      "direction": "18",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 20
+    },
+    {
+      "direction": "19",
+      "nav": 5,
+      "overflow": false,
+      "tiles": 12
+    },
+    {
+      "direction": "20",
+      "nav": 5,
+      "overflow": true,
+      "tiles": 28
+    }
+  ],
+  "mobile": [
+    {
+      "direction": "1",
+      "overflow": false
+    },
+    {
+      "direction": "2",
+      "overflow": false
+    },
+    {
+      "direction": "3",
+      "overflow": false
+    },
+    {
+      "direction": "4",
+      "overflow": false
+    },
+    {
+      "direction": "5",
+      "overflow": false
+    },
+    {
+      "direction": "6",
+      "overflow": false
+    },
+    {
+      "direction": "7",
+      "overflow": false
+    },
+    {
+      "direction": "8",
+      "overflow": false
+    },
+    {
+      "direction": "9",
+      "overflow": false
+    },
+    {
+      "direction": "10",
+      "overflow": false
+    },
+    {
+      "direction": "11",
+      "overflow": false
+    },
+    {
+      "direction": "12",
+      "overflow": false
+    },
+    {
+      "direction": "13",
+      "overflow": false
+    },
+    {
+      "direction": "14",
+      "overflow": false
+    },
+    {
+      "direction": "15",
+      "overflow": false
+    },
+    {
+      "direction": "16",
+      "overflow": false
+    },
+    {
+      "direction": "17",
+      "overflow": false
+    },
+    {
+      "direction": "18",
+      "overflow": false
+    },
+    {
+      "direction": "19",
+      "overflow": false
+    },
+    {
+      "direction": "20",
+      "overflow": false
+    }
+  ],
+  "corrections": "15 grid-band width and 20 wheel overflow fixed, desktop rechecked.",
+  "behavior": "Index 30 rows; all five first-viewport videos playing/looping; archive iceman returns1; both supplied iframe IDs verified. Wheel renders original cylinder."
+}

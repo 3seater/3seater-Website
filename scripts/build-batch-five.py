@@ -1,0 +1,19 @@
+from pathlib import Path
+import json, shutil, html
+root=Path(__file__).resolve().parents[1]
+src=root/'src/batch-five'
+dirs=json.loads((src/'directions.json').read_text())
+for family in ['anton','ibmplexmono']:
+    shutil.copytree(root/'src/batch-three/fonts'/family,src/'fonts'/family,dirs_exist_ok=True)
+shutil.copy2(root/'src/site.json',src/'site.json')
+for d in dirs:
+    target=src/f"{d['id']:02}"
+    target.mkdir(exist_ok=True)
+    (target/'index.html').write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="3seater — {html.escape(d['name'])}. Graphic design, motion design and 3D."><meta name="theme-color" content="{d['bg']}"><title>3seater — {html.escape(d['name'])}</title><style>:root{{--bg:{d['bg']};--fg:{d['fg']};--accent:{d['accent']}}}</style><link rel="stylesheet" href="../style.css"></head><body class="v{d['id']} nav-{d['nav']}" data-direction="{d['id']}"><div id="app"><main class="error"><p>Loading projects…</p></main></div><script src="../app.js" defer></script><noscript>Please enable JavaScript to browse this archive.</noscript></body></html>''',encoding='utf-8')
+cards=''.join(f'''<a class="direction" href="{d['id']:02}/"><div class="thumb" style="background:{d['bg']};color:{d['fg']}"><img src="captures/{d['id']:02}.png" alt="{html.escape(d['name'])} preview" loading="lazy" onerror="this.hidden=true"><span>{html.escape(d['name'])}</span></div><div class="card-title"><h2>{html.escape(d['name'])}</h2><small>{d['id']:02} / 20</small></div><p>{html.escape(d['idea'])}</p></a>''' for d in dirs)
+    # Screenshots are real browser captures produced during verification.
+(src/'index.html').write_text('''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3seater — Twenty more directions</title><style>@font-face{font-family:Anton;src:url(fonts/anton/font.ttf)}@font-face{font-family:Plex;src:url(fonts/ibmplexmono/font.ttf);font-weight:100 900}*{box-sizing:border-box}body{margin:0;background:#e8e8e3;color:#171915;font:14px/1.45 Plex,sans-serif}a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid;outline-offset:6px}header{padding:40px;border-bottom:2px solid;display:flex;align-items:end;justify-content:space-between;gap:30px}h1,h2,p{margin:0}h1{font:400 clamp(46px,7vw,100px)/1 Anton;text-transform:uppercase;letter-spacing:-.02em}header p{max-width:32ch}main{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:50px 28px;padding:40px}.thumb{aspect-ratio:16/10;position:relative;overflow:hidden}.thumb>span{position:absolute;inset:25px;font:40px/1 Anton;text-transform:uppercase;z-index:0}.thumb img{position:relative;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1}.card-title{display:flex;justify-content:space-between;gap:15px;margin:16px 0 8px;align-items:center}.card-title h2{font:30px/1.1 Anton;text-transform:uppercase}.card-title small{white-space:nowrap}.direction:hover h2{text-decoration:underline;text-underline-offset:5px}footer{padding:35px 40px;border-top:1px solid}footer a{text-decoration:underline}@media(max-width:800px){main{grid-template-columns:1fr 1fr;padding:24px;gap:35px 20px}header{padding:25px;display:block}header p{margin-top:25px}}@media(max-width:500px){main{grid-template-columns:1fr;padding:20px}header{padding:25px 20px}h1{font-size:55px}.card-title h2{font-size:29px}}</style></head><body><header><h1>3seater<br>Twenty more.</h1><p>Live Poster × Outline × the original grid.<br>Twenty new ways to browse the work. Open any direction to explore.</p></header><main>'''+cards+'''</main><footer><a href="/batch-four/">Previous batch</a></footer></body></html>''',encoding='utf-8')
+shutil.copytree(src,root/'dist/batch-five',dirs_exist_ok=True)
+print('Built /batch-five/ with 20 complete directions.')
+
+

@@ -46,7 +46,7 @@ Twenty code-led routes live under /batch-three/01/ through /batch-three/20/, wit
 
 The implementation uses original HTML/CSS/JavaScript interactions inspired by the researched component mechanisms. No Framer paid source was purchased or imported, and no Framer migration occurred. Filters/search, inline folders, canvas zoom, orbit rotation, sequential controls, route focus and selection announcements were checked. Desktop and phone layouts were captured. The finish reviewer found the visual diversity sufficient and scored its three accessibility fixes resolved. This is a reviewable exploration batch, not a replacement of the production portfolio.
 
-## Current Brief — Batch Four
+## Historical Brief — Batch Four
 The user selected Type Poster (batch-three/17) as the strongest favorite, with Concrete (batch-three/03) secondary. Create twenty MORE complete designs in this realm with freedom. Heavy condensed sans typography, especially Anton, is the explicit anchor. Vary composition and project browsing meaningfully. These selected designs supersede the prior broad search across unrelated aesthetics.
 
 Remove black side bars around project content. Full media uses its natural proportions and transparent surroundings; thumbnails may crop to composed slots. Original artwork colors and all project.txt-derived facts remain unchanged.
@@ -57,3 +57,14 @@ Publish /batch-four/ with twenty direct routes and a comparison gallery alongsid
 
 ## Implemented Batch Four
 Twenty routes /batch-four/01/ through /batch-four/20/ and a screenshot comparison gallery are implemented on exploration/batch-four. Anton carries the display typography; Archivo carries navigation and factual metadata. Desktop and phone first viewports were checked for all twenty. Browser checks confirmed visible videos playing muted on loop, natural-ratio project media, selector/accordion/horizontal browsing, route focus, and persistent pause through selection and navigation. All thirty projects and fifty-one media files remain available. The finish reviewer scored its sole pause-state finding resolved. Earlier exploration batches received shared playback and project-framing corrections, with representative checks rather than a new full sixty-route visual audit.
+
+## Current Brief — Batch Five
+The user selected Live Poster and Outline from batch four, especially their heavy Anton project lists with moving video inserts in irregular positions. Combine that with the original site's immediate dense image/video grid. Every homepage must open as a bento/grid brain dump with lots of work visible, not a large title or list alone. The bold list can preview work further down the homepage and structure the full Index. Preserve a featured-client wheel somewhere meaningful, with the original client ordering/exclusions and client project links.
+
+Navigation must be clear buttons only: no 3seater logo in navigation, and no visible Pause videos button. Explore pill, square, outline, segmented, side and bottom treatments that fit each design. Keep clickable text underlined and make hover/focus change color clearly, as in the original site. Retain easy Work, Archive, Index, Clients and Contact access.
+
+Pair Anton with light monospaced typography resembling the user's second reference image. IBM Plex Mono is a chosen approximation, not a confirmed identification. Both supplied images are retained in src/batch-five/references.
+
+All project media remains original color; visible video defaults to muted inline autoplay and loop. Full media keeps its natural proportions with no added black sidebars. Restore embedded YouTube sources (including Iceman and Carti) from project.txt/data.json, with direct source links as well. Request muted looped autoplay where the provider supports it; provider/browser restrictions may still apply.
+
+Build twenty new complete directions under /batch-five/ with screenshot comparison and direct links. Preserve existing batches and the production site. All thirty projects, fifty-one assets, facts, contact and six supplied video links must remain accessible. User authorizes the new batch; no new concept-selection approval is needed.

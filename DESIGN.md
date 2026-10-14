@@ -1,4 +1,254 @@
 ---
+name: "3seater — Batch Five / A Brain Dump, Then Type"
+description: "Active tokens are scoped to src/batch-five. Earlier batch records are preserved as history."
+colors:
+  b5-01-ground: "#e7e8df"
+  b5-01-ink: "#181a15"
+  b5-01-accent: "#a52617"
+  b5-02-ground: "#dce745"
+  b5-02-ink: "#191c13"
+  b5-02-accent: "#92291c"
+  b5-03-ground: "#eeeeea"
+  b5-03-ink: "#171915"
+  b5-03-accent: "#2443b2"
+  b5-04-ground: "#d9ded6"
+  b5-04-ink: "#182017"
+  b5-04-accent: "#913827"
+  b5-05-ground: "#171916"
+  b5-05-ink: "#eeeee7"
+  b5-05-accent: "#dce745"
+  b5-06-ground: "#f0efe9"
+  b5-06-ink: "#20211b"
+  b5-06-accent: "#a42d20"
+  b5-07-ground: "#dedfd6"
+  b5-07-ink: "#1a1c15"
+  b5-07-accent: "#284e9c"
+  b5-08-ground: "#e9e9e4"
+  b5-08-ink: "#171914"
+  b5-08-accent: "#a52920"
+  b5-09-ground: "#1c1d19"
+  b5-09-ink: "#e6e8dd"
+  b5-09-accent: "#dce745"
+  b5-10-ground: "#e9e6de"
+  b5-10-ink: "#202018"
+  b5-10-accent: "#963424"
+  b5-11-ground: "#dce745"
+  b5-11-ink: "#191c13"
+  b5-11-accent: "#92291c"
+  b5-12-ground: "#ebece6"
+  b5-12-ink: "#1d2019"
+  b5-12-accent: "#2947a4"
+  b5-13-ground: "#f0eee6"
+  b5-13-ink: "#221e17"
+  b5-13-accent: "#a6261b"
+  b5-14-ground: "#20221d"
+  b5-14-ink: "#eeeee5"
+  b5-14-accent: "#dce745"
+  b5-15-ground: "#f4f5f1"
+  b5-15-ink: "#191c18"
+  b5-15-accent: "#274bc0"
+  b5-16-ground: "#e2e4d9"
+  b5-16-ink: "#1c2015"
+  b5-16-accent: "#953127"
+  b5-17-ground: "#e8e7df"
+  b5-17-ink: "#151711"
+  b5-17-accent: "#a3221b"
+  b5-18-ground: "#e9e8e2"
+  b5-18-ink: "#202119"
+  b5-18-accent: "#33519c"
+  b5-19-ground: "#dce745"
+  b5-19-ink: "#191c13"
+  b5-19-accent: "#92291c"
+  b5-20-ground: "#191b17"
+  b5-20-ink: "#e9ebdf"
+  b5-20-accent: "#dce745"
+typography:
+  b5-display:
+    fontFamily: "Anton, sans-serif"
+    fontWeight: 400
+    lineHeight: "1.25"
+    letterSpacing: "-.02em"
+  b5-index:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(32px,4.45vw,70px)"
+    fontWeight: 400
+    lineHeight: "1.25"
+    letterSpacing: "-.02em"
+  b5-project-title:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(40px,6vw,92px)"
+    fontWeight: 400
+    lineHeight: "1.1"
+    letterSpacing: "-.02em"
+  b5-mono:
+    fontFamily: "Plex, monospace"
+    fontSize: "12px"
+    fontWeight: 400
+    lineHeight: "1.5"
+  b5-section-label:
+    fontFamily: "Plex, monospace"
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: ".06em"
+  b5-pace-insert:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(19px,3vw,44px)"
+    fontWeight: 400
+    lineHeight: ".95"
+  b5-wheel:
+    fontFamily: "Arial, Helvetica, sans-serif"
+    fontSize: "min(var(--wheel-size),var(--name-fit))"
+    fontWeight: 400
+    lineHeight: ".88"
+    letterSpacing: "-.03em"
+rounded:
+  b5-pill: "40px"
+  b5-micro: "3px"
+  b5-segment-shell: "8px"
+  b5-segment-button: "4px"
+spacing:
+  b5-page-gutter: "20px"
+  b5-phone-gutter: "12px"
+  b5-nav-gap: "7px"
+  b5-nav-padding: "12px 19px"
+  b5-control-padding: "10px 12px"
+  b5-media-gap: "25px"
+components:
+  b5-nav-01:
+    backgroundColor: "#23251e"
+    textColor: "#f0f1e8"
+    rounded: "{rounded.b5-pill}"
+    padding: "{spacing.b5-nav-padding}"
+  b5-nav-01-current:
+    backgroundColor: "#dce745"
+    textColor: "#1b1e14"
+    rounded: "{rounded.b5-pill}"
+    padding: "{spacing.b5-nav-padding}"
+  b5-nav-01-hover:
+    backgroundColor: "{colors.b5-01-accent}"
+    textColor: "{colors.b5-01-ground}"
+    rounded: "{rounded.b5-pill}"
+    padding: "{spacing.b5-nav-padding}"
+---
+
+# Design System: 3seater — Batch Five
+
+## Overview
+
+**Creative North Star: "A Brain Dump, Then Type"**
+
+Batch five combines the original portfolio’s immediate dense media grids with the selected Live Poster and Outline typography. Twenty compositions open on original-color work, then pair bold project names with moving inserts and the original scroll-driven client cylinder. Button-shaped navigation and quiet monospaced labels support the artwork.
+
+This record applies only to `src/batch-five` and `/batch-five/01/` through `/batch-five/20/`. The comparison gallery is navigation, not a twenty-first direction. The production site and earlier batches keep their own historical records. The supplied second font reference is approximate: IBM Plex Mono is the chosen interpretation, not an identified exact match.
+
+**Key Characteristics:**
+- Dense media openings with 12–28 projects; no oversized introductory hero.
+- Anton project lists with deterministic moving inserts before, within or after names.
+- IBM Plex Mono labels and button-shaped navigation with route-local palettes.
+- Original client-cylinder behavior and natural-ratio complete project media.
+
+Source snapshot: 2026-10-14. Evidence: `src/batch-five/style.css` including its final correction overrides, `app.js`, `directions.json`, route HTML, `DIRECTION-CONTRACT.txt`, and the current batch-five brief in PRODUCT.md. This is source documentation; browser verification and independent finish review are separate.
+
+## Colors
+
+### Primary
+
+Ink carries structure; red, blue or acid accents distinguish interactive states. Each route’s ground, ink and accent are normative numbered frontmatter tokens. Hover and focus recolor text; navigation also fills with the accent. Some navigation families have explicit acid, red or pale treatment overrides in addition to their route palette.
+
+### Neutral
+
+Paper, concrete and charcoal grounds frame original-color work. Rules mix twenty percent route ink into the ground; secondary metadata mixes seventy-five percent ink. Inactive wheel names use thirty-eight percent ink, while the active name uses full ink and its hover/focus uses the accent, including the transparent hit area.
+
+**The Route Boundary Rule.** Keep each numbered palette inside its own route; artwork retains its original color.
+
+## Typography
+
+Self-hosted Anton at its real regular weight supplies the heavy condensed display voice. Self-hosted IBM Plex Mono is aliased as Plex in CSS and carries labels, navigation and factual text at weight 400. Its quiet appearance interprets the supplied reference without claiming exact identification. The original client cylinder retains Arial/Helvetica geometry and measurement rather than adopting Anton.
+
+Frontmatter records reusable roles. Compact index variants, mobile overrides and per-route treatments remain scoped. Outline lists alternate filled and stroked names; hover/focus restores accent-filled lettering. Inline video slots vary in size and position. The final Split Pace insert uses the corrected frontmatter clamp and 25px on phones, superseding its larger earlier declaration. Metadata at 9–11px is an observed density choice, not a universal readability standard.
+
+## Layout
+
+Media starts directly after navigation. Desktop grid counts range from four to eight columns, with mosaics, uneven rows, paired walls and natural-height streams. Shared page gutters use the frontmatter spacing; composition adjusts at 950px and 600px. Phone layouts retain multiple visible projects rather than becoming a single hero. Side navigation moves into the phone header; bottom families retain bottom clearance. Archive uses five columns on desktop; detail uses two natural-ratio media columns and stacks at phone size. A single detail figure is centered with a 1000px maximum width.
+
+| Route | Grid family | Navigation family | Homepage projects | Index style / following sequence |
+| --- | --- | --- | --- | --- |
+| 01 Live Mosaic | mosaic | pill | 18 | live / list first |
+| 02 Outline Atlas | masonry | outline | 20 | outline / list first |
+| 03 Dense Signal | signal | box | 24 | compact / wheel first |
+| 04 Twin Walls | twins | segmented | 18 | split / list first |
+| 05 Cut / Paste | cuts | acid-box | 20 | live / wheel first |
+| 06 Four Reels | reels | left-pill | 20 | outline / list first |
+| 07 Micro / Macro | macro | tabs | 19 | split / list first |
+| 08 Contact Patch | contact | micro | 24 | compact / wheel first |
+| 09 Half Tone | paired | light-segment | 18 | outline / list first |
+| 10 Side Notes | sidewall | side | 24 | live / wheel first |
+| 11 Wide Stack | wide | wide | 20 | split / list first |
+| 12 Pinboard | pinboard | outline-box | 20 | outline / wheel first |
+| 13 Bands | bands | red-pill | 20 | live / list first |
+| 14 North / South | north | edges | 24 | compact / list first |
+| 15 Studio Feed | justified | glass-pill | 20 | live / wheel first |
+| 16 Split Pace | pace | cut-tabs | 20 | outline / list first |
+| 17 Ink Grid | ink | ink | 24 | split / wheel first |
+| 18 Open Frames | frames | quiet | 20 | compact / list first |
+| 19 Index Current | current | bottom | 12 | live / list first |
+| 20 Full Bleed | bleed | float-box | 28 | outline / wheel first |
+
+Each homepage also contains seven selected index rows and the client wheel; the sequence column names which comes first after the grid. Full Archive, Index, Clients, Contact and project routes share factual content. Filtering exposes a live result count and a resettable empty state. Wheel-specific responsive thresholds at 700/701, 768, 1024 and 1240px preserve the original scroll-cylinder proportions.
+
+## Elevation & Depth
+
+Artwork and lists are primarily flat; rules, overlap, scale and spacing create hierarchy. The bottom navigation dock alone uses a small shadow. Studio Feed’s translucent pills use backdrop blur. These route-specific treatments do not establish a general raised-card system. The client cylinder uses perspective and a three-dimensional drum; its static reduced-motion form removes that depth.
+
+## Shapes
+
+Artwork is rectangular and unrounded. Buttons range from square outlines to pills, small-corner segments and cut tabs according to route. Fine one-pixel borders organize navigation, filters and editorial rows; focus uses a two-pixel accent outline with five-pixel offset, while client names retain their dedicated one-pixel ring with six-pixel offset.
+
+## Components
+
+### Navigation and controls
+
+Five real destination links—Work, Archive, Index, Clients and Contact—are styled as clear buttons. Current links invert route ink and ground; hover/focus use contrast-changing treatment. There is no navigation logo and no visible global video-pause control in this batch. Search and select controls use transparent surfaces, one-pixel borders and the shared control padding. These controls keep their native semantics.
+
+### Media tiles and bold index
+
+Tiles are project anchors with underlined titles, direction arrows and optional factual metadata. Thumbnail slots may crop to their composition; natural-height streams preserve intrinsic proportions. The full Index combines underlined Anton names with deterministically placed moving inserts, and outline variants alternate stroked lettering. Complete project media preserves its natural aspect ratio and transparent surroundings.
+
+**The Whole Artwork Rule.** Full-project artwork keeps its intrinsic proportions without opaque letterbox wrappers.
+
+### Client wheel
+
+The original preferred ordering and configured exclusions feed a scroll-driven cylindrical client list. Names open real client galleries; the active name is keyboard reachable and a matching transparent hit area supports pointer access. During scrolling the hit area is disabled to prevent accidental selection. Reduced motion presents a wrapping static list; Clients also has an all-client directory. The final CSS override makes both direct name interaction and hit-area interaction accent-colored.
+
+### Playback and external sources
+
+Self-hosted videos request muted inline autoplay and looping, loading near the viewport. Already loaded video is not deliberately paused on scroll-out. Native detail controls remain available. Six supplied YouTube source links are restored as privacy-enhanced embeds plus direct links, including Iceman and Carti; parameters request muted looping autoplay. Browser/provider restrictions may prevent playback, so the request is not a guarantee. Reduced motion stops CSS animation and transitions and makes the wheel static; it does not override the requested video default.
+
+## Do's and Don'ts
+
+### Do:
+- Do keep artwork in original color and full project media at natural proportions.
+- Do use each numbered palette only in its corresponding batch-five route.
+- Do preserve underlined clickable text, current-page indication and visible accent focus.
+- Do retain all thirty projects, fifty-one media assets, facts, contact and six source video links.
+
+### Don't:
+- Don't add a navigation logo or visible global pause-video button to batch five.
+- Don't make hover a prerequisite for video playback.
+- Don't add opaque black mats around complete artwork.
+- Don't claim that IBM Plex Mono exactly identifies the supplied font reference.
+- Don't apply this experiment’s tokens to production or historical batches.
+
+### Historical record — Earlier batches only
+
+The complete prior DESIGN.md is preserved below verbatim as a source snapshot, including its earlier nested records. Its frontmatter and review statements apply to their named batches, not batch five. Earlier drift is preserved rather than silently repaired. In particular, the batch-four visible pause-button description is historical and does not govern batch five.
+
+<details>
+<summary>Preserved Batch Four and earlier design records</summary>
+
+`````markdown
+---
 name: "3seater — Batch Four / Type as Structure"
 description: "Active tokens apply only to src/batch-four; batch-three history is preserved below."
 colors:
@@ -657,5 +907,8 @@ Keyboard-visible outlines use current color (3px with 5px offset). Buttons dim w
 - Don't promote batch-three decisions into production or historical batches without an explicit brief.
 
 ````
+
+</details>
+`````
 
 </details>

@@ -1,0 +1,1 @@
+Fresh Impeccable review: fix. Material findings: direction16 type overflow; client-wheel hover/focus accent specificity and hitbox. Both corrected. Reviewer verdict pass: both resolved; disposition ship at scope of two scored fixes. Original screenshots recaptured after loading images. All20 desktop and mobile reviewed.
