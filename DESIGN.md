@@ -1,4 +1,204 @@
 ---
+name: "3seater — Batch Four / Type as Structure"
+description: "Active tokens apply only to src/batch-four; batch-three history is preserved below."
+colors:
+  b4-01-ground: "#dce745"
+  b4-01-ink: "#191c13"
+  b4-02-ground: "#e8e8e3"
+  b4-02-ink: "#151515"
+  b4-03-ground: "#f0efea"
+  b4-03-ink: "#20201d"
+  b4-04-ground: "#171917"
+  b4-04-ink: "#e3e94f"
+  b4-05-ground: "#dedfdb"
+  b4-05-ink: "#141613"
+  b4-06-ground: "#e8e5dc"
+  b4-06-ink: "#23231e"
+  b4-07-ground: "#dce745"
+  b4-07-ink: "#191c13"
+  b4-08-ground: "#f0efea"
+  b4-08-ink: "#1a1c18"
+  b4-09-ground: "#232521"
+  b4-09-ink: "#e9e9e2"
+  b4-10-ground: "#e6e8de"
+  b4-10-ink: "#1c2117"
+  b4-11-ground: "#f0efea"
+  b4-11-ink: "#b52b20"
+  b4-12-ground: "#161716"
+  b4-12-ink: "#eeeee5"
+  b4-13-ground: "#e2e3dd"
+  b4-13-ink: "#252720"
+  b4-14-ground: "#dce745"
+  b4-14-ink: "#191c13"
+  b4-15-ground: "#e8e8e5"
+  b4-15-ink: "#141512"
+  b4-16-ground: "#efeee7"
+  b4-16-ink: "#191b18"
+  b4-17-ground: "#dce745"
+  b4-17-ink: "#191c13"
+  b4-18-ground: "#e6e6e0"
+  b4-18-ink: "#1c1d19"
+  b4-19-ground: "#191b18"
+  b4-19-ink: "#e4e74b"
+  b4-20-ground: "#e7e6e0"
+  b4-20-ink: "#1c1d18"
+  audio-ground: "#f5f5f0"
+  audio-ink: "#151515"
+typography:
+  display:
+    fontFamily: "Anton, sans-serif"
+    fontWeight: 400
+    lineHeight: "1.05"
+    letterSpacing: "-.02em"
+  project-title:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(45px,7vw,105px)"
+    fontWeight: 400
+    lineHeight: "1.05"
+    letterSpacing: "-.02em"
+  card-title:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(22px,2.5vw,43px)"
+    fontWeight: 400
+    lineHeight: "1.05"
+    letterSpacing: "-.02em"
+  body:
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "14px"
+    lineHeight: "1.35"
+spacing:
+  control-padding: "8px 12px"
+  header-padding: "24px 32px"
+  phone-header-padding: "18px 16px"
+  project-gallery-gap: "28px"
+components:
+  audio-button:
+    backgroundColor: "{colors.audio-ground}"
+    textColor: "{colors.audio-ink}"
+    padding: "9px 12px"
+  audio-button-hover:
+    backgroundColor: "{colors.audio-ink}"
+    textColor: "{colors.audio-ground}"
+---
+
+# Design System: 3seater — Batch Four
+
+## Overview
+
+**Creative North Star: "Type as Structure"**
+
+Batch four develops the user-selected Type Poster world, with Concrete as its secondary reference. Heavy condensed lettering supplies structure; moving artwork participates in the composition from the first viewport. The twenty routes share this voice while varying their browsing model, density, alignment and media scale.
+
+This source-derived record applies only to `src/batch-four` and `/batch-four/01/` through `/batch-four/20/`. It is not a production-wide identity. The build is code-led; no generated comp is an authority. The comparison gallery is navigation, not an additional direction.
+
+**Key Characteristics:**
+- Anton display typography paired with Archivo utility text.
+- Route-local acid, concrete, paper, red and charcoal palettes.
+- Flat ruled surfaces and borderless moving artwork.
+- Twenty distinct compositions within the selected typographic realm.
+
+Source snapshot: 2026-10-14. Evidence: batch-four `style.css`, `app.js`, `directions.json`, route HTML, and the direction contract. Independent finish review is separate; no full validation pass is asserted here. Earlier batches retain their own design worlds while their media behavior has been updated under the current brief.
+
+## Colors
+
+### Primary
+
+Acid yellow-green anchors Live Poster, Double Exposure, Long Play and Outline. Running Type and Type Selector reverse that relationship on dark grounds. Red Letter uses red as its typographic voice. These are route identities, not interchangeable global accents.
+
+### Neutral
+
+Concrete, warm paper and charcoal provide the remaining ground/ink pairs. The frontmatter's numbered tokens map to the correspondingly numbered batch-four route. Audio controls use a dedicated light/dark pair for visibility over artwork.
+
+**The Route Boundary Rule.** Keep each numbered palette inside its own route; artwork retains its original color.
+
+## Typography
+
+Anton is the self-hosted condensed display face, used at its actual regular weight; its heavy form supplies the requested boldness without synthetic bolding. Archivo handles body text, navigation and compact facts. Headings are uppercase with tight tracking. The frontmatter records reusable roles, not every route-specific display size.
+
+Project names lead the visual hierarchy. Scale responds to composition: the Live Poster ledger uses `clamp(32px,4.9vw,76px)`, while the Dense Matter identity reaches `clamp(90px,21vw,310px)`. Full-project titles resolve to 49px on phones. Body text becomes 13px at the phone breakpoint. Small metadata is an observed density choice, not a minimum readability standard for future work.
+
+**The Type Structure Rule.** Preserve meaningful title hierarchy and full project-name access when adapting the layout; do not substitute a generic hero for the work.
+
+## Layout
+
+The shared desktop header uses horizontal identity/navigation and the footer carries contact plus return-to-comparison access. Route composition remains independently authored. Medium adjustments occur at 850px, phone composition at 600px, and Live Poster widens its insert at 1500px.
+
+| Route | Desktop structure | Phone adaptation |
+| --- | --- | --- |
+| 01 Live Poster | Ruled title ledger with alternating inline moving inserts. | Two columns; date removed; fixed small media insert. |
+| 02 Cutlines | Six-column grid with two-, three- and four-column cuts. | Two columns; featured cut spans both. |
+| 03 Split Bill | Sticky monumental identity beside staggered two-column work. | Identity becomes horizontal above the paired archive. |
+| 04 Running Type | Bounded moving headlines with anchored media windows. | Headlines wrap and stop moving. |
+| 05 Block Party | Twelve-column interlocking image and title blocks. | Two columns with occasional full-width blocks. |
+| 06 Wide Margin | Large titles paired with narrow natural-ratio media. | Title and media remain paired with tighter offsets. |
+| 07 Double Exposure | Three staggered poster columns with overlapping title plates. | Two columns with alternating vertical offset. |
+| 08 Front Page | Masthead, unequal three-part lead, four-column archive. | Lead image spans two columns; remainder stays paired. |
+| 09 Spine | Vertical sticky identity and two staggered media streams. | Identity becomes horizontal; streams remain paired. |
+| 10 Open Set | Native disclosure rows; first three projects open. | Smaller titles; media and project facts remain side by side. |
+| 11 Red Letter | Red type with sparse asymmetric moving inserts. | Offsets contract around narrower paired rows. |
+| 12 After Dark | Alternating inverse title/image rows. | Media stays in the right-hand column. |
+| 13 Duet | Alternating unequal pairs; titles beside artwork. | Two project columns; each title moves below its image. |
+| 14 Long Play | Horizontal snap sequence of typographic posters. | Cards occupy 76vw with native scrolling and buttons. |
+| 15 Dense Matter | Five-column thumbnail grid below oversized wordmark. | Three columns with square crops. |
+| 16 Offset | Stepped text bands with media embedded in the row. | Compact media; narrower steps; dates hidden. |
+| 17 Outline | Alternating filled/outlined lettering and left media rail. | Two columns; smaller type and one-pixel outline. |
+| 18 Three Presses | Three independently scrolling discipline columns. | Columns stack into horizontal media streams. |
+| 19 Type Selector | Large button index and sticky live stage. | Stage precedes selector list; sticky positioning removed. |
+| 20 Heavy Rotation | Central vertical identity splits uneven media streams. | Identity sits above two columns. |
+
+Project detail uses title/facts columns followed by two media columns; at phone size the detail stacks into one column. A solitary media figure has a 1000px maximum width. Thumbnails may crop to a composed slot; complete project media uses intrinsic proportions and transparent surroundings.
+
+## Elevation & Depth
+
+The system is flat: no box-shadow vocabulary is implemented. Rules, scale, staggered alignment and overlap create hierarchy. Double Exposure uses a ground-colored title plate over the image edge; Block Party uses occasional ink/ground reversal. Neither treatment establishes a shadow-based card system.
+
+## Shapes
+
+Angular rectangles, straight rules and unrounded media slots define the form language. Native button corner rendering is not an explicit radius token. Borders range from fine rules to stronger three-pixel editorial divisions. Outline lettering belongs to Outline and selected detail treatments; it is not the default title style.
+
+## Components
+
+### Controls and navigation
+
+Simple text links and transparent bordered buttons inherit each route's ink and ground. Buttons invert on hover; interactive elements carry a three-pixel current-color focus outline with five-pixel offset. Navigation exposes Info, Contact and the video pause/play toggle. Route changes focus the main heading. Underlined text playback controls remain distinct from project links.
+
+### Media and project cards
+
+Each project card is a real anchor, with image/video, title and compact facts. Hover underlines links; Live Poster shifts its title slightly and Offset relaxes tracking. Full media remains unframed. Audio controls sit over video at the lower right and expose pressed state. Covers use preview video derivatives; detail uses full sources. Playback loads near the viewport, starts muted/inline and loops; loaded video is not deliberately stopped on scroll-out. Browsers can block autoplay. A visitor can pause the videos globally; that choice persists across project routes and selector changes until explicit resume.
+
+**The Whole Artwork Rule.** Full-project artwork keeps its intrinsic proportions without opaque letterbox wrappers.
+
+### Disclosure and selection
+
+Open Set uses native details/summary, with the first three entries expanded. Type Selector uses buttons with `aria-pressed`, an inverted selected state and an announced project change; the stage contains a real project link. Long Play includes previous/next buttons around a natively scrollable rail. Three Presses preserves separate discipline browsing.
+
+### Motion
+
+Running Type moves titles horizontally over 14 seconds, alternating direction, and pauses the ornamental title animation on hover. Live Poster shifts over 220ms and Offset tracking changes over 250ms, both with the same fast-settling easing. Reduced motion disables CSS animation/transitions and smooth scrolling while preserving the user's requested project-video default. The explicit pause control remains available.
+
+## Do's and Don'ts
+
+### Do:
+- Do keep the selected Anton display voice and original artwork colors.
+- Do preserve route-local composition when extending a direction.
+- Do keep complete project media at natural aspect ratio with transparent surroundings.
+- Do default videos to muted inline autoplay and loop, while retaining visitor playback controls.
+
+### Don't:
+- Don't add black media mats or side bars around full project artwork.
+- Don't make hover the requirement for video playback.
+- Don't treat the palette of one route as a global production brand.
+- Don't equate a source scan with a completed browser, accessibility or playback review.
+
+### Historical record — Batch Three only
+
+The complete prior document is retained below as an archival source snapshot, not active guidance or frontmatter for batch four. Its twenty independent design worlds remain historical. Descriptions of contained dark media staging or former playback behavior are superseded by the current media brief and later source updates; no past review statement validates batch four.
+
+<details>
+<summary>Preserved Batch Three design record</summary>
+
+````markdown
+---
 name: "3seater — Batch Three / Twenty Independent Worlds"
 description: "Source-derived visual record scoped only to src/batch-three; not a production-wide design system."
 colors:
@@ -455,3 +655,7 @@ Keyboard-visible outlines use current color (3px with 5px offset). Buttons dim w
 - Don't use paper effects, crumpling or unfolding concepts.
 - Don't derive homepage art direction from The Design Futurist; only its assets/components were reference signals.
 - Don't promote batch-three decisions into production or historical batches without an explicit brief.
+
+````
+
+</details>

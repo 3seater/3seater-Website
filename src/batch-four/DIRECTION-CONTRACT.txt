@@ -1,0 +1,30 @@
+BATCH FOUR — TYPE AS STRUCTURE
+Mode: Experience. Code-led continuation of user-selected Type Poster, with Concrete secondary.
+User explicitly requests twenty complete designs in this realm with freedom; selection is the batch, not one concept gate. No generated comps required. Existing Anton face is the visual authority; project facts and original media remain immutable.
+
+FIRST VIEWPORT: Typography and moving work appear together. No introductory marketing hero. Heavy condensed sans type organizes the page, with legible full project names and compact supporting facts. Each route has a separately authored topology, not only different tokens.
+MEDIA: Every visible video starts muted, inline, autoplay and loop. Covers use existing lightweight video derivatives; project views use full video sources. No hover-to-play requirement, no deliberate scroll-out pause. Natural-aspect project media, no black letterbox wrappers. Thumbnails may crop to an explicitly composed slot; full project views preserve the whole artwork. A visitor can pause media; browsers retain final autoplay control.
+CONTENT: All 30 real projects, all 51 media items, existing project facts, links and real contact. No invented services, biography or commercial claims.
+
+01 LIVE POSTER — acid title ledger; moving thumbnails interrupt bold names, scan by text and image together.
+02 CUTLINES — black rules, three-column poster cuts with title above moving image, varying widths.
+03 SPLIT BILL — monumental fixed left wordmark and offset compact two-column media on right.
+04 RUNNING TYPE — project rows with bounded horizontal title motion and anchored video windows.
+05 BLOCK PARTY — asymmetric interlocking typographic and media blocks, bright ground.
+06 WIDE MARGIN — giant titles in wide left margins, narrow natural-ratio images right, alternating offsets.
+07 DOUBLE EXPOSURE — three-column posters, title plates overlap the media edge without framing it.
+08 FRONT PAGE — editorial masthead and unequal lead/sidebar modules, then compact multi-column archive.
+09 SPINE — tall vertical identity rail and staggered two-column gallery, horizontal label on phone.
+10 OPEN SET — bold accordion with first three projects expanded; inline natural-aspect moving work.
+11 RED LETTER — oversized red typography and sparse asymmetric white-space, small inset moving works.
+12 AFTER DARK — inverse split text/image rows, white Anton on charcoal, thin rules and no media mats.
+13 DUET — alternating unequal pairs, title locked beside images rather than underneath every card.
+14 LONG PLAY — horizontal poster sequence with big typographic title blocks and native scroll controls.
+15 DENSE MATTER — tight five-column thumbnail archive under a colossal compressed wordmark.
+16 OFFSET — stepped bands of text with embedded moving windows, alternating alignment and rhythm.
+17 OUTLINE — alternating filled/outlined display type with a compact left-hand media rail.
+18 THREE PRESSES — independent discipline columns with sticky large headings and natural media.
+19 TYPE SELECTOR — oversized project selectors and sticky live stage; direct open project link and list fallback.
+20 HEAVY ROTATION — central vertical brand column splitting asymmetric project columns with large type.
+
+Interaction: links remain links; selectors remain buttons; route titles receive focus on navigation. Responsive collapse changes composition deliberately. Reduced motion removes ornamental type movement, not default user-requested project playback. Visible pause/play control remains available.

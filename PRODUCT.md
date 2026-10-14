@@ -7,7 +7,7 @@ web
 ## Product Purpose
 3seater is a designer portfolio showcasing real graphic design, motion and 3D work. The work itself is the product.
 
-## Current Brief — Clean-slate Batch Three
+## Historical Brief — Batch Three
 Create twenty genuinely separate art directions from scratch. The user's current tastes are minimal design studios, expressive Framer-style websites and components, brutalism, and iOS-inspired interfaces. The batch must span different realms, not twenty versions of one design system.
 
 ## Authoritative Content
@@ -22,7 +22,7 @@ Twenty direct working links plus a comparison page that makes their differences 
 ## Scope
 Build a fresh source directory and publish beside earlier experiments. Earlier batches remain historical artifacts only. The original production portfolio is not replaced.
 
-## Current Stage — Implementation
+## Historical Stage — Batch Three Implementation
 Research is complete enough to build. The user explicitly said “wrap this up and begin when ur done.” Build twenty independent directions using the component research and Impeccable; no further concept-selection approval is needed.
 
 ## Component Research Principle
@@ -45,3 +45,15 @@ The user clarified that https://thedesignfuturist.zip/ is a reference to the ASS
 Twenty code-led routes live under /batch-three/01/ through /batch-three/20/, with a screenshot comparison at /batch-three/. Each direction has its own homepage composition and theme-specific project styling, while factual content loading and media rendering are shared. See src/batch-three/directions.json and DIRECTION-CONTRACT.txt for the individual designs. All thirty projects and fifty-one media items remain available in original colors.
 
 The implementation uses original HTML/CSS/JavaScript interactions inspired by the researched component mechanisms. No Framer paid source was purchased or imported, and no Framer migration occurred. Filters/search, inline folders, canvas zoom, orbit rotation, sequential controls, route focus and selection announcements were checked. Desktop and phone layouts were captured. The finish reviewer found the visual diversity sufficient and scored its three accessibility fixes resolved. This is a reviewable exploration batch, not a replacement of the production portfolio.
+
+## Current Brief — Batch Four
+The user selected Type Poster (batch-three/17) as the strongest favorite, with Concrete (batch-three/03) secondary. Create twenty MORE complete designs in this realm with freedom. Heavy condensed sans typography, especially Anton, is the explicit anchor. Vary composition and project browsing meaningfully. These selected designs supersede the prior broad search across unrelated aesthetics.
+
+Remove black side bars around project content. Full media uses its natural proportions and transparent surroundings; thumbnails may crop to composed slots. Original artwork colors and all project.txt-derived facts remain unchanged.
+
+Videos default to autoplay, muted, inline and loop wherever visible: thumbnails, selectors, expanded previews and project pages. Use existing lightweight previews for browsing and full sources for project views. No hover-to-play requirement or deliberate pause on scroll-out. Browser playback restrictions still apply, and visitors retain playback controls.
+
+Publish /batch-four/ with twenty direct routes and a comparison gallery alongside previous batches. Preserve all thirty projects and fifty-one media items, real contact and links. Correct media behavior in prior exploration batches as well. The production portfolio is not replaced. The full batch is authorized without an additional concept-selection gate.
+
+## Implemented Batch Four
+Twenty routes /batch-four/01/ through /batch-four/20/ and a screenshot comparison gallery are implemented on exploration/batch-four. Anton carries the display typography; Archivo carries navigation and factual metadata. Desktop and phone first viewports were checked for all twenty. Browser checks confirmed visible videos playing muted on loop, natural-ratio project media, selector/accordion/horizontal browsing, route focus, and persistent pause through selection and navigation. All thirty projects and fifty-one media files remain available. The finish reviewer scored its sole pause-state finding resolved. Earlier exploration batches received shared playback and project-framing corrections, with representative checks rather than a new full sixty-route visual audit.

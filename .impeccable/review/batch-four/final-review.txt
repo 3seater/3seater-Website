@@ -1,0 +1,1 @@
+Finish reviewer: disposition ship. Sole finding (pause bypass on newly rendered autoplay videos) resolved after source fix and browser regression. Ship scope is scored fix; initial full visual review found no material visual repair. Desktop20 and phone20 captures inspected; source checks and native media ratios passed.

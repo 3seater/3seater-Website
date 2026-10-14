@@ -1,504 +1,20 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-14T03:35:29.675806+00:00",
-  "title": "Design System: 3seater — Batch Three",
+  "generatedAt": "2026-10-14T04:37:41.941664+00:00",
+  "title": "Design System: 3seater — Batch Four",
   "extensions": {
     "scope": {
-      "artifact": "src/batch-three",
-      "routes": "/batch-three/01/ through /batch-three/20/",
-      "authority": "DESIGN.md frontmatter; route-specific tokens only",
-      "excluded": [
-        "production portfolio",
-        "earlier batches",
-        "comparison hub as design authority"
-      ],
-      "reviewStatus": "Source snapshot; independent review underway, not final approval",
-      "notCanonized": "Small archival metadata sizes are observed, not prescribed readability targets. Selected-filter inherited hover color interaction remains for review; no defect is legitimized as a design rule."
+      "artifact": "src/batch-four",
+      "routes": "/batch-four/01/ through /batch-four/20/",
+      "authority": "DESIGN.md active frontmatter; route-local palettes",
+      "reviewStatus": "Source documentation only; independent finish review separate",
+      "notCanonized": "Small metadata and glyph-based disclosure affordance are observed, not reusable craft prescriptions. No browser pass is claimed.",
+      "playback": "Muted inline autoplay and loop by default. User pause persists across routes and selector changes until explicit resume."
     },
     "colorMeta": {
-      "w01-ground": {
+      "b4-01-ground": {
         "role": "neutral",
-        "displayName": "w01 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00202 106.60)",
-          "oklch(26.4% 0.00202 106.60)",
-          "oklch(37.9% 0.00202 106.60)",
-          "oklch(49.3% 0.00202 106.60)",
-          "oklch(60.7% 0.00202 106.60)",
-          "oklch(72.1% 0.00202 106.60)",
-          "oklch(83.6% 0.00202 106.60)",
-          "oklch(95.0% 0.00202 106.60)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w01-ink": {
-        "role": "neutral",
-        "displayName": "w01 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00797 106.55)",
-          "oklch(26.4% 0.00797 106.55)",
-          "oklch(37.9% 0.00797 106.55)",
-          "oklch(49.3% 0.00797 106.55)",
-          "oklch(60.7% 0.00797 106.55)",
-          "oklch(72.1% 0.00797 106.55)",
-          "oklch(83.6% 0.00797 106.55)",
-          "oklch(95.0% 0.00797 106.55)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w02-ground": {
-        "role": "neutral",
-        "displayName": "w02 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00265 286.35)",
-          "oklch(26.4% 0.00265 286.35)",
-          "oklch(37.9% 0.00265 286.35)",
-          "oklch(49.3% 0.00265 286.35)",
-          "oklch(60.7% 0.00265 286.35)",
-          "oklch(72.1% 0.00265 286.35)",
-          "oklch(83.6% 0.00265 286.35)",
-          "oklch(95.0% 0.00265 286.35)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w02-ink": {
-        "role": "neutral",
-        "displayName": "w02 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00768 274.64)",
-          "oklch(26.4% 0.00768 274.64)",
-          "oklch(37.9% 0.00768 274.64)",
-          "oklch(49.3% 0.00768 274.64)",
-          "oklch(60.7% 0.00768 274.64)",
-          "oklch(72.1% 0.00768 274.64)",
-          "oklch(83.6% 0.00768 274.64)",
-          "oklch(95.0% 0.00768 274.64)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w03-ground": {
-        "role": "neutral",
-        "displayName": "w03 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00668 106.53)",
-          "oklch(26.4% 0.00668 106.53)",
-          "oklch(37.9% 0.00668 106.53)",
-          "oklch(49.3% 0.00668 106.53)",
-          "oklch(60.7% 0.00668 106.53)",
-          "oklch(72.1% 0.00668 106.53)",
-          "oklch(83.6% 0.00668 106.53)",
-          "oklch(95.0% 0.00668 106.53)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w03-ink": {
-        "role": "neutral",
-        "displayName": "w03 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00000 89.88)",
-          "oklch(26.4% 0.00000 89.88)",
-          "oklch(37.9% 0.00000 89.88)",
-          "oklch(49.3% 0.00000 89.88)",
-          "oklch(60.7% 0.00000 89.88)",
-          "oklch(72.1% 0.00000 89.88)",
-          "oklch(83.6% 0.00000 89.88)",
-          "oklch(95.0% 0.00000 89.88)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w04-ground": {
-        "role": "neutral",
-        "displayName": "w04 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00942 106.59)",
-          "oklch(26.4% 0.00942 106.59)",
-          "oklch(37.9% 0.00942 106.59)",
-          "oklch(49.3% 0.00942 106.59)",
-          "oklch(60.7% 0.00942 106.59)",
-          "oklch(72.1% 0.00942 106.59)",
-          "oklch(83.6% 0.00942 106.59)",
-          "oklch(95.0% 0.00942 106.59)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w04-ink": {
-        "role": "neutral",
-        "displayName": "w04 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00576 121.87)",
-          "oklch(26.4% 0.00576 121.87)",
-          "oklch(37.9% 0.00576 121.87)",
-          "oklch(49.3% 0.00576 121.87)",
-          "oklch(60.7% 0.00576 121.87)",
-          "oklch(72.1% 0.00576 121.87)",
-          "oklch(83.6% 0.00576 121.87)",
-          "oklch(95.0% 0.00576 121.87)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w05-ground": {
-        "role": "neutral",
-        "displayName": "w05 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00404 285.99)",
-          "oklch(26.4% 0.00404 285.99)",
-          "oklch(37.9% 0.00404 285.99)",
-          "oklch(49.3% 0.00404 285.99)",
-          "oklch(60.7% 0.00404 285.99)",
-          "oklch(72.1% 0.00404 285.99)",
-          "oklch(83.6% 0.00404 285.99)",
-          "oklch(95.0% 0.00404 285.99)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w05-ink": {
-        "role": "neutral",
-        "displayName": "w05 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00539 95.10)",
-          "oklch(26.4% 0.00539 95.10)",
-          "oklch(37.9% 0.00539 95.10)",
-          "oklch(49.3% 0.00539 95.10)",
-          "oklch(60.7% 0.00539 95.10)",
-          "oklch(72.1% 0.00539 95.10)",
-          "oklch(83.6% 0.00539 95.10)",
-          "oklch(95.0% 0.00539 95.10)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w06-ground": {
-        "role": "neutral",
-        "displayName": "w06 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00934 99.99)",
-          "oklch(26.4% 0.00934 99.99)",
-          "oklch(37.9% 0.00934 99.99)",
-          "oklch(49.3% 0.00934 99.99)",
-          "oklch(60.7% 0.00934 99.99)",
-          "oklch(72.1% 0.00934 99.99)",
-          "oklch(83.6% 0.00934 99.99)",
-          "oklch(95.0% 0.00934 99.99)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w06-ink": {
-        "role": "neutral",
-        "displayName": "w06 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.02003 147.90)",
-          "oklch(26.4% 0.02003 147.90)",
-          "oklch(37.9% 0.02003 147.90)",
-          "oklch(49.3% 0.02003 147.90)",
-          "oklch(60.7% 0.02003 147.90)",
-          "oklch(72.1% 0.02003 147.90)",
-          "oklch(83.6% 0.02003 147.90)",
-          "oklch(95.0% 0.02003 147.90)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w07-ground": {
-        "role": "neutral",
-        "displayName": "w07 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00811 98.89)",
-          "oklch(26.4% 0.00811 98.89)",
-          "oklch(37.9% 0.00811 98.89)",
-          "oklch(49.3% 0.00811 98.89)",
-          "oklch(60.7% 0.00811 98.89)",
-          "oklch(72.1% 0.00811 98.89)",
-          "oklch(83.6% 0.00811 98.89)",
-          "oklch(95.0% 0.00811 98.89)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w07-ink": {
-        "role": "neutral",
-        "displayName": "w07 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00194 106.57)",
-          "oklch(26.4% 0.00194 106.57)",
-          "oklch(37.9% 0.00194 106.57)",
-          "oklch(49.3% 0.00194 106.57)",
-          "oklch(60.7% 0.00194 106.57)",
-          "oklch(72.1% 0.00194 106.57)",
-          "oklch(83.6% 0.00194 106.57)",
-          "oklch(95.0% 0.00194 106.57)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w08-ground": {
-        "role": "neutral",
-        "displayName": "w08 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00832 274.43)",
-          "oklch(26.4% 0.00832 274.43)",
-          "oklch(37.9% 0.00832 274.43)",
-          "oklch(49.3% 0.00832 274.43)",
-          "oklch(60.7% 0.00832 274.43)",
-          "oklch(72.1% 0.00832 274.43)",
-          "oklch(83.6% 0.00832 274.43)",
-          "oklch(95.0% 0.00832 274.43)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w08-ink": {
-        "role": "neutral",
-        "displayName": "w08 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00133 106.42)",
-          "oklch(26.4% 0.00133 106.42)",
-          "oklch(37.9% 0.00133 106.42)",
-          "oklch(49.3% 0.00133 106.42)",
-          "oklch(60.7% 0.00133 106.42)",
-          "oklch(72.1% 0.00133 106.42)",
-          "oklch(83.6% 0.00133 106.42)",
-          "oklch(95.0% 0.00133 106.42)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w09-ground": {
-        "role": "neutral",
-        "displayName": "w09 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00436 197.08)",
-          "oklch(26.4% 0.00436 197.08)",
-          "oklch(37.9% 0.00436 197.08)",
-          "oklch(49.3% 0.00436 197.08)",
-          "oklch(60.7% 0.00436 197.08)",
-          "oklch(72.1% 0.00436 197.08)",
-          "oklch(83.6% 0.00436 197.08)",
-          "oklch(95.0% 0.00436 197.08)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w09-ink": {
-        "role": "neutral",
-        "displayName": "w09 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00576 196.82)",
-          "oklch(26.4% 0.00576 196.82)",
-          "oklch(37.9% 0.00576 196.82)",
-          "oklch(49.3% 0.00576 196.82)",
-          "oklch(60.7% 0.00576 196.82)",
-          "oklch(72.1% 0.00576 196.82)",
-          "oklch(83.6% 0.00576 196.82)",
-          "oklch(95.0% 0.00576 196.82)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w10-ground": {
-        "role": "neutral",
-        "displayName": "w10 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.01156 84.58)",
-          "oklch(26.4% 0.01156 84.58)",
-          "oklch(37.9% 0.01156 84.58)",
-          "oklch(49.3% 0.01156 84.58)",
-          "oklch(60.7% 0.01156 84.58)",
-          "oklch(72.1% 0.01156 84.58)",
-          "oklch(83.6% 0.01156 84.58)",
-          "oklch(95.0% 0.01156 84.58)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w10-ink": {
-        "role": "neutral",
-        "displayName": "w10 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00714 67.50)",
-          "oklch(26.4% 0.00714 67.50)",
-          "oklch(37.9% 0.00714 67.50)",
-          "oklch(49.3% 0.00714 67.50)",
-          "oklch(60.7% 0.00714 67.50)",
-          "oklch(72.1% 0.00714 67.50)",
-          "oklch(83.6% 0.00714 67.50)",
-          "oklch(95.0% 0.00714 67.50)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w11-ground": {
-        "role": "neutral",
-        "displayName": "w11 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00801 114.22)",
-          "oklch(26.4% 0.00801 114.22)",
-          "oklch(37.9% 0.00801 114.22)",
-          "oklch(49.3% 0.00801 114.22)",
-          "oklch(60.7% 0.00801 114.22)",
-          "oklch(72.1% 0.00801 114.22)",
-          "oklch(83.6% 0.00801 114.22)",
-          "oklch(95.0% 0.00801 114.22)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w11-ink": {
-        "role": "neutral",
-        "displayName": "w11 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00741 118.32)",
-          "oklch(26.4% 0.00741 118.32)",
-          "oklch(37.9% 0.00741 118.32)",
-          "oklch(49.3% 0.00741 118.32)",
-          "oklch(60.7% 0.00741 118.32)",
-          "oklch(72.1% 0.00741 118.32)",
-          "oklch(83.6% 0.00741 118.32)",
-          "oklch(95.0% 0.00741 118.32)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w12-ground": {
-        "role": "neutral",
-        "displayName": "w12 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00411 91.45)",
-          "oklch(26.4% 0.00411 91.45)",
-          "oklch(37.9% 0.00411 91.45)",
-          "oklch(49.3% 0.00411 91.45)",
-          "oklch(60.7% 0.00411 91.45)",
-          "oklch(72.1% 0.00411 91.45)",
-          "oklch(83.6% 0.00411 91.45)",
-          "oklch(95.0% 0.00411 91.45)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w12-ink": {
-        "role": "neutral",
-        "displayName": "w12 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00000 89.88)",
-          "oklch(26.4% 0.00000 89.88)",
-          "oklch(37.9% 0.00000 89.88)",
-          "oklch(49.3% 0.00000 89.88)",
-          "oklch(60.7% 0.00000 89.88)",
-          "oklch(72.1% 0.00000 89.88)",
-          "oklch(83.6% 0.00000 89.88)",
-          "oklch(95.0% 0.00000 89.88)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w13-ground": {
-        "role": "neutral",
-        "displayName": "w13 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.01383 120.30)",
-          "oklch(26.4% 0.01383 120.30)",
-          "oklch(37.9% 0.01383 120.30)",
-          "oklch(49.3% 0.01383 120.30)",
-          "oklch(60.7% 0.01383 120.30)",
-          "oklch(72.1% 0.01383 120.30)",
-          "oklch(83.6% 0.01383 120.30)",
-          "oklch(95.0% 0.01383 120.30)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w13-ink": {
-        "role": "neutral",
-        "displayName": "w13 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.01538 129.08)",
-          "oklch(26.4% 0.01538 129.08)",
-          "oklch(37.9% 0.01538 129.08)",
-          "oklch(49.3% 0.01538 129.08)",
-          "oklch(60.7% 0.01538 129.08)",
-          "oklch(72.1% 0.01538 129.08)",
-          "oklch(83.6% 0.01538 129.08)",
-          "oklch(95.0% 0.01538 129.08)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w14-ground": {
-        "role": "neutral",
-        "displayName": "w14 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00000 89.88)",
-          "oklch(26.4% 0.00000 89.88)",
-          "oklch(37.9% 0.00000 89.88)",
-          "oklch(49.3% 0.00000 89.88)",
-          "oklch(60.7% 0.00000 89.88)",
-          "oklch(72.1% 0.00000 89.88)",
-          "oklch(83.6% 0.00000 89.88)",
-          "oklch(95.0% 0.00000 89.88)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w14-ink": {
-        "role": "neutral",
-        "displayName": "w14 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00000 89.88)",
-          "oklch(26.4% 0.00000 89.88)",
-          "oklch(37.9% 0.00000 89.88)",
-          "oklch(49.3% 0.00000 89.88)",
-          "oklch(60.7% 0.00000 89.88)",
-          "oklch(72.1% 0.00000 89.88)",
-          "oklch(83.6% 0.00000 89.88)",
-          "oklch(95.0% 0.00000 89.88)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w15-ground": {
-        "role": "neutral",
-        "displayName": "w15 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00942 99.99)",
-          "oklch(26.4% 0.00942 99.99)",
-          "oklch(37.9% 0.00942 99.99)",
-          "oklch(49.3% 0.00942 99.99)",
-          "oklch(60.7% 0.00942 99.99)",
-          "oklch(72.1% 0.00942 99.99)",
-          "oklch(83.6% 0.00942 99.99)",
-          "oklch(95.0% 0.00942 99.99)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w15-ink": {
-        "role": "neutral",
-        "displayName": "w15 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00371 106.67)",
-          "oklch(26.4% 0.00371 106.67)",
-          "oklch(37.9% 0.00371 106.67)",
-          "oklch(49.3% 0.00371 106.67)",
-          "oklch(60.7% 0.00371 106.67)",
-          "oklch(72.1% 0.00371 106.67)",
-          "oklch(83.6% 0.00371 106.67)",
-          "oklch(95.0% 0.00371 106.67)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w16-ground": {
-        "role": "neutral",
-        "displayName": "w16 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00199 286.21)",
-          "oklch(26.4% 0.00199 286.21)",
-          "oklch(37.9% 0.00199 286.21)",
-          "oklch(49.3% 0.00199 286.21)",
-          "oklch(60.7% 0.00199 286.21)",
-          "oklch(72.1% 0.00199 286.21)",
-          "oklch(83.6% 0.00199 286.21)",
-          "oklch(95.0% 0.00199 286.21)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w16-ink": {
-        "role": "neutral",
-        "displayName": "w16 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00662 106.52)",
-          "oklch(26.4% 0.00662 106.52)",
-          "oklch(37.9% 0.00662 106.52)",
-          "oklch(49.3% 0.00662 106.52)",
-          "oklch(60.7% 0.00662 106.52)",
-          "oklch(72.1% 0.00662 106.52)",
-          "oklch(83.6% 0.00662 106.52)",
-          "oklch(95.0% 0.00662 106.52)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w17-ground": {
-        "role": "primary",
-        "displayName": "w17 ground",
+        "displayName": "b4 01 ground",
         "tonalRamp": [
           "oklch(15.0% 0.17698 113.32)",
           "oklch(26.4% 0.17698 113.32)",
@@ -509,11 +25,11 @@
           "oklch(83.6% 0.17698 113.32)",
           "oklch(95.0% 0.17698 113.32)"
         ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
       },
-      "w17-ink": {
-        "role": "neutral",
-        "displayName": "w17 ink",
+      "b4-01-ink": {
+        "role": "primary",
+        "displayName": "b4 01 ink",
         "tonalRamp": [
           "oklch(15.0% 0.01748 122.81)",
           "oklch(26.4% 0.01748 122.81)",
@@ -524,191 +40,26 @@
           "oklch(83.6% 0.01748 122.81)",
           "oklch(95.0% 0.01748 122.81)"
         ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
       },
-      "w18-ground": {
+      "b4-02-ground": {
         "role": "neutral",
-        "displayName": "w18 ground",
+        "displayName": "b4 02 ground",
         "tonalRamp": [
-          "oklch(15.0% 0.00414 91.45)",
-          "oklch(26.4% 0.00414 91.45)",
-          "oklch(37.9% 0.00414 91.45)",
-          "oklch(49.3% 0.00414 91.45)",
-          "oklch(60.7% 0.00414 91.45)",
-          "oklch(72.1% 0.00414 91.45)",
-          "oklch(83.6% 0.00414 91.45)",
-          "oklch(95.0% 0.00414 91.45)"
+          "oklch(15.0% 0.00668 106.53)",
+          "oklch(26.4% 0.00668 106.53)",
+          "oklch(37.9% 0.00668 106.53)",
+          "oklch(49.3% 0.00668 106.53)",
+          "oklch(60.7% 0.00668 106.53)",
+          "oklch(72.1% 0.00668 106.53)",
+          "oklch(83.6% 0.00668 106.53)",
+          "oklch(95.0% 0.00668 106.53)"
         ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
       },
-      "w18-ink": {
-        "role": "neutral",
-        "displayName": "w18 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00342 164.81)",
-          "oklch(26.4% 0.00342 164.81)",
-          "oklch(37.9% 0.00342 164.81)",
-          "oklch(49.3% 0.00342 164.81)",
-          "oklch(60.7% 0.00342 164.81)",
-          "oklch(72.1% 0.00342 164.81)",
-          "oklch(83.6% 0.00342 164.81)",
-          "oklch(95.0% 0.00342 164.81)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w19-ground": {
-        "role": "neutral",
-        "displayName": "w19 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00499 173.88)",
-          "oklch(26.4% 0.00499 173.88)",
-          "oklch(37.9% 0.00499 173.88)",
-          "oklch(49.3% 0.00499 173.88)",
-          "oklch(60.7% 0.00499 173.88)",
-          "oklch(72.1% 0.00499 173.88)",
-          "oklch(83.6% 0.00499 173.88)",
-          "oklch(95.0% 0.00499 173.88)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w19-ink": {
-        "role": "neutral",
-        "displayName": "w19 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.01108 123.46)",
-          "oklch(26.4% 0.01108 123.46)",
-          "oklch(37.9% 0.01108 123.46)",
-          "oklch(49.3% 0.01108 123.46)",
-          "oklch(60.7% 0.01108 123.46)",
-          "oklch(72.1% 0.01108 123.46)",
-          "oklch(83.6% 0.01108 123.46)",
-          "oklch(95.0% 0.01108 123.46)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w20-ground": {
-        "role": "neutral",
-        "displayName": "w20 ground",
-        "tonalRamp": [
-          "oklch(15.0% 0.00829 91.49)",
-          "oklch(26.4% 0.00829 91.49)",
-          "oklch(37.9% 0.00829 91.49)",
-          "oklch(49.3% 0.00829 91.49)",
-          "oklch(60.7% 0.00829 91.49)",
-          "oklch(72.1% 0.00829 91.49)",
-          "oklch(83.6% 0.00829 91.49)",
-          "oklch(95.0% 0.00829 91.49)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w20-ink": {
-        "role": "neutral",
-        "displayName": "w20 ink",
-        "tonalRamp": [
-          "oklch(15.0% 0.00389 84.58)",
-          "oklch(26.4% 0.00389 84.58)",
-          "oklch(37.9% 0.00389 84.58)",
-          "oklch(49.3% 0.00389 84.58)",
-          "oklch(60.7% 0.00389 84.58)",
-          "oklch(72.1% 0.00389 84.58)",
-          "oklch(83.6% 0.00389 84.58)",
-          "oklch(95.0% 0.00389 84.58)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w02-sidebar": {
-        "role": "neutral",
-        "displayName": "w02 sidebar",
-        "tonalRamp": [
-          "oklch(15.0% 0.00402 286.32)",
-          "oklch(26.4% 0.00402 286.32)",
-          "oklch(37.9% 0.00402 286.32)",
-          "oklch(49.3% 0.00402 286.32)",
-          "oklch(60.7% 0.00402 286.32)",
-          "oklch(72.1% 0.00402 286.32)",
-          "oklch(83.6% 0.00402 286.32)",
-          "oklch(95.0% 0.00402 286.32)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w02-selected": {
-        "role": "neutral",
-        "displayName": "w02 selected",
-        "tonalRamp": [
-          "oklch(15.0% 0.00682 286.26)",
-          "oklch(26.4% 0.00682 286.26)",
-          "oklch(37.9% 0.00682 286.26)",
-          "oklch(49.3% 0.00682 286.26)",
-          "oklch(60.7% 0.00682 286.26)",
-          "oklch(72.1% 0.00682 286.26)",
-          "oklch(83.6% 0.00682 286.26)",
-          "oklch(95.0% 0.00682 286.26)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w07-wayfinding": {
+      "b4-02-ink": {
         "role": "primary",
-        "displayName": "w07 wayfinding",
-        "tonalRamp": [
-          "oklch(15.0% 0.18228 30.02)",
-          "oklch(26.4% 0.18228 30.02)",
-          "oklch(37.9% 0.18228 30.02)",
-          "oklch(49.3% 0.18228 30.02)",
-          "oklch(60.7% 0.18228 30.02)",
-          "oklch(72.1% 0.18228 30.02)",
-          "oklch(83.6% 0.18228 30.02)",
-          "oklch(95.0% 0.18228 30.02)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w09-window": {
-        "role": "neutral",
-        "displayName": "w09 window",
-        "tonalRamp": [
-          "oklch(15.0% 0.00397 106.47)",
-          "oklch(26.4% 0.00397 106.47)",
-          "oklch(37.9% 0.00397 106.47)",
-          "oklch(49.3% 0.00397 106.47)",
-          "oklch(60.7% 0.00397 106.47)",
-          "oklch(72.1% 0.00397 106.47)",
-          "oklch(83.6% 0.00397 106.47)",
-          "oklch(95.0% 0.00397 106.47)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w09-dock": {
-        "role": "neutral",
-        "displayName": "w09 dock",
-        "tonalRamp": [
-          "oklch(15.0% 0.00283 128.49)",
-          "oklch(26.4% 0.00283 128.49)",
-          "oklch(37.9% 0.00283 128.49)",
-          "oklch(49.3% 0.00283 128.49)",
-          "oklch(60.7% 0.00283 128.49)",
-          "oklch(72.1% 0.00283 128.49)",
-          "oklch(83.6% 0.00283 128.49)",
-          "oklch(95.0% 0.00283 128.49)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w13-card": {
-        "role": "neutral",
-        "displayName": "w13 card",
-        "tonalRamp": [
-          "oklch(15.0% 0.00659 106.52)",
-          "oklch(26.4% 0.00659 106.52)",
-          "oklch(37.9% 0.00659 106.52)",
-          "oklch(49.3% 0.00659 106.52)",
-          "oklch(60.7% 0.00659 106.52)",
-          "oklch(72.1% 0.00659 106.52)",
-          "oklch(83.6% 0.00659 106.52)",
-          "oklch(95.0% 0.00659 106.52)"
-        ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
-      },
-      "w18-folder": {
-        "role": "neutral",
-        "displayName": "w18 folder",
+        "displayName": "b4 02 ink",
         "tonalRamp": [
           "oklch(15.0% 0.00000 89.88)",
           "oklch(26.4% 0.00000 89.88)",
@@ -719,11 +70,566 @@
           "oklch(83.6% 0.00000 89.88)",
           "oklch(95.0% 0.00000 89.88)"
         ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
       },
-      "media-stage": {
+      "b4-03-ground": {
         "role": "neutral",
-        "displayName": "media stage",
+        "displayName": "b4 03 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00674 97.35)",
+          "oklch(26.4% 0.00674 97.35)",
+          "oklch(37.9% 0.00674 97.35)",
+          "oklch(49.3% 0.00674 97.35)",
+          "oklch(60.7% 0.00674 97.35)",
+          "oklch(72.1% 0.00674 97.35)",
+          "oklch(83.6% 0.00674 97.35)",
+          "oklch(95.0% 0.00674 97.35)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-03-ink": {
+        "role": "primary",
+        "displayName": "b4 03 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00558 106.81)",
+          "oklch(26.4% 0.00558 106.81)",
+          "oklch(37.9% 0.00558 106.81)",
+          "oklch(49.3% 0.00558 106.81)",
+          "oklch(60.7% 0.00558 106.81)",
+          "oklch(72.1% 0.00558 106.81)",
+          "oklch(83.6% 0.00558 106.81)",
+          "oklch(95.0% 0.00558 106.81)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-04-ground": {
+        "role": "neutral",
+        "displayName": "b4 04 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00494 145.40)",
+          "oklch(26.4% 0.00494 145.40)",
+          "oklch(37.9% 0.00494 145.40)",
+          "oklch(49.3% 0.00494 145.40)",
+          "oklch(60.7% 0.00494 145.40)",
+          "oklch(72.1% 0.00494 145.40)",
+          "oklch(83.6% 0.00494 145.40)",
+          "oklch(95.0% 0.00494 145.40)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-04-ink": {
+        "role": "primary",
+        "displayName": "b4 04 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.17096 111.54)",
+          "oklch(26.4% 0.17096 111.54)",
+          "oklch(37.9% 0.17096 111.54)",
+          "oklch(49.3% 0.17096 111.54)",
+          "oklch(60.7% 0.17096 111.54)",
+          "oklch(72.1% 0.17096 111.54)",
+          "oklch(83.6% 0.17096 111.54)",
+          "oklch(95.0% 0.17096 111.54)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-05-ground": {
+        "role": "neutral",
+        "displayName": "b4 05 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00548 117.93)",
+          "oklch(26.4% 0.00548 117.93)",
+          "oklch(37.9% 0.00548 117.93)",
+          "oklch(49.3% 0.00548 117.93)",
+          "oklch(60.7% 0.00548 117.93)",
+          "oklch(72.1% 0.00548 117.93)",
+          "oklch(83.6% 0.00548 117.93)",
+          "oklch(95.0% 0.00548 117.93)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-05-ink": {
+        "role": "primary",
+        "displayName": "b4 05 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00667 135.00)",
+          "oklch(26.4% 0.00667 135.00)",
+          "oklch(37.9% 0.00667 135.00)",
+          "oklch(49.3% 0.00667 135.00)",
+          "oklch(60.7% 0.00667 135.00)",
+          "oklch(72.1% 0.00667 135.00)",
+          "oklch(83.6% 0.00667 135.00)",
+          "oklch(95.0% 0.00667 135.00)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-06-ground": {
+        "role": "neutral",
+        "displayName": "b4 06 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.01248 91.52)",
+          "oklch(26.4% 0.01248 91.52)",
+          "oklch(37.9% 0.01248 91.52)",
+          "oklch(49.3% 0.01248 91.52)",
+          "oklch(60.7% 0.01248 91.52)",
+          "oklch(72.1% 0.01248 91.52)",
+          "oklch(83.6% 0.01248 91.52)",
+          "oklch(95.0% 0.01248 91.52)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-06-ink": {
+        "role": "primary",
+        "displayName": "b4 06 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00914 107.03)",
+          "oklch(26.4% 0.00914 107.03)",
+          "oklch(37.9% 0.00914 107.03)",
+          "oklch(49.3% 0.00914 107.03)",
+          "oklch(60.7% 0.00914 107.03)",
+          "oklch(72.1% 0.00914 107.03)",
+          "oklch(83.6% 0.00914 107.03)",
+          "oklch(95.0% 0.00914 107.03)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-07-ground": {
+        "role": "neutral",
+        "displayName": "b4 07 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.17698 113.32)",
+          "oklch(26.4% 0.17698 113.32)",
+          "oklch(37.9% 0.17698 113.32)",
+          "oklch(49.3% 0.17698 113.32)",
+          "oklch(60.7% 0.17698 113.32)",
+          "oklch(72.1% 0.17698 113.32)",
+          "oklch(83.6% 0.17698 113.32)",
+          "oklch(95.0% 0.17698 113.32)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-07-ink": {
+        "role": "primary",
+        "displayName": "b4 07 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.01748 122.81)",
+          "oklch(26.4% 0.01748 122.81)",
+          "oklch(37.9% 0.01748 122.81)",
+          "oklch(49.3% 0.01748 122.81)",
+          "oklch(60.7% 0.01748 122.81)",
+          "oklch(72.1% 0.01748 122.81)",
+          "oklch(83.6% 0.01748 122.81)",
+          "oklch(95.0% 0.01748 122.81)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-08-ground": {
+        "role": "neutral",
+        "displayName": "b4 08 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00674 97.35)",
+          "oklch(26.4% 0.00674 97.35)",
+          "oklch(37.9% 0.00674 97.35)",
+          "oklch(49.3% 0.00674 97.35)",
+          "oklch(60.7% 0.00674 97.35)",
+          "oklch(72.1% 0.00674 97.35)",
+          "oklch(83.6% 0.00674 97.35)",
+          "oklch(95.0% 0.00674 97.35)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-08-ink": {
+        "role": "primary",
+        "displayName": "b4 08 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00818 128.88)",
+          "oklch(26.4% 0.00818 128.88)",
+          "oklch(37.9% 0.00818 128.88)",
+          "oklch(49.3% 0.00818 128.88)",
+          "oklch(60.7% 0.00818 128.88)",
+          "oklch(72.1% 0.00818 128.88)",
+          "oklch(83.6% 0.00818 128.88)",
+          "oklch(95.0% 0.00818 128.88)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-09-ground": {
+        "role": "neutral",
+        "displayName": "b4 09 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00787 128.80)",
+          "oklch(26.4% 0.00787 128.80)",
+          "oklch(37.9% 0.00787 128.80)",
+          "oklch(49.3% 0.00787 128.80)",
+          "oklch(60.7% 0.00787 128.80)",
+          "oklch(72.1% 0.00787 128.80)",
+          "oklch(83.6% 0.00787 128.80)",
+          "oklch(95.0% 0.00787 128.80)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-09-ink": {
+        "role": "primary",
+        "displayName": "b4 09 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00934 106.58)",
+          "oklch(26.4% 0.00934 106.58)",
+          "oklch(37.9% 0.00934 106.58)",
+          "oklch(49.3% 0.00934 106.58)",
+          "oklch(60.7% 0.00934 106.58)",
+          "oklch(72.1% 0.00934 106.58)",
+          "oklch(83.6% 0.00934 106.58)",
+          "oklch(95.0% 0.00934 106.58)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-10-ground": {
+        "role": "neutral",
+        "displayName": "b4 10 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.01350 115.85)",
+          "oklch(26.4% 0.01350 115.85)",
+          "oklch(37.9% 0.01350 115.85)",
+          "oklch(49.3% 0.01350 115.85)",
+          "oklch(60.7% 0.01350 115.85)",
+          "oklch(72.1% 0.01350 115.85)",
+          "oklch(83.6% 0.01350 115.85)",
+          "oklch(95.0% 0.01350 115.85)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-10-ink": {
+        "role": "primary",
+        "displayName": "b4 10 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.01989 129.43)",
+          "oklch(26.4% 0.01989 129.43)",
+          "oklch(37.9% 0.01989 129.43)",
+          "oklch(49.3% 0.01989 129.43)",
+          "oklch(60.7% 0.01989 129.43)",
+          "oklch(72.1% 0.01989 129.43)",
+          "oklch(83.6% 0.01989 129.43)",
+          "oklch(95.0% 0.01989 129.43)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-11-ground": {
+        "role": "neutral",
+        "displayName": "b4 11 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00674 97.35)",
+          "oklch(26.4% 0.00674 97.35)",
+          "oklch(37.9% 0.00674 97.35)",
+          "oklch(49.3% 0.00674 97.35)",
+          "oklch(60.7% 0.00674 97.35)",
+          "oklch(72.1% 0.00674 97.35)",
+          "oklch(83.6% 0.00674 97.35)",
+          "oklch(95.0% 0.00674 97.35)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-11-ink": {
+        "role": "primary",
+        "displayName": "b4 11 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.17626 29.29)",
+          "oklch(26.4% 0.17626 29.29)",
+          "oklch(37.9% 0.17626 29.29)",
+          "oklch(49.3% 0.17626 29.29)",
+          "oklch(60.7% 0.17626 29.29)",
+          "oklch(72.1% 0.17626 29.29)",
+          "oklch(83.6% 0.17626 29.29)",
+          "oklch(95.0% 0.17626 29.29)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-12-ground": {
+        "role": "neutral",
+        "displayName": "b4 12 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00250 145.48)",
+          "oklch(26.4% 0.00250 145.48)",
+          "oklch(37.9% 0.00250 145.48)",
+          "oklch(49.3% 0.00250 145.48)",
+          "oklch(60.7% 0.00250 145.48)",
+          "oklch(72.1% 0.00250 145.48)",
+          "oklch(83.6% 0.00250 145.48)",
+          "oklch(95.0% 0.00250 145.48)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-12-ink": {
+        "role": "primary",
+        "displayName": "b4 12 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.01195 106.63)",
+          "oklch(26.4% 0.01195 106.63)",
+          "oklch(37.9% 0.01195 106.63)",
+          "oklch(49.3% 0.01195 106.63)",
+          "oklch(60.7% 0.01195 106.63)",
+          "oklch(72.1% 0.01195 106.63)",
+          "oklch(83.6% 0.01195 106.63)",
+          "oklch(95.0% 0.01195 106.63)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-13-ground": {
+        "role": "neutral",
+        "displayName": "b4 13 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00811 114.23)",
+          "oklch(26.4% 0.00811 114.23)",
+          "oklch(37.9% 0.00811 114.23)",
+          "oklch(49.3% 0.00811 114.23)",
+          "oklch(60.7% 0.00811 114.23)",
+          "oklch(72.1% 0.00811 114.23)",
+          "oklch(83.6% 0.00811 114.23)",
+          "oklch(95.0% 0.00811 114.23)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-13-ink": {
+        "role": "primary",
+        "displayName": "b4 13 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.01295 120.24)",
+          "oklch(26.4% 0.01295 120.24)",
+          "oklch(37.9% 0.01295 120.24)",
+          "oklch(49.3% 0.01295 120.24)",
+          "oklch(60.7% 0.01295 120.24)",
+          "oklch(72.1% 0.01295 120.24)",
+          "oklch(83.6% 0.01295 120.24)",
+          "oklch(95.0% 0.01295 120.24)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-14-ground": {
+        "role": "neutral",
+        "displayName": "b4 14 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.17698 113.32)",
+          "oklch(26.4% 0.17698 113.32)",
+          "oklch(37.9% 0.17698 113.32)",
+          "oklch(49.3% 0.17698 113.32)",
+          "oklch(60.7% 0.17698 113.32)",
+          "oklch(72.1% 0.17698 113.32)",
+          "oklch(83.6% 0.17698 113.32)",
+          "oklch(95.0% 0.17698 113.32)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-14-ink": {
+        "role": "primary",
+        "displayName": "b4 14 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.01748 122.81)",
+          "oklch(26.4% 0.01748 122.81)",
+          "oklch(37.9% 0.01748 122.81)",
+          "oklch(49.3% 0.01748 122.81)",
+          "oklch(60.7% 0.01748 122.81)",
+          "oklch(72.1% 0.01748 122.81)",
+          "oklch(83.6% 0.01748 122.81)",
+          "oklch(95.0% 0.01748 122.81)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-15-ground": {
+        "role": "neutral",
+        "displayName": "b4 15 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00401 106.48)",
+          "oklch(26.4% 0.00401 106.48)",
+          "oklch(37.9% 0.00401 106.48)",
+          "oklch(49.3% 0.00401 106.48)",
+          "oklch(60.7% 0.00401 106.48)",
+          "oklch(72.1% 0.00401 106.48)",
+          "oklch(83.6% 0.00401 106.48)",
+          "oklch(95.0% 0.00401 106.48)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-15-ink": {
+        "role": "primary",
+        "displayName": "b4 15 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00610 122.00)",
+          "oklch(26.4% 0.00610 122.00)",
+          "oklch(37.9% 0.00610 122.00)",
+          "oklch(49.3% 0.00610 122.00)",
+          "oklch(60.7% 0.00610 122.00)",
+          "oklch(72.1% 0.00610 122.00)",
+          "oklch(83.6% 0.00610 122.00)",
+          "oklch(95.0% 0.00610 122.00)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-16-ground": {
+        "role": "neutral",
+        "displayName": "b4 16 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00937 99.99)",
+          "oklch(26.4% 0.00937 99.99)",
+          "oklch(37.9% 0.00937 99.99)",
+          "oklch(49.3% 0.00937 99.99)",
+          "oklch(60.7% 0.00937 99.99)",
+          "oklch(72.1% 0.00937 99.99)",
+          "oklch(83.6% 0.00937 99.99)",
+          "oklch(95.0% 0.00937 99.99)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-16-ink": {
+        "role": "primary",
+        "displayName": "b4 16 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00650 134.98)",
+          "oklch(26.4% 0.00650 134.98)",
+          "oklch(37.9% 0.00650 134.98)",
+          "oklch(49.3% 0.00650 134.98)",
+          "oklch(60.7% 0.00650 134.98)",
+          "oklch(72.1% 0.00650 134.98)",
+          "oklch(83.6% 0.00650 134.98)",
+          "oklch(95.0% 0.00650 134.98)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-17-ground": {
+        "role": "neutral",
+        "displayName": "b4 17 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.17698 113.32)",
+          "oklch(26.4% 0.17698 113.32)",
+          "oklch(37.9% 0.17698 113.32)",
+          "oklch(49.3% 0.17698 113.32)",
+          "oklch(60.7% 0.17698 113.32)",
+          "oklch(72.1% 0.17698 113.32)",
+          "oklch(83.6% 0.17698 113.32)",
+          "oklch(95.0% 0.17698 113.32)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-17-ink": {
+        "role": "primary",
+        "displayName": "b4 17 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.01748 122.81)",
+          "oklch(26.4% 0.01748 122.81)",
+          "oklch(37.9% 0.01748 122.81)",
+          "oklch(49.3% 0.01748 122.81)",
+          "oklch(60.7% 0.01748 122.81)",
+          "oklch(72.1% 0.01748 122.81)",
+          "oklch(83.6% 0.01748 122.81)",
+          "oklch(95.0% 0.01748 122.81)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-18-ground": {
+        "role": "neutral",
+        "displayName": "b4 18 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00803 106.56)",
+          "oklch(26.4% 0.00803 106.56)",
+          "oklch(37.9% 0.00803 106.56)",
+          "oklch(49.3% 0.00803 106.56)",
+          "oklch(60.7% 0.00803 106.56)",
+          "oklch(72.1% 0.00803 106.56)",
+          "oklch(83.6% 0.00803 106.56)",
+          "oklch(95.0% 0.00803 106.56)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-18-ink": {
+        "role": "primary",
+        "displayName": "b4 18 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00769 118.42)",
+          "oklch(26.4% 0.00769 118.42)",
+          "oklch(37.9% 0.00769 118.42)",
+          "oklch(49.3% 0.00769 118.42)",
+          "oklch(60.7% 0.00769 118.42)",
+          "oklch(72.1% 0.00769 118.42)",
+          "oklch(83.6% 0.00769 118.42)",
+          "oklch(95.0% 0.00769 118.42)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-19-ground": {
+        "role": "neutral",
+        "displayName": "b4 19 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00650 134.98)",
+          "oklch(26.4% 0.00650 134.98)",
+          "oklch(37.9% 0.00650 134.98)",
+          "oklch(49.3% 0.00650 134.98)",
+          "oklch(60.7% 0.00650 134.98)",
+          "oklch(72.1% 0.00650 134.98)",
+          "oklch(83.6% 0.00650 134.98)",
+          "oklch(95.0% 0.00650 134.98)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-19-ink": {
+        "role": "primary",
+        "displayName": "b4 19 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.17136 110.48)",
+          "oklch(26.4% 0.17136 110.48)",
+          "oklch(37.9% 0.17136 110.48)",
+          "oklch(49.3% 0.17136 110.48)",
+          "oklch(60.7% 0.17136 110.48)",
+          "oklch(72.1% 0.17136 110.48)",
+          "oklch(83.6% 0.17136 110.48)",
+          "oklch(95.0% 0.17136 110.48)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-20-ground": {
+        "role": "neutral",
+        "displayName": "b4 20 ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00811 98.89)",
+          "oklch(26.4% 0.00811 98.89)",
+          "oklch(37.9% 0.00811 98.89)",
+          "oklch(49.3% 0.00811 98.89)",
+          "oklch(60.7% 0.00811 98.89)",
+          "oklch(72.1% 0.00811 98.89)",
+          "oklch(83.6% 0.00811 98.89)",
+          "oklch(95.0% 0.00811 98.89)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "b4-20-ink": {
+        "role": "primary",
+        "displayName": "b4 20 ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.00952 116.34)",
+          "oklch(26.4% 0.00952 116.34)",
+          "oklch(37.9% 0.00952 116.34)",
+          "oklch(49.3% 0.00952 116.34)",
+          "oklch(60.7% 0.00952 116.34)",
+          "oklch(72.1% 0.00952 116.34)",
+          "oklch(83.6% 0.00952 116.34)",
+          "oklch(95.0% 0.00952 116.34)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "audio-ground": {
+        "role": "neutral",
+        "displayName": "audio ground",
+        "tonalRamp": [
+          "oklch(15.0% 0.00661 106.52)",
+          "oklch(26.4% 0.00661 106.52)",
+          "oklch(37.9% 0.00661 106.52)",
+          "oklch(49.3% 0.00661 106.52)",
+          "oklch(60.7% 0.00661 106.52)",
+          "oklch(72.1% 0.00661 106.52)",
+          "oklch(83.6% 0.00661 106.52)",
+          "oklch(95.0% 0.00661 106.52)"
+        ],
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
+      },
+      "audio-ink": {
+        "role": "neutral",
+        "displayName": "audio ink",
         "tonalRamp": [
           "oklch(15.0% 0.00000 89.88)",
           "oklch(26.4% 0.00000 89.88)",
@@ -734,531 +640,1405 @@
           "oklch(83.6% 0.00000 89.88)",
           "oklch(95.0% 0.00000 89.88)"
         ],
-        "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+        "rampPurpose": "Synthesized panel-only OKLCH scale; not additional implemented palette tokens."
       }
     },
     "typographyMeta": {
-      "w01-display": {
-        "displayName": "Type / Motion principal role",
-        "purpose": "Clipped echo heading; ledger names 18–29px, years 11px.",
-        "sourceFont": "src/batch-three/fonts/archivo/font.ttf"
+      "display": {
+        "displayName": "Anton display",
+        "purpose": "Uppercase condensed structure; route-specific sizes."
       },
-      "w02-display": {
-        "displayName": "Photo Library principal role",
-        "purpose": "Library title 32px; navigation 14px; compact captions 12px.",
-        "sourceFont": "src/batch-three/fonts/dmsans/font.ttf"
+      "project-title": {
+        "displayName": "Project heading",
+        "purpose": "Full project title before facts and media."
       },
-      "w03-display": {
-        "displayName": "Concrete principal role",
-        "purpose": "Uppercase identity; labels 27px, Arial metadata 11px.",
-        "sourceFont": "src/batch-three/fonts/anton/font.ttf"
+      "card-title": {
+        "displayName": "Project card title",
+        "purpose": "Reusable baseline, with route-local overrides."
       },
-      "w04-display": {
-        "displayName": "Open Field principal role",
-        "purpose": "Identity and 12px utility text avoid a display hero.",
-        "sourceFont": "src/batch-three/fonts/manrope/font.ttf"
-      },
-      "w05-display": {
-        "displayName": "Film Room principal role",
-        "purpose": "Project titles 23px, captions and rail 12px.",
-        "sourceFont": "src/batch-three/fonts/barlow/font.ttf"
-      },
-      "w06-display": {
-        "displayName": "Concertina principal role",
-        "purpose": "Disclosure titles 24–50px; metadata 12px.",
-        "sourceFont": "src/batch-three/fonts/spacegrotesk/font.ttf"
-      },
-      "w07-display": {
-        "displayName": "Public Display principal role",
-        "purpose": "Red heading 38–67px; wall titles 14px, client/year 10px.",
-        "sourceFont": "src/batch-three/fonts/archivo/font.ttf"
-      },
-      "w08-display": {
-        "displayName": "Orbit principal role",
-        "purpose": "Scene heading 45–84px; direct-index heading 18px.",
-        "sourceFont": "src/batch-three/fonts/sora/font.ttf"
-      },
-      "w09-display": {
-        "displayName": "Desktop principal role",
-        "purpose": "Identity 20px; window chrome 12px.",
-        "sourceFont": "src/batch-three/fonts/dmsans/font.ttf"
-      },
-      "w10-display": {
-        "displayName": "Waterfall principal role",
-        "purpose": "Vertical identity 65px; media captions 13px and 11px.",
-        "sourceFont": "src/batch-three/fonts/outfit/font.ttf"
-      },
-      "w11-display": {
-        "displayName": "Word Space principal role",
-        "purpose": "Six name sizes: 23, 26, 30, 42, 56 and 65px.",
-        "sourceFont": "src/batch-three/fonts/spacegrotesk/font.ttf"
-      },
-      "w12-display": {
-        "displayName": "Proof Sheet principal role",
-        "purpose": "Section title 18px; project title 12px and numbering 10px.",
-        "sourceFont": "src/batch-three/fonts/worksans/font.ttf"
-      },
-      "w13-display": {
-        "displayName": "Card Stack principal role",
-        "purpose": "Deck heading 42–78px; card title 14px and year 11px.",
-        "sourceFont": "src/batch-three/fonts/plusjakartasans/font.ttf"
-      },
-      "w14-display": {
-        "displayName": "Chronology principal role",
-        "purpose": "Year 65px; page title 18px.",
-        "sourceFont": "src/batch-three/fonts/figtree/font.ttf"
-      },
-      "w15-display": {
-        "displayName": "Radial principal role",
-        "purpose": "Title 52px; dial labels 11px.",
-        "sourceFont": "src/batch-three/fonts/sora/font.ttf"
-      },
-      "w16-display": {
-        "displayName": "Three Channels principal role",
-        "purpose": "Discipline headings 40px; rail labels 11px.",
-        "sourceFont": "src/batch-three/fonts/barlow/font.ttf"
-      },
-      "w17-display": {
-        "displayName": "Type Poster principal role",
-        "purpose": "Project bands 35–80px; Arial utility text, rather than Anton everywhere.",
-        "sourceFont": "src/batch-three/fonts/anton/font.ttf"
-      },
-      "w18-display": {
-        "displayName": "Collections principal role",
-        "purpose": "Collection title 48px; folder title 18px / 600, count 11px.",
-        "sourceFont": "src/batch-three/fonts/manrope/font.ttf"
-      },
-      "w19-display": {
-        "displayName": "Oblique principal role",
-        "purpose": "Anchored heading 70–112px; small factual captions.",
-        "sourceFont": "src/batch-three/fonts/outfit/font.ttf"
-      },
-      "w20-display": {
-        "displayName": "Intervals principal role",
-        "purpose": "Project titles 14px; metadata 10px; restrained identity.",
-        "sourceFont": "src/batch-three/fonts/worksans/font.ttf"
+      "body": {
+        "displayName": "Archivo body",
+        "purpose": "Supporting prose and interface."
       }
     },
-    "worlds": [
-      {
-        "id": "01",
-        "name": "Type / Motion",
-        "route": "/batch-three/01/",
-        "tokens": {
-          "ground": "colors.w01-ground",
-          "ink": "colors.w01-ink",
-          "body": "typography.w01-body",
-          "display": "typography.w01-display"
-        },
-        "composition": "Two-column ledger (1.1fr / 1fr), 5vw gap; sticky preview at 65px with 105px top offset. Text rows select preview on pointer or focus and link to detail.",
-        "mobile": "Preview precedes ledger in a vertical flow; preview becomes static; 20px page inset."
-      },
-      {
-        "id": "02",
-        "name": "Photo Library",
-        "route": "/batch-three/02/",
-        "tokens": {
-          "ground": "colors.w02-ground",
-          "ink": "colors.w02-ink",
-          "body": "typography.w02-body",
-          "display": "typography.w02-display"
-        },
-        "composition": "Persistent 215px library sidebar, four-column image grid, 25px / 12px gaps; category buttons and project/client search intersect.",
-        "mobile": "Sidebar becomes wrapping filter controls; two-column grid, 20px / 10px gaps. At 1000px: 175px sidebar, three columns; at 1550px: five columns."
-      },
-      {
-        "id": "03",
-        "name": "Concrete",
-        "route": "/batch-three/03/",
-        "tokens": {
-          "ground": "colors.w03-ground",
-          "ink": "colors.w03-ink",
-          "body": "typography.w03-body",
-          "display": "typography.w03-display"
-        },
-        "composition": "Six-column irregular wall with 3px black gutters; blocks span two, three or four columns. Oversized uppercase identity and project labels supply mass.",
-        "mobile": "Two columns; selected large blocks span both; 170px / 230px image heights. Identity moves above navigation."
-      },
-      {
-        "id": "04",
-        "name": "Open Field",
-        "route": "/batch-three/04/",
-        "tokens": {
-          "ground": "colors.w04-ground",
-          "ink": "colors.w04-ink",
-          "body": "typography.w04-body",
-          "display": "typography.w04-display"
-        },
-        "composition": "Scrollable 2400px by 1830px spatial canvas; 260px and 310px tiles with small alternating rotations. Drag, zoom and reset controls sit in a fixed translucent footer.",
-        "mobile": "Canvas starts at 0.7 zoom; footer wraps. Spatial navigation retains its independent complete project list."
-      },
-      {
-        "id": "05",
-        "name": "Film Room",
-        "route": "/batch-three/05/",
-        "tokens": {
-          "ground": "colors.w05-ground",
-          "ink": "colors.w05-ink",
-          "body": "typography.w05-body",
-          "display": "typography.w05-display"
-        },
-        "composition": "Horizontal snap strip with 47vw articles, 32px gaps and 48vh contained media; caption rail supplies position, title and year. Arrow buttons scroll the strip.",
-        "mobile": "80vw articles, 18px gaps and 43vh media; footer wraps, maintaining horizontal browsing."
-      },
-      {
-        "id": "06",
-        "name": "Concertina",
-        "route": "/batch-three/06/",
-        "tokens": {
-          "ground": "colors.w06-ground",
-          "ink": "colors.w06-ink",
-          "body": "typography.w06-body",
-          "display": "typography.w06-display"
-        },
-        "composition": "Single column of native disclosure rows; title/year/plus arrangement. Expanded body splits 1.6fr / 1fr with 5vw gap, containing image and factual metadata.",
-        "mobile": "25px titles; year removed from summary; expanded image and metadata stack with 20px gap."
-      },
-      {
-        "id": "07",
-        "name": "Public Display",
-        "route": "/batch-three/07/",
-        "tokens": {
-          "ground": "colors.w07-ground",
-          "ink": "colors.w07-ink",
-          "body": "typography.w07-body",
-          "display": "typography.w07-display"
-        },
-        "composition": "Sticky red identity spine occupying 24%; three-column ruled exhibition wall with 35px / 15px gaps.",
-        "mobile": "Identity becomes a static two-column block; two-column wall. At 1000px spine is 23%, wall already has two columns."
-      },
-      {
-        "id": "08",
-        "name": "Orbit",
-        "route": "/batch-three/08/",
-        "tokens": {
-          "ground": "colors.w08-ground",
-          "ink": "colors.w08-ink",
-          "body": "typography.w08-body",
-          "display": "typography.w08-display"
-        },
-        "composition": "640px scene, 1050px perspective, ten covers rotated in 36-degree steps around a 380px radius; controls rotate ring. Complete five-column project index follows.",
-        "mobile": "500px scene; perspective scaled to .67 and radius becomes 300px; complete two-column index remains."
-      },
-      {
-        "id": "09",
-        "name": "Desktop",
-        "route": "/batch-three/09/",
-        "tokens": {
-          "ground": "colors.w09-ground",
-          "ink": "colors.w09-ink",
-          "body": "typography.w09-body",
-          "display": "typography.w09-display"
-        },
-        "composition": "Centered image window at min(760px,74vw), caption and sequence controls; fixed horizontally scrolling thumbnail dock. Active selection updates title, stage and dock state.",
-        "mobile": "Window becomes 92vw with 1.35 preview ratio; dock thumbnails shrink from 48px to 42px."
-      },
-      {
-        "id": "10",
-        "name": "Waterfall",
-        "route": "/batch-three/10/",
-        "tokens": {
-          "ground": "colors.w10-ground",
-          "ink": "colors.w10-ink",
-          "body": "typography.w10-body",
-          "display": "typography.w10-display"
-        },
-        "composition": "Three image streams with starting offsets 60px, 200px, 110px and 80px between projects; fixed vertical identity at left. Alternate images use portrait ratio.",
-        "mobile": "Identity becomes horizontal; first two streams remain paired, third wraps into a full-width two-column stream."
-      },
-      {
-        "id": "11",
-        "name": "Word Space",
-        "route": "/batch-three/11/",
-        "tokens": {
-          "ground": "colors.w11-ground",
-          "ink": "colors.w11-ink",
-          "body": "typography.w11-body",
-          "display": "typography.w11-display"
-        },
-        "composition": "Wrapping field of irregularly scaled title links with 40px / 5vw gaps. Hover or focus reveals an angled image behind each name.",
-        "mobile": "Titles use 19px to 43px sizes; image reveals shrink to 160px by 110px; field clips overflowing reveals."
-      },
-      {
-        "id": "12",
-        "name": "Proof Sheet",
-        "route": "/batch-three/12/",
-        "tokens": {
-          "ground": "colors.w12-ground",
-          "ink": "colors.w12-ink",
-          "body": "typography.w12-body",
-          "display": "typography.w12-display"
-        },
-        "composition": "Six-column photographic overview, 32px / 16px gaps, contained 1.25-ratio images; compact numbered and dated captions. No oversized hero.",
-        "mobile": "Three columns with 25px / 9px gaps; at 1000px four columns and at 1550px seven columns."
-      },
-      {
-        "id": "13",
-        "name": "Card Stack",
-        "route": "/batch-three/13/",
-        "tokens": {
-          "ground": "colors.w13-ground",
-          "ink": "colors.w13-ink",
-          "body": "typography.w13-body",
-          "display": "typography.w13-display"
-        },
-        "composition": "30% title area beside a 400px-high layered deck, max width 650px. Three cards show depth; arrows or horizontal swipes advance the current project.",
-        "mobile": "Title and deck stack; deck height becomes 320px with 26px horizontal page inset."
-      },
-      {
-        "id": "14",
-        "name": "Chronology",
-        "route": "/batch-three/14/",
-        "tokens": {
-          "ground": "colors.w14-ground",
-          "ink": "colors.w14-ink",
-          "body": "typography.w14-body",
-          "display": "typography.w14-display"
-        },
-        "composition": "Horizontal year columns, newest first; each 285px column has a left rule, sticky year heading and vertical work sequence.",
-        "mobile": "245px columns maintain native horizontal exploration; year headings become 55px."
-      },
-      {
-        "id": "15",
-        "name": "Radial",
-        "route": "/batch-three/15/",
-        "tokens": {
-          "ground": "colors.w15-ground",
-          "ink": "colors.w15-ink",
-          "body": "typography.w15-body",
-          "display": "typography.w15-display"
-        },
-        "composition": "580px circular selector holds numbered 36px buttons around a centered 360px preview; adjacent title, sequence controls and direct list.",
-        "mobile": "350px wheel with 28px buttons, 230px preview; controls wrap below. At 1000px composition already stacks vertically."
-      },
-      {
-        "id": "16",
-        "name": "Three Channels",
-        "route": "/batch-three/16/",
-        "tokens": {
-          "ground": "colors.w16-ground",
-          "ink": "colors.w16-ink",
-          "body": "typography.w16-body",
-          "display": "typography.w16-display"
-        },
-        "composition": "Three equal discipline columns with independent vertical scrolling within a viewport-height frame; Motion, Graphic and 3D headers. Projects may appear in multiple matching channels.",
-        "mobile": "Channels stack; each becomes an independent horizontal snap strip with 70vw tiles."
-      },
-      {
-        "id": "17",
-        "name": "Type Poster",
-        "route": "/batch-three/17/",
-        "tokens": {
-          "ground": "colors.w17-ground",
-          "ink": "colors.w17-ink",
-          "body": "typography.w17-body",
-          "display": "typography.w17-display"
-        },
-        "composition": "Uppercase project title bands with 2px rules and alternating 0 / 8vw / 16vw indents; hover or focus reveals an angled image.",
-        "mobile": "35px titles with 0 / 5vw / 9vw indents; reveal images shrink to 180px by 120px."
-      },
-      {
-        "id": "18",
-        "name": "Collections",
-        "route": "/batch-three/18/",
-        "tokens": {
-          "ground": "colors.w18-ground",
-          "ink": "colors.w18-ink",
-          "body": "typography.w18-body",
-          "display": "typography.w18-display"
-        },
-        "composition": "Centered 960px collection area; three featured images above category disclosure folders. Each folder expands its own three-column project grid.",
-        "mobile": "Featured row remains three images; folder contents become two columns. This is disclosure browsing, unlike route 02 filtering."
-      },
-      {
-        "id": "19",
-        "name": "Oblique",
-        "route": "/batch-three/19/",
-        "tokens": {
-          "ground": "colors.w19-ground",
-          "ink": "colors.w19-ink",
-          "body": "typography.w19-body",
-          "display": "typography.w19-display"
-        },
-        "composition": "Anchored 30%-wide title beside a two-column image runway rotated -9 degrees; alternate projects offset 140px.",
-        "mobile": "Title becomes static; runway occupies 86%, rotates -6 degrees and offsets alternating projects 90px."
-      },
-      {
-        "id": "20",
-        "name": "Intervals",
-        "route": "/batch-three/20/",
-        "tokens": {
-          "ground": "colors.w20-ground",
-          "ink": "colors.w20-ink",
-          "body": "typography.w20-body",
-          "display": "typography.w20-display"
-        },
-        "composition": "Twelve-column asymmetric placement repeats six pair positions with 100px / 25px gaps and staggered 0 to 160px vertical offsets. Contained original-color artwork leads.",
-        "mobile": "Six-column grid alternates spans 1/5 and 3/7; vertical offsets reset, 45px / 15px gaps retain the asymmetric rhythm."
-      }
-    ],
-    "shadows": [
-      {
-        "name": "w04-field",
-        "value": "0 12px 25px #20211e26",
-        "purpose": "Spatial project tiles"
-      },
-      {
-        "name": "w08-orbit",
-        "value": "0 12px 28px #0008",
-        "purpose": "Perspective cards"
-      },
-      {
-        "name": "w09-window",
-        "value": "0 24px 70px #29363633",
-        "purpose": "Contained desktop image window"
-      },
-      {
-        "name": "w09-dock",
-        "value": "0 10px 30px #28333326",
-        "purpose": "Thumbnail selector dock"
-      },
-      {
-        "name": "w13-stack",
-        "value": "0 20px 40px #30372430",
-        "purpose": "Layered project cards"
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
-        "name": "w01-echo",
-        "value": "5s ease-in-out infinite",
-        "purpose": "Clipped repeated heading"
+        "name": "title-shift",
+        "value": "transform 220ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Live Poster hover."
       },
       {
-        "name": "w01-preview",
-        "value": "350ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Preview reveal"
+        "name": "tracking",
+        "value": "letter-spacing 250ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Offset hover."
       },
       {
-        "name": "w08-orbit",
-        "value": "900ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Controlled ring rotation"
-      },
-      {
-        "name": "w09-dock",
-        "value": "180ms ease",
-        "purpose": "Thumbnail hover lift"
-      },
-      {
-        "name": "w13-arrive",
-        "value": "400ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Deck arrival"
+        "name": "running-type",
+        "value": "14s ease-in-out infinite alternate",
+        "purpose": "Bounded title movement; suppressed for reduced motion."
       }
     ],
     "breakpoints": [
       {
-        "name": "mobile-max",
-        "value": "650px"
+        "name": "phone-max",
+        "value": "600px"
       },
       {
-        "name": "compact-max",
-        "value": "1000px"
+        "name": "medium-max",
+        "value": "850px"
       },
       {
         "name": "wide-min",
-        "value": "1550px"
+        "value": "1500px"
       }
     ],
-    "reducedMotion": "prefers-reduced-motion removes transitions/animation and smooth scrolling.",
-    "sourceEvidence": {
-      "src/batch-three/directions.json": "60c67d8cdc9f65482ab79d7a249066d9309283d8177928a6af6415619dab9f40",
-      "src/batch-three/style.css": "cf9fcdf3697cae3ed000653399d4123764ab5f59e83c1393c0291cf82efb3711",
-      "src/batch-three/app.js": "d1129f92038e0c04436d590df39927cbe3216cd123d92eee216795c0af76e72c"
-    }
+    "historicalRecords": [
+      {
+        "scope": "src/batch-three",
+        "status": "Preserved prior snapshot; media mat and playback descriptions superseded by current brief. Never apply these primitives to batch four.",
+        "record": {
+          "schemaVersion": 2,
+          "generatedAt": "2026-10-14T03:35:29.675806+00:00",
+          "title": "Design System: 3seater — Batch Three",
+          "extensions": {
+            "scope": {
+              "artifact": "src/batch-three",
+              "routes": "/batch-three/01/ through /batch-three/20/",
+              "authority": "DESIGN.md frontmatter; route-specific tokens only",
+              "excluded": [
+                "production portfolio",
+                "earlier batches",
+                "comparison hub as design authority"
+              ],
+              "reviewStatus": "Source snapshot; independent review underway, not final approval",
+              "notCanonized": "Small archival metadata sizes are observed, not prescribed readability targets. Selected-filter inherited hover color interaction remains for review; no defect is legitimized as a design rule."
+            },
+            "colorMeta": {
+              "w01-ground": {
+                "role": "neutral",
+                "displayName": "w01 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00202 106.60)",
+                  "oklch(26.4% 0.00202 106.60)",
+                  "oklch(37.9% 0.00202 106.60)",
+                  "oklch(49.3% 0.00202 106.60)",
+                  "oklch(60.7% 0.00202 106.60)",
+                  "oklch(72.1% 0.00202 106.60)",
+                  "oklch(83.6% 0.00202 106.60)",
+                  "oklch(95.0% 0.00202 106.60)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w01-ink": {
+                "role": "neutral",
+                "displayName": "w01 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00797 106.55)",
+                  "oklch(26.4% 0.00797 106.55)",
+                  "oklch(37.9% 0.00797 106.55)",
+                  "oklch(49.3% 0.00797 106.55)",
+                  "oklch(60.7% 0.00797 106.55)",
+                  "oklch(72.1% 0.00797 106.55)",
+                  "oklch(83.6% 0.00797 106.55)",
+                  "oklch(95.0% 0.00797 106.55)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w02-ground": {
+                "role": "neutral",
+                "displayName": "w02 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00265 286.35)",
+                  "oklch(26.4% 0.00265 286.35)",
+                  "oklch(37.9% 0.00265 286.35)",
+                  "oklch(49.3% 0.00265 286.35)",
+                  "oklch(60.7% 0.00265 286.35)",
+                  "oklch(72.1% 0.00265 286.35)",
+                  "oklch(83.6% 0.00265 286.35)",
+                  "oklch(95.0% 0.00265 286.35)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w02-ink": {
+                "role": "neutral",
+                "displayName": "w02 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00768 274.64)",
+                  "oklch(26.4% 0.00768 274.64)",
+                  "oklch(37.9% 0.00768 274.64)",
+                  "oklch(49.3% 0.00768 274.64)",
+                  "oklch(60.7% 0.00768 274.64)",
+                  "oklch(72.1% 0.00768 274.64)",
+                  "oklch(83.6% 0.00768 274.64)",
+                  "oklch(95.0% 0.00768 274.64)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w03-ground": {
+                "role": "neutral",
+                "displayName": "w03 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00668 106.53)",
+                  "oklch(26.4% 0.00668 106.53)",
+                  "oklch(37.9% 0.00668 106.53)",
+                  "oklch(49.3% 0.00668 106.53)",
+                  "oklch(60.7% 0.00668 106.53)",
+                  "oklch(72.1% 0.00668 106.53)",
+                  "oklch(83.6% 0.00668 106.53)",
+                  "oklch(95.0% 0.00668 106.53)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w03-ink": {
+                "role": "neutral",
+                "displayName": "w03 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00000 89.88)",
+                  "oklch(26.4% 0.00000 89.88)",
+                  "oklch(37.9% 0.00000 89.88)",
+                  "oklch(49.3% 0.00000 89.88)",
+                  "oklch(60.7% 0.00000 89.88)",
+                  "oklch(72.1% 0.00000 89.88)",
+                  "oklch(83.6% 0.00000 89.88)",
+                  "oklch(95.0% 0.00000 89.88)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w04-ground": {
+                "role": "neutral",
+                "displayName": "w04 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00942 106.59)",
+                  "oklch(26.4% 0.00942 106.59)",
+                  "oklch(37.9% 0.00942 106.59)",
+                  "oklch(49.3% 0.00942 106.59)",
+                  "oklch(60.7% 0.00942 106.59)",
+                  "oklch(72.1% 0.00942 106.59)",
+                  "oklch(83.6% 0.00942 106.59)",
+                  "oklch(95.0% 0.00942 106.59)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w04-ink": {
+                "role": "neutral",
+                "displayName": "w04 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00576 121.87)",
+                  "oklch(26.4% 0.00576 121.87)",
+                  "oklch(37.9% 0.00576 121.87)",
+                  "oklch(49.3% 0.00576 121.87)",
+                  "oklch(60.7% 0.00576 121.87)",
+                  "oklch(72.1% 0.00576 121.87)",
+                  "oklch(83.6% 0.00576 121.87)",
+                  "oklch(95.0% 0.00576 121.87)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w05-ground": {
+                "role": "neutral",
+                "displayName": "w05 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00404 285.99)",
+                  "oklch(26.4% 0.00404 285.99)",
+                  "oklch(37.9% 0.00404 285.99)",
+                  "oklch(49.3% 0.00404 285.99)",
+                  "oklch(60.7% 0.00404 285.99)",
+                  "oklch(72.1% 0.00404 285.99)",
+                  "oklch(83.6% 0.00404 285.99)",
+                  "oklch(95.0% 0.00404 285.99)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w05-ink": {
+                "role": "neutral",
+                "displayName": "w05 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00539 95.10)",
+                  "oklch(26.4% 0.00539 95.10)",
+                  "oklch(37.9% 0.00539 95.10)",
+                  "oklch(49.3% 0.00539 95.10)",
+                  "oklch(60.7% 0.00539 95.10)",
+                  "oklch(72.1% 0.00539 95.10)",
+                  "oklch(83.6% 0.00539 95.10)",
+                  "oklch(95.0% 0.00539 95.10)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w06-ground": {
+                "role": "neutral",
+                "displayName": "w06 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00934 99.99)",
+                  "oklch(26.4% 0.00934 99.99)",
+                  "oklch(37.9% 0.00934 99.99)",
+                  "oklch(49.3% 0.00934 99.99)",
+                  "oklch(60.7% 0.00934 99.99)",
+                  "oklch(72.1% 0.00934 99.99)",
+                  "oklch(83.6% 0.00934 99.99)",
+                  "oklch(95.0% 0.00934 99.99)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w06-ink": {
+                "role": "neutral",
+                "displayName": "w06 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.02003 147.90)",
+                  "oklch(26.4% 0.02003 147.90)",
+                  "oklch(37.9% 0.02003 147.90)",
+                  "oklch(49.3% 0.02003 147.90)",
+                  "oklch(60.7% 0.02003 147.90)",
+                  "oklch(72.1% 0.02003 147.90)",
+                  "oklch(83.6% 0.02003 147.90)",
+                  "oklch(95.0% 0.02003 147.90)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w07-ground": {
+                "role": "neutral",
+                "displayName": "w07 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00811 98.89)",
+                  "oklch(26.4% 0.00811 98.89)",
+                  "oklch(37.9% 0.00811 98.89)",
+                  "oklch(49.3% 0.00811 98.89)",
+                  "oklch(60.7% 0.00811 98.89)",
+                  "oklch(72.1% 0.00811 98.89)",
+                  "oklch(83.6% 0.00811 98.89)",
+                  "oklch(95.0% 0.00811 98.89)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w07-ink": {
+                "role": "neutral",
+                "displayName": "w07 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00194 106.57)",
+                  "oklch(26.4% 0.00194 106.57)",
+                  "oklch(37.9% 0.00194 106.57)",
+                  "oklch(49.3% 0.00194 106.57)",
+                  "oklch(60.7% 0.00194 106.57)",
+                  "oklch(72.1% 0.00194 106.57)",
+                  "oklch(83.6% 0.00194 106.57)",
+                  "oklch(95.0% 0.00194 106.57)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w08-ground": {
+                "role": "neutral",
+                "displayName": "w08 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00832 274.43)",
+                  "oklch(26.4% 0.00832 274.43)",
+                  "oklch(37.9% 0.00832 274.43)",
+                  "oklch(49.3% 0.00832 274.43)",
+                  "oklch(60.7% 0.00832 274.43)",
+                  "oklch(72.1% 0.00832 274.43)",
+                  "oklch(83.6% 0.00832 274.43)",
+                  "oklch(95.0% 0.00832 274.43)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w08-ink": {
+                "role": "neutral",
+                "displayName": "w08 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00133 106.42)",
+                  "oklch(26.4% 0.00133 106.42)",
+                  "oklch(37.9% 0.00133 106.42)",
+                  "oklch(49.3% 0.00133 106.42)",
+                  "oklch(60.7% 0.00133 106.42)",
+                  "oklch(72.1% 0.00133 106.42)",
+                  "oklch(83.6% 0.00133 106.42)",
+                  "oklch(95.0% 0.00133 106.42)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w09-ground": {
+                "role": "neutral",
+                "displayName": "w09 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00436 197.08)",
+                  "oklch(26.4% 0.00436 197.08)",
+                  "oklch(37.9% 0.00436 197.08)",
+                  "oklch(49.3% 0.00436 197.08)",
+                  "oklch(60.7% 0.00436 197.08)",
+                  "oklch(72.1% 0.00436 197.08)",
+                  "oklch(83.6% 0.00436 197.08)",
+                  "oklch(95.0% 0.00436 197.08)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w09-ink": {
+                "role": "neutral",
+                "displayName": "w09 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00576 196.82)",
+                  "oklch(26.4% 0.00576 196.82)",
+                  "oklch(37.9% 0.00576 196.82)",
+                  "oklch(49.3% 0.00576 196.82)",
+                  "oklch(60.7% 0.00576 196.82)",
+                  "oklch(72.1% 0.00576 196.82)",
+                  "oklch(83.6% 0.00576 196.82)",
+                  "oklch(95.0% 0.00576 196.82)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w10-ground": {
+                "role": "neutral",
+                "displayName": "w10 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.01156 84.58)",
+                  "oklch(26.4% 0.01156 84.58)",
+                  "oklch(37.9% 0.01156 84.58)",
+                  "oklch(49.3% 0.01156 84.58)",
+                  "oklch(60.7% 0.01156 84.58)",
+                  "oklch(72.1% 0.01156 84.58)",
+                  "oklch(83.6% 0.01156 84.58)",
+                  "oklch(95.0% 0.01156 84.58)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w10-ink": {
+                "role": "neutral",
+                "displayName": "w10 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00714 67.50)",
+                  "oklch(26.4% 0.00714 67.50)",
+                  "oklch(37.9% 0.00714 67.50)",
+                  "oklch(49.3% 0.00714 67.50)",
+                  "oklch(60.7% 0.00714 67.50)",
+                  "oklch(72.1% 0.00714 67.50)",
+                  "oklch(83.6% 0.00714 67.50)",
+                  "oklch(95.0% 0.00714 67.50)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w11-ground": {
+                "role": "neutral",
+                "displayName": "w11 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00801 114.22)",
+                  "oklch(26.4% 0.00801 114.22)",
+                  "oklch(37.9% 0.00801 114.22)",
+                  "oklch(49.3% 0.00801 114.22)",
+                  "oklch(60.7% 0.00801 114.22)",
+                  "oklch(72.1% 0.00801 114.22)",
+                  "oklch(83.6% 0.00801 114.22)",
+                  "oklch(95.0% 0.00801 114.22)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w11-ink": {
+                "role": "neutral",
+                "displayName": "w11 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00741 118.32)",
+                  "oklch(26.4% 0.00741 118.32)",
+                  "oklch(37.9% 0.00741 118.32)",
+                  "oklch(49.3% 0.00741 118.32)",
+                  "oklch(60.7% 0.00741 118.32)",
+                  "oklch(72.1% 0.00741 118.32)",
+                  "oklch(83.6% 0.00741 118.32)",
+                  "oklch(95.0% 0.00741 118.32)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w12-ground": {
+                "role": "neutral",
+                "displayName": "w12 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00411 91.45)",
+                  "oklch(26.4% 0.00411 91.45)",
+                  "oklch(37.9% 0.00411 91.45)",
+                  "oklch(49.3% 0.00411 91.45)",
+                  "oklch(60.7% 0.00411 91.45)",
+                  "oklch(72.1% 0.00411 91.45)",
+                  "oklch(83.6% 0.00411 91.45)",
+                  "oklch(95.0% 0.00411 91.45)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w12-ink": {
+                "role": "neutral",
+                "displayName": "w12 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00000 89.88)",
+                  "oklch(26.4% 0.00000 89.88)",
+                  "oklch(37.9% 0.00000 89.88)",
+                  "oklch(49.3% 0.00000 89.88)",
+                  "oklch(60.7% 0.00000 89.88)",
+                  "oklch(72.1% 0.00000 89.88)",
+                  "oklch(83.6% 0.00000 89.88)",
+                  "oklch(95.0% 0.00000 89.88)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w13-ground": {
+                "role": "neutral",
+                "displayName": "w13 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.01383 120.30)",
+                  "oklch(26.4% 0.01383 120.30)",
+                  "oklch(37.9% 0.01383 120.30)",
+                  "oklch(49.3% 0.01383 120.30)",
+                  "oklch(60.7% 0.01383 120.30)",
+                  "oklch(72.1% 0.01383 120.30)",
+                  "oklch(83.6% 0.01383 120.30)",
+                  "oklch(95.0% 0.01383 120.30)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w13-ink": {
+                "role": "neutral",
+                "displayName": "w13 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.01538 129.08)",
+                  "oklch(26.4% 0.01538 129.08)",
+                  "oklch(37.9% 0.01538 129.08)",
+                  "oklch(49.3% 0.01538 129.08)",
+                  "oklch(60.7% 0.01538 129.08)",
+                  "oklch(72.1% 0.01538 129.08)",
+                  "oklch(83.6% 0.01538 129.08)",
+                  "oklch(95.0% 0.01538 129.08)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w14-ground": {
+                "role": "neutral",
+                "displayName": "w14 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00000 89.88)",
+                  "oklch(26.4% 0.00000 89.88)",
+                  "oklch(37.9% 0.00000 89.88)",
+                  "oklch(49.3% 0.00000 89.88)",
+                  "oklch(60.7% 0.00000 89.88)",
+                  "oklch(72.1% 0.00000 89.88)",
+                  "oklch(83.6% 0.00000 89.88)",
+                  "oklch(95.0% 0.00000 89.88)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w14-ink": {
+                "role": "neutral",
+                "displayName": "w14 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00000 89.88)",
+                  "oklch(26.4% 0.00000 89.88)",
+                  "oklch(37.9% 0.00000 89.88)",
+                  "oklch(49.3% 0.00000 89.88)",
+                  "oklch(60.7% 0.00000 89.88)",
+                  "oklch(72.1% 0.00000 89.88)",
+                  "oklch(83.6% 0.00000 89.88)",
+                  "oklch(95.0% 0.00000 89.88)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w15-ground": {
+                "role": "neutral",
+                "displayName": "w15 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00942 99.99)",
+                  "oklch(26.4% 0.00942 99.99)",
+                  "oklch(37.9% 0.00942 99.99)",
+                  "oklch(49.3% 0.00942 99.99)",
+                  "oklch(60.7% 0.00942 99.99)",
+                  "oklch(72.1% 0.00942 99.99)",
+                  "oklch(83.6% 0.00942 99.99)",
+                  "oklch(95.0% 0.00942 99.99)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w15-ink": {
+                "role": "neutral",
+                "displayName": "w15 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00371 106.67)",
+                  "oklch(26.4% 0.00371 106.67)",
+                  "oklch(37.9% 0.00371 106.67)",
+                  "oklch(49.3% 0.00371 106.67)",
+                  "oklch(60.7% 0.00371 106.67)",
+                  "oklch(72.1% 0.00371 106.67)",
+                  "oklch(83.6% 0.00371 106.67)",
+                  "oklch(95.0% 0.00371 106.67)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w16-ground": {
+                "role": "neutral",
+                "displayName": "w16 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00199 286.21)",
+                  "oklch(26.4% 0.00199 286.21)",
+                  "oklch(37.9% 0.00199 286.21)",
+                  "oklch(49.3% 0.00199 286.21)",
+                  "oklch(60.7% 0.00199 286.21)",
+                  "oklch(72.1% 0.00199 286.21)",
+                  "oklch(83.6% 0.00199 286.21)",
+                  "oklch(95.0% 0.00199 286.21)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w16-ink": {
+                "role": "neutral",
+                "displayName": "w16 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00662 106.52)",
+                  "oklch(26.4% 0.00662 106.52)",
+                  "oklch(37.9% 0.00662 106.52)",
+                  "oklch(49.3% 0.00662 106.52)",
+                  "oklch(60.7% 0.00662 106.52)",
+                  "oklch(72.1% 0.00662 106.52)",
+                  "oklch(83.6% 0.00662 106.52)",
+                  "oklch(95.0% 0.00662 106.52)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w17-ground": {
+                "role": "primary",
+                "displayName": "w17 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.17698 113.32)",
+                  "oklch(26.4% 0.17698 113.32)",
+                  "oklch(37.9% 0.17698 113.32)",
+                  "oklch(49.3% 0.17698 113.32)",
+                  "oklch(60.7% 0.17698 113.32)",
+                  "oklch(72.1% 0.17698 113.32)",
+                  "oklch(83.6% 0.17698 113.32)",
+                  "oklch(95.0% 0.17698 113.32)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w17-ink": {
+                "role": "neutral",
+                "displayName": "w17 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.01748 122.81)",
+                  "oklch(26.4% 0.01748 122.81)",
+                  "oklch(37.9% 0.01748 122.81)",
+                  "oklch(49.3% 0.01748 122.81)",
+                  "oklch(60.7% 0.01748 122.81)",
+                  "oklch(72.1% 0.01748 122.81)",
+                  "oklch(83.6% 0.01748 122.81)",
+                  "oklch(95.0% 0.01748 122.81)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w18-ground": {
+                "role": "neutral",
+                "displayName": "w18 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00414 91.45)",
+                  "oklch(26.4% 0.00414 91.45)",
+                  "oklch(37.9% 0.00414 91.45)",
+                  "oklch(49.3% 0.00414 91.45)",
+                  "oklch(60.7% 0.00414 91.45)",
+                  "oklch(72.1% 0.00414 91.45)",
+                  "oklch(83.6% 0.00414 91.45)",
+                  "oklch(95.0% 0.00414 91.45)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w18-ink": {
+                "role": "neutral",
+                "displayName": "w18 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00342 164.81)",
+                  "oklch(26.4% 0.00342 164.81)",
+                  "oklch(37.9% 0.00342 164.81)",
+                  "oklch(49.3% 0.00342 164.81)",
+                  "oklch(60.7% 0.00342 164.81)",
+                  "oklch(72.1% 0.00342 164.81)",
+                  "oklch(83.6% 0.00342 164.81)",
+                  "oklch(95.0% 0.00342 164.81)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w19-ground": {
+                "role": "neutral",
+                "displayName": "w19 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00499 173.88)",
+                  "oklch(26.4% 0.00499 173.88)",
+                  "oklch(37.9% 0.00499 173.88)",
+                  "oklch(49.3% 0.00499 173.88)",
+                  "oklch(60.7% 0.00499 173.88)",
+                  "oklch(72.1% 0.00499 173.88)",
+                  "oklch(83.6% 0.00499 173.88)",
+                  "oklch(95.0% 0.00499 173.88)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w19-ink": {
+                "role": "neutral",
+                "displayName": "w19 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.01108 123.46)",
+                  "oklch(26.4% 0.01108 123.46)",
+                  "oklch(37.9% 0.01108 123.46)",
+                  "oklch(49.3% 0.01108 123.46)",
+                  "oklch(60.7% 0.01108 123.46)",
+                  "oklch(72.1% 0.01108 123.46)",
+                  "oklch(83.6% 0.01108 123.46)",
+                  "oklch(95.0% 0.01108 123.46)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w20-ground": {
+                "role": "neutral",
+                "displayName": "w20 ground",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00829 91.49)",
+                  "oklch(26.4% 0.00829 91.49)",
+                  "oklch(37.9% 0.00829 91.49)",
+                  "oklch(49.3% 0.00829 91.49)",
+                  "oklch(60.7% 0.00829 91.49)",
+                  "oklch(72.1% 0.00829 91.49)",
+                  "oklch(83.6% 0.00829 91.49)",
+                  "oklch(95.0% 0.00829 91.49)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w20-ink": {
+                "role": "neutral",
+                "displayName": "w20 ink",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00389 84.58)",
+                  "oklch(26.4% 0.00389 84.58)",
+                  "oklch(37.9% 0.00389 84.58)",
+                  "oklch(49.3% 0.00389 84.58)",
+                  "oklch(60.7% 0.00389 84.58)",
+                  "oklch(72.1% 0.00389 84.58)",
+                  "oklch(83.6% 0.00389 84.58)",
+                  "oklch(95.0% 0.00389 84.58)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w02-sidebar": {
+                "role": "neutral",
+                "displayName": "w02 sidebar",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00402 286.32)",
+                  "oklch(26.4% 0.00402 286.32)",
+                  "oklch(37.9% 0.00402 286.32)",
+                  "oklch(49.3% 0.00402 286.32)",
+                  "oklch(60.7% 0.00402 286.32)",
+                  "oklch(72.1% 0.00402 286.32)",
+                  "oklch(83.6% 0.00402 286.32)",
+                  "oklch(95.0% 0.00402 286.32)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w02-selected": {
+                "role": "neutral",
+                "displayName": "w02 selected",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00682 286.26)",
+                  "oklch(26.4% 0.00682 286.26)",
+                  "oklch(37.9% 0.00682 286.26)",
+                  "oklch(49.3% 0.00682 286.26)",
+                  "oklch(60.7% 0.00682 286.26)",
+                  "oklch(72.1% 0.00682 286.26)",
+                  "oklch(83.6% 0.00682 286.26)",
+                  "oklch(95.0% 0.00682 286.26)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w07-wayfinding": {
+                "role": "primary",
+                "displayName": "w07 wayfinding",
+                "tonalRamp": [
+                  "oklch(15.0% 0.18228 30.02)",
+                  "oklch(26.4% 0.18228 30.02)",
+                  "oklch(37.9% 0.18228 30.02)",
+                  "oklch(49.3% 0.18228 30.02)",
+                  "oklch(60.7% 0.18228 30.02)",
+                  "oklch(72.1% 0.18228 30.02)",
+                  "oklch(83.6% 0.18228 30.02)",
+                  "oklch(95.0% 0.18228 30.02)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w09-window": {
+                "role": "neutral",
+                "displayName": "w09 window",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00397 106.47)",
+                  "oklch(26.4% 0.00397 106.47)",
+                  "oklch(37.9% 0.00397 106.47)",
+                  "oklch(49.3% 0.00397 106.47)",
+                  "oklch(60.7% 0.00397 106.47)",
+                  "oklch(72.1% 0.00397 106.47)",
+                  "oklch(83.6% 0.00397 106.47)",
+                  "oklch(95.0% 0.00397 106.47)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w09-dock": {
+                "role": "neutral",
+                "displayName": "w09 dock",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00283 128.49)",
+                  "oklch(26.4% 0.00283 128.49)",
+                  "oklch(37.9% 0.00283 128.49)",
+                  "oklch(49.3% 0.00283 128.49)",
+                  "oklch(60.7% 0.00283 128.49)",
+                  "oklch(72.1% 0.00283 128.49)",
+                  "oklch(83.6% 0.00283 128.49)",
+                  "oklch(95.0% 0.00283 128.49)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w13-card": {
+                "role": "neutral",
+                "displayName": "w13 card",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00659 106.52)",
+                  "oklch(26.4% 0.00659 106.52)",
+                  "oklch(37.9% 0.00659 106.52)",
+                  "oklch(49.3% 0.00659 106.52)",
+                  "oklch(60.7% 0.00659 106.52)",
+                  "oklch(72.1% 0.00659 106.52)",
+                  "oklch(83.6% 0.00659 106.52)",
+                  "oklch(95.0% 0.00659 106.52)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "w18-folder": {
+                "role": "neutral",
+                "displayName": "w18 folder",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00000 89.88)",
+                  "oklch(26.4% 0.00000 89.88)",
+                  "oklch(37.9% 0.00000 89.88)",
+                  "oklch(49.3% 0.00000 89.88)",
+                  "oklch(60.7% 0.00000 89.88)",
+                  "oklch(72.1% 0.00000 89.88)",
+                  "oklch(83.6% 0.00000 89.88)",
+                  "oklch(95.0% 0.00000 89.88)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              },
+              "media-stage": {
+                "role": "neutral",
+                "displayName": "media stage",
+                "tonalRamp": [
+                  "oklch(15.0% 0.00000 89.88)",
+                  "oklch(26.4% 0.00000 89.88)",
+                  "oklch(37.9% 0.00000 89.88)",
+                  "oklch(49.3% 0.00000 89.88)",
+                  "oklch(60.7% 0.00000 89.88)",
+                  "oklch(72.1% 0.00000 89.88)",
+                  "oklch(83.6% 0.00000 89.88)",
+                  "oklch(95.0% 0.00000 89.88)"
+                ],
+                "rampPurpose": "Synthesized panel-only OKLCH visualization; not an implemented palette scale. Alpha omitted from ramp."
+              }
+            },
+            "typographyMeta": {
+              "w01-display": {
+                "displayName": "Type / Motion principal role",
+                "purpose": "Clipped echo heading; ledger names 18–29px, years 11px.",
+                "sourceFont": "src/batch-three/fonts/archivo/font.ttf"
+              },
+              "w02-display": {
+                "displayName": "Photo Library principal role",
+                "purpose": "Library title 32px; navigation 14px; compact captions 12px.",
+                "sourceFont": "src/batch-three/fonts/dmsans/font.ttf"
+              },
+              "w03-display": {
+                "displayName": "Concrete principal role",
+                "purpose": "Uppercase identity; labels 27px, Arial metadata 11px.",
+                "sourceFont": "src/batch-three/fonts/anton/font.ttf"
+              },
+              "w04-display": {
+                "displayName": "Open Field principal role",
+                "purpose": "Identity and 12px utility text avoid a display hero.",
+                "sourceFont": "src/batch-three/fonts/manrope/font.ttf"
+              },
+              "w05-display": {
+                "displayName": "Film Room principal role",
+                "purpose": "Project titles 23px, captions and rail 12px.",
+                "sourceFont": "src/batch-three/fonts/barlow/font.ttf"
+              },
+              "w06-display": {
+                "displayName": "Concertina principal role",
+                "purpose": "Disclosure titles 24–50px; metadata 12px.",
+                "sourceFont": "src/batch-three/fonts/spacegrotesk/font.ttf"
+              },
+              "w07-display": {
+                "displayName": "Public Display principal role",
+                "purpose": "Red heading 38–67px; wall titles 14px, client/year 10px.",
+                "sourceFont": "src/batch-three/fonts/archivo/font.ttf"
+              },
+              "w08-display": {
+                "displayName": "Orbit principal role",
+                "purpose": "Scene heading 45–84px; direct-index heading 18px.",
+                "sourceFont": "src/batch-three/fonts/sora/font.ttf"
+              },
+              "w09-display": {
+                "displayName": "Desktop principal role",
+                "purpose": "Identity 20px; window chrome 12px.",
+                "sourceFont": "src/batch-three/fonts/dmsans/font.ttf"
+              },
+              "w10-display": {
+                "displayName": "Waterfall principal role",
+                "purpose": "Vertical identity 65px; media captions 13px and 11px.",
+                "sourceFont": "src/batch-three/fonts/outfit/font.ttf"
+              },
+              "w11-display": {
+                "displayName": "Word Space principal role",
+                "purpose": "Six name sizes: 23, 26, 30, 42, 56 and 65px.",
+                "sourceFont": "src/batch-three/fonts/spacegrotesk/font.ttf"
+              },
+              "w12-display": {
+                "displayName": "Proof Sheet principal role",
+                "purpose": "Section title 18px; project title 12px and numbering 10px.",
+                "sourceFont": "src/batch-three/fonts/worksans/font.ttf"
+              },
+              "w13-display": {
+                "displayName": "Card Stack principal role",
+                "purpose": "Deck heading 42–78px; card title 14px and year 11px.",
+                "sourceFont": "src/batch-three/fonts/plusjakartasans/font.ttf"
+              },
+              "w14-display": {
+                "displayName": "Chronology principal role",
+                "purpose": "Year 65px; page title 18px.",
+                "sourceFont": "src/batch-three/fonts/figtree/font.ttf"
+              },
+              "w15-display": {
+                "displayName": "Radial principal role",
+                "purpose": "Title 52px; dial labels 11px.",
+                "sourceFont": "src/batch-three/fonts/sora/font.ttf"
+              },
+              "w16-display": {
+                "displayName": "Three Channels principal role",
+                "purpose": "Discipline headings 40px; rail labels 11px.",
+                "sourceFont": "src/batch-three/fonts/barlow/font.ttf"
+              },
+              "w17-display": {
+                "displayName": "Type Poster principal role",
+                "purpose": "Project bands 35–80px; Arial utility text, rather than Anton everywhere.",
+                "sourceFont": "src/batch-three/fonts/anton/font.ttf"
+              },
+              "w18-display": {
+                "displayName": "Collections principal role",
+                "purpose": "Collection title 48px; folder title 18px / 600, count 11px.",
+                "sourceFont": "src/batch-three/fonts/manrope/font.ttf"
+              },
+              "w19-display": {
+                "displayName": "Oblique principal role",
+                "purpose": "Anchored heading 70–112px; small factual captions.",
+                "sourceFont": "src/batch-three/fonts/outfit/font.ttf"
+              },
+              "w20-display": {
+                "displayName": "Intervals principal role",
+                "purpose": "Project titles 14px; metadata 10px; restrained identity.",
+                "sourceFont": "src/batch-three/fonts/worksans/font.ttf"
+              }
+            },
+            "worlds": [
+              {
+                "id": "01",
+                "name": "Type / Motion",
+                "route": "/batch-three/01/",
+                "tokens": {
+                  "ground": "colors.w01-ground",
+                  "ink": "colors.w01-ink",
+                  "body": "typography.w01-body",
+                  "display": "typography.w01-display"
+                },
+                "composition": "Two-column ledger (1.1fr / 1fr), 5vw gap; sticky preview at 65px with 105px top offset. Text rows select preview on pointer or focus and link to detail.",
+                "mobile": "Preview precedes ledger in a vertical flow; preview becomes static; 20px page inset."
+              },
+              {
+                "id": "02",
+                "name": "Photo Library",
+                "route": "/batch-three/02/",
+                "tokens": {
+                  "ground": "colors.w02-ground",
+                  "ink": "colors.w02-ink",
+                  "body": "typography.w02-body",
+                  "display": "typography.w02-display"
+                },
+                "composition": "Persistent 215px library sidebar, four-column image grid, 25px / 12px gaps; category buttons and project/client search intersect.",
+                "mobile": "Sidebar becomes wrapping filter controls; two-column grid, 20px / 10px gaps. At 1000px: 175px sidebar, three columns; at 1550px: five columns."
+              },
+              {
+                "id": "03",
+                "name": "Concrete",
+                "route": "/batch-three/03/",
+                "tokens": {
+                  "ground": "colors.w03-ground",
+                  "ink": "colors.w03-ink",
+                  "body": "typography.w03-body",
+                  "display": "typography.w03-display"
+                },
+                "composition": "Six-column irregular wall with 3px black gutters; blocks span two, three or four columns. Oversized uppercase identity and project labels supply mass.",
+                "mobile": "Two columns; selected large blocks span both; 170px / 230px image heights. Identity moves above navigation."
+              },
+              {
+                "id": "04",
+                "name": "Open Field",
+                "route": "/batch-three/04/",
+                "tokens": {
+                  "ground": "colors.w04-ground",
+                  "ink": "colors.w04-ink",
+                  "body": "typography.w04-body",
+                  "display": "typography.w04-display"
+                },
+                "composition": "Scrollable 2400px by 1830px spatial canvas; 260px and 310px tiles with small alternating rotations. Drag, zoom and reset controls sit in a fixed translucent footer.",
+                "mobile": "Canvas starts at 0.7 zoom; footer wraps. Spatial navigation retains its independent complete project list."
+              },
+              {
+                "id": "05",
+                "name": "Film Room",
+                "route": "/batch-three/05/",
+                "tokens": {
+                  "ground": "colors.w05-ground",
+                  "ink": "colors.w05-ink",
+                  "body": "typography.w05-body",
+                  "display": "typography.w05-display"
+                },
+                "composition": "Horizontal snap strip with 47vw articles, 32px gaps and 48vh contained media; caption rail supplies position, title and year. Arrow buttons scroll the strip.",
+                "mobile": "80vw articles, 18px gaps and 43vh media; footer wraps, maintaining horizontal browsing."
+              },
+              {
+                "id": "06",
+                "name": "Concertina",
+                "route": "/batch-three/06/",
+                "tokens": {
+                  "ground": "colors.w06-ground",
+                  "ink": "colors.w06-ink",
+                  "body": "typography.w06-body",
+                  "display": "typography.w06-display"
+                },
+                "composition": "Single column of native disclosure rows; title/year/plus arrangement. Expanded body splits 1.6fr / 1fr with 5vw gap, containing image and factual metadata.",
+                "mobile": "25px titles; year removed from summary; expanded image and metadata stack with 20px gap."
+              },
+              {
+                "id": "07",
+                "name": "Public Display",
+                "route": "/batch-three/07/",
+                "tokens": {
+                  "ground": "colors.w07-ground",
+                  "ink": "colors.w07-ink",
+                  "body": "typography.w07-body",
+                  "display": "typography.w07-display"
+                },
+                "composition": "Sticky red identity spine occupying 24%; three-column ruled exhibition wall with 35px / 15px gaps.",
+                "mobile": "Identity becomes a static two-column block; two-column wall. At 1000px spine is 23%, wall already has two columns."
+              },
+              {
+                "id": "08",
+                "name": "Orbit",
+                "route": "/batch-three/08/",
+                "tokens": {
+                  "ground": "colors.w08-ground",
+                  "ink": "colors.w08-ink",
+                  "body": "typography.w08-body",
+                  "display": "typography.w08-display"
+                },
+                "composition": "640px scene, 1050px perspective, ten covers rotated in 36-degree steps around a 380px radius; controls rotate ring. Complete five-column project index follows.",
+                "mobile": "500px scene; perspective scaled to .67 and radius becomes 300px; complete two-column index remains."
+              },
+              {
+                "id": "09",
+                "name": "Desktop",
+                "route": "/batch-three/09/",
+                "tokens": {
+                  "ground": "colors.w09-ground",
+                  "ink": "colors.w09-ink",
+                  "body": "typography.w09-body",
+                  "display": "typography.w09-display"
+                },
+                "composition": "Centered image window at min(760px,74vw), caption and sequence controls; fixed horizontally scrolling thumbnail dock. Active selection updates title, stage and dock state.",
+                "mobile": "Window becomes 92vw with 1.35 preview ratio; dock thumbnails shrink from 48px to 42px."
+              },
+              {
+                "id": "10",
+                "name": "Waterfall",
+                "route": "/batch-three/10/",
+                "tokens": {
+                  "ground": "colors.w10-ground",
+                  "ink": "colors.w10-ink",
+                  "body": "typography.w10-body",
+                  "display": "typography.w10-display"
+                },
+                "composition": "Three image streams with starting offsets 60px, 200px, 110px and 80px between projects; fixed vertical identity at left. Alternate images use portrait ratio.",
+                "mobile": "Identity becomes horizontal; first two streams remain paired, third wraps into a full-width two-column stream."
+              },
+              {
+                "id": "11",
+                "name": "Word Space",
+                "route": "/batch-three/11/",
+                "tokens": {
+                  "ground": "colors.w11-ground",
+                  "ink": "colors.w11-ink",
+                  "body": "typography.w11-body",
+                  "display": "typography.w11-display"
+                },
+                "composition": "Wrapping field of irregularly scaled title links with 40px / 5vw gaps. Hover or focus reveals an angled image behind each name.",
+                "mobile": "Titles use 19px to 43px sizes; image reveals shrink to 160px by 110px; field clips overflowing reveals."
+              },
+              {
+                "id": "12",
+                "name": "Proof Sheet",
+                "route": "/batch-three/12/",
+                "tokens": {
+                  "ground": "colors.w12-ground",
+                  "ink": "colors.w12-ink",
+                  "body": "typography.w12-body",
+                  "display": "typography.w12-display"
+                },
+                "composition": "Six-column photographic overview, 32px / 16px gaps, contained 1.25-ratio images; compact numbered and dated captions. No oversized hero.",
+                "mobile": "Three columns with 25px / 9px gaps; at 1000px four columns and at 1550px seven columns."
+              },
+              {
+                "id": "13",
+                "name": "Card Stack",
+                "route": "/batch-three/13/",
+                "tokens": {
+                  "ground": "colors.w13-ground",
+                  "ink": "colors.w13-ink",
+                  "body": "typography.w13-body",
+                  "display": "typography.w13-display"
+                },
+                "composition": "30% title area beside a 400px-high layered deck, max width 650px. Three cards show depth; arrows or horizontal swipes advance the current project.",
+                "mobile": "Title and deck stack; deck height becomes 320px with 26px horizontal page inset."
+              },
+              {
+                "id": "14",
+                "name": "Chronology",
+                "route": "/batch-three/14/",
+                "tokens": {
+                  "ground": "colors.w14-ground",
+                  "ink": "colors.w14-ink",
+                  "body": "typography.w14-body",
+                  "display": "typography.w14-display"
+                },
+                "composition": "Horizontal year columns, newest first; each 285px column has a left rule, sticky year heading and vertical work sequence.",
+                "mobile": "245px columns maintain native horizontal exploration; year headings become 55px."
+              },
+              {
+                "id": "15",
+                "name": "Radial",
+                "route": "/batch-three/15/",
+                "tokens": {
+                  "ground": "colors.w15-ground",
+                  "ink": "colors.w15-ink",
+                  "body": "typography.w15-body",
+                  "display": "typography.w15-display"
+                },
+                "composition": "580px circular selector holds numbered 36px buttons around a centered 360px preview; adjacent title, sequence controls and direct list.",
+                "mobile": "350px wheel with 28px buttons, 230px preview; controls wrap below. At 1000px composition already stacks vertically."
+              },
+              {
+                "id": "16",
+                "name": "Three Channels",
+                "route": "/batch-three/16/",
+                "tokens": {
+                  "ground": "colors.w16-ground",
+                  "ink": "colors.w16-ink",
+                  "body": "typography.w16-body",
+                  "display": "typography.w16-display"
+                },
+                "composition": "Three equal discipline columns with independent vertical scrolling within a viewport-height frame; Motion, Graphic and 3D headers. Projects may appear in multiple matching channels.",
+                "mobile": "Channels stack; each becomes an independent horizontal snap strip with 70vw tiles."
+              },
+              {
+                "id": "17",
+                "name": "Type Poster",
+                "route": "/batch-three/17/",
+                "tokens": {
+                  "ground": "colors.w17-ground",
+                  "ink": "colors.w17-ink",
+                  "body": "typography.w17-body",
+                  "display": "typography.w17-display"
+                },
+                "composition": "Uppercase project title bands with 2px rules and alternating 0 / 8vw / 16vw indents; hover or focus reveals an angled image.",
+                "mobile": "35px titles with 0 / 5vw / 9vw indents; reveal images shrink to 180px by 120px."
+              },
+              {
+                "id": "18",
+                "name": "Collections",
+                "route": "/batch-three/18/",
+                "tokens": {
+                  "ground": "colors.w18-ground",
+                  "ink": "colors.w18-ink",
+                  "body": "typography.w18-body",
+                  "display": "typography.w18-display"
+                },
+                "composition": "Centered 960px collection area; three featured images above category disclosure folders. Each folder expands its own three-column project grid.",
+                "mobile": "Featured row remains three images; folder contents become two columns. This is disclosure browsing, unlike route 02 filtering."
+              },
+              {
+                "id": "19",
+                "name": "Oblique",
+                "route": "/batch-three/19/",
+                "tokens": {
+                  "ground": "colors.w19-ground",
+                  "ink": "colors.w19-ink",
+                  "body": "typography.w19-body",
+                  "display": "typography.w19-display"
+                },
+                "composition": "Anchored 30%-wide title beside a two-column image runway rotated -9 degrees; alternate projects offset 140px.",
+                "mobile": "Title becomes static; runway occupies 86%, rotates -6 degrees and offsets alternating projects 90px."
+              },
+              {
+                "id": "20",
+                "name": "Intervals",
+                "route": "/batch-three/20/",
+                "tokens": {
+                  "ground": "colors.w20-ground",
+                  "ink": "colors.w20-ink",
+                  "body": "typography.w20-body",
+                  "display": "typography.w20-display"
+                },
+                "composition": "Twelve-column asymmetric placement repeats six pair positions with 100px / 25px gaps and staggered 0 to 160px vertical offsets. Contained original-color artwork leads.",
+                "mobile": "Six-column grid alternates spans 1/5 and 3/7; vertical offsets reset, 45px / 15px gaps retain the asymmetric rhythm."
+              }
+            ],
+            "shadows": [
+              {
+                "name": "w04-field",
+                "value": "0 12px 25px #20211e26",
+                "purpose": "Spatial project tiles"
+              },
+              {
+                "name": "w08-orbit",
+                "value": "0 12px 28px #0008",
+                "purpose": "Perspective cards"
+              },
+              {
+                "name": "w09-window",
+                "value": "0 24px 70px #29363633",
+                "purpose": "Contained desktop image window"
+              },
+              {
+                "name": "w09-dock",
+                "value": "0 10px 30px #28333326",
+                "purpose": "Thumbnail selector dock"
+              },
+              {
+                "name": "w13-stack",
+                "value": "0 20px 40px #30372430",
+                "purpose": "Layered project cards"
+              }
+            ],
+            "motion": [
+              {
+                "name": "w01-echo",
+                "value": "5s ease-in-out infinite",
+                "purpose": "Clipped repeated heading"
+              },
+              {
+                "name": "w01-preview",
+                "value": "350ms cubic-bezier(.16,1,.3,1)",
+                "purpose": "Preview reveal"
+              },
+              {
+                "name": "w08-orbit",
+                "value": "900ms cubic-bezier(.16,1,.3,1)",
+                "purpose": "Controlled ring rotation"
+              },
+              {
+                "name": "w09-dock",
+                "value": "180ms ease",
+                "purpose": "Thumbnail hover lift"
+              },
+              {
+                "name": "w13-arrive",
+                "value": "400ms cubic-bezier(.16,1,.3,1)",
+                "purpose": "Deck arrival"
+              }
+            ],
+            "breakpoints": [
+              {
+                "name": "mobile-max",
+                "value": "650px"
+              },
+              {
+                "name": "compact-max",
+                "value": "1000px"
+              },
+              {
+                "name": "wide-min",
+                "value": "1550px"
+              }
+            ],
+            "reducedMotion": "prefers-reduced-motion removes transitions/animation and smooth scrolling.",
+            "sourceEvidence": {
+              "src/batch-three/directions.json": "60c67d8cdc9f65482ab79d7a249066d9309283d8177928a6af6415619dab9f40",
+              "src/batch-three/style.css": "cf9fcdf3697cae3ed000653399d4123764ab5f59e83c1393c0291cf82efb3711",
+              "src/batch-three/app.js": "d1129f92038e0c04436d590df39927cbe3216cd123d92eee216795c0af76e72c"
+            }
+          },
+          "components": [
+            {
+              "name": "02 / Selected library filter",
+              "kind": "button",
+              "refersTo": "w02-filter-selected",
+              "description": "Route 02 selected filter default and keyboard focus. Global hover color interaction is not canonized pending review; this specimen deliberately omits that inherited state.",
+              "html": "<button class=\"ds-filter\" aria-pressed=\"true\">All projects</button>",
+              "css": ".ds-filter{font:650 14px/1.4 \"DM Sans\",sans-serif;text-align:left;border:0;border-radius:9px;padding:12px;background:#d4d4d9;color:#202125;cursor:pointer}.ds-filter:focus-visible{outline:3px solid currentColor;outline-offset:5px}"
+            },
+            {
+              "name": "02 / Library search",
+              "kind": "input",
+              "description": "Batch-three source-derived visual specimen; route-local scope.",
+              "html": "<label class=\"ds-search\">Search <input type=\"search\" placeholder=\"Project or client\" aria-label=\"Search projects\"></label>",
+              "css": ".ds-search{display:block;font:12px/1.4 \"DM Sans\",sans-serif;color:#202125;background:#f5f5f7;padding:12px}.ds-search input{display:block;width:180px;font:inherit;color:inherit;background:transparent;border:0;border-bottom:1px solid;padding:8px}.ds-search input:focus-visible{outline:3px solid currentColor;outline-offset:5px}"
+            },
+            {
+              "name": "01 / Active ledger link",
+              "kind": "custom",
+              "description": "Batch-three source-derived visual specimen; route-local scope.",
+              "html": "<a class=\"ds-ledger\" href=\"#project\"><span>Project title</span><small>Year</small></a>",
+              "css": ".ds-ledger{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:17px 18px;border-top:1px solid #ffffff35;background:#eeeee8;color:#111110;font:400 clamp(18px,2vw,29px)/1.4 Archivo,sans-serif;letter-spacing:-.025em;text-decoration:none}.ds-ledger small{font-size:11px}.ds-ledger:hover{text-decoration:underline;text-underline-offset:5px}.ds-ledger:focus-visible{outline:3px solid currentColor;outline-offset:5px}"
+            },
+            {
+              "name": "09 / Desktop window",
+              "kind": "card",
+              "refersTo": "w09-window",
+              "description": "Batch-three source-derived visual specimen; route-local scope.",
+              "html": "<section class=\"ds-window\"><div class=\"ds-bar\">Project title</div><div class=\"ds-stage\">Project media</div><div class=\"ds-caption\">Project title / Year</div></section>",
+              "css": ".ds-window{width:min(760px,74vw);margin:auto;background:#f5f5f2;color:#242828;border-radius:13px;overflow:hidden;box-shadow:0 24px 70px #29363633;font:14px/1.4 \"DM Sans\",sans-serif}.ds-bar{height:44px;display:flex;align-items:center;padding:0 17px;font-size:12px}.ds-stage{aspect-ratio:1.75;background:#080808;color:#f5f5f2;display:grid;place-items:center}.ds-caption{padding:18px 22px}"
+            },
+            {
+              "name": "18 / Collection disclosure",
+              "kind": "custom",
+              "refersTo": "w18-folder",
+              "description": "Batch-three source-derived visual specimen; route-local scope.",
+              "html": "<details class=\"ds-folder\"><summary>Motion <small>Projects</small></summary><div class=\"ds-folder-content\">Project grid</div></details>",
+              "css": ".ds-folder{background:#fff;color:#252726;border-radius:13px;overflow:hidden;font:14px/1.4 Manrope,sans-serif}.ds-folder summary{padding:22px;cursor:pointer;list-style:none;font-size:18px;font-weight:600}.ds-folder small{display:block;font-size:11px;font-weight:400;color:#606660;margin-top:3px}.ds-folder summary:focus-visible{outline:3px solid currentColor;outline-offset:5px}.ds-folder-content{padding:8px 22px 25px}"
+            },
+            {
+              "name": "20 / Quiet text navigation",
+              "kind": "nav",
+              "description": "Batch-three source-derived visual specimen; route-local scope.",
+              "html": "<nav class=\"ds-nav\"><a href=\"#about\">Info</a><a href=\"#contact\">Contact</a></nav>",
+              "css": ".ds-nav{display:flex;gap:24px;align-items:center;font:14px/1.4 \"Work Sans\",sans-serif;background:#eeece6;color:#2a2927;padding:10px}.ds-nav a{color:inherit;text-decoration:none;text-underline-offset:5px}.ds-nav a:hover{text-decoration:underline}.ds-nav a:focus-visible{outline:3px solid currentColor;outline-offset:5px}"
+            }
+          ],
+          "narrative": {
+            "northStar": "Twenty independent ways into the same work",
+            "overview": "This is a source-derived record of the twenty code-led portfolio alternatives in `src/batch-three`, routes `/batch-three/01/` through `/batch-three/20/`. It applies only to this experiment. It does not redefine the production portfolio, earlier batches, or a universal 3seater identity. The comparison hub is a navigation surface, not a twenty-first design authority.\n\nThe approved brief spans minimal studios, abstract and brutalist structures, Framer-like component craft, and iOS material. Each route makes an independent choice about composition and interaction. The Design Futurist informed asset/component mechanisms only; its homepage is not a visual reference. These are original coded interpretations, not imported native Framer components.",
+            "keyCharacteristics": [
+              "Independent browsing models with route-local palettes, type and form.",
+              "Original-color project media and factual metadata remain the content authority.",
+              "Spatial, sequential, textual and quiet photographic approaches coexist."
+            ],
+            "rules": [
+              {
+                "name": "The Route Boundary Rule",
+                "body": "Apply each `wNN` token only within that numbered world. Similar neutral grounds do not imply shared composition or interchangeable components.",
+                "section": "colors"
+              },
+              {
+                "name": "The Artwork Color Rule",
+                "body": "Preserve original project colors. UI palette choices do not authorize recoloring or desaturating media. The existing shared tile hover brightens images slightly; this is a transient state, not asset recoloring.",
+                "section": "colors"
+              },
+              {
+                "name": "The Independent Composition Rule",
+                "body": "Preserve the browsing mechanism and spatial structure of each world. Sharing project data, SVG icons and factual detail rendering does not establish a shared homepage shell.",
+                "section": "layout"
+              }
+            ],
+            "dos": [
+              "Do keep each world’s composition, type, colors and browsing behavior together.",
+              "Do preserve all real projects, original-color media and factual information.",
+              "Do retain direct project access, keyboard focus and reduced-motion behavior.",
+              "Do treat this as a batch-three implementation snapshot while review continues."
+            ],
+            "donts": [
+              "Don't impose one visual header, card shell or global palette on all twenty routes.",
+              "Don't use paper effects, crumpling or unfolding concepts.",
+              "Don't derive homepage art direction from The Design Futurist; only its assets/components were reference signals.",
+              "Don't promote batch-three decisions into production or historical batches without an explicit brief."
+            ]
+          }
+        }
+      }
+    ]
   },
   "components": [
     {
-      "name": "02 / Selected library filter",
+      "name": "Route button",
       "kind": "button",
-      "refersTo": "w02-filter-selected",
-      "description": "Route 02 selected filter default and keyboard focus. Global hover color interaction is not canonized pending review; this specimen deliberately omits that inherited state.",
-      "html": "<button class=\"ds-filter\" aria-pressed=\"true\">All projects</button>",
-      "css": ".ds-filter{font:650 14px/1.4 \"DM Sans\",sans-serif;text-align:left;border:0;border-radius:9px;padding:12px;background:#d4d4d9;color:#202125;cursor:pointer}.ds-filter:focus-visible{outline:3px solid currentColor;outline-offset:5px}"
+      "html": "<button class=\"ds-button\">Next projects</button>",
+      "css": ".ds-button{font:14px Archivo,Arial,sans-serif;color:var(--fg,#191c13);background:transparent;border:1px solid currentColor;padding:8px 12px;cursor:pointer}.ds-button:hover{background:var(--fg,#191c13);color:var(--bg,#dce745)}.ds-button:focus-visible{outline:3px solid currentColor;outline-offset:5px}",
+      "description": "Transparent route-colored control."
     },
     {
-      "name": "02 / Library search",
-      "kind": "input",
-      "description": "Batch-three source-derived visual specimen; route-local scope.",
-      "html": "<label class=\"ds-search\">Search <input type=\"search\" placeholder=\"Project or client\" aria-label=\"Search projects\"></label>",
-      "css": ".ds-search{display:block;font:12px/1.4 \"DM Sans\",sans-serif;color:#202125;background:#f5f5f7;padding:12px}.ds-search input{display:block;width:180px;font:inherit;color:inherit;background:transparent;border:0;border-bottom:1px solid;padding:8px}.ds-search input:focus-visible{outline:3px solid currentColor;outline-offset:5px}"
+      "name": "Video sound",
+      "kind": "button",
+      "html": "<button class=\"ds-audio\" aria-pressed=\"false\">Sound off</button>",
+      "css": ".ds-audio{font:11px Archivo,Arial,sans-serif;background:#f5f5f0;color:#151515;border:0;padding:9px 12px;cursor:pointer}.ds-audio:hover{background:#151515;color:#f5f5f0}.ds-audio:focus-visible{outline:3px solid currentColor;outline-offset:5px}",
+      "description": "Video sound toggle; preview has no live media binding.",
+      "refersTo": "audio-button"
     },
     {
-      "name": "01 / Active ledger link",
-      "kind": "custom",
-      "description": "Batch-three source-derived visual specimen; route-local scope.",
-      "html": "<a class=\"ds-ledger\" href=\"#project\"><span>Project title</span><small>Year</small></a>",
-      "css": ".ds-ledger{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:17px 18px;border-top:1px solid #ffffff35;background:#eeeee8;color:#111110;font:400 clamp(18px,2vw,29px)/1.4 Archivo,sans-serif;letter-spacing:-.025em;text-decoration:none}.ds-ledger small{font-size:11px}.ds-ledger:hover{text-decoration:underline;text-underline-offset:5px}.ds-ledger:focus-visible{outline:3px solid currentColor;outline-offset:5px}"
-    },
-    {
-      "name": "09 / Desktop window",
-      "kind": "card",
-      "refersTo": "w09-window",
-      "description": "Batch-three source-derived visual specimen; route-local scope.",
-      "html": "<section class=\"ds-window\"><div class=\"ds-bar\">Project title</div><div class=\"ds-stage\">Project media</div><div class=\"ds-caption\">Project title / Year</div></section>",
-      "css": ".ds-window{width:min(760px,74vw);margin:auto;background:#f5f5f2;color:#242828;border-radius:13px;overflow:hidden;box-shadow:0 24px 70px #29363633;font:14px/1.4 \"DM Sans\",sans-serif}.ds-bar{height:44px;display:flex;align-items:center;padding:0 17px;font-size:12px}.ds-stage{aspect-ratio:1.75;background:#080808;color:#f5f5f2;display:grid;place-items:center}.ds-caption{padding:18px 22px}"
-    },
-    {
-      "name": "18 / Collection disclosure",
-      "kind": "custom",
-      "refersTo": "w18-folder",
-      "description": "Batch-three source-derived visual specimen; route-local scope.",
-      "html": "<details class=\"ds-folder\"><summary>Motion <small>Projects</small></summary><div class=\"ds-folder-content\">Project grid</div></details>",
-      "css": ".ds-folder{background:#fff;color:#252726;border-radius:13px;overflow:hidden;font:14px/1.4 Manrope,sans-serif}.ds-folder summary{padding:22px;cursor:pointer;list-style:none;font-size:18px;font-weight:600}.ds-folder small{display:block;font-size:11px;font-weight:400;color:#606660;margin-top:3px}.ds-folder summary:focus-visible{outline:3px solid currentColor;outline-offset:5px}.ds-folder-content{padding:8px 22px 25px}"
-    },
-    {
-      "name": "20 / Quiet text navigation",
+      "name": "Main navigation",
       "kind": "nav",
-      "description": "Batch-three source-derived visual specimen; route-local scope.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#about\">Info</a><a href=\"#contact\">Contact</a></nav>",
-      "css": ".ds-nav{display:flex;gap:24px;align-items:center;font:14px/1.4 \"Work Sans\",sans-serif;background:#eeece6;color:#2a2927;padding:10px}.ds-nav a{color:inherit;text-decoration:none;text-underline-offset:5px}.ds-nav a:hover{text-decoration:underline}.ds-nav a:focus-visible{outline:3px solid currentColor;outline-offset:5px}"
+      "html": "<nav class=\"ds-nav\"><a href=\"#about\">Info</a><a href=\"#contact\">Contact</a><button>Pause videos</button></nav>",
+      "css": ".ds-nav{display:flex;gap:22px;align-items:center;font:14px Archivo,Arial,sans-serif;color:var(--fg,#191c13)}.ds-nav a{color:inherit;text-decoration:none}.ds-nav a:hover{text-decoration:underline}.ds-nav button{color:inherit;background:transparent;border:0;padding:5px 0;font:11px Archivo,Arial,sans-serif;text-decoration:underline}.ds-nav button:hover{background:var(--fg,#191c13);color:var(--bg,#dce745)}.ds-nav a:focus-visible{outline:3px solid currentColor;outline-offset:5px}.ds-nav button:focus-visible{outline:3px solid currentColor;outline-offset:5px}",
+      "description": "Info, contact and playback; sample destinations are inert preview anchors."
+    },
+    {
+      "name": "Selected project",
+      "kind": "button",
+      "html": "<button class=\"ds-selector\" aria-pressed=\"true\">Faze</button>",
+      "css": ".ds-selector{display:block;font:400 42px/1.08 Anton,sans-serif;text-transform:uppercase;text-align:left;border:0;border-top:1px solid;padding:15px;overflow-wrap:anywhere;background:var(--fg,#e4e74b);color:var(--bg,#191b18);cursor:pointer}.ds-selector:hover{background:var(--fg,#e4e74b);color:var(--bg,#191b18)}.ds-selector:focus-visible{outline:3px solid currentColor;outline-offset:5px}",
+      "description": "Type Selector active item; selection behavior belongs to the app."
+    },
+    {
+      "name": "Project link",
+      "kind": "card",
+      "html": "<article class=\"ds-project\"><a href=\"#project/faze\"><h2>Faze</h2></a><span>Selected work</span></article>",
+      "css": ".ds-project{color:var(--fg,#191c13);min-width:0}.ds-project a{color:inherit;text-decoration:none}.ds-project a:hover{text-decoration:underline}.ds-project a:focus-visible{outline:3px solid currentColor;outline-offset:5px}.ds-project h2{margin:0;padding:9px 0;font:400 clamp(22px,2.5vw,43px)/1.05 Anton,sans-serif;letter-spacing:-.02em;text-transform:uppercase}.ds-project span{font:11px/1.5 Archivo,Arial,sans-serif}",
+      "description": "Text portion of the media-led project card; original media intentionally omitted from this self-contained snippet."
     }
   ],
   "narrative": {
-    "northStar": "Twenty independent ways into the same work",
-    "overview": "This is a source-derived record of the twenty code-led portfolio alternatives in `src/batch-three`, routes `/batch-three/01/` through `/batch-three/20/`. It applies only to this experiment. It does not redefine the production portfolio, earlier batches, or a universal 3seater identity. The comparison hub is a navigation surface, not a twenty-first design authority.\n\nThe approved brief spans minimal studios, abstract and brutalist structures, Framer-like component craft, and iOS material. Each route makes an independent choice about composition and interaction. The Design Futurist informed asset/component mechanisms only; its homepage is not a visual reference. These are original coded interpretations, not imported native Framer components.",
+    "northStar": "Type as Structure",
+    "overview": "Batch four develops the user-selected Type Poster world, with Concrete as its secondary reference. Heavy condensed lettering supplies structure; moving artwork participates in the composition from the first viewport. The twenty routes share this voice while varying their browsing model, density, alignment and media scale.\n\nThis source-derived record applies only to `src/batch-four` and `/batch-four/01/` through `/batch-four/20/`. It is not a production-wide identity. The build is code-led; no generated comp is an authority. The comparison gallery is navigation, not an additional direction.",
     "keyCharacteristics": [
-      "Independent browsing models with route-local palettes, type and form.",
-      "Original-color project media and factual metadata remain the content authority.",
-      "Spatial, sequential, textual and quiet photographic approaches coexist."
+      "Anton display typography paired with Archivo utility text.",
+      "Route-local acid, concrete, paper, red and charcoal palettes.",
+      "Flat ruled surfaces and borderless moving artwork.",
+      "Twenty distinct compositions within the selected typographic realm."
     ],
     "rules": [
       {
         "name": "The Route Boundary Rule",
-        "body": "Apply each `wNN` token only within that numbered world. Similar neutral grounds do not imply shared composition or interchangeable components.",
+        "body": "Keep each numbered palette inside its own route; artwork retains its original color.",
         "section": "colors"
       },
       {
-        "name": "The Artwork Color Rule",
-        "body": "Preserve original project colors. UI palette choices do not authorize recoloring or desaturating media. The existing shared tile hover brightens images slightly; this is a transient state, not asset recoloring.",
-        "section": "colors"
+        "name": "The Type Structure Rule",
+        "body": "Preserve meaningful title hierarchy and full project-name access when adapting the layout; do not substitute a generic hero for the work.",
+        "section": "typography"
       },
       {
-        "name": "The Independent Composition Rule",
-        "body": "Preserve the browsing mechanism and spatial structure of each world. Sharing project data, SVG icons and factual detail rendering does not establish a shared homepage shell.",
-        "section": "layout"
+        "name": "The Whole Artwork Rule",
+        "body": "Full-project artwork keeps its intrinsic proportions without opaque letterbox wrappers.",
+        "section": "components"
       }
     ],
     "dos": [
-      "Do keep each world’s composition, type, colors and browsing behavior together.",
-      "Do preserve all real projects, original-color media and factual information.",
-      "Do retain direct project access, keyboard focus and reduced-motion behavior.",
-      "Do treat this as a batch-three implementation snapshot while review continues."
+      "Do keep the selected Anton display voice and original artwork colors.",
+      "Do preserve route-local composition when extending a direction.",
+      "Do keep complete project media at natural aspect ratio with transparent surroundings.",
+      "Do default videos to muted inline autoplay and loop, while retaining visitor playback controls."
     ],
     "donts": [
-      "Don't impose one visual header, card shell or global palette on all twenty routes.",
-      "Don't use paper effects, crumpling or unfolding concepts.",
-      "Don't derive homepage art direction from The Design Futurist; only its assets/components were reference signals.",
-      "Don't promote batch-three decisions into production or historical batches without an explicit brief."
+      "Don't add black media mats or side bars around full project artwork.",
+      "Don't make hover the requirement for video playback.",
+      "Don't treat the palette of one route as a global production brand.",
+      "Don't equate a source scan with a completed browser, accessibility or playback review."
     ]
   }
 }

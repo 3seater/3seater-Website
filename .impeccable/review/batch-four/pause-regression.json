@@ -1,0 +1,29 @@
+{
+  "selector": {
+    "paused": true,
+    "autoplay": false,
+    "control": "Play videos"
+  },
+  "navigation": {
+    "control": "Play videos",
+    "h1": "Drake - Iceman - 3D Visualizer",
+    "videos": [
+      {
+        "autoplay": false,
+        "paused": true
+      }
+    ]
+  },
+  "resume": {
+    "control": "Pause videos",
+    "videos": [
+      {
+        "autoplay": true,
+        "currentTime": 5.799841,
+        "loop": true,
+        "muted": true,
+        "paused": false
+      }
+    ]
+  }
+}

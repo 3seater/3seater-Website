@@ -1,0 +1,22 @@
+[
+{"id":1,"name":"Live Poster","idea":"Bold names interrupted by moving work.","bg":"#dce745","fg":"#191c13"},
+{"id":2,"name":"Cutlines","idea":"Unequal poster cuts, heavy type and hard rules.","bg":"#e8e8e3","fg":"#151515"},
+{"id":3,"name":"Split Bill","idea":"Monumental identity beside a compact, offset archive.","bg":"#f0efea","fg":"#20201d"},
+{"id":4,"name":"Running Type","idea":"Moving headlines with anchored video windows.","bg":"#171917","fg":"#e3e94f"},
+{"id":5,"name":"Block Party","idea":"Interlocking image and typography blocks.","bg":"#dedfdb","fg":"#141613"},
+{"id":6,"name":"Wide Margin","idea":"Big names, generous margins, intimate moving work.","bg":"#e8e5dc","fg":"#23231e"},
+{"id":7,"name":"Double Exposure","idea":"Title plates cross the edges of moving posters.","bg":"#dce745","fg":"#191c13"},
+{"id":8,"name":"Front Page","idea":"An editorial archive with unequal columns.","bg":"#f0efea","fg":"#1a1c18"},
+{"id":9,"name":"Spine","idea":"A vertical wordmark holds two staggered image streams.","bg":"#232521","fg":"#e9e9e2"},
+{"id":10,"name":"Open Set","idea":"Huge project names unfold into moving work.","bg":"#e6e8de","fg":"#1c2117"},
+{"id":11,"name":"Red Letter","idea":"Red display type with small, precise moving inserts.","bg":"#f0efea","fg":"#b52b20"},
+{"id":12,"name":"After Dark","idea":"A stark nocturnal ledger of type and film.","bg":"#161716","fg":"#eeeee5"},
+{"id":13,"name":"Duet","idea":"Unequal project pairs with type set beside the image.","bg":"#e2e3dd","fg":"#252720"},
+{"id":14,"name":"Long Play","idea":"A horizontal run of typographic movie posters.","bg":"#dce745","fg":"#191c13"},
+{"id":15,"name":"Dense Matter","idea":"A tightly packed archive beneath enormous lettering.","bg":"#e8e8e5","fg":"#141512"},
+{"id":16,"name":"Offset","idea":"Stepped title bands with moving images in the line.","bg":"#efeee7","fg":"#191b18"},
+{"id":17,"name":"Outline","idea":"Solid and outline lettering against a moving media rail.","bg":"#dce745","fg":"#191c13"},
+{"id":18,"name":"Three Presses","idea":"Three independently browsable discipline columns.","bg":"#e6e6e0","fg":"#1c1d19"},
+{"id":19,"name":"Type Selector","idea":"Large project selectors control a borderless live stage.","bg":"#191b18","fg":"#e4e74b"},
+{"id":20,"name":"Heavy Rotation","idea":"A central typographic spine divides two moving streams.","bg":"#e7e6e0","fg":"#1c1d18"}
+]
