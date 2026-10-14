@@ -1,0 +1,59 @@
+{
+  "mobile": [
+    {
+      "id": "1",
+      "overflow": false,
+      "tiles": 30,
+      "width": 390
+    },
+    {
+      "id": "2",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "3",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "4",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "5",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "6",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "7",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "8",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "9",
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "id": "10",
+      "overflow": false,
+      "width": 390
+    }
+  ],
+  "index": "leftEdges20,padding0 for all testedrows",
+  "archive": "searchiceman1;discipline3D26",
+  "project": "localvideo plays;mobileembed280px belowmedia,desktopembed343px beside840pxmain",
+  "wheel": "Anton computedfont"
+}

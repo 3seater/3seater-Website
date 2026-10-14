@@ -1,4 +1,290 @@
 ---
+name: "3seater — Batch Six / Original Work, Clear Frames"
+description: "Active tokens apply only to src/batch-six; complete earlier records remain historical."
+colors:
+  b6-01-ground: "#e8e7df"
+  b6-01-ink: "#171914"
+  b6-01-accent: "#9f271d"
+  b6-02-ground: "#f2f2ed"
+  b6-02-ink: "#20211c"
+  b6-02-accent: "#284cc0"
+  b6-03-ground: "#e5e7df"
+  b6-03-ink: "#191d16"
+  b6-03-accent: "#9f271d"
+  b6-04-ground: "#191c18"
+  b6-04-ink: "#eeeede"
+  b6-04-accent: "#dce745"
+  b6-05-ground: "#eeeee7"
+  b6-05-ink: "#202019"
+  b6-05-accent: "#334fba"
+  b6-06-ground: "#e4e5de"
+  b6-06-ink: "#151913"
+  b6-06-accent: "#a32d20"
+  b6-07-ground: "#fafaf6"
+  b6-07-ink: "#171a15"
+  b6-07-accent: "#2855b5"
+  b6-08-ground: "#dce745"
+  b6-08-ink: "#191c13"
+  b6-08-accent: "#92291c"
+  b6-09-ground: "#e9e8e1"
+  b6-09-ink: "#1e2118"
+  b6-09-accent: "#a52920"
+  b6-10-ground: "#daddd3"
+  b6-10-ink: "#171b13"
+  b6-10-accent: "#3d4eae"
+  b6-shadow: "#0002"
+  b6-audio-ground: "#f3f3ed"
+  b6-audio-ink: "#171914"
+typography:
+  b6-body:
+    fontFamily: "Plex, monospace"
+    fontSize: "12px"
+    fontWeight: 400
+    lineHeight: "1.5"
+  b6-caption:
+    fontFamily: "Plex, monospace"
+    fontSize: "11px"
+    fontWeight: 400
+    lineHeight: "1.35"
+  b6-small-label:
+    fontFamily: "Plex, monospace"
+    fontSize: "10px"
+    fontWeight: 400
+    lineHeight: "1.4"
+  b6-metadata:
+    fontFamily: "Plex, monospace"
+    fontSize: "9px"
+    fontWeight: 400
+    lineHeight: "1.35"
+  b6-phone-metadata:
+    fontFamily: "Plex, monospace"
+    fontSize: "8px"
+    fontWeight: 400
+    lineHeight: "1.35"
+  b6-selected:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(28px,3.4vw,52px)"
+    fontWeight: 400
+    lineHeight: "1.25"
+  b6-selected-phone:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "28px"
+    fontWeight: 400
+    lineHeight: "1.35"
+  b6-project-title:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(32px,3vw,48px)"
+    fontWeight: 400
+    lineHeight: "1.08"
+  b6-project-title-phone:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "36px"
+    fontWeight: 400
+    lineHeight: "1.08"
+  b6-archive-title:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "42px"
+    fontWeight: 400
+    lineHeight: "1"
+  b6-archive-title-phone:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "34px"
+    fontWeight: 400
+    lineHeight: "1"
+  b6-next-title:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "40px"
+    fontWeight: 400
+    lineHeight: "1.2"
+  b6-next-title-phone:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "29px"
+    fontWeight: 400
+    lineHeight: "1.2"
+  b6-wheel-desktop:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "90px"
+    fontWeight: 400
+    lineHeight: "1"
+  b6-wheel-mid:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "65px"
+    fontWeight: 400
+    lineHeight: "1"
+  b6-wheel-phone:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "48px"
+    fontWeight: 400
+    lineHeight: "1"
+  b6-wheel-static:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "24px"
+    fontWeight: 400
+    lineHeight: "1"
+  b6-directory:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "38px"
+    fontWeight: 400
+    lineHeight: "1.2"
+  b6-contact-title:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(65px,10vw,145px)"
+    fontWeight: 400
+    lineHeight: "1"
+  b6-contact-title-phone:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "70px"
+    fontWeight: 400
+    lineHeight: "1"
+  b6-contact-copy:
+    fontFamily: "Plex, monospace"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: "1.5"
+  b6-contact-copy-phone:
+    fontFamily: "Plex, monospace"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.5"
+  b6-contact-email:
+    fontFamily: "Plex, monospace"
+    fontSize: "clamp(22px,4vw,50px)"
+    fontWeight: 400
+    lineHeight: "1.5"
+rounded:
+  b6-square: "0px"
+  b6-soft-shell: "10px"
+  b6-soft-button: "7px"
+  b6-quiet-pill: "25px"
+  b6-floating-strip: "8px"
+  b6-audio: "20px"
+spacing:
+  b6-gutter: "20px"
+  b6-phone-gutter: "12px"
+  b6-bento-gap: "10px"
+  b6-phone-gap: "8px"
+  b6-tile-inset: "7px"
+  b6-nav-padding: "14px 20px"
+  b6-filter-padding: "10px 4px"
+components:
+  b6-nav:
+    textColor: "{colors.b6-01-ink}"
+    typography: "{typography.b6-body}"
+    padding: "{spacing.b6-nav-padding}"
+    height: "44px"
+  b6-project-box:
+    backgroundColor: "{colors.b6-01-ground}"
+    textColor: "{colors.b6-01-ink}"
+    rounded: "{rounded.b6-square}"
+    padding: "{spacing.b6-tile-inset}"
+  b6-audio-button:
+    backgroundColor: "{colors.b6-audio-ground}"
+    textColor: "{colors.b6-audio-ink}"
+    rounded: "{rounded.b6-audio}"
+    padding: "8px 12px"
+---
+
+# Design System: 3seater — Batch Six
+
+## Overview
+
+**Creative North Star: "Original Work, Clear Frames"**
+
+Batch six frames the original portfolio’s natural-ratio masonry with Ink Grid project boxes and captions. Compact Contact Patch selected-project rows align at the left edge, followed by the Anton client cylinder. Ten restrained navigation treatments vary within this shared world.
+
+Scope: `src/batch-six`, `/batch-six/01/` through `/batch-six/10/`; the comparison gallery is navigation. Earlier batches and production remain separate. Source snapshot: 2026-10-14, from `app.js`, `style.css` (including final overrides), `base.css`, `directions.json`, `DIRECTION-CONTRACT.txt` and PRODUCT.md. The independent finish reviewer reported no material fix; this document records source contracts, not additional browser verification.
+
+**Key Characteristics:**
+- Original-color natural-ratio home artwork in bordered project boxes.
+- Aligned condensed project names with moving inserts.
+- Anton display typography and light IBM Plex Mono utility text.
+- Compact information beside primary local project media.
+
+## Colors
+
+### Primary
+Route ink structures the work; route accents supply hover and focus feedback. Numbered ground/ink/accent tokens map directly to each direction. Artwork retains its original colors. Audio controls have a dedicated light/dark pair.
+
+### Neutral
+Paper, concrete, white and charcoal grounds support the framed archive. Rules mix twenty percent ink into ground; metadata uses seventy-five percent, factual labels seventy percent, and inactive wheel names thirty-eight percent. Soft controls use four or seven percent tonal fills. The shadow color is intentional and restricted to the two navigation elevations.
+
+**The Route Boundary Rule.** Keep each numbered palette inside its own route.
+
+## Typography
+
+Self-hosted Anton at weight 400 supplies display lettering and the client cylinder; self-hosted IBM Plex Mono is aliased as Plex. The latter is an approximation of the supplied reference. Frontmatter captures the reusable and intentional responsive size steps, including small metadata; these compact sizes are observations, not universal readability defaults.
+
+Selected names use the compact role without arbitrary left indents. Desktop cylinder sizing is capped by measured name fit; its final CSS sets 90px at 1240px and wider, 65px from 601–1239px, and `min(48px,var(--name-fit))` at 600px and below. These override the earlier 150px/100px declarations. Canvas measurement uses `400 100px Anton` after font loading. The reduced-motion static list uses 24px above phone size; the final phone rule still governs phone names. Wheel tracking is zero and line-height is one.
+
+## Layout
+
+Every home places all thirty projects using the configured original ordering as insertion order. Each project goes into the currently shortest estimated column; the estimate adds height/width plus a caption allowance of 0.24. This balances natural-ratio work rather than imposing uniform thumbnail crops. Desktop column counts are below; all routes use three columns at 601–1000px and two at 600px and below. Base gaps are ten pixels, with Quiet Pills at fourteen and Floating Strip at twelve; phones use eight. Seven aligned selected-project rows precede the featured-client wheel.
+
+| Route | Navigation | Desktop columns |
+| --- | --- | --- |
+| 01 Ink / Original | rail | 5 |
+| 02 Soft Bar | softbar | 5 |
+| 03 Fine Tabs | finetabs | 5 |
+| 04 Dark Frame | darkbar | 5 |
+| 05 Quiet Pills | quietpills | 4 |
+| 06 Margin Rail | marginrail | 5 |
+| 07 White Index | whiteline | 6 |
+| 08 Acid Ledger | ledger | 5 |
+| 09 Floating Strip | floatstrip | 5 |
+| 10 Square Set | squareset | 5 |
+
+Archive uses five columns, three at 1000px and below, and two on phones; its compact thumbnails intentionally use a 1.35 ratio. Compact search, discipline, year and reset share a baseline and wrap on phones. The search field becomes full-width on phones.
+
+Project detail places compact information left and primary local artwork right. The small secondary YouTube embed sits below facts at desktop (maximum width 360px); at phone size the order is information, primary local media, then secondary source (maximum width 280px). Multiple local media assets use two columns above 1000px and one below. Margin Rail occupies a 116px desktop sidebar and becomes a phone header.
+
+## Elevation & Depth
+
+Project frames and editorial rules are flat. Soft Bar’s selected button uses `0 1px 3px #0002`; Floating Strip uses `0 5px 16px #0002`. These are navigation-specific elevations, not a raised-card system. The client drum retains perspective and scroll-driven rotation; reduced motion presents its static list. Color transitions last 0.16 seconds and reduced motion removes transitions and CSS animation.
+
+## Shapes
+
+Project boxes and archive fields are square with one-pixel rules. Route-specific navigation uses the frontmatter shell, button, pill and strip radii. Audio controls use their own small pill radius. General focus has a two-pixel accent outline with five-pixel offset; navigation narrows the offset to three pixels. Client names retain their dedicated focus treatment.
+
+## Components
+
+### Navigation
+Five real destinations—Work, Archive, Index, Clients and Contact—have ten clean treatments: full-width rail, soft bar, fine tabs, dark bar, quiet pills, margin rail, ruled white line, ledger, floating strip and square set. Current state is marked by a rule or inversion. Links keep visible color-changing hover/focus and keyboard focus. No navigation brand or global pause control appears.
+
+### Project boxes and selected rows
+Ink Grid framing supplies captions and optional factual metadata around natural-ratio home work. Contact Patch rows keep aligned left edges and underlined Anton names with deterministic moving inserts. Cropped inline inserts and archive thumbnails are browsing previews; complete home/detail artwork retains its proportions and transparent surroundings.
+
+### Archive controls
+Native labeled fields use a bottom rule instead of large outlined form boxes. Filtering retains factual categories, a live result count, reset and an empty state. Soft Bar and Quiet Pills place the group on a faint tonal background.
+
+### Client cylinder
+The preserved client order, exclusions and links feed the Anton cylinder. Its selected name and transparent hit target open the same client gallery; the hit target is disabled during scrolling. Active names are keyboard reachable; reduced motion exposes a static list. The dedicated directory preserves access to all clients.
+
+### Project media and sound
+Local videos request muted inline looping autoplay and load near the viewport; playback is not gated by hover or deliberately paused on scroll-out. Detail-only sound buttons toggle the associated video. Six privacy-enhanced YouTube embeds retain direct source links and request muted looping autoplay; browser/provider restrictions may prevent playback. Reduced motion changes CSS and wheel motion, not the requested video default.
+
+## Do's and Don'ts
+
+### Do:
+- Do preserve all thirty projects, fifty-one media assets, facts, contact and six supplied YouTube links.
+- Do keep home and full-project artwork at natural proportions and in original color.
+- Do keep the home order: masonry, selected projects, featured-client cylinder.
+- Do measure the cylinder in Anton and honor the final responsive wheel override.
+
+### Don't:
+- Don’t apply batch-six tokens to production or historical batches.
+- Don’t introduce staggered selected-project indents, a navigation brand or a global pause button.
+- Don’t place a large YouTube embed above duplicate local project media.
+- Don’t claim IBM Plex Mono is an exact identification of the supplied reference.
+
+### Historical record — Batch Five and earlier only
+
+The complete preceding DESIGN.md is preserved verbatim below, including its nested records. Historical tokens and claims apply only to their named batches; inherited drift is not repaired by this scoped documentation pass.
+
+<details>
+<summary>Preserved Batch Five and earlier design records</summary>
+
+``````markdown
+---
 name: "3seater — Batch Five / A Brain Dump, Then Type"
 description: "Active tokens are scoped to src/batch-five. Earlier batch records are preserved as history."
 colors:
@@ -911,4 +1197,7 @@ Keyboard-visible outlines use current color (3px with 5px offset). Buttons dim w
 </details>
 `````
 
+</details>
+
+``````
 </details>
