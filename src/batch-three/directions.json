@@ -1,0 +1,22 @@
+[
+{"id":1,"name":"Type / Motion","idea":"A kinetic typographic ledger with a live preview stage.","font":"archivo","bg":"#111110","fg":"#eeeee8"},
+{"id":2,"name":"Photo Library","idea":"An iOS-inspired library with a quiet sidebar and compact photographic tiles.","font":"dmsans","bg":"#f5f5f7","fg":"#202125"},
+{"id":3,"name":"Concrete","idea":"A blunt black-and-white wall of unequal blocks and oversized labels.","font":"anton","bg":"#e8e8e3","fg":"#151515"},
+{"id":4,"name":"Open Field","idea":"A draggable, free-positioned canvas of projects with zoom controls.","font":"manrope","bg":"#deded7","fg":"#20211e"},
+{"id":5,"name":"Film Room","idea":"A horizontal cinema strip with a fixed caption rail and native scrolling.","font":"barlow","bg":"#121214","fg":"#faf9f5"},
+{"id":6,"name":"Concertina","idea":"Project titles expand into inline galleries inside a giant accordion.","font":"spacegrotesk","bg":"#f3f2eb","fg":"#172018"},
+{"id":7,"name":"Public Display","idea":"A dense Swiss-style exhibition wall with red wayfinding and strict rules.","font":"archivo","bg":"#e7e6e0","fg":"#181817"},
+{"id":8,"name":"Orbit","idea":"A three-dimensional rotating project ring with direct selection below.","font":"sora","bg":"#111216","fg":"#eeeeed"},
+{"id":9,"name":"Desktop","idea":"A floating project window and thumbnail dock on a restrained desktop.","font":"dmsans","bg":"#d4d8d8","fg":"#242828"},
+{"id":10,"name":"Waterfall","idea":"Three offset image streams with a fixed vertical identity.","font":"outfit","bg":"#ebe7df","fg":"#262320"},
+{"id":11,"name":"Word Space","idea":"Project titles form a loose typographic landscape with image reveals.","font":"spacegrotesk","bg":"#f2f3ed","fg":"#252622"},
+{"id":12,"name":"Proof Sheet","idea":"Thirty compact thumbnails presented as a precise photographic proof sheet.","font":"worksans","bg":"#f9f8f5","fg":"#242424"},
+{"id":13,"name":"Card Stack","idea":"A tactile deck of project images controlled by swipes and arrows.","font":"plusjakartasans","bg":"#dbded4","fg":"#272b23"},
+{"id":14,"name":"Chronology","idea":"Parallel year columns turn the archive into a horizontal timeline.","font":"figtree","bg":"#e5e5e5","fg":"#222222"},
+{"id":15,"name":"Radial","idea":"A circular project selector surrounds a central image stage.","font":"sora","bg":"#e8e7e0","fg":"#21211f"},
+{"id":16,"name":"Three Channels","idea":"Three independently browsable channels for motion, graphic design and 3D.","font":"barlow","bg":"#141415","fg":"#f3f3ee"},
+{"id":17,"name":"Type Poster","idea":"Large, tightly composed project names with image-led full-page reveals.","font":"anton","bg":"#dce745","fg":"#191c13"},
+{"id":18,"name":"Collections","idea":"A calm Apple-like collection browser with expandable project folders.","font":"manrope","bg":"#f1f0ed","fg":"#252726"},
+{"id":19,"name":"Oblique","idea":"A diagonal image runway crosses an anchored typographic composition.","font":"outfit","bg":"#161918","fg":"#ecefe7"},
+{"id":20,"name":"Intervals","idea":"A quiet studio composition balancing small works, empty space and asymmetric pairs.","font":"worksans","bg":"#eeece6","fg":"#2a2927"}
+]

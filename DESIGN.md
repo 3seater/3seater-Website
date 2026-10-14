@@ -1,0 +1,457 @@
+---
+name: "3seater — Batch Three / Twenty Independent Worlds"
+description: "Source-derived visual record scoped only to src/batch-three; not a production-wide design system."
+colors:
+  w01-ground: "#111110"
+  w01-ink: "#eeeee8"
+  w02-ground: "#f5f5f7"
+  w02-ink: "#202125"
+  w03-ground: "#e8e8e3"
+  w03-ink: "#151515"
+  w04-ground: "#deded7"
+  w04-ink: "#20211e"
+  w05-ground: "#121214"
+  w05-ink: "#faf9f5"
+  w06-ground: "#f3f2eb"
+  w06-ink: "#172018"
+  w07-ground: "#e7e6e0"
+  w07-ink: "#181817"
+  w08-ground: "#111216"
+  w08-ink: "#eeeeed"
+  w09-ground: "#d4d8d8"
+  w09-ink: "#242828"
+  w10-ground: "#ebe7df"
+  w10-ink: "#262320"
+  w11-ground: "#f2f3ed"
+  w11-ink: "#252622"
+  w12-ground: "#f9f8f5"
+  w12-ink: "#242424"
+  w13-ground: "#dbded4"
+  w13-ink: "#272b23"
+  w14-ground: "#e5e5e5"
+  w14-ink: "#222222"
+  w15-ground: "#e8e7e0"
+  w15-ink: "#21211f"
+  w16-ground: "#141415"
+  w16-ink: "#f3f3ee"
+  w17-ground: "#dce745"
+  w17-ink: "#191c13"
+  w18-ground: "#f1f0ed"
+  w18-ink: "#252726"
+  w19-ground: "#161918"
+  w19-ink: "#ecefe7"
+  w20-ground: "#eeece6"
+  w20-ink: "#2a2927"
+  w02-sidebar: "#e8e8eb"
+  w02-selected: "#d4d4d9"
+  w07-wayfinding: "#b9291b"
+  w09-window: "#f5f5f2"
+  w09-dock: "#f9faf8b8"
+  w13-card: "#fafaf5"
+  w18-folder: "#fff"
+  media-stage: "#080808"
+typography:
+  w01-body:
+    fontFamily: "Archivo, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w01-display:
+    fontFamily: "Archivo, sans-serif"
+    fontSize: "clamp(40px,5vw,76px)"
+    fontWeight: 500
+    lineHeight: "1"
+    letterSpacing: "-.03em"
+  w02-body:
+    fontFamily: "DM Sans, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w02-display:
+    fontFamily: "DM Sans, sans-serif"
+    fontSize: "32px"
+    fontWeight: 650
+    lineHeight: "1.4"
+    letterSpacing: "-.03em"
+  w03-body:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w03-display:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(65px,11vw,150px)"
+    fontWeight: 500
+    lineHeight: "1"
+    letterSpacing: "-.02em"
+  w04-body:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w04-display:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "25px"
+    fontWeight: 650
+    lineHeight: "1.4"
+    letterSpacing: "-.04em"
+  w05-body:
+    fontFamily: "Barlow, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w05-display:
+    fontFamily: "Barlow, sans-serif"
+    fontSize: "23px"
+    fontWeight: 500
+    lineHeight: "1.15"
+    letterSpacing: "-.03em"
+  w06-body:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w06-display:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(24px,3.4vw,50px)"
+    fontWeight: 400
+    lineHeight: "1.1"
+    letterSpacing: "-.035em"
+  w07-body:
+    fontFamily: "Archivo, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w07-display:
+    fontFamily: "Archivo, sans-serif"
+    fontSize: "clamp(38px,4.4vw,67px)"
+    fontWeight: 700
+    lineHeight: ".99"
+    letterSpacing: "-.035em"
+  w08-body:
+    fontFamily: "Sora, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w08-display:
+    fontFamily: "Sora, sans-serif"
+    fontSize: "clamp(45px,6vw,84px)"
+    fontWeight: 500
+    lineHeight: "1.05"
+    letterSpacing: "-.03em"
+  w09-body:
+    fontFamily: "DM Sans, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w09-display:
+    fontFamily: "DM Sans, sans-serif"
+    fontSize: "20px"
+    fontWeight: 650
+    lineHeight: "1.4"
+    letterSpacing: "-.04em"
+  w10-body:
+    fontFamily: "Outfit, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w10-display:
+    fontFamily: "Outfit, sans-serif"
+    fontSize: "65px"
+    fontWeight: 650
+    lineHeight: "1"
+    letterSpacing: "-.04em"
+  w11-body:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w11-display:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "30px"
+    fontWeight: 500
+    lineHeight: "1.05"
+    letterSpacing: "normal"
+  w12-body:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w12-display:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "18px"
+    fontWeight: 500
+    lineHeight: "1.4"
+    letterSpacing: "-.03em"
+  w13-body:
+    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w13-display:
+    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontSize: "clamp(42px,5.5vw,78px)"
+    fontWeight: 500
+    lineHeight: "1.02"
+    letterSpacing: "-.03em"
+  w14-body:
+    fontFamily: "Figtree, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w14-display:
+    fontFamily: "Figtree, sans-serif"
+    fontSize: "65px"
+    fontWeight: 500
+    lineHeight: "1"
+    letterSpacing: "-.03em"
+  w15-body:
+    fontFamily: "Sora, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w15-display:
+    fontFamily: "Sora, sans-serif"
+    fontSize: "52px"
+    fontWeight: 500
+    lineHeight: "1.05"
+    letterSpacing: "-.03em"
+  w16-body:
+    fontFamily: "Barlow, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w16-display:
+    fontFamily: "Barlow, sans-serif"
+    fontSize: "40px"
+    fontWeight: 500
+    lineHeight: "1.4"
+    letterSpacing: "-.03em"
+  w17-body:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w17-display:
+    fontFamily: "Anton, sans-serif"
+    fontSize: "clamp(35px,5.5vw,80px)"
+    fontWeight: 400
+    lineHeight: "1.02"
+    letterSpacing: "-.01em"
+  w18-body:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w18-display:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "48px"
+    fontWeight: 650
+    lineHeight: "1.4"
+    letterSpacing: "-.03em"
+  w19-body:
+    fontFamily: "Outfit, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w19-display:
+    fontFamily: "Outfit, sans-serif"
+    fontSize: "clamp(70px,8vw,112px)"
+    fontWeight: 500
+    lineHeight: ".92"
+    letterSpacing: "-.035em"
+  w20-body:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "1.4"
+    letterSpacing: "normal"
+  w20-display:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "14px"
+    fontWeight: 500
+    lineHeight: "1.4"
+    letterSpacing: "0"
+rounded:
+  library-control: "9px"
+  desktop-window: "13px"
+  desktop-dock: "16px"
+  stack-card: "13px"
+  stack-image: "8px"
+  collection-folder: "13px"
+  collection-image: "12px"
+  radial-selector: "50%"
+spacing:
+  control-padding: "10px 14px"
+  ledger-columns: "5vw"
+  concrete-gutter: "3px"
+  film-gap: "32px"
+  proof-gap: "32px 16px"
+  intervals-gap: "100px 25px"
+components:
+  w02-filter-selected:
+    backgroundColor: "{colors.w02-selected}"
+    textColor: "{colors.w02-ink}"
+    rounded: "{rounded.library-control}"
+    padding: "12px"
+  w09-window:
+    backgroundColor: "{colors.w09-window}"
+    textColor: "{colors.w09-ink}"
+    rounded: "{rounded.desktop-window}"
+    width: "min(760px,74vw)"
+  w13-card:
+    backgroundColor: "{colors.w13-card}"
+    textColor: "{colors.w13-ink}"
+    rounded: "{rounded.stack-card}"
+    padding: "12px"
+  w18-folder:
+    backgroundColor: "{colors.w18-folder}"
+    textColor: "{colors.w18-ink}"
+    rounded: "{rounded.collection-folder}"
+---
+
+# Design System: 3seater — Batch Three
+
+## Overview
+
+**Creative North Star: "Twenty independent ways into the same work"**
+
+This is a source-derived record of the twenty code-led portfolio alternatives in `src/batch-three`, routes `/batch-three/01/` through `/batch-three/20/`. It applies only to this experiment. It does not redefine the production portfolio, earlier batches, or a universal 3seater identity. The comparison hub is a navigation surface, not a twenty-first design authority.
+
+The approved brief spans minimal studios, abstract and brutalist structures, Framer-like component craft, and iOS material. Each route makes an independent choice about composition and interaction. The Design Futurist informed asset/component mechanisms only; its homepage is not a visual reference. These are original coded interpretations, not imported native Framer components.
+
+**Key Characteristics:**
+- Independent browsing models with route-local palettes, type and form.
+- Original-color project media and factual metadata remain the content authority.
+- Spatial, sequential, textual and quiet photographic approaches coexist.
+
+This captures the source during review on 2026-10-13. It is not evidence of a final visual, accessibility or interaction review pass. Source authority: `src/batch-three/directions.json`, route HTML font declarations, `style.css`, and `app.js`.
+
+## Colors
+
+**The Route Boundary Rule.** Apply each `wNN` token only within that numbered world. Similar neutral grounds do not imply shared composition or interchangeable components.
+
+### Primary
+
+The red wayfinding token belongs to Public Display (07); the acidic ground belongs to Type Poster (17). They are independent identities, not primary and secondary accents of a global palette.
+
+### Neutral
+
+Each route owns its ground and ink pair in frontmatter. Library sidebar and selected surfaces belong to 02, translucent dock and contained window to 09, tactile card surface to 13, white folder surface to 18. Dark media staging preserves visibility around contained artwork.
+
+**The Artwork Color Rule.** Preserve original project colors. UI palette choices do not authorize recoloring or desaturating media. The existing shared tile hover brightens images slightly; this is a transient state, not asset recoloring.
+
+## Typography
+
+Frontmatter records each route’s body and principal expressive role. The HTML names every self-hosted face `Direction`; that alias resolves to a different font file per route. Family names here identify those files for readers. Use the corresponding self-hosted asset when building. These twenty role pairs are alternatives, not one type scale. In routes 04 and 09 the principal role is the identity mark; route 20 intentionally gives project titles a modest scale.
+
+| World | Typeface | Principal role / additional hierarchy |
+| --- | --- | --- |
+| 01 Type / Motion | Archivo | Clipped echo heading; ledger names 18–29px, years 11px. |
+| 02 Photo Library | DM Sans | Library title 32px; navigation 14px; compact captions 12px. |
+| 03 Concrete | Anton | Uppercase identity; labels 27px, Arial metadata 11px. |
+| 04 Open Field | Manrope | Identity and 12px utility text avoid a display hero. |
+| 05 Film Room | Barlow | Project titles 23px, captions and rail 12px. |
+| 06 Concertina | Space Grotesk | Disclosure titles 24–50px; metadata 12px. |
+| 07 Public Display | Archivo | Red heading 38–67px; wall titles 14px, client/year 10px. |
+| 08 Orbit | Sora | Scene heading 45–84px; direct-index heading 18px. |
+| 09 Desktop | DM Sans | Identity 20px; window chrome 12px. |
+| 10 Waterfall | Outfit | Vertical identity 65px; media captions 13px and 11px. |
+| 11 Word Space | Space Grotesk | Six name sizes: 23, 26, 30, 42, 56 and 65px. |
+| 12 Proof Sheet | Work Sans | Section title 18px; project title 12px and numbering 10px. |
+| 13 Card Stack | Plus Jakarta Sans | Deck heading 42–78px; card title 14px and year 11px. |
+| 14 Chronology | Figtree | Year 65px; page title 18px. |
+| 15 Radial | Sora | Title 52px; dial labels 11px. |
+| 16 Three Channels | Barlow | Discipline headings 40px; rail labels 11px. |
+| 17 Type Poster | Anton | Project bands 35–80px; Arial utility text, rather than Anton everywhere. |
+| 18 Collections | Manrope | Collection title 48px; folder title 18px / 600, count 11px. |
+| 19 Oblique | Outfit | Anchored heading 70–112px; small factual captions. |
+| 20 Intervals | Work Sans | Project titles 14px; metadata 10px; restrained identity. |
+
+Body baseline is 14px / 1.4. Shared detail titles begin at `clamp(34px,5vw,76px)` and line-height 1.07 before route overrides; mobile detail titles resolve to 36px. Small archival metadata is an observed implementation detail, not a minimum legibility target for future work.
+
+## Layout
+
+**The Independent Composition Rule.** Preserve the browsing mechanism and spatial structure of each world. Sharing project data, SVG icons and factual detail rendering does not establish a shared homepage shell.
+
+| World | Desktop composition and interaction | At 650px and below |
+| --- | --- | --- |
+| 01 Type / Motion | Two-column ledger (1.1fr / 1fr), 5vw gap; sticky preview at 65px with 105px top offset. Text rows select preview on pointer or focus and link to detail. | Preview precedes ledger in a vertical flow; preview becomes static; 20px page inset. |
+| 02 Photo Library | Persistent 215px library sidebar, four-column image grid, 25px / 12px gaps; category buttons and project/client search intersect. | Sidebar becomes wrapping filter controls; two-column grid, 20px / 10px gaps. At 1000px: 175px sidebar, three columns; at 1550px: five columns. |
+| 03 Concrete | Six-column irregular wall with 3px black gutters; blocks span two, three or four columns. Oversized uppercase identity and project labels supply mass. | Two columns; selected large blocks span both; 170px / 230px image heights. Identity moves above navigation. |
+| 04 Open Field | Scrollable 2400px by 1830px spatial canvas; 260px and 310px tiles with small alternating rotations. Drag, zoom and reset controls sit in a fixed translucent footer. | Canvas starts at 0.7 zoom; footer wraps. Spatial navigation retains its independent complete project list. |
+| 05 Film Room | Horizontal snap strip with 47vw articles, 32px gaps and 48vh contained media; caption rail supplies position, title and year. Arrow buttons scroll the strip. | 80vw articles, 18px gaps and 43vh media; footer wraps, maintaining horizontal browsing. |
+| 06 Concertina | Single column of native disclosure rows; title/year/plus arrangement. Expanded body splits 1.6fr / 1fr with 5vw gap, containing image and factual metadata. | 25px titles; year removed from summary; expanded image and metadata stack with 20px gap. |
+| 07 Public Display | Sticky red identity spine occupying 24%; three-column ruled exhibition wall with 35px / 15px gaps. | Identity becomes a static two-column block; two-column wall. At 1000px spine is 23%, wall already has two columns. |
+| 08 Orbit | 640px scene, 1050px perspective, ten covers rotated in 36-degree steps around a 380px radius; controls rotate ring. Complete five-column project index follows. | 500px scene; perspective scaled to .67 and radius becomes 300px; complete two-column index remains. |
+| 09 Desktop | Centered image window at min(760px,74vw), caption and sequence controls; fixed horizontally scrolling thumbnail dock. Active selection updates title, stage and dock state. | Window becomes 92vw with 1.35 preview ratio; dock thumbnails shrink from 48px to 42px. |
+| 10 Waterfall | Three image streams with starting offsets 60px, 200px, 110px and 80px between projects; fixed vertical identity at left. Alternate images use portrait ratio. | Identity becomes horizontal; first two streams remain paired, third wraps into a full-width two-column stream. |
+| 11 Word Space | Wrapping field of irregularly scaled title links with 40px / 5vw gaps. Hover or focus reveals an angled image behind each name. | Titles use 19px to 43px sizes; image reveals shrink to 160px by 110px; field clips overflowing reveals. |
+| 12 Proof Sheet | Six-column photographic overview, 32px / 16px gaps, contained 1.25-ratio images; compact numbered and dated captions. No oversized hero. | Three columns with 25px / 9px gaps; at 1000px four columns and at 1550px seven columns. |
+| 13 Card Stack | 30% title area beside a 400px-high layered deck, max width 650px. Three cards show depth; arrows or horizontal swipes advance the current project. | Title and deck stack; deck height becomes 320px with 26px horizontal page inset. |
+| 14 Chronology | Horizontal year columns, newest first; each 285px column has a left rule, sticky year heading and vertical work sequence. | 245px columns maintain native horizontal exploration; year headings become 55px. |
+| 15 Radial | 580px circular selector holds numbered 36px buttons around a centered 360px preview; adjacent title, sequence controls and direct list. | 350px wheel with 28px buttons, 230px preview; controls wrap below. At 1000px composition already stacks vertically. |
+| 16 Three Channels | Three equal discipline columns with independent vertical scrolling within a viewport-height frame; Motion, Graphic and 3D headers. Projects may appear in multiple matching channels. | Channels stack; each becomes an independent horizontal snap strip with 70vw tiles. |
+| 17 Type Poster | Uppercase project title bands with 2px rules and alternating 0 / 8vw / 16vw indents; hover or focus reveals an angled image. | 35px titles with 0 / 5vw / 9vw indents; reveal images shrink to 180px by 120px. |
+| 18 Collections | Centered 960px collection area; three featured images above category disclosure folders. Each folder expands its own three-column project grid. | Featured row remains three images; folder contents become two columns. This is disclosure browsing, unlike route 02 filtering. |
+| 19 Oblique | Anchored 30%-wide title beside a two-column image runway rotated -9 degrees; alternate projects offset 140px. | Title becomes static; runway occupies 86%, rotates -6 degrees and offsets alternating projects 90px. |
+| 20 Intervals | Twelve-column asymmetric placement repeats six pair positions with 100px / 25px gaps and staggered 0 to 160px vertical offsets. Contained original-color artwork leads. | Six-column grid alternates spans 1/5 and 3/7; vertical offsets reset, 45px / 15px gaps retain the asymmetric rhythm. |
+
+The stylesheet also uses a 1000px adaptation and a 1550px wide-screen expansion. Route-specific behavior in the table takes priority over generic responsive assumptions. Shared project detail pages preserve the full media sequence and facts; at mobile width they use a single vertical media flow, 20px page inset and 20px media gap. The complete direct project list supports spatial or selective views.
+
+## Elevation & Depth
+
+Most worlds are flat and organized through rules, spacing, scale or image arrangement. Depth is local: Open Field uses `0 12px 25px #20211e26`; Orbit uses `0 12px 28px #0008`; Desktop uses `0 24px 70px #29363633` for its window and `0 10px 30px #28333326` for its dock; Card Stack uses `0 20px 40px #30372430`. Desktop’s dock blurs its backdrop at 22px and the field toolbar at 15px. These are specific material decisions, not shadows to add across the batch.
+
+Orbit creates actual perspective through a transformed ring. Card Stack uses rotations and translations around a lower origin. Oblique tilts the image runway while its title stays anchored. Flat worlds do not need simulated depth.
+
+## Shapes
+
+Concrete’s 3px gutters and Type Poster’s 2px rules preserve blunt geometry. Photo Library uses softly rounded control and image corners. Desktop uses a rounded window and dock; Card Stack distinguishes outer card and inner image corners. Collections uses rounded disclosure containers and thumbnails. Radial is circular; Orbit’s cards remain rectangular. The exact reusable radii are in frontmatter. Do not generalize rounded shells or brutalist rules into other worlds.
+
+## Components
+
+The sidecar contains representative self-contained previews scoped to their original worlds. They are extracted visual examples; preview placeholders are not new portfolio content. Its synthesized tonal ramps are panel-only visualization metadata, not additional implementation palette tokens.
+
+- **Ledger selection (01):** a text row exposes a preview on pointer entry and focus; activation navigates to the project. Active row inverts ground and ink and adds horizontal inset. Preview reveal runs 350ms with the observed easing.
+- **Library controls (02):** category buttons and an underlined search input filter together. Selected button uses the local selected surface; empty results have a visible message.
+- **Disclosure (06 and 18):** native details/summary preserve keyboard operation. The plus SVG rotates when open. Concertina reveals an image and metadata; Collections reveals a grid inside a rounded folder.
+- **Sequential controls (09, 13, 15):** previous/next buttons wrap through the collection; current position is numeric. Dock and dial selectors expose pressed state. Selection in 09, 13 and 15 announces project title and position through a polite status while preserving control focus. Card Stack also accepts a horizontal swipe; rear cards are inert and hidden from assistive technology.
+- **Image tile:** factual title/year accompanying a linked original-color cover. It is a low-level utility, not a mandatory card shell. Proof Sheet, Concrete, Intervals, and title-reveal worlds construct their own entries.
+- **Navigation:** local composition decides where identity, Info, contact, direct list and sequence live. Text links underline on hover. Icons are inline SVG; no decorative glyph substitutes.
+- **Factual project detail:** full-page hash route renders title, applicable metadata, description, optional external link, and every image/video. Videos use native controls. Hash navigation focuses the destination heading or main content. Route-local typography and media layout remain in effect.
+
+Keyboard-visible outlines use current color (3px with 5px offset). Buttons dim when disabled. Reduced-motion CSS removes animation, transitions and smooth scrolling; the film transport also checks the media preference in JavaScript. Orbit’s 900ms transform, dock’s 180ms lift, text reveals and clipped type echo belong to their respective worlds.
+
+## Do's and Don'ts
+
+### Do:
+- Do keep each world’s composition, type, colors and browsing behavior together.
+- Do preserve all real projects, original-color media and factual information.
+- Do retain direct project access, keyboard focus and reduced-motion behavior.
+- Do treat this as a batch-three implementation snapshot while review continues.
+
+### Don't:
+- Don't impose one visual header, card shell or global palette on all twenty routes.
+- Don't use paper effects, crumpling or unfolding concepts.
+- Don't derive homepage art direction from The Design Futurist; only its assets/components were reference signals.
+- Don't promote batch-three decisions into production or historical batches without an explicit brief.

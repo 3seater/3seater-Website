@@ -1,0 +1,31 @@
+Create twenty independent portfolio experiences for 3seater, using Impeccable. Treat this as an exploration of twenty distinct art directions, not variations of one template.
+
+CONTENT
+Use the actual project.txt files in ../Work and their accompanying media. Preserve factual project names, years, clients, categories, links and any descriptions. Show the real work in its original colors. Do not invent biography, services, awards, testimonials or commercial copy. The purpose is to explore a designer's work.
+
+CREATIVE BRIEF
+My interests include minimal design studios, brutalism, iOS/Apple-like interfaces, and the inventive interactions in Framer's component marketplace. These are invitations to explore different worlds, not a formula that every version must combine. “Framer-esque” means attention to interaction, motion, material and unexpected ways to navigate content—not generic rounded cards, pills and gradients.
+
+LATEST REFERENCE SIGNALS: Explore abstract/brutalist, non-typical content presentation and clean animated typography. The user tentatively likes 3D Orbit Text and GSAP Kinetic Text, and is interested in the assets/components sold by thedesignfuturist.zip, explicitly NOT that website’s design. Consider type as a graphic object, clipped/repeated text, spatial browsing, and the contrast between restrained controls and unusual motion. These are references to investigate, not a universal style or an instruction to add every effect. Preserve diversity across the twenty experiences.
+
+CONFIRMED DISLIKE
+Do not use crumpled-paper effects or paper-unfolding concepts. The user explicitly rejected the CrumpledPaper Reveal reference.
+
+RESET
+Do not use previous generations as visual references or reuse their shared header, navigation, footer, card grammar or page composition. The former Work/Archive/Index structure is optional. Earlier palette, font and density rules do not govern this batch. Use this brief and the factual content as the authority. You may share data loading and nonvisual utilities, but do not let a shared UI shell determine all twenty designs.
+
+RESEARCH AND DESIGN
+Use https://www.framer.com/marketplace/components/ as an interaction research library. Inspect actual previews of relevant free components. For each useful reference, note the behavior that matters and how it helps browse real projects. Do not copy a component's demo styling or collect effects for their own sake. Distinguish verified live behavior from a creator's description.
+
+Before coding, map twenty concepts by their composition, browsing model, typographic character, navigation, material/palette and signature behavior. These are design decisions, not twenty new constraints. Identify the closest pair and revise any pair that would still feel like the same site after changing the logo and colors. Include both quiet and expressive concepts. A different font or number of columns does not make a new concept; neither does a new animation on the same grid.
+
+Build each as a complete, coherent website. Let one strong interaction lead where it earns its place, with the rest of the site supporting it. Project detail views, mobile behavior, navigation and controls must belong to that direction too. Let the work stay legible and accessible without hover, dragging or animation. Respect reduced motion and provide simple alternate controls for spatial interfaces. Do not distort or obscure the only available view of the artwork.
+
+TOOLS
+Use the official Framer External Agent bridge if the user chooses a connected Framer workflow. Otherwise implement original equivalents with suitable web tools, such as Motion for spring/gesture/layout animation and WebGL only where the concept needs it. Do not represent recreated interactions as installed Framer components. Verify licenses and runtime compatibility before importing component code.
+
+DELIVERY
+Twenty functioning direct links and a comparison page with actual captures and a short description of what differs. Assess visual diversity as seriously as responsiveness and functionality. Update PRODUCT.md to reflect this brief and the final decisions. Keep previous experiments separate.
+
+CURRENT STATUS
+The user has approved ending research and beginning implementation. Build all twenty directions and publish them for review.

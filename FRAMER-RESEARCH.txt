@@ -1,0 +1,80 @@
+3SEATER — COMPONENT RESEARCH / 13 OCTOBER 2026
+
+Scope: official Framer Components marketplace, free component listings, official Framer agent documentation, and official Motion documentation. The user wants broad creative range, not one “Framer style.” Building is paused. No new website UI has been implemented or published in this research phase.
+
+Interpretation (design judgment, not a claim of confirmed user preference): the attraction is likely the library's variety of interactions and materials. The earlier batches varied content arrangement but retained much of the same interface grammar. A better brief should vary the whole experience, including what the visitor does, how a project opens, and how the navigation behaves. Component demos supply mechanisms to evaluate, not automatically approved designs.
+
+RELEVANT FREE REFERENCES
+
+Spatial browsing
+1. DNA Carousel — opposing helical image strands; creator documents drag, swipe, wheel and keyboard input. Live preview visually inspected. Could inspire a spatial 3D-work gallery, with a simple alternate project list.
+https://www.framer.com/marketplace/components/dna-carousel/
+2. Infinite Gallery CMS — creator describes a WebGL gallery with media support, dragging, parallax and a lightbox. Listing reviewed; full interaction not tested. Useful for an exploratory exhibition, not every direction.
+https://www.framer.com/marketplace/components/infinite-gallery-cms/
+3. Stack Slider — layered card stack with sliding movement. Listing reviewed. Could turn browsing into working through a collection, provided all projects remain reachable.
+https://www.framer.com/marketplace/components/stack-slider/
+
+Tactile forms
+4. REJECTED BY USER — CrumpledPaper Reveal — WebGL2 image unfolding with hover/click/scroll options and reduced-motion fallback. Listing reviewed. Excluded from the next batch: the user explicitly dislikes this paper effect. Retained here only as a record of a rejected reference.
+https://www.framer.com/marketplace/components/crumpledpaper-reveal/
+5. 3D Flipping Book — click-operated page turns with twelve visual slots. Listing reviewed. A publication-like idea; the supplied slot count cannot hold the whole archive without adaptation.
+https://www.framer.com/marketplace/components/interactivebook/
+
+Navigation and material
+6. Motion Overlay Menu — a compact navigation bar expands to a full-screen menu; creator describes reveal choices, focus management and reduced motion. Live preview opened and Escape triggered; open/closed button state observed. This changes navigation scale, not just button style.
+https://www.framer.com/marketplace/components/motion-overlay-menu/
+7. Awards Morphed Menu — button-to-panel spring transition and staggered links. Listing reviewed. Appropriate for a restrained studio concept with one expressive navigation moment.
+https://www.framer.com/marketplace/components/morphed-menu/
+8. Dock — macOS-style dock with custom imagery, active indicators, labels and blur. Listing reviewed. Relevant to the user's Apple-interface interest; it is a desktop-inspired component, not itself proof of an iOS design system.
+https://www.framer.com/marketplace/components/dock/
+9. Glass Background — multiple CSS/WebGL glass modes. Listing reviewed. Useful where a floating control genuinely overlays imagery; frosted material alone does not make a new design.
+https://www.framer.com/marketplace/components/glass-background/
+
+Typography and transitions
+10. Font Weight Hover — variable-weight response to proximity or scroll, with mobile alternatives. Listing reviewed. Strong candidate for typography-led brutalism where text itself is interactive.
+https://www.framer.com/marketplace/components/font-weight-hover/
+11. Scroll Zoom Reveal — image scale follows scroll as accompanying text fades. Listing reviewed. A potential project-to-project transition, not a requirement to add long scroll sequences everywhere.
+https://www.framer.com/marketplace/components/scroll-zoom-reveal/
+12. Fluid Image — cursor-responsive distortion and a click burst, with static/reduced-motion fallback. Listing reviewed. Treat as an optional experimental accent; a clean undistorted view of project media must remain available.
+https://www.framer.com/marketplace/components/fluid-image/
+
+Free status reflects marketplace listings observed during this research, not an unlimited redistribution license. No component source was copied or installed. Native Framer components are not automatically portable to this local HTML/JS project. Review license and dependencies before importing code.
+
+TOOLS AND SKILLS
+
+Official Framer External Agent
+https://www.framer.com/agents/external/
+Framer documents an external bridge, installed via npx @framer/agent setup, and a /framer skill. It can work with canvas, components and CMS in explicitly connected Framer projects. A project connection is required. This is the direct route if the user elects to build natively in Framer. Not installed or connected here.
+
+Framer native Skills
+https://www.framer.com/skills
+These are instructions inside Framer's agent/project context, including reusable design-system guidance. They are not evidence that a Framer skill is already installed in this workspace. For this exploration, one global design-system skill across twenty sites could recreate the sameness problem; keep visual direction local to each concept.
+
+Motion AI Kit
+https://motion.dev/docs/ai-kit
+Official skill and MCP for coding agents. Free documentation search and best practices; premium tools/example source require Motion+. Motion itself is a free MIT-licensed animation library for React, JavaScript and Vue. This is the most directly relevant addition for building Framer-quality interactions in the existing codebase. Not installed.
+https://motion.dev/
+
+Discovery limits
+The connected plugin directory returned no Framer match. The official curated Codex skill catalog contained no Framer entry. This does not rule out third-party packages or other entries in the broader plugin directory. Official vendor tools above are preferable to unverified community “Framer skill” packages for this task.
+
+RECOMMENDED WORKFLOW
+Keep Impeccable for design direction and review. Use the actual component library and preview interactions for reference. Add Motion's official skill/tooling if continuing in code. Use Framer's bridge only if choosing native Framer editing. Do not migrate tools merely to fix a brief problem: first make the twenty concepts structurally and behaviorally different.
+
+The proposed reusable brief is BATCH-THREE-PROMPT.txt. It is a draft for the next build, not authorization to resume after the user's pause.
+
+LATEST USER-SUPPLIED REFERENCES
+
+3D Orbit Text — tentative positive signal (“sort of cool”). Marketplace describes text orbiting a logo/image with tilt and rotation controls. Listing reviewed; live behavior not yet verified. Listed at $8, not free.
+https://www.framer.com/marketplace/components/3d-orbit-text/
+
+GSAP Kinetic Text — tentative positive signal (“kinda cool”). Live preview visually inspected: pale sans-serif words on black, repeated and clipped into horizontal bands above and below a clear central line. Marketplace documents clone direction, amount, distance and duration. Listed at $5. Could inform a project-title transition or a graphic typographic identity, without making project descriptions animate continuously.
+https://www.framer.com/marketplace/components/gsap-kinetic-text/
+https://dandy-strengthening-195437.framer.app/
+
+THE DESIGN FUTURIST — clarification: the user meant the assets/components offered by the creator, NOT the appearance of the website. Earlier homepage-derived interpretations are withdrawn. Research kinetic typography and spatial content components; do not copy or use the homepage as an aesthetic authority.
+https://thedesignfuturist.zip/
+
+The explicit preference is abstract/brutalist, non-typical sites, clean font animation/transitions, and interesting content display. Do not collapse this into twenty 3D carousels or twenty kinetic-text homepages. No new implementation, imports or purchases in this update.
+
+STATUS UPDATE: User authorized ending research and beginning the twenty-site build. Earlier paused-stage statements are historical.

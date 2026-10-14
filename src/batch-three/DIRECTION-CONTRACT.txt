@@ -1,0 +1,14 @@
+3SEATER / BATCH THREE
+Mode: Experience. Build path: code-led. User explicitly authorized twenty complete alternatives and asked to begin after research. Existing concept seed was run during research; its provisional paper challenger was rejected. User's direct multi-world brief supersedes choosing one aesthetic for the batch.
+
+The visitor explores thirty real projects. Preserve the factual data and all media. No new commercial story. The Design Futurist is a component-source reference only, never a homepage reference. Original colors stay in artwork.
+
+Each route has an independent DOM composition and browsing model, declared in directions.json. Data access, factual project rendering, icons and accessibility utilities may be shared. No common visual header or card system is forced across routes. Every project has a working full-page detail route with media controls. Direct lists accompany spatial interfaces.
+
+Typography: self-hosted, varied sans-serif families selected for each direction. Anton carries the two explicitly brutalist typography directions. Material range: bare black/white, cool Apple-like surfaces, restrained warm grounds, one acidic poster and a red Swiss identity. No paper effects.
+
+01 Kinetic ledger: two-column text/preview; repeated clipped heading. 02 Photo Library: sidebar/filter/search and compact tiles. 03 Concrete: irregular block wall with blunt caps. 04 Open Field: draggable two-dimensional canvas with zoom and list alternative. 05 Film Room: horizontal cinema strip. 06 Concertina: inline expanding project rows. 07 Public Display: fixed red identity spine and dense exhibition wall. 08 Orbit: 3D project ring plus complete direct index. 09 Desktop: contained image window plus working thumbnail dock. 10 Waterfall: three staggered media streams and vertical identity. 11 Word Space: irregular title landscape with image reveals. 12 Proof Sheet: compact six-column photographic overview. 13 Card Stack: tactile sequential project deck. 14 Chronology: horizontal sequence of year columns. 15 Radial: numbered circular selector and central stage. 16 Three Channels: separate discipline streams. 17 Type Poster: stacked large title bands and image reveals. 18 Collections: expandable Apple-like folders. 19 Oblique: tilted two-column runway and anchored title. 20 Intervals: quiet asymmetric paired works.
+
+Nearest pairs: 02/18 share a quiet material but differ in persistent filtering vs collection expansion; 11/17 share reactive type but differ in a loose spatial cloud vs regimented poster lines; 08/15 use circular geometry but one is a perspective gallery and one a flat positional selector. None reuse a page skeleton.
+
+QA: all twenty desktop/mobile layouts, real data and media, project navigation, sample advanced controls, no mobile overflow, reduced motion. Native media colors and browser video controls. No purchased source or native Framer components were imported; these are original coded interpretations.
