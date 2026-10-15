@@ -8,6 +8,7 @@
       "muted": "#6e7177",
       "line": "#d8dade",
       "accent": "#b84600",
+      "wheel-inactive": "#c8cbd0",
       "nav-bg": "rgba(32,33,35,.88)",
       "nav-text": "#f8f9fb",
       "nav-active": "rgba(240,241,242,.2)"
@@ -22,6 +23,7 @@
       "muted": "#626812",
       "line": "#a2ad21",
       "accent": "#9b271a",
+      "wheel-inactive": "#bbc32e",
       "nav-bg": "#23251c",
       "nav-text": "#f1f5c5",
       "nav-active": "#59602e"
@@ -36,6 +38,7 @@
       "muted": "#6e675a",
       "line": "#bdb6a7",
       "accent": "#a72f16",
+      "wheel-inactive": "#c7c3ba",
       "nav-bg": "#39352e",
       "nav-text": "#f5efe3",
       "nav-active": "#726b5d"
@@ -50,6 +53,7 @@
       "muted": "#a5adae",
       "line": "#4c5359",
       "accent": "#e4ed39",
+      "wheel-inactive": "#444647",
       "nav-bg": "#e3e5dd",
       "nav-text": "#20231c",
       "nav-active": "#b3b9aa"
@@ -64,6 +68,7 @@
       "muted": "#4b6178",
       "line": "#9aafc3",
       "accent": "#92321e",
+      "wheel-inactive": "#a9bac8",
       "nav-bg": "#243c52",
       "nav-text": "#edf5ff",
       "nav-active": "#4f6a81"
@@ -78,6 +83,7 @@
       "muted": "#62556f",
       "line": "#b9accf",
       "accent": "#742354",
+      "wheel-inactive": "#b8b2c8",
       "nav-bg": "#382c4d",
       "nav-text": "#f8edff",
       "nav-active": "#655377"
@@ -92,6 +98,7 @@
       "muted": "#526a58",
       "line": "#a3bba5",
       "accent": "#873f27",
+      "wheel-inactive": "#b4c6b5",
       "nav-bg": "#2e4638",
       "nav-text": "#eff9ed",
       "nav-active": "#57735f"
@@ -106,6 +113,7 @@
       "muted": "#d1dcff",
       "line": "#708ce9",
       "accent": "#f3f854",
+      "wheel-inactive": "#4362dd",
       "nav-bg": "#e8edff",
       "nav-text": "#1732a3",
       "nav-active": "#b1c0f5"
@@ -120,6 +128,7 @@
       "muted": "#714b5c",
       "line": "#bf929e",
       "accent": "#184c3b",
+      "wheel-inactive": "#c8a6ad",
       "nav-bg": "#4d2e3b",
       "nav-text": "#fff1f5",
       "nav-active": "#805766"
@@ -134,6 +143,7 @@
       "muted": "#e1b5a1",
       "line": "#b16b5e",
       "accent": "#f0f56f",
+      "wheel-inactive": "#8a564f",
       "nav-bg": "#f1deca",
       "nav-text": "#5a2826",
       "nav-active": "#ccaf96"

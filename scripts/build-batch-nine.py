@@ -23,7 +23,7 @@ palettes=[
 ('Rose','#ecc7ce','#39202b','#714b5c','#bf929e','#184c3b','#4d2e3b','#fff1f5','#805766'),
 ('Oxide','#6d302c','#fff0dd','#e1b5a1','#b16b5e','#f0f56f','#f1deca','#5a2826','#ccaf96')]
 base=h.replace('../favorite.js?revision=1','../app.js').replace('</head>','<link rel="stylesheet" href="palette.css"></head>')
-colors='.v3 .site-header nav{background:var(--nav-bg)}body.v3 .site-header nav a{color:var(--nav-text)}body.v3 .site-header nav a[aria-current=page]{background:var(--nav-active)}body.v3 .site-header nav a:is(:hover,:focus-visible){background:var(--nav-active);color:var(--nav-text)}body ::selection{background:var(--ink);color:var(--paper)}.footer-wordmark text{fill:var(--ink)}.year-menu{background:var(--paper);color:var(--ink)}'
+colors='.client-wheel:not(.is-static) .wheel-name:not(.is-active){color:var(--wheel-inactive)}.v3 .site-header nav{background:var(--nav-bg)}body.v3 .site-header nav a{color:var(--nav-text)}body.v3 .site-header nav a[aria-current=page]{background:var(--nav-active)}body.v3 .site-header nav a:is(:hover,:focus-visible){background:var(--nav-active);color:var(--nav-text)}body ::selection{background:var(--ink);color:var(--paper)}.footer-wordmark text{fill:var(--ink)}.year-menu{background:var(--paper);color:var(--ink)}'
 (s/'colors.css').write_text(colors,encoding='utf-8')
 base=base.replace('</head>','<link rel="stylesheet" href="../colors.css"></head>')
 rows=[]
@@ -31,7 +31,8 @@ for i,(name,paper,ink,muted,line,accent,nav,nt,active) in enumerate(palettes,1):
  d=s/f'{i:02}';d.mkdir(exist_ok=True)
  (d/'index.html').write_text(base,encoding='utf-8')
  for f in ['data.json','site.json']:shutil.copy2(old/'03'/f,d/f)
- tokens=dict(paper=paper,ink=ink,muted=muted,line=line,accent=accent,**{'nav-bg':nav,'nav-text':nt,'nav-active':active})
+ blend=lambda a,b: '#'+''.join(f'{round(int(a[j:j+2],16)*.2+int(b[j:j+2],16)*.8):02x}' for j in (1,3,5))
+ tokens=dict(paper=paper,ink=ink,muted=muted,line=line,accent=accent,**{'wheel-inactive':'#c8cbd0' if i==1 else blend(ink,paper),'nav-bg':nav,'nav-text':nt,'nav-active':active})
  (d/'palette.css').write_text(':root{'+''.join(f'--{k}:{v};' for k,v in tokens.items())+'}',encoding='utf-8')
  rows.append(dict(id=i,name=name,tokens=tokens))
 (s/'palettes.json').write_text(json.dumps(rows,indent=2),encoding='utf-8')

@@ -84,3 +84,6 @@ Preserve Original / New Type in batch seven except uppercase project titles. Bui
 
 ## Batch nine — favorite capsule, color only
 Favorite is batch-seven/03 (actual hyperlink destination and screenshots), despite visible link label02. Fix that preview: equal whitespace above/below home nav, remove footer pressure cursor distortion. Make ten structurally identical palette variants, preserving all content, behaviors and typography. Only colors vary; original main site untouched.
+
+
+Batch nine wheel color refinement: inactive cylinder names use a palette-derived 20% ink / 80% paper color, retaining #c8cbd0 for Original Frost (01). Active names and static client lists retain the main ink color. No layout changes.

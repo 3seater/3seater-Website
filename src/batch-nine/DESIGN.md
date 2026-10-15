@@ -141,3 +141,5 @@ Navigation, archive filtering, media, factual content and runtime behavior inher
 - Do retain equal home capsule spacing and static footer fitting.
 - Don't introduce typography, structure, navigation or content variations between palettes.
 - Don't propagate palette tokens to the main site or historical batches.
+
+Batch nine wheel color refinement: inactive cylinder names use a palette-derived 20% ink / 80% paper color, retaining #c8cbd0 for Original Frost (01). Active names and static client lists retain the main ink color. No layout changes.
