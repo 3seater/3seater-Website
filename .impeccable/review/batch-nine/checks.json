@@ -1,0 +1,116 @@
+{
+  "desktop": [
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    },
+    {
+      "above": 24,
+      "below": 24,
+      "columns": "233.031px 248.266px 237.766px 240.328px 233.578px",
+      "overflow": false
+    }
+  ],
+  "mobile": [
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    },
+    {
+      "above": 20,
+      "below": 20,
+      "overflow": false
+    }
+  ]
+}

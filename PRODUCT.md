@@ -81,3 +81,6 @@ Batch seven version 01 typography correction: Anton applies to project/page titl
 
 ## Batch eight — original plus fifteen
 Preserve Original / New Type in batch seven except uppercase project titles. Build fifteen additional directions in the Anton/Plex realm, with materially varied home composition, color and navigation. Include acid yellow. All fifteen keep dense content-first home grids and aligned bold selected-project lists with interspersed video previews before the client wheel. Preserve factual project data, original Archive filters, unboxed natural-ratio project media and continuously looping previews. Main site and older versions remain untouched.
+
+## Batch nine — favorite capsule, color only
+Favorite is batch-seven/03 (actual hyperlink destination and screenshots), despite visible link label02. Fix that preview: equal whitespace above/below home nav, remove footer pressure cursor distortion. Make ten structurally identical palette variants, preserving all content, behaviors and typography. Only colors vary; original main site untouched.

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Original Frost",
+    "tokens": {
+      "paper": "#f8f9fb",
+      "ink": "#17181a",
+      "muted": "#6e7177",
+      "line": "#d8dade",
+      "accent": "#b84600",
+      "nav-bg": "rgba(32,33,35,.88)",
+      "nav-text": "#f8f9fb",
+      "nav-active": "rgba(240,241,242,.2)"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Acid Yellow",
+    "tokens": {
+      "paper": "#e4ed39",
+      "ink": "#171900",
+      "muted": "#626812",
+      "line": "#a2ad21",
+      "accent": "#9b271a",
+      "nav-bg": "#23251c",
+      "nav-text": "#f1f5c5",
+      "nav-active": "#59602e"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Warm Bone",
+    "tokens": {
+      "paper": "#eee9df",
+      "ink": "#2b2924",
+      "muted": "#6e675a",
+      "line": "#bdb6a7",
+      "accent": "#a72f16",
+      "nav-bg": "#39352e",
+      "nav-text": "#f5efe3",
+      "nav-active": "#726b5d"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Carbon",
+    "tokens": {
+      "paper": "#191b1e",
+      "ink": "#f0f2e9",
+      "muted": "#a5adae",
+      "line": "#4c5359",
+      "accent": "#e4ed39",
+      "nav-bg": "#e3e5dd",
+      "nav-text": "#20231c",
+      "nav-active": "#b3b9aa"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Mist Blue",
+    "tokens": {
+      "paper": "#cddce8",
+      "ink": "#1b3048",
+      "muted": "#4b6178",
+      "line": "#9aafc3",
+      "accent": "#92321e",
+      "nav-bg": "#243c52",
+      "nav-text": "#edf5ff",
+      "nav-active": "#4f6a81"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Soft Lilac",
+    "tokens": {
+      "paper": "#ddd6ed",
+      "ink": "#262035",
+      "muted": "#62556f",
+      "line": "#b9accf",
+      "accent": "#742354",
+      "nav-bg": "#382c4d",
+      "nav-text": "#f8edff",
+      "nav-active": "#655377"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Mint",
+    "tokens": {
+      "paper": "#d8e9d7",
+      "ink": "#23392c",
+      "muted": "#526a58",
+      "line": "#a3bba5",
+      "accent": "#873f27",
+      "nav-bg": "#2e4638",
+      "nav-text": "#eff9ed",
+      "nav-active": "#57735f"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Cobalt",
+    "tokens": {
+      "paper": "#143bd4",
+      "ink": "#ffffff",
+      "muted": "#d1dcff",
+      "line": "#708ce9",
+      "accent": "#f3f854",
+      "nav-bg": "#e8edff",
+      "nav-text": "#1732a3",
+      "nav-active": "#b1c0f5"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Rose",
+    "tokens": {
+      "paper": "#ecc7ce",
+      "ink": "#39202b",
+      "muted": "#714b5c",
+      "line": "#bf929e",
+      "accent": "#184c3b",
+      "nav-bg": "#4d2e3b",
+      "nav-text": "#fff1f5",
+      "nav-active": "#805766"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Oxide",
+    "tokens": {
+      "paper": "#6d302c",
+      "ink": "#fff0dd",
+      "muted": "#e1b5a1",
+      "line": "#b16b5e",
+      "accent": "#f0f56f",
+      "nav-bg": "#f1deca",
+      "nav-text": "#5a2826",
+      "nav-active": "#ccaf96"
+    }
+  }
+]

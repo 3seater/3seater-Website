@@ -1213,3 +1213,7 @@ Version 01 typography amendment: the batch-seven copy uses Anton for project/pag
 Batch eight is documented in [src/batch-eight/DESIGN.md](src/batch-eight/DESIGN.md): fifteen palettes, six home layout families, eight navigation styles, aligned selected rows with inline video, and the inherited original Archive/project-detail structure. Its normative tokens apply only to /batch-eight/01/ through /batch-eight/15/. Earlier frontmatter and batch records remain unchanged. Extensions are appended at extensions.batchEight.
 
 The preserved Original / New Type reference remains at batch-seven/01. Uppercase project titles are its only additional amendment in this iteration. Batch-eight final navigation hover and selection use ink/paper pairs (reviewed minimum 5.17:1); navigation transitions are disabled to prevent initial background flash.
+
+## Batch Nine — Scoped Continuation
+
+Batch nine is documented in [src/batch-nine/DESIGN.md](src/batch-nine/DESIGN.md), with exact tokens sourced from palettes.json. Ten structurally identical copies of favorite batch-seven/03 Soft Capsule vary only palette.css; HTML, project data and site metadata are byte-identical and runtime/styles are shared. Typography, content and layout remain inherited. Home capsule spacing is equal above and below: 24px desktop, 20px through 700px. Footer pressure distortion is removed while static fitting and the home link remain. The favorite receives its scoped favorite.js/favorite.css fix; the main site is unchanged. Extensions are appended at extensions.batchNine, preserving prior records.

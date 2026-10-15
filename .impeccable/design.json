@@ -3,6 +3,18 @@
   "generatedAt": "2026-10-14T04:25:48.276106-04:00",
   "title": "Design System: 3seater — Batch Six",
   "extensions": {
+    "batchNine": {
+  "artifact": "src/batch-nine",
+  "routes": "/batch-nine/01/ through /batch-nine/10/",
+  "authority": "src/batch-nine/DESIGN.md; src/batch-nine/palettes.json; DIRECTION-CONTRACT.txt",
+  "favorite": "batch-seven/03 Soft Capsule",
+  "invariant": "Byte-identical HTML, data.json and site.json across ten routes; shared runtime and structural CSS; only palette.css differs.",
+  "typography": "Inherited unchanged from favorite 03.",
+  "layout": "Home capsule has equal 24px space above/below; 20px at max-width 700px.",
+  "footer": "Cursor-pressure distortion removed; static wordmark fitting and home link retained.",
+  "review": "Reviewer muted-color corrections incorporated for routes 03, 05 and 09.",
+  "boundary": "Main site unchanged. Favorite 03 receives scoped favorite.js/favorite.css fixes."
+},
     "scope": {
       "artifact": "src/batch-six",
       "routes": "/batch-six/01/ through /batch-six/10/",
