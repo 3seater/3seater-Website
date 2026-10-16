@@ -3,6 +3,8 @@ import shutil,json
 r=Path(__file__).resolve().parents[1]; old=r/'src/batch-nine'; s=r/'src/batch-ten'; s.mkdir(exist_ok=True)
 for f in ['app.js','original.css','fonts.css','variants.css','favorite.css','colors.css']:shutil.copy2(old/f,s/f)
 shutil.copytree(old/'fonts',s/'fonts',dirs_exist_ok=True)
+(s/'variants.css').write_text((s/'variants.css').read_text(encoding='utf-8').replace('.project-info h1{font-family:Anton,sans-serif;letter-spacing:0}', '.project-info h1{font-family:Anton,sans-serif;letter-spacing:0;text-transform:uppercase}'),encoding='utf-8')
+(s/'app.js').write_text((s/'app.js').read_text(encoding='utf-8').replace('Graphic design, motion design, and 3D.','VISUAL WORLDS FOR ARTISTS AND BRANDS.'),encoding='utf-8')
 previous=json.loads((old/'palettes.json').read_text())
 rows=[dict(previous[i-1],kept=True,source=i) for i in [1,8,2,3]]
 def blend(a,b,p):return '#'+''.join(f'{round(int(a[j:j+2],16)*p+int(b[j:j+2],16)*(1-p)):02x}' for j in (1,3,5))

@@ -89,3 +89,6 @@ Favorite is batch-seven/03 (actual hyperlink destination and screenshots), despi
 Batch nine wheel color refinement: inactive cylinder names use a palette-derived 20% ink / 80% paper color, retaining #c8cbd0 for Original Frost (01). Active names and static client lists retain the main ink color. No layout changes.
 
 Batch Ten: retain Original 01, Cobalt, Acid Yellow, Warm Bone exactly and add ten new color-only versions at /batch-ten/. Same layout and behavior across all 14. Theme inactive wheel names. Preserve previous batches.
+
+Batch Ten footer statement approved: VISUAL WORLDS FOR ARTISTS AND BRANDS. Apply to all fourteen color options in place of the skills sentence.
+All Batch Ten project-page headings display in uppercase, retaining Anton and existing layout.

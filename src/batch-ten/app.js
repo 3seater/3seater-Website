@@ -582,7 +582,7 @@
     const links = socials.filter(s => s.label && /^https:\/\//.test(s.url || ''));
     contact.hidden = !email && !links.length;
     document.querySelector('#footer-project-count').textContent = `[${projects.length}]`;
-    contact.innerHTML = `<p>Graphic design, motion design, and 3D.</p><div class="footer-links">${email ? `<a href="mailto:${escape(email)}">${escape(email)}</a>` : ''}${links.map(s => `<a href="${escape(s.url)}" target="_blank" rel="noopener">${escape(s.label)} ↗</a>`).join('')}</div>`;
+    contact.innerHTML = `<p>VISUAL WORLDS FOR ARTISTS AND BRANDS.</p><div class="footer-links">${email ? `<a href="mailto:${escape(email)}">${escape(email)}</a>` : ''}${links.map(s => `<a href="${escape(s.url)}" target="_blank" rel="noopener">${escape(s.label)} ↗</a>`).join('')}</div>`;
   }
   function renderMissing() {main.innerHTML = '<div class="empty-state"><h2>This collection isn’t here.</h2><a class="utility" href="#/">Back to the archive ↗</a></div>';}
   function render() {
