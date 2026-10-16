@@ -1,1 +1,6 @@
 .client-wheel:not(.is-static) .wheel-name:not(.is-active){color:var(--wheel-inactive)}.v3 .site-header nav{background:var(--nav-bg)}body.v3 .site-header nav a{color:var(--nav-text)}body.v3 .site-header nav a[aria-current=page]{background:var(--nav-active)}body.v3 .site-header nav a:is(:hover,:focus-visible){background:var(--nav-active);color:var(--nav-text)}body ::selection{background:var(--ink);color:var(--paper)}.footer-wordmark text{fill:var(--ink)}.year-menu{background:var(--paper);color:var(--ink)}
+/* A single frosted surface lets scrolling artwork show through the capsule. */
+body.v3 .site-header nav{background:var(--nav-bg);background:color-mix(in srgb,var(--nav-bg) 76%,transparent);-webkit-backdrop-filter:blur(26px) saturate(1.15);backdrop-filter:blur(26px) saturate(1.15)}
+body.v3 .site-header nav a{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+body.v3 .site-header nav a[aria-current=page],body.v3 .site-header nav a:is(:hover,:focus-visible){background:var(--nav-active);background:color-mix(in srgb,var(--nav-active) 70%,transparent)}
+

@@ -3,6 +3,7 @@ import shutil,json
 r=Path(__file__).resolve().parents[1]; old=r/'src/batch-nine'; s=r/'src/batch-ten'; s.mkdir(exist_ok=True)
 for f in ['app.js','original.css','fonts.css','variants.css','favorite.css','colors.css']:shutil.copy2(old/f,s/f)
 shutil.copytree(old/'fonts',s/'fonts',dirs_exist_ok=True)
+(s/'colors.css').write_text((s/'colors.css').read_text(encoding='utf-8')+'\n/* A single frosted surface lets scrolling artwork show through the capsule. */\nbody.v3 .site-header nav{background:var(--nav-bg);background:color-mix(in srgb,var(--nav-bg) 76%,transparent);-webkit-backdrop-filter:blur(26px) saturate(1.15);backdrop-filter:blur(26px) saturate(1.15)}\nbody.v3 .site-header nav a{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}\nbody.v3 .site-header nav a[aria-current=page],body.v3 .site-header nav a:is(:hover,:focus-visible){background:var(--nav-active);background:color-mix(in srgb,var(--nav-active) 70%,transparent)}\n\n',encoding='utf-8')
 (s/'variants.css').write_text((s/'variants.css').read_text(encoding='utf-8').replace('.project-info h1{font-family:Anton,sans-serif;letter-spacing:0}', '.project-info h1{font-family:Anton,sans-serif;letter-spacing:0;text-transform:uppercase}'),encoding='utf-8')
 (s/'app.js').write_text((s/'app.js').read_text(encoding='utf-8').replace('Graphic design, motion design, and 3D.','VISUAL WORLDS FOR ARTISTS AND BRANDS.'),encoding='utf-8')
 previous=json.loads((old/'palettes.json').read_text())

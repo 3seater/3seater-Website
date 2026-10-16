@@ -92,3 +92,5 @@ Batch Ten: retain Original 01, Cobalt, Acid Yellow, Warm Bone exactly and add te
 
 Batch Ten footer statement approved: VISUAL WORLDS FOR ARTISTS AND BRANDS. Apply to all fourteen color options in place of the skills sentence.
 All Batch Ten project-page headings display in uppercase, retaining Anton and existing layout.
+
+Batch Ten navigation refinement: all 14 palettes use a translucent capsule (76% of nav color alpha), 26px backdrop blur and 1.15 saturation. Selected and hover fills are softened to 70% alpha. Geometry, spacing and type remain unchanged.
