@@ -1,0 +1,230 @@
+[
+  {
+    "id": 1,
+    "name": "Original Frost",
+    "tokens": {
+      "paper": "#f8f9fb",
+      "ink": "#17181a",
+      "muted": "#6e7177",
+      "line": "#d8dade",
+      "accent": "#b84600",
+      "wheel-inactive": "#c8cbd0",
+      "nav-bg": "rgba(32,33,35,.88)",
+      "nav-text": "#f8f9fb",
+      "nav-active": "rgba(240,241,242,.2)"
+    },
+    "kept": true,
+    "source": 1
+  },
+  {
+    "id": 2,
+    "name": "Cobalt",
+    "tokens": {
+      "paper": "#143bd4",
+      "ink": "#ffffff",
+      "muted": "#d1dcff",
+      "line": "#708ce9",
+      "accent": "#f3f854",
+      "wheel-inactive": "#4362dd",
+      "nav-bg": "#e8edff",
+      "nav-text": "#1732a3",
+      "nav-active": "#b1c0f5"
+    },
+    "kept": true,
+    "source": 8
+  },
+  {
+    "id": 3,
+    "name": "Acid Yellow",
+    "tokens": {
+      "paper": "#e4ed39",
+      "ink": "#171900",
+      "muted": "#626812",
+      "line": "#a2ad21",
+      "accent": "#9b271a",
+      "wheel-inactive": "#bbc32e",
+      "nav-bg": "#23251c",
+      "nav-text": "#f1f5c5",
+      "nav-active": "#59602e"
+    },
+    "kept": true,
+    "source": 2
+  },
+  {
+    "id": 4,
+    "name": "Warm Bone",
+    "tokens": {
+      "paper": "#eee9df",
+      "ink": "#2b2924",
+      "muted": "#6e675a",
+      "line": "#bdb6a7",
+      "accent": "#a72f16",
+      "wheel-inactive": "#c7c3ba",
+      "nav-bg": "#39352e",
+      "nav-text": "#f5efe3",
+      "nav-active": "#726b5d"
+    },
+    "kept": true,
+    "source": 3
+  },
+  {
+    "name": "Signal Orange",
+    "tokens": {
+      "paper": "#ff792c",
+      "ink": "#29170d",
+      "muted": "#502913",
+      "line": "#bf5c23",
+      "accent": "#622200",
+      "wheel-inactive": "#d46526",
+      "nav-bg": "#29170d",
+      "nav-text": "#ff792c",
+      "nav-active": "#502913"
+    },
+    "kept": false,
+    "id": 5
+  },
+  {
+    "name": "Tomato",
+    "tokens": {
+      "paper": "#ed4938",
+      "ink": "#27100e",
+      "muted": "#311310",
+      "line": "#b2382b",
+      "accent": "#501e10",
+      "wheel-inactive": "#c53e30",
+      "nav-bg": "#27100e",
+      "nav-text": "#ed4938",
+      "nav-active": "#2d120f"
+    },
+    "kept": false,
+    "id": 6
+  },
+  {
+    "name": "Butter",
+    "tokens": {
+      "paper": "#f5e69a",
+      "ink": "#302b18",
+      "muted": "#534d2f",
+      "line": "#baae73",
+      "accent": "#713321",
+      "wheel-inactive": "#cec180",
+      "nav-bg": "#302b18",
+      "nav-text": "#f5e69a",
+      "nav-active": "#534d2f"
+    },
+    "kept": false,
+    "id": 7
+  },
+  {
+    "name": "Racing Green",
+    "tokens": {
+      "paper": "#123f31",
+      "ink": "#f1efcc",
+      "muted": "#c9cfb0",
+      "line": "#557460",
+      "accent": "#f9c854",
+      "wheel-inactive": "#3f6250",
+      "nav-bg": "#f1efcc",
+      "nav-text": "#123f31",
+      "nav-active": "#c9cfb0"
+    },
+    "kept": false,
+    "id": 8
+  },
+  {
+    "name": "Espresso",
+    "tokens": {
+      "paper": "#33241f",
+      "ink": "#f4e5cf",
+      "muted": "#d1c2af",
+      "line": "#6d5e54",
+      "accent": "#efba72",
+      "wheel-inactive": "#5a4b42",
+      "nav-bg": "#f4e5cf",
+      "nav-text": "#33241f",
+      "nav-active": "#d1c2af"
+    },
+    "kept": false,
+    "id": 9
+  },
+  {
+    "name": "Aubergine",
+    "tokens": {
+      "paper": "#39213f",
+      "ink": "#f3e5f0",
+      "muted": "#d2c2d0",
+      "line": "#715c74",
+      "accent": "#d5ef80",
+      "wheel-inactive": "#5e4862",
+      "nav-bg": "#f3e5f0",
+      "nav-text": "#39213f",
+      "nav-active": "#d2c2d0"
+    },
+    "kept": false,
+    "id": 10
+  },
+  {
+    "name": "Glacier",
+    "tokens": {
+      "paper": "#c9f1fa",
+      "ink": "#153946",
+      "muted": "#355a66",
+      "line": "#93bac4",
+      "accent": "#8b2d35",
+      "wheel-inactive": "#a5ccd6",
+      "nav-bg": "#153946",
+      "nav-text": "#c9f1fa",
+      "nav-active": "#355a66"
+    },
+    "kept": false,
+    "id": 11
+  },
+  {
+    "name": "Petrol",
+    "tokens": {
+      "paper": "#064c57",
+      "ink": "#e2f5e8",
+      "muted": "#bad7ce",
+      "line": "#487f82",
+      "accent": "#f6dc7c",
+      "wheel-inactive": "#326e74",
+      "nav-bg": "#e2f5e8",
+      "nav-text": "#064c57",
+      "nav-active": "#bad7ce"
+    },
+    "kept": false,
+    "id": 12
+  },
+  {
+    "name": "Ultraviolet",
+    "tokens": {
+      "paper": "#4220a4",
+      "ink": "#f5eeff",
+      "muted": "#d5c9ef",
+      "line": "#785ebf",
+      "accent": "#dcf57e",
+      "wheel-inactive": "#6649b6",
+      "nav-bg": "#f5eeff",
+      "nav-text": "#4220a4",
+      "nav-active": "#d5c9ef"
+    },
+    "kept": false,
+    "id": 13
+  },
+  {
+    "name": "Bubblegum",
+    "tokens": {
+      "paper": "#f3a6d1",
+      "ink": "#3e1736",
+      "muted": "#5f3152",
+      "line": "#bd7ba2",
+      "accent": "#264d29",
+      "wheel-inactive": "#cf89b2",
+      "nav-bg": "#3e1736",
+      "nav-text": "#f3a6d1",
+      "nav-active": "#5f3152"
+    },
+    "kept": false,
+    "id": 14
+  }
+]
