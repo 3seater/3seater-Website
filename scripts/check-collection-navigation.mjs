@@ -48,3 +48,11 @@ assert.equal(video.dataset.playbackState,'loading');
 video.readyState=3;context.updatePlayback();await new Promise(resolve=>setImmediate(resolve));
 assert.deepEqual(startupOrder,['load','play']);assert.equal(video.preload,'auto');assert.equal(video.muted,true);assert.equal(video.defaultMuted,true);assert.equal(classes.has('playing'),true);
 console.log('PASS: first visible source explicitly loads muted and reveals without a frame callback.');
+
+// Small-card selection must not downgrade larger project media.
+video.src='';video.paused=true;video.dataset.previewSmall='small-loop.mp4';
+video.getBoundingClientRect=()=>({width:240});
+context.updatePlayback();assert.equal(video.src,'small-loop.mp4');
+video.src='';video.getBoundingClientRect=()=>({width:640});
+context.updatePlayback();assert.equal(video.src,'full-loop.mp4');
+console.log('PASS: small tiles select the lightweight loop; large media retains its source.');

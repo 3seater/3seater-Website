@@ -48,7 +48,18 @@ def ensure_loop(info, name):
              '-movflags', '+faststart', str(temporary)])
         temporary.replace(target)
         print(f'Full-length thumbnail: {name}', flush=True)
-    return {**info, 'loop': f'media/{target.name}'}
+    small = MEDIA / f'{name}-loop-small-v1.mp4'
+    if not small.exists():
+        temporary = small.with_name(small.stem + f'.{os.getpid()}.tmp.mp4')
+        run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-threads', '2',
+             '-i', str(DIST / info['src']), '-map', '0:v:0', '-an',
+             '-vf', "scale=w='min(480,iw)':h='min(480,ih)':force_original_aspect_ratio=decrease:force_divisible_by=2,fps=30",
+             '-c:v', 'libx264', '-preset', 'fast', '-crf', '26', '-maxrate', '450k',
+             '-bufsize', '900k', '-pix_fmt', 'yuv420p', '-threads', '2',
+             '-movflags', '+faststart', str(temporary)])
+        temporary.replace(small)
+        print(f'Full-length small thumbnail: {name}', flush=True)
+    return {**info, 'loop': f'media/{target.name}', 'loopSmall': f'media/{small.name}'}
 
 def process_media(task):
     path, project_id, index = task

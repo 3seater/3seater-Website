@@ -34,7 +34,7 @@
     projectCursorCleanup?.();
     videoControlCleanup.splice(0).forEach(dispose => dispose());
     observer?.disconnect(); gridObserver?.disconnect(); mediaEvents?.abort();
-    main.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
+    main.querySelectorAll('video').forEach(v => { if (!v.paused) v.pause(); if (v.hasAttribute('src')) { v.removeAttribute('src'); v.load(); } });
     visibleVideos.clear();
   }
   function initSmoothScroll() {
@@ -111,14 +111,14 @@
   function tile(item, number) {
     const { project: p, media: m, index } = item;
     const label = `${p.title}${p.year ? ', ' + p.year : ''} — ${m.type === 'video' ? 'video' : 'image'} ${index + 1}`;
-    return `<a class="work-tile" href="${projectHref(p)}?media=${index}" data-cursor="View" aria-label="${escape(label)}" style="--delay:${Math.min(number, 8) * 25}ms"><div class="tile-media" style="--ratio:${m.width}/${m.height}"><img src="${escape(m.poster)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)} — ${escape(p.categories.join(', ') || 'work study')}" loading="${number < 4 ? 'eager' : 'lazy'}" decoding="async">${m.type === 'video' ? `<video poster="${escape(m.poster)}" data-preview="${escape(m.loop || m.src)}" autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>` : ''}<span class="tile-open" aria-hidden="true">↗</span></div><div class="tile-caption"><span class="tile-title">${projectTitleMarkup(p.title)}</span>${p.year ? `<span class="year"> — ${escape(p.year)}</span>` : ''}</div></a>`;
+    return `<a class="work-tile" href="${projectHref(p)}?media=${index}" data-cursor="View" aria-label="${escape(label)}" style="--delay:${Math.min(number, 8) * 25}ms"><div class="tile-media" style="--ratio:${m.width}/${m.height}"><img src="${escape(m.poster)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)} — ${escape(p.categories.join(', ') || 'work study')}" loading="${number < 4 ? 'eager' : 'lazy'}" decoding="async">${m.type === 'video' ? `<video poster="${escape(m.poster)}" data-preview="${escape(m.loop || m.src)}" data-preview-small="${escape(m.loopSmall || m.loop || m.src)}" autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>` : ''}<span class="tile-open" aria-hidden="true">↗</span></div><div class="tile-caption"><span class="tile-title">${projectTitleMarkup(p.title)}</span>${p.year ? `<span class="year"> — ${escape(p.year)}</span>` : ''}</div></a>`;
   }
   function buildGrid(items) {
     projectCursorCleanup?.();
     const grid = document.querySelector('#feed-grid');
     if (!grid) return;
     observer?.disconnect(); visibleVideos.clear();
-    grid.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
+    grid.querySelectorAll('video').forEach(v => { if (!v.paused) v.pause(); if (v.hasAttribute('src')) { v.removeAttribute('src'); v.load(); } });
     grid.classList.toggle('wide', density === 'wide');
     const masonry = route().path.length === 0;
     grid.classList.toggle('masonry', masonry);
@@ -152,8 +152,10 @@
     // Solve width × total aspect ratio + caption/gap space = one shared bottom.
     // Re-measure wrapping as widths change; retain caption space to avoid oscillation.
     for (let pass = 0; pass < 8; pass++) {
-      captions.forEach(caption => {
-        caption.style.minHeight = `${caption.getBoundingClientRect().height}px`;
+      // Read all caption geometry before any writes: one layout per pass.
+      const captionHeights = captions.map(caption => caption.getBoundingClientRect().height);
+      captions.forEach((caption, index) => {
+        caption.style.minHeight = `${captionHeights[index]}px`;
       });
       const metrics = columns.map(column => {
         const media = [...column.querySelectorAll('.tile-media')];
@@ -304,7 +306,11 @@
         if (!video.src) {
           video.defaultMuted = true; video.muted = true;
           video.preload = 'auto';
-          video.src = video.dataset.preview;
+          // Index previews are started on hover rather than by initVideos.
+          // Give them their own readiness callback so the first hover can play.
+          if (video.closest('.index-inline-preview')) video.addEventListener('canplay', updatePlayback, {once:true});
+          video.src = video.dataset.previewSmall && video.getBoundingClientRect().width <= 320
+            ? video.dataset.previewSmall : video.dataset.preview;
           video.load();
         }
         // Start only once Safari reports HAVE_FUTURE_DATA (canplay), matching
@@ -360,7 +366,7 @@
     window.addEventListener('resize', resize);
   }
   function selectedProjectsMarkup(list) {
-    return `<section class="selected-projects" aria-label="Selected projects"><div class="selected-heading"><h2>Selected projects</h2><a href="#/index">Full index ↗</a></div>${coverItems(list).slice(0,7).map(({project:p,media:m},i)=>{const words=p.title.split(' '),pos=[words.length,Math.ceil(words.length/2),0][i%3];const thumb=m.type==='video'?`<span class="selected-video"><img src="${escape(m.poster)}" alt="" width="${m.width}" height="${m.height}"><video poster="${escape(m.poster)}" data-preview="${escape(m.loop || m.src)}" autoplay muted loop playsinline preload="none" aria-label="${escape(p.title)}"></video></span>`:`<span class="selected-video"><img src="${escape(m.src)}" alt="" width="${m.width}" height="${m.height}"></span>`;return `<a class="selected-row" href="${projectHref(p)}"><span>${escape(words.slice(0,pos).join(' '))} ${thumb} ${escape(words.slice(pos).join(' '))}</span></a>`}).join('')}</section>`;
+    return `<section class="selected-projects" aria-label="Selected projects"><div class="selected-heading"><h2>Selected projects</h2><a href="#/index">Full index ↗</a></div>${coverItems(list).slice(0,7).map(({project:p,media:m},i)=>{const words=p.title.split(' '),pos=[words.length,Math.ceil(words.length/2),0][i%3];const thumb=m.type==='video'?`<span class="selected-video"><img loading="lazy" decoding="async" src="${escape(m.poster)}" alt="" width="${m.width}" height="${m.height}"><video poster="${escape(m.poster)}" data-preview="${escape(m.loop || m.src)}" data-preview-small="${escape(m.loopSmall || m.loop || m.src)}" autoplay muted loop playsinline preload="none" aria-label="${escape(p.title)}"></video></span>`:`<span class="selected-video"><img loading="lazy" decoding="async" src="${escape(m.src)}" alt="" width="${m.width}" height="${m.height}"></span>`;return `<a class="selected-row" href="${projectHref(p)}"><span>${escape(words.slice(0,pos).join(' '))} ${thumb} ${escape(words.slice(pos).join(' '))}</span></a>`}).join('')}</section>`;
   }
   function clientWheelMarkup() {
     const preferred = ['2hollis', 'faze', 'pink-pantheress', 'busta-rhymes-young-thug', 'g-herbo', 'nba-youngboy', 'don-toliver', 'burna-boy', 'snoop-dogg', 'mlb'];
@@ -530,7 +536,7 @@
   }
 
   function indexRow(p) {
-    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${projectTitleMarkup(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}<span class="index-inline-preview" aria-hidden="true">${p.media[p.cover].type === 'video' ? `<video data-preview="${escape(p.media[p.cover].loop || p.media[p.cover].src)}" poster="${escape(p.media[p.cover].poster)}" muted loop playsinline preload="none" tabindex="-1"></video>` : `<img data-src="${escape(p.media[p.cover].poster)}" alt="" width="${p.media[p.cover].width}" height="${p.media[p.cover].height}">`}</span></a>`;
+    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${projectTitleMarkup(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}<span class="index-inline-preview" aria-hidden="true">${p.media[p.cover].type === 'video' ? `<video data-preview="${escape(p.media[p.cover].loop || p.media[p.cover].src)}" data-preview-small="${escape(p.media[p.cover].loopSmall || p.media[p.cover].loop || p.media[p.cover].src)}" poster="${escape(p.media[p.cover].poster)}" muted loop playsinline preload="none" tabindex="-1"></video>` : `<img data-src="${escape(p.media[p.cover].poster)}" alt="" width="${p.media[p.cover].width}" height="${p.media[p.cover].height}">`}</span></a>`;
   }
   function renderIndex() {
     const labels = [...new Set(projects.flatMap(p => p.categories))].sort((a,b) => a.localeCompare(b));
@@ -774,7 +780,7 @@
   function prepareImages(id) {
     const project = projects.find(p => p.id === id);
     if (!project) return Promise.resolve();
-    return Promise.all(project.media.slice(0, 4).map(media => {
+    return Promise.all(project.media.slice(0, 1).map(media => {
       const url = media.type === 'video' ? media.poster : media.src;
       if (!url) return Promise.resolve();
       if (!preparedImages.has(url)) {
@@ -792,7 +798,7 @@
     const {path, key} = route();
     if (path[0] === 'project') {
       let timeout;
-      await Promise.race([prepareImages(path[1]), new Promise(resolve => { timeout = setTimeout(resolve, 250); })]);
+      await Promise.race([prepareImages(path[1]), new Promise(resolve => { timeout = setTimeout(resolve, 80); })]);
       clearTimeout(timeout);
     }
     if (version !== navigationVersion) return;
@@ -803,8 +809,8 @@
     // DOM, active nav and scroll commit in the same task; the header never swaps.
     render();
     if (!reduced.matches) {
-      arrivalAnimation = main.animate([{opacity:.68}, {opacity:1}], {
-        duration:240, easing:'cubic-bezier(.22,.61,.36,1)'
+      arrivalAnimation = main.animate([{opacity:.85}, {opacity:1}], {
+        duration:180, easing:'cubic-bezier(.22,.61,.36,1)'
       });
     }
   }
