@@ -11,7 +11,7 @@ for p in data['projects']:
     assert p['media'] and 0 <= p['cover'] < len(p['media']), f'Invalid cover: {p["id"]}'
     for m in p['media']:
         assert m['width'] > 0 and m['height'] > 0
-        for key in ['src', 'poster', 'preview', 'loop', 'loopSmall']:
+        for key in ['src', 'poster', 'preview', 'loop', 'loopSmall', 'playbackPoster']:
             if m.get(key):
                 path = (dist / m[key]).resolve()
                 assert path.is_relative_to(dist.resolve()), 'Unsafe media path'

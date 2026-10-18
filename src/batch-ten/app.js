@@ -29,12 +29,46 @@
     if (year) params.set('year', year);
     return `#/archive${params.size ? '?' + params.toString() : ''}`;
   }
+  // Reuse decoded players across routes instead of flashing their posters again.
+  // Detached players are paused; only the most recent 24 are retained.
+  const videoCache = [];
+  function retainVideoPlayers(root) {
+    root.querySelectorAll('video').forEach(video => {
+      if (!video.paused) video.pause();
+      video.muted = true;
+      if (video.hasAttribute('src') && video.readyState >= 2 && video.classList.contains('playing')) {
+        video.remove();
+        videoCache.push(video);
+      } else if (video.hasAttribute('src')) {
+        video.removeAttribute('src'); video.load();
+      }
+    });
+    while (videoCache.length > 24) {
+      const video = videoCache.shift();
+      video.removeAttribute('src'); video.load();
+    }
+  }
+  function restoreVideoPlayers(root) {
+    root.querySelectorAll('video[data-preview]').forEach(placeholder => {
+      const index = videoCache.findIndex(video => video.dataset.preview === placeholder.dataset.preview);
+      if (index < 0) return;
+      const video = videoCache.splice(index, 1)[0];
+      // Preserve src, poster, currentTime and the decoded frame. Update only
+      // destination-specific presentation/accessibility attributes.
+      for (const name of ['width','height','aria-label','aria-hidden','tabindex','autoplay']) {
+        if (placeholder.hasAttribute(name)) video.setAttribute(name, placeholder.getAttribute(name));
+        else video.removeAttribute(name);
+      }
+      video.dataset.reusedPlayer = 'true';
+      placeholder.replaceWith(video);
+    });
+  }
   function cleanup() {
     stopSmoothScroll();
     projectCursorCleanup?.();
     videoControlCleanup.splice(0).forEach(dispose => dispose());
     observer?.disconnect(); gridObserver?.disconnect(); mediaEvents?.abort();
-    main.querySelectorAll('video').forEach(v => { if (!v.paused) v.pause(); if (v.hasAttribute('src')) { v.removeAttribute('src'); v.load(); } });
+    retainVideoPlayers(main);
     visibleVideos.clear();
   }
   function initSmoothScroll() {
@@ -111,14 +145,14 @@
   function tile(item, number) {
     const { project: p, media: m, index } = item;
     const label = `${p.title}${p.year ? ', ' + p.year : ''} — ${m.type === 'video' ? 'video' : 'image'} ${index + 1}`;
-    return `<a class="work-tile" href="${projectHref(p)}?media=${index}" data-cursor="View" aria-label="${escape(label)}" style="--delay:${Math.min(number, 8) * 25}ms"><div class="tile-media" style="--ratio:${m.width}/${m.height}"><img src="${escape(m.poster)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)} — ${escape(p.categories.join(', ') || 'work study')}" loading="${number < 4 ? 'eager' : 'lazy'}" decoding="async">${m.type === 'video' ? `<video poster="${escape(m.poster)}" data-preview="${escape(m.loop || m.src)}" data-preview-small="${escape(m.loopSmall || m.loop || m.src)}" autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>` : ''}<span class="tile-open" aria-hidden="true">↗</span></div><div class="tile-caption"><span class="tile-title">${projectTitleMarkup(p.title)}</span>${p.year ? `<span class="year"> — ${escape(p.year)}</span>` : ''}</div></a>`;
+    return `<a class="work-tile" href="${projectHref(p)}?media=${index}" data-cursor="View" aria-label="${escape(label)}" style="--delay:${Math.min(number, 8) * 25}ms"><div class="tile-media" style="--ratio:${m.width}/${m.height}"><img src="${escape(m.playbackPoster || m.poster)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)} — ${escape(p.categories.join(', ') || 'work study')}" loading="${number < 4 ? 'eager' : 'lazy'}" decoding="async">${m.type === 'video' ? `<video poster="${escape(m.playbackPoster || m.poster)}" data-preview="${escape(m.loop || m.src)}" data-preview-small="${escape(m.loopSmall || m.loop || m.src)}" autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>` : ''}<span class="tile-open" aria-hidden="true">↗</span></div><div class="tile-caption"><span class="tile-title">${projectTitleMarkup(p.title)}</span>${p.year ? `<span class="year"> — ${escape(p.year)}</span>` : ''}</div></a>`;
   }
   function buildGrid(items) {
     projectCursorCleanup?.();
     const grid = document.querySelector('#feed-grid');
     if (!grid) return;
     observer?.disconnect(); visibleVideos.clear();
-    grid.querySelectorAll('video').forEach(v => { if (!v.paused) v.pause(); if (v.hasAttribute('src')) { v.removeAttribute('src'); v.load(); } });
+    retainVideoPlayers(grid);
     grid.classList.toggle('wide', density === 'wide');
     const masonry = route().path.length === 0;
     grid.classList.toggle('masonry', masonry);
@@ -269,6 +303,7 @@
     mediaEvents?.abort();
     mediaEvents = new AbortController();
     for (const video of visibleVideos) if (!video.isConnected) visibleVideos.delete(video);
+    restoreVideoPlayers(main);
     const videos = main.querySelectorAll('video[data-preview]');
     observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
@@ -366,7 +401,7 @@
     window.addEventListener('resize', resize);
   }
   function selectedProjectsMarkup(list) {
-    return `<section class="selected-projects" aria-label="Selected projects"><div class="selected-heading"><h2>Selected projects</h2><a href="#/index">Full index ↗</a></div>${coverItems(list).slice(0,7).map(({project:p,media:m},i)=>{const words=p.title.split(' '),pos=[words.length,Math.ceil(words.length/2),0][i%3];const thumb=m.type==='video'?`<span class="selected-video"><img loading="lazy" decoding="async" src="${escape(m.poster)}" alt="" width="${m.width}" height="${m.height}"><video poster="${escape(m.poster)}" data-preview="${escape(m.loop || m.src)}" data-preview-small="${escape(m.loopSmall || m.loop || m.src)}" autoplay muted loop playsinline preload="none" aria-label="${escape(p.title)}"></video></span>`:`<span class="selected-video"><img loading="lazy" decoding="async" src="${escape(m.src)}" alt="" width="${m.width}" height="${m.height}"></span>`;return `<a class="selected-row" href="${projectHref(p)}"><span>${escape(words.slice(0,pos).join(' '))} ${thumb} ${escape(words.slice(pos).join(' '))}</span></a>`}).join('')}</section>`;
+    return `<section class="selected-projects" aria-label="Selected projects"><div class="selected-heading"><h2>Selected projects</h2><a href="#/index">Full index ↗</a></div>${coverItems(list).slice(0,7).map(({project:p,media:m},i)=>{const words=p.title.split(' '),pos=[words.length,Math.ceil(words.length/2),0][i%3];const thumb=m.type==='video'?`<span class="selected-video"><img loading="lazy" decoding="async" src="${escape(m.playbackPoster || m.poster)}" alt="" width="${m.width}" height="${m.height}"><video poster="${escape(m.playbackPoster || m.poster)}" data-preview="${escape(m.loop || m.src)}" data-preview-small="${escape(m.loopSmall || m.loop || m.src)}" autoplay muted loop playsinline preload="none" aria-label="${escape(p.title)}"></video></span>`:`<span class="selected-video"><img loading="lazy" decoding="async" src="${escape(m.src)}" alt="" width="${m.width}" height="${m.height}"></span>`;return `<a class="selected-row" href="${projectHref(p)}"><span>${escape(words.slice(0,pos).join(' '))} ${thumb} ${escape(words.slice(pos).join(' '))}</span></a>`}).join('')}</section>`;
   }
   function clientWheelMarkup() {
     const preferred = ['2hollis', 'faze', 'pink-pantheress', 'busta-rhymes-young-thug', 'g-herbo', 'nba-youngboy', 'don-toliver', 'burna-boy', 'snoop-dogg', 'mlb'];
@@ -536,7 +571,7 @@
   }
 
   function indexRow(p) {
-    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${projectTitleMarkup(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}<span class="index-inline-preview" aria-hidden="true">${p.media[p.cover].type === 'video' ? `<video data-preview="${escape(p.media[p.cover].loop || p.media[p.cover].src)}" data-preview-small="${escape(p.media[p.cover].loopSmall || p.media[p.cover].loop || p.media[p.cover].src)}" poster="${escape(p.media[p.cover].poster)}" muted loop playsinline preload="none" tabindex="-1"></video>` : `<img data-src="${escape(p.media[p.cover].poster)}" alt="" width="${p.media[p.cover].width}" height="${p.media[p.cover].height}">`}</span></a>`;
+    return `<a class="directory-row" href="${projectHref(p)}" data-cursor="View"><span class="directory-name">${projectTitleMarkup(p.title)}</span>${p.year ? ` <span class="directory-year">${escape(p.year)}</span>` : ''}<span class="index-inline-preview" aria-hidden="true">${p.media[p.cover].type === 'video' ? `<video data-preview="${escape(p.media[p.cover].loop || p.media[p.cover].src)}" data-preview-small="${escape(p.media[p.cover].loopSmall || p.media[p.cover].loop || p.media[p.cover].src)}" poster="${escape(p.media[p.cover].playbackPoster || p.media[p.cover].poster)}" muted loop playsinline preload="none" tabindex="-1"></video>` : `<img data-src="${escape(p.media[p.cover].playbackPoster || p.media[p.cover].poster)}" alt="" width="${p.media[p.cover].width}" height="${p.media[p.cover].height}">`}</span></a>`;
   }
   function renderIndex() {
     const labels = [...new Set(projects.flatMap(p => p.categories))].sort((a,b) => a.localeCompare(b));
@@ -544,6 +579,7 @@
     const uncategorized = projects.filter(p => !p.categories.length);
     if (uncategorized.length) groups.push({ label: 'Other work', projects: uncategorized });
     main.innerHTML = `<h1 class="sr-only">Project index</h1><div class="project-index">${groups.map(group => `<section class="directory-section"><h2 class="directory-label">${escape(group.label)}</h2><div>${group.projects.map(indexRow).join('')}</div></section>`).join('')}</div>`;
+    restoreVideoPlayers(main);
     let previewRow = null, previewFrame = 0;
     const positionPreview = row => {
       const rect = row.getBoundingClientRect();
@@ -640,7 +676,7 @@
     const spotifyPlayer = spotify ? `<iframe class="project-spotify" src="${spotify}" title="${escape(p.title)} — Spotify player" width="100%" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>` : '';
     const projectLink = spotifyPlayer + (embed ? `<iframe class="project-youtube" src="${embed}" title="${escape(p.title)} — YouTube video" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>` : !spotifyEmbedUrl(p.link) && /^https?:\/\//i.test(p.link || '') ? `<a href="${escape(p.link)}" target="_blank" rel="noopener noreferrer">View project</a>` : '');
     const rows = [[ 'Year', escape(p.year)], ['Client', p.client ? `<a href="${clientHref(p.client)}">${escape(p.client)}</a>` : ''], ['Category', p.categories.map(c => `<a href="${escape(feedHref(c, ''))}">${escape(c)}</a>`).join(', ')], ['Role', escape(p.role)], ['Link', '']];
-    main.innerHTML = `<a class="back-link utility" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media${p.media.length >= 2 ? ' project-media-grid' : ''}" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<img class="project-poster" src="${escape(m.poster)}" width="${m.width}" height="${m.height}" alt="" aria-hidden="true"><video muted loop playsinline preload="none" data-preview="${escape(m.src)}" poster="${escape(m.poster)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}</figure>`).join('')}</section>${projectLink ? `<aside class="project-secondary">${projectLink}</aside>` : ''}</div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="utility">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
+    main.innerHTML = `<a class="back-link utility" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media${p.media.length >= 2 ? ' project-media-grid' : ''}" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<img class="project-poster" src="${escape(m.playbackPoster || m.poster)}" width="${m.width}" height="${m.height}" alt="" aria-hidden="true"><video muted loop playsinline preload="none" data-preview="${escape(m.src)}" poster="${escape(m.playbackPoster || m.poster)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}</figure>`).join('')}</section>${projectLink ? `<aside class="project-secondary">${projectLink}</aside>` : ''}</div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="utility">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
     initVideos();
     initProjectAudio();
     prepareImages(next.id);
@@ -696,7 +732,7 @@
         button.setAttribute('aria-pressed', String(!video.muted));
       };
       sync();
-      video.addEventListener('volumechange', sync);
+      video.addEventListener('volumechange', sync, {signal:mediaEvents.signal});
       button.addEventListener('click', () => {
         const unmute = video.muted;
         if (unmute) main.querySelectorAll('.project-media video').forEach(other => { if (other !== video) other.muted = true; });
@@ -781,7 +817,7 @@
     const project = projects.find(p => p.id === id);
     if (!project) return Promise.resolve();
     return Promise.all(project.media.slice(0, 1).map(media => {
-      const url = media.type === 'video' ? media.poster : media.src;
+      const url = media.type === 'video' ? (media.playbackPoster || media.poster) : media.src;
       if (!url) return Promise.resolve();
       if (!preparedImages.has(url)) {
         const image = new Image();
@@ -796,19 +832,17 @@
     stopSmoothScroll();
     arrivalAnimation?.cancel();
     const {path, key} = route();
-    if (path[0] === 'project') {
-      let timeout;
-      await Promise.race([prepareImages(path[1]), new Promise(resolve => { timeout = setTimeout(resolve, 80); })]);
-      clearTimeout(timeout);
-    }
+    // Warm the leading still without holding the outgoing page on screen.
+    if (path[0] === 'project') prepareImages(path[1]);
     if (version !== navigationVersion) return;
+    const immediateNav = explicitDestination === key && path[0] !== 'project';
     if (explicitDestination === key) positions.delete(key);
     explicitDestination = '';
     // One live content arrival. Snapshotting the whole document freezes video
     // frames and rasterizes the frosted header, then visibly swaps both back.
     // DOM, active nav and scroll commit in the same task; the header never swaps.
     render();
-    if (!reduced.matches) {
+    if (!reduced.matches && !immediateNav) {
       arrivalAnimation = main.animate([{opacity:.85}, {opacity:1}], {
         duration:180, easing:'cubic-bezier(.22,.61,.36,1)'
       });
@@ -818,7 +852,19 @@
   document.addEventListener('click', event => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const link = event.target.closest('a[href^="#/"]');
-    if (link?.matches('[data-nav], .project-next')) explicitDestination = link.hash.slice(1);
+    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+    event.preventDefault();
+    const destination = link.hash.slice(1);
+    if (link.matches('[data-nav], .project-next')) explicitDestination = destination;
+    if (destination === route().key) {
+      if (link.matches('[data-nav]')) window.scrollTo({top:0, behavior:'instant'});
+      explicitDestination = '';
+      return;
+    }
+    // pushState does not dispatch hashchange or perform native fragment scrolling.
+    // Commit the destination during this click, before the browser can paint again.
+    history.pushState(null, '', link.hash);
+    navigate();
   });
   for (const eventName of ['pointerover', 'focusin']) document.addEventListener(eventName, event => {
     const link = event.target.closest('a[href^="#/project/"]');

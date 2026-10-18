@@ -59,7 +59,16 @@ def ensure_loop(info, name):
              '-movflags', '+faststart', str(temporary)])
         temporary.replace(small)
         print(f'Full-length small thumbnail: {name}', flush=True)
-    return {**info, 'loop': f'media/{target.name}', 'loopSmall': f'media/{small.name}'}
+    start = MEDIA / f'{name}-start-v1.webp'
+    if not start.exists():
+        temporary = start.with_name(start.stem + f'.{os.getpid()}.tmp.webp')
+        # Decode the first displayed frame, matching playback from time zero.
+        run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-threads', '2',
+             '-i', str(DIST / info['src']), '-frames:v', '1',
+             '-vf', 'scale=900:900:force_original_aspect_ratio=decrease',
+             '-c:v', 'libwebp', '-quality', '85', str(temporary)])
+        temporary.replace(start)
+    return {**info, 'loop': f'media/{target.name}', 'loopSmall': f'media/{small.name}', 'playbackPoster': f'media/{start.name}'}
 
 def process_media(task):
     path, project_id, index = task

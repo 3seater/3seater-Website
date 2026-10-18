@@ -105,3 +105,6 @@ video[data-playback-state="blocked"]{opacity:0!important}
 /* YouTube players align with the full metadata column, like Spotify. */
 .project-secondary:has(.project-youtube){width:100%;max-width:none;justify-self:stretch}
 .project-youtube{width:100%;max-width:none;height:auto;aspect-ratio:16 / 9}
+
+/* The router restores scroll atomically; custom wheel/back-top motion is explicit. */
+html{scroll-behavior:auto}

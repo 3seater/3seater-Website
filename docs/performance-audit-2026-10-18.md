@@ -23,3 +23,11 @@ Home render medians including initial render: desktop 13.65ms before / 11.3ms af
 Both widths: no horizontal overflow; visible videos use the expected source size and loop, offscreen clips pause. Navigation regression tests pass for stale requests, rapid navigation, reduced motion, and play-request deduplication. Build verification covers 31 projects / 55 media entries and now validates both loop renditions.
 
 No Lighthouse/INP score or real-device Safari improvement is claimed. Review the local site on the user's iPhone before publishing. No new CDN is necessary merely to apply these local fixes; the deployment remains on the existing host.
+
+## Navigation and video continuity follow-ups
+
+Internal links now prevent native fragment scrolling and synchronously commit through pushState. Project navigation no longer waits for image decoding. Header tabs skip the arrival fade; project transitions retain it. Explicit scrolling remains, but implicit CSS smooth scrolling is disabled. Tests cover immediate commit, modified links, and browser Back; viewport width and top stayed stable during repeated tab switches.
+
+Added first-frame playbackPoster assets for all 32 videos. The original posters sampled 1.2 seconds in, then fresh playback jumped back to zero. Player posters and underlying stills now match time zero; original artwork/OG posters are untouched.
+
+Retain up to 24 decoded video elements across routes, paused and muted off-page. Reattach matching elements without resetting source, poster, or time. Evict/unload the oldest beyond the limit. Project audio listeners use the route abort signal. Browser Work > Archive > Index > Work check retained readyState=4 and playback position (~4.6s before, ~5s after), playing on return. Tests cover exact node reuse, time preservation, pausing, and eviction. First visits and evicted players still need initial decoding. Real-device Safari compositing remains unverified.
