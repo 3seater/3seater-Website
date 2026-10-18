@@ -92,7 +92,7 @@ def broad_categories(categories):
     result = []
     for c in categories:
         low = c.lower()
-        for name, matched in [('3D', '3d' in low or 'character' in low), ('Motion', 'motion' in low or 'visual' in low), ('Graphic Design', low in ['design', 'graphic design', 'cover art', 'branding', 'typography']), ('UI', low == 'ui')]:
+        for name, matched in [('3D', '3d' in low or 'character' in low or low == 'stage visuals'), ('Motion', 'motion' in low or 'visual' in low), ('Graphic Design', low in ['design', 'graphic design', 'cover art', 'branding', 'typography']), ('UI', low == 'ui')]:
             if matched and name not in result: result.append(name)
     return result
 
