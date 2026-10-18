@@ -13,3 +13,91 @@ body.v3 .site-header{padding:24px 0}
 .project-media .video-player>video{opacity:0}
 .project-media .video-player>video.playing{opacity:1}
 #main{overflow-anchor:none}
+
+/* Media hover controls inherit the navigation palette without changing geometry. */
+body.v3 .audio-orb{background:var(--nav-bg);background:color-mix(in srgb,var(--nav-bg) 86%,transparent);color:var(--nav-text)}
+body.v3 .video-audio:focus-visible .audio-orb{outline-color:var(--nav-text);box-shadow:0 0 0 7px var(--nav-bg)}
+
+/* Keep route changes on live content; reserve scrollbar width on short pages. */
+html{scrollbar-gutter:stable}
+
+/* Natural-ratio rows share a height without cropping or empty grid cells. */
+body .project-media.justified-media{display:flex;flex-direction:column;gap:20px}
+.project-media-row{display:grid;grid-template-columns:var(--media-columns);gap:20px;align-items:start;min-width:0}
+.project-media-row figure{min-width:0;margin:0}
+.project-media-row figure>a{display:block}
+@media(max-width:700px){body .project-media.justified-media,.project-media-row{gap:12px}.project-media-row{grid-template-columns:minmax(0,1fr)}}
+
+/* Opening rows leave a visual cue that the project continues below. */
+@media(min-width:701px){
+  .justified-media>.project-media-row:first-child{
+    width:100%;max-width:calc(min(60svh, max(180px, 100svh - 280px)) * var(--row-aspect) + var(--row-gaps));
+    align-self:flex-start;
+  }
+}
+
+/* Compact media canvas: every row shares the same outer edges. */
+body .project-media.justified-media{width:100%;max-width:980px}
+.justified-media>.project-media-row:first-child{max-width:none;width:100%}
+.project-bento{display:grid;gap:20px;align-items:start;min-width:0}
+.project-bento-stack{display:flex;flex-direction:column;gap:20px;min-width:0}
+.project-bento figure{margin:0;min-width:0}
+.project-bento figure>a{display:block}
+@media(max-width:700px){.project-bento{display:flex;flex-direction:column;gap:12px}.project-bento-stack{display:contents}.project-bento>figure,.project-bento-stack>figure{width:100%}}
+
+/* Restore the original media-column width and readable, unstacked rows. */
+body .project-media.justified-media{max-width:none}
+
+.project-spotify{display:block;width:100%;height:352px;border:0;border-radius:12px;margin:0 0 16px}
+
+/* Keep the mobile cylinder stable while Safari expands/collapses its toolbar. */
+@media(pointer:coarse){
+.client-wheel:not(.is-static) .wheel-runway{top:calc(-1 * var(--wheel-viewport,100svh));height:calc(100% + 2 * var(--wheel-viewport,100svh))}
+.client-wheel:not(.is-static) .client-wheel-sticky{height:var(--wheel-viewport,100svh)}
+.client-wheel:not(.is-static):not(.is-outside) .wheel-name{will-change:transform}
+}
+
+/* Mobile footer: a single editorial column followed by the wordmark. */
+@media(max-width:700px){
+  .footer-top{display:flex;flex-direction:column;gap:28px;font-size:12px;line-height:1.45}
+  .footer-directory{order:0;width:100%}
+  .footer-contact{order:1;width:100%;max-width:32ch}
+  .footer-top-link{order:2;margin-top:28px;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+  .footer-top p{margin-bottom:24px}
+  .footer-contact>p{max-width:30ch}
+  .footer-links{gap:6px}
+  .studio-footer{gap:64px;padding-bottom:env(safe-area-inset-bottom,0px)}
+  .client-wheel .wheel-name{transition:color 120ms linear}
+}
+@media(prefers-reduced-motion:reduce){.client-wheel .wheel-name{transition:none}}
+
+/* The compositor clips the cylinder even before a delayed scroll handler runs.
+   clip-path preserves sticky positioning, unlike an overflow:auto/hidden ancestor. */
+.client-wheel{isolation:isolate;clip-path:inset(0 calc(-1 * var(--gutter)))}
+
+/* Clear active navigation and a restrained registration-mark motif. */
+body.v3 .site-header nav a[aria-current=page]{
+ background:color-mix(in srgb,var(--nav-active) 92%,white 8%);
+ box-shadow:none;text-decoration:none;
+}
+
+/* A clearer client-wheel scroll indicator. */
+.wheel-progress{width:5px}
+
+/* Keep the moving media cursor and frosted capsule on separate clipped layers. */
+.audio-orb.project-orb{z-index:30}
+body.v3 .site-header nav{overflow:hidden;isolation:isolate;transform:translateZ(0);-webkit-backface-visibility:hidden;backface-visibility:hidden}
+
+/* Spotify aligns with the full project metadata column on every viewport. */
+.project-secondary:has(.project-spotify){width:100%;max-width:none;justify-self:stretch}
+
+/* Native posters keep Safari autoplay videos visibly rendered before playback. */
+.tile-media video,.selected-video video,.project-media .video-player>video{opacity:1;background:transparent}
+
+/* Decorative previews stay poster-only when Safari blocks autoplay. */
+.tile-media video::-webkit-media-controls-start-playback-button,
+.selected-video video::-webkit-media-controls-start-playback-button,
+.index-inline-preview video::-webkit-media-controls-start-playback-button,
+.project-media video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+/* A rejected player must not expose browser play chrome over its still. */
+video[data-playback-state="blocked"]{opacity:0!important}

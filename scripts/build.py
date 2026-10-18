@@ -1,10 +1,12 @@
 """Build the archive from ../Work without modifying any originals. Requires ffmpeg."""
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-import hashlib, json, re, shutil, subprocess, sys
+import hashlib, json, re, shutil, subprocess, sys, os
 
 ROOT = Path(__file__).resolve().parents[1]
-WORK = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT.parent / 'Work'
+COLLECTIONS = '--collections' in sys.argv
+args = [arg for arg in sys.argv[1:] if arg != '--collections']
+WORK = Path(args[0]).resolve() if args else ROOT.parent / 'Work'
 if not WORK.is_dir():
     raise SystemExit(f'Work folder not found: {WORK}. Build locally with the original media; deploy the committed dist folder. Existing output was not changed.')
 DIST = ROOT / 'dist'
@@ -32,6 +34,22 @@ def read_meta(folder):
                 result[key.strip().lower()] = value.strip()
     return result
 
+def ensure_loop(info, name):
+    if info['type'] != 'video': return info
+    # Separate, versioned, full-duration silent rendition for small cards.
+    target = MEDIA / f'{name}-loop-v1.mp4'
+    if not target.exists():
+        temporary = target.with_name(target.stem + f'.{os.getpid()}.tmp.mp4')
+        run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-threads', '2',
+             '-i', str(DIST / info['src']), '-map', '0:v:0', '-an',
+             '-vf', "scale=w='min(720,iw)':h='min(720,ih)':force_original_aspect_ratio=decrease:force_divisible_by=2,fps=30",
+             '-c:v', 'libx264', '-preset', 'fast', '-crf', '26', '-maxrate', '850k',
+             '-bufsize', '1700k', '-pix_fmt', 'yuv420p', '-threads', '2',
+             '-movflags', '+faststart', str(temporary)])
+        temporary.replace(target)
+        print(f'Full-length thumbnail: {name}', flush=True)
+    return {**info, 'loop': f'media/{target.name}'}
+
 def process_media(task):
     path, project_id, index = task
     stamp = f'v3:{path.name}:{path.stat().st_size}:{path.stat().st_mtime_ns}'
@@ -41,6 +59,8 @@ def process_media(task):
     if info_path.exists():
         info = json.loads(info_path.read_text())
         if all((DIST / info[k]).exists() for k in ['src', 'poster'] if info.get(k)):
+            info = ensure_loop(info, name)
+            info_path.write_text(json.dumps(info), encoding='utf-8')
             return {**info, 'filename': path.name, 'order': index}
     probe = json.loads(run(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height:format=duration', '-of', 'json', str(path)]))
     stream = probe['streams'][0]
@@ -63,6 +83,7 @@ def process_media(task):
         src = MEDIA / f'{name}.webp'
         run(base + ['-i', str(path), '-frames:v', '1', '-vf', 'scale=1800:1800:force_original_aspect_ratio=decrease', '-c:v', 'libwebp', '-quality', '88', str(src)])
         info = {'type': 'image', 'src': f'media/{src.name}', 'poster': f'media/{src.name}', 'width': width, 'height': height}
+    info = ensure_loop(info, name)
     info_path.write_text(json.dumps(info), encoding='utf-8')
     print(f'Prepared {project_id} / {path.name}', flush=True)
     return {**info, 'filename': path.name, 'order': index}
@@ -75,6 +96,8 @@ def broad_categories(categories):
             if matched and name not in result: result.append(name)
     return result
 
+previous_path = ROOT / 'src/batch-ten/01/data.json'
+previous = {p['id']: p for p in json.loads(previous_path.read_text(encoding='utf-8'))['projects']} if previous_path.exists() else {}
 projects, tasks = [], []
 for folder in sorted(WORK.rglob('*')):
     if not folder.is_dir() or folder.is_symlink(): continue
@@ -88,7 +111,7 @@ for folder in sorted(WORK.rglob('*')):
     project_id = slug('/'.join(folder.relative_to(WORK).parts))
     if any(p['id'] == project_id for p in projects):
         raise ValueError(f'Project URL collision for {folder.relative_to(WORK)}; rename one of the conflicting folders.')
-    project = {'id': project_id, 'title': meta.get('title') or folder.name, 'year': meta.get('year', ''), 'client': meta.get('client', '').replace('—', '').strip(), 'categories': categories, 'filters': broad_categories(categories), 'description': meta.get('description', ''), 'link': meta.get('link', ''), 'role': meta.get('my role', meta.get('role', '')), 'featured': meta.get('featured', '').lower() == 'yes', 'coverName': meta.get('cover', ''), 'media': []}
+    project = {'id': project_id, 'title': meta.get('title') or folder.name, 'year': meta.get('year', ''), 'client': meta.get('client', '').replace('â€”', '').strip(), 'categories': categories, 'filters': broad_categories(categories), 'description': meta.get('description', ''), 'layout': meta.get('layout', 'auto'), 'link': meta.get('link', ''), 'spotify': meta.get('spotify', ''), 'role': meta.get('my role', meta.get('role', '')), 'featured': meta.get('featured', '').lower() == 'yes', 'coverName': meta.get('cover', '') or (previous.get(project_id, {}).get('media') or [{}])[0].get('filename', ''), 'media': []}
     projects.append(project)
     tasks.extend((p, project_id, i) for i, p in enumerate(files))
 if not projects:
@@ -106,11 +129,37 @@ for project in projects:
 projects.sort(key=lambda p: (not p['featured'], -(int(p['year'][:4]) if p['year'][:4].isdigit() else 0), p['title'].lower()))
 (DIST / 'data.json').write_text(json.dumps({'projects': projects}, ensure_ascii=False), encoding='utf-8')
 # Remove only this builder's obsolete derived files inside its verified output directory.
-referenced = {m[key] for p in projects for m in p['media'] for key in ['src', 'poster', 'preview'] if m.get(key)}
-for output in MEDIA.iterdir():
-    if output.is_file() and re.fullmatch(r'[a-z0-9-]+-[a-f0-9]{12}(-preview)?\.(mp4|webp)', output.name):
+referenced = {m[key] for p in projects for m in p['media'] for key in ['src', 'poster', 'preview', 'loop'] if m.get(key)}
+for output in ([] if COLLECTIONS else MEDIA.iterdir()):
+    if output.is_file() and re.fullmatch(r'[a-z0-9-]+-[a-f0-9]{12}(-preview|-loop-v1)?\.(mp4|webp)', output.name):
         if output.resolve().parent == MEDIA.resolve() and f'media/{output.name}' not in referenced:
             output.unlink()
-for path in (ROOT / 'src').iterdir():
+# Sync content only: retain each palette's design, runtime and site settings.
+collection_data = json.loads(json.dumps({'projects': projects}))
+for project in collection_data['projects']:
+    for media in project['media']:
+        for key in ['src', 'poster', 'preview', 'loop']:
+            if media.get(key): media[key] = '/' + media[key]
+payload = json.dumps(collection_data, ensure_ascii=False)
+for base in [ROOT / 'src/batch-ten', DIST / 'batch-ten']:
+    for variant in sorted(base.glob('[0-9][0-9]')):
+        target = variant / 'data.json'
+        temporary = target.with_suffix('.json.tmp')
+        temporary.write_text(payload, encoding='utf-8')
+        temporary.replace(target)
+for base in [ROOT / 'src/batch-eleven', DIST / 'batch-eleven']:
+    if base.exists():
+        temporary = base / 'data.json.tmp'
+        temporary.write_text(payload, encoding='utf-8')
+        temporary.replace(base / 'data.json')
+print('Synced project content to all local color versions.', flush=True)
+for path in (ROOT / "src").iterdir():
     if path.is_file(): shutil.copy2(path, DIST / path.name)
+# Soft Chalk is the main site. Both local watch modes retain the same entry
+# point and shared collection runtime; content above is always freshly built.
+for name in ['index.html', 'site.json', 'palette.css']:
+    shutil.copy2(ROOT / 'src' / name, DIST / name)
+for name in ['batch-ten', 'batch-eleven']:
+    shutil.copytree(ROOT / 'src' / name, DIST / name, dirs_exist_ok=True,
+                    ignore=shutil.ignore_patterns('DESIGN.md'))
 print(f'Built {len(projects)} projects / {len(tasks)} media files -> {DIST}', flush=True)

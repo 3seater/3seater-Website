@@ -4,6 +4,10 @@ A portfolio with one cover per project in the homepage feed, a discipline index,
 
 ## Preview
 
+The main site is now Soft Chalk at `http://127.0.0.1:4173/`.
+Double-click `Open Website.cmd` to start/open it. The other color options remain
+at `http://127.0.0.1:4173/batch-ten/`.
+
 From this directory:
 
 ```powershell

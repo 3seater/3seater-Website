@@ -27,7 +27,8 @@ for name,paper,ink,accent in new:
  rows.append(dict(name=name,tokens=t,kept=False))
 for i,row in enumerate(rows,1):
  row['id']=i; d=s/f'{i:02}';d.mkdir(exist_ok=True)
- for f in ['index.html','data.json','site.json']:shutil.copy2(old/'01'/f,d/f)
+ for f in ['index.html','data.json','site.json']:
+  if f != 'data.json' or not (d/f).exists(): shutil.copy2(old/'01'/f,d/f)
  (d/'palette.css').write_text(':root{'+''.join(f'--{k}:{v};' for k,v in row['tokens'].items())+'}',encoding='utf-8')
 (s/'palettes.json').write_text(json.dumps(rows,indent=2),encoding='utf-8')
 g=(old/'index.html').read_text(encoding='utf-8');a=g.index('<main>');b=g.index('</main>',a)
@@ -38,6 +39,7 @@ for row in rows:
 g=g[:a]+'<main>'+''.join(cards)+g[b:]
 g=g.replace('Ten colors','Four favorites + ten new colors').replace('One site. Four favorites + ten new colors.','Four kept.<br>Ten new.').replace('Your favorite capsule layout.<br>Balanced spacing. Static footer.<br>Only the colors change.','Four favorites, unchanged.<br>Ten new palettes.<br>The same site throughout.').replace('/batch-eight/','/batch-nine/')
 g=g.replace('</style>','.palette-preview{padding:24px;display:flex;flex-direction:column;justify-content:space-between}.mini-nav{align-self:center;border-radius:40px;padding:10px 16px;font:10px Plex,monospace}.palette-preview strong{font:clamp(30px,4vw,65px)/1 Anton,sans-serif;font-weight:400}.muted-sample{font:24px/1 Anton,sans-serif}@media(max-width:500px){.palette-preview strong{font-size:60px}}</style>')
+g=g.replace('</main>', '<a class="direction" href="/batch-eleven/"><div class="thumb palette-preview" style="background:#f3f1ed;color:#21211f"><div class="mini-nav" style="background:rgba(45,43,40,.94);color:#f7f4ef">WORK &nbsp; ARCHIVE &nbsp; INDEX</div><strong>SELECTED<br>WORK</strong><div class="muted-sample" style="color:#c8c7c5">FEATURED CLIENTS</div></div><div class="card-title"><h2>15 / Soft Chalk</h2><small>New</small></div></a>'+'</main>').replace('Ten new.','Eleven new.').replace('Ten new palettes.','Eleven new palettes.').replace('Four favorites + ten new colors','Four favorites + eleven new colors')
 (s/'index.html').write_text(g,encoding='utf-8')
 (s/'DESIGN.md').write_text('# Batch Ten: four favorites plus ten new colors\n\nExperience mode. Preserve batch-nine structure, typography, spacing, content and behavior exactly. Routes 01-04 retain Original Frost, Cobalt, Acid Yellow and Warm Bone tokens verbatim. Routes 05-14 change palette tokens only. palettes.json is authoritative. Gallery cards are palette specimens, not website screenshots. Inactive wheel names use 20% ink / 80% paper; Original Frost retains its existing gray. Active names retain full ink. All media retains original colors.\n',encoding='utf-8')
 navigation_patch=json.loads((r/'scripts/batch-ten-navigation-patch.json').read_text(encoding='utf-8'))
@@ -47,6 +49,7 @@ for before,after in navigation_patch['replacements']:
  app=app.replace(before,after,1)
 (s/'app.js').write_text(app,encoding='utf-8')
 (s/'colors.css').write_text((s/'colors.css').read_text(encoding='utf-8')+navigation_patch['css'],encoding='utf-8')
+(s/'colors.css').write_text((s/'colors.css').read_text(encoding='utf-8')+'\n/* Media hover controls inherit the navigation palette without changing geometry. */\nbody.v3 .audio-orb{background:var(--nav-bg);background:color-mix(in srgb,var(--nav-bg) 86%,transparent);color:var(--nav-text)}\nbody.v3 .video-audio:focus-visible .audio-orb{outline-color:var(--nav-text);box-shadow:0 0 0 7px var(--nav-bg)}\n',encoding='utf-8')
 shutil.copytree(s,r/'dist/batch-ten',dirs_exist_ok=True,ignore=shutil.ignore_patterns('DESIGN.md'))
 assert len({(s/f'{i:02}/index.html').read_bytes() for i in range(1,15)})==1
 for i,orig in enumerate([1,8,2,3],1):assert (s/f'{i:02}/palette.css').read_bytes()==(old/f'{orig:02}/palette.css').read_bytes()

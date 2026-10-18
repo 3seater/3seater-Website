@@ -102,3 +102,73 @@ Media-control refinement is strictly icon geometry: angular arrow and stepped sp
 Superseding icon preference: restore original arrow and rounded speaker/wave icons across Batch Ten. No terminal icon treatment.
 
 Batch Ten navigation reliability: removed the fade-to-empty route animation; keep outgoing content visible during bounded poster decoding, commit new content and scroll together, reject stale navigation, reset Next Project and explicit top-level navigation to the top, and preserve browser-history restoration. Project video posters remain separate visible layers until a decoded video frame is ready. Prefetch upcoming project stills. Header height stays consistent across routes. Original controls and icon styling remain unchanged. Local-only update.
+
+All Batch Ten arrow and audio hover circles inherit nav-bg (86% alpha) and nav-text for a subtle theme tint. Original round geometry, icon paths, blur and motion remain unchanged; keyboard focus colors inherit the same palette.
+
+Batch Ten navigation: keep a visible, simple 240ms crossfade across page and next-project navigation. Never fade the entire page to blank. Keep the nav steady, cancel superseded navigation, retain poster preparation and scroll restoration, and respect reduced motion. Applies to all 14 local palettes.
+
+Local collections automatically watch ../Work recursively. New media and project.txt changes rebuild content and sync all 14 Batch Ten palettes, then reload once after completion. Existing variant styles remain untouched. Open Collections.cmd starts this mode and syncs changes made while the preview was closed. Video processing can take time; failed builds log to preview-local-error.log.
+
+Project media: justified rows use native aspect ratios, equal heights within each row, consistent gaps, and single-column mobile. Wide media gets a solo row. Optional project.txt Layout uses slash-separated rows and plus-separated filenames; omitted/new files append automatically and unknown/duplicate names are ignored. Doji: Video.mp4 / Banner.png + Card.png / UI.png. All 14 Batch Ten palettes share this layout.
+
+Project opening media rows: desktop height capped around 60svh with extra room on short windows, width scales proportionally and stays left aligned. Later rows remain full width. Mobile retains natural single-column media. Shared by all 14 palettes.
+
+Updated project media: remove first-row-only cap. Entire media canvas max-width 980px with consistent 20px gaps (12px mobile). Auto/bento layouts use a large first piece beside two stacked pieces when their proportions fit; heights align without cropping. Remaining rows share canvas width. Doji uses Layout: bento. Mobile stacks in content order.
+
+Bento trial rejected: supporting artwork became too small. Restore full original media-column width; use natural-ratio aligned rows without a first-row cap or stacked thumbnails. Doji returns to auto. Applies to all 14 palettes.
+
+Spotify trial: Jugg Season has a compact 152px dark Spotify album player below project metadata, using Spotify: in project.txt. Optional on other projects; original art and YouTube placement unchanged. Shared across all 14 local palettes.
+
+Mobile wheel performance: preserve viewport geometry during toolbar-only resizes, refit on width/orientation changes, cache wheel dimensions and defer moving-link hitbox measurement until touch scrolling settles. Desktop appearance and native touch scrolling preserved across 14 palettes.
+
+Mobile refinement: Sturdy-inspired single-column footer using existing identity, links and statement; generous separation before the existing wordmark. Wheel uses frame-time-based 65ms smoothing between touch scroll updates, stops when settled/offscreen, respects reduced motion; desktop rotation unchanged. All 14 palettes.
+
+Client wheel active name must be nearest the center/front of the cylinder (zero degrees), without the former lower-half selection offset. Same rule on mobile and desktop across all palettes.
+
+Client wheel now uses 18-degree name detents on both desktop and mobile, smoothly settling at exact center. Larger scrolls can advance multiple names; entry/exit remain continuous and page scroll is never captured. Reduced motion stays static. All 14 palettes.
+
+Wheel containment: CSS clip-path confines promoted cylinder layers to the client section, preserving sticky scrolling. Never rely on scroll-event visibility alone to prevent overlap with selected projects/footer. Offscreen rotation resets immediately after fast flings. All 14 palettes.
+
+Batch Eleven (/batch-eleven/) adds Soft Chalk, between Original Frost and Warm Bone. Uses shared Batch Ten runtime/styles and live content sync; no structural changes.
+
+All 15 local versions: selected nav tab has solid theme active fill, subtle inset outline and underline. Decorative registration crosses travel gently in outer gutters on scroll; footer adds a rule, centered crosshair and solid block above wordmark. Marks are noninteractive, hidden from accessibility tree, theme-colored and motion-reduced.
+
+Nav correction: active tab uses only a slightly lighter theme fill. No outline, border, shadow or underline. Applies to all 15 versions.
+
+Remove decorative side crosshairs and footer rule/crosshair/block. Retain slightly lighter selected-tab fill. Client-wheel progress rail increases from 2px to 5px across all 15 versions.
+
+Nav hover stability: media cursor stays beneath header and is hidden within a 42px capsule buffer to avoid overlapping backdrop filters. Capsule clips its composited frost to its rounded boundary. Preserve selected fill and original icons. Shared by all 15 versions.
+
+Hover cursor persists during scrolling while pointer remains over media. Scroll rechecks the element beneath the stationary pointer instead of unconditionally dismissing the cursor. Nav exclusion remains.
+
+
+### Navigation stability — October 17, 2026
+All 15 current collection options share one live-content arrival transition (240 ms, partial opacity to fully visible). Keep the fixed frosted navigation live; do not use whole-document View Transition snapshots, animate header geometry, or introduce a second reveal. Route content, selected tab and scroll position update together. Cancel previous arrivals on rapid navigation and ignore stale asynchronous image preparation. Respect reduced motion. Reserve scrollbar space to prevent horizontal layout shifts on short pages.
+Media playback requests are deduplicated; already-playing previews keep looping, and failed play requests do not hide an existing decoded frame. Height-only viewport changes must not rebuild galleries. Source, served assets and rebuild patches must stay synchronized across Batch Ten and Soft Chalk.
+
+
+### Cover-art Spotify embeds — October 17, 2026
+All eight published Cover Art projects use the existing compact Spotify album/single embed. Store the verified release URL in each Work/project.txt Spotify field so content synchronization propagates it to every local color option. Keep the player below project information, matching Jugg Season; do not change media layout or autoplay audio.
+
+Spotify players fill the metadata column width, aligned with its horizontal rules, with Spotify’s standard 352px expanded iframe height (HTML attribute and CSS) to show more tracks across all color options and mobile.
+
+
+### Full-length video optimization — October 18, 2026
+All current local color options use full-duration, silent H.264/yuv420p thumbnail renditions capped at 720px and 30fps for Work, Archive, selected projects and index previews. Never substitute the old eight-second previews. Project viewers retain larger full-length videos and audio controls. Only visible videos decode/play; offscreen videos pause without resetting time and resume on return. Below-fold project videos receive their source on intersection, rather than loading all project media immediately. Muted/inline properties are set before first source assignment; touch/pointer release and page restoration retry permitted playback. Respect reduced-motion and data-saving preferences; browser autoplay restrictions cannot be overridden.
+Fingerprint-named media is cached for one year with immutable URLs; code/data revalidate. Local server supports ETag/304 and byte ranges and closes file streams when requests disconnect. New Work media automatically receives its own full-duration thumbnail through the existing builder/live sync.
+Verification: 32 videos, full duration retained within 0.15 seconds, 154.3MB full-size sources versus 56.5MB thumbnail renditions (63.4% smaller). Browser viewport checks confirm muted looping, offscreen suspension, full-size project playback. Physical iPhone Safari remains untested.
+
+Mobile startup: visible videos explicitly load with preload=auto. Reveal decoded playback on playing/loadeddata or play resolution, not solely requestVideoFrameCallback while transparent. Retry on canplay, and remove media listeners on route/grid teardown.
+
+First-load autoplay follow-up: render video surfaces at opacity 1 with native posters; seed viewport playback directly after render/scroll restoration. Record playbackState/playbackError on video elements for diagnosis of device autoplay rejection. Desktop fresh-load check: 17 visible videos playing without input, no playback errors. Physical Safari remains unverified.
+
+Physical iPhone diagnostic (October 18): nine visible silent inline autoplay videos reached readyState 4 by 2 seconds, all rejected play() with NotAllowedError before user activation. At 12 seconds, after activation, all nine played. Reduced motion and save-data were false. This is confirmed autoplay rejection; do not describe it as buffering or claim unconditional autoplay is fixed. Existing gesture retry remains; temporary local report collection was removed after diagnosis.
+
+When autoplay is rejected, show the existing still beneath the video rather than native Safari play-button chrome. Restore the video surface when a subsequent playback attempt starts; retain existing audio controls and gesture retry.
+
+
+## Main site selection — 2026-10-18
+
+Soft Chalk (previously Batch Eleven / option 15) is now the main site at `/`. Preserve its complete layout, typography, palette, navigation, project pages, client wheel and embeds. The main entry uses the shared Batch Ten runtime and styles so fixes remain consistent with all local options. `/batch-ten/` remains the collection gallery. Both build modes synchronize Work content to the main site and color options.
+
+Video startup now sets muted/inline properties before source loading, waits for canplay readiness, and then requests playback. Preserve the muted full-duration loops and clean poster fallback. This follows Sturdy's readiness sequencing; iPhone autoplay success is not yet confirmed.

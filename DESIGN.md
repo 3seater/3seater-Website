@@ -1217,3 +1217,7 @@ The preserved Original / New Type reference remains at batch-seven/01. Uppercase
 ## Batch Nine — Scoped Continuation
 
 Batch nine is documented in [src/batch-nine/DESIGN.md](src/batch-nine/DESIGN.md), with exact tokens sourced from palettes.json. Ten structurally identical copies of favorite batch-seven/03 Soft Capsule vary only palette.css; HTML, project data and site metadata are byte-identical and runtime/styles are shared. Typography, content and layout remain inherited. Home capsule spacing is equal above and below: 24px desktop, 20px through 700px. Footer pressure distortion is removed while static fitting and the home link remain. The favorite receives its scoped favorite.js/favorite.css fix; the main site is unchanged. Extensions are appended at extensions.batchNine, preserving prior records.
+
+## Current main site — Soft Chalk
+
+As of 2026-10-18 the root site uses the complete src/batch-eleven design, with paper #f3f1ed, ink #21211f, Anton display type and Plex monospace. Earlier batch sections above are historical and do not override this selection. Shared styles and runtime remain in src/batch-ten; root palette and site settings match Soft Chalk.

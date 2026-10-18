@@ -5,14 +5,15 @@ import {spawn} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
 const port = Number(process.env.PORT || 4173);
+const collectionsOnly = process.argv.includes('--collections');
 const project = path.dirname(root);
 const clients = new Set();
 let building = false, queued = false, buildTimer;
 const rebuild = () => {
   if (building) { queued = true; return; }
   building = true;
-  console.log('Rebuilding local archive…');
-  const child = spawn('python', ['scripts/build.py'], {cwd:project, stdio:'inherit'});
+  console.log('Rebuilding local archiveâ€¦');
+  const child = spawn('python', ['scripts/build.py', ...(collectionsOnly ? ['--collections'] : [])], {cwd:project, stdio:'inherit'});
   let failed = false;
   child.on('error', error => { failed = true; console.error('Build could not start:', error.message); });
   child.on('close', code => {
@@ -23,13 +24,29 @@ const rebuild = () => {
     if (queued) { queued = false; rebuild(); }
   });
 };
-const watchers = [path.join(project, 'src'), path.resolve(project, '../Work')].map(folder => {
-  const watcher = fs.watch(folder, {recursive:true}, () => {
-    clearTimeout(buildTimer);
-    buildTimer = setTimeout(rebuild, 1200);
-  });
+const watchers = [];
+const watch = (folder, callback) => {
+  const watcher = fs.watch(folder, {recursive:true}, callback);
   watcher.on('error', error => console.error('Watch error:', error.message));
-  return watcher;
+  watchers.push(watcher);
+};
+watch(path.resolve(project, '../Work'), () => {
+  clearTimeout(buildTimer);
+  buildTimer = setTimeout(rebuild, 1200);
+});
+let reloadTimer;
+watch(collectionsOnly ? root : path.join(project, 'src'), () => {
+  if (!collectionsOnly) {
+    clearTimeout(buildTimer);
+    buildTimer = setTimeout(rebuild, 500);
+    return;
+  }
+  // Encodes and data syncs write many files; reload only after the whole build.
+  if (building) return;
+  clearTimeout(reloadTimer);
+  reloadTimer = setTimeout(() => {
+    if (!building) for (const client of clients) client.write('event: reload\ndata: ready\n\n');
+  }, 500);
 });
 const liveReload = `<script>new EventSource('/__dev/events').addEventListener('reload',()=>location.reload());</script>`;
 const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.webp':'image/webp','.mp4':'video/mp4','.png':'image/png','.jpg':'image/jpeg','.woff2':'font/woff2'};
@@ -58,6 +75,14 @@ const server = http.createServer((req, res) => {
       });
       return;
     }
+    const fingerprinted = relative.startsWith('/media/') && /-[a-f0-9]{12}(?:-preview|-loop-v1)?\.(mp4|webp)$/.test(file);
+    headers['Cache-Control'] = fingerprinted ? 'public, max-age=31536000, immutable' : 'no-cache';
+    const etag = `W/"${stat.size.toString(16)}-${Math.trunc(stat.mtimeMs).toString(16)}"`;
+    headers.ETag = etag;
+    headers['Last-Modified'] = stat.mtime.toUTCString();
+    if (!req.headers.range && req.headers['if-none-match'] === etag) {
+      res.writeHead(304, headers).end(); return;
+    }
     let start=0,end=stat.size-1,status=200;
     if (req.headers.range) {
       const match = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range);
@@ -70,8 +95,10 @@ const server = http.createServer((req, res) => {
     headers['Content-Length']=end-start+1;
     res.writeHead(status,headers);
     if (req.method==='HEAD') {res.end();return;}
-    fs.createReadStream(file,{start,end}).on('error',()=>res.destroy()).pipe(res);
+    const stream = fs.createReadStream(file,{start,end});
+    res.on('close', () => stream.destroy());
+    stream.on('error',()=>res.destroy()).pipe(res);
   });
 });
 server.on('close', () => { clearTimeout(buildTimer); watchers.forEach(watcher => watcher.close()); });
-server.listen(port,'127.0.0.1',()=>{ console.log(`Local: http://localhost:${port} (watching Work and src)`); rebuild(); });
+server.listen(port,'0.0.0.0',()=>{ console.log(`Local: http://127.0.0.1:${port}${collectionsOnly ? '/batch-ten/' : ''}`); rebuild(); });
