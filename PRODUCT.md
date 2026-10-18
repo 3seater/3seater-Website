@@ -178,3 +178,7 @@ Video startup now sets muted/inline properties before source loading, waits for 
 The wheel reserves one viewport of exit runway and completes its rotation before the section bottom reaches the viewport bottom. Final clients must reach the center fully visible before the footer enters. Retain section clipping to prevent mobile compositor overlap. Applies to the main site and all shared color versions.
 
 YouTube project embeds span the full metadata-column width, aligned with its divider lines, while retaining a responsive 16:9 ratio. Applies to the main site and all shared color versions.
+
+
+### Main palette refinement — 2026-10-18
+The main Soft Chalk palette now uses subtly blue-tinted off-white #f0f1f4 and off-black #202124 instead of warm brown neutrals. Muted text, divider lines, client-wheel inactive names, frosted navigation and media controls use matching cool grays; hover accent is restrained slate #48536a. Main and Batch Eleven stay identical. Other color options and artwork colors remain unchanged. This supersedes the earlier warm Soft Chalk token values.

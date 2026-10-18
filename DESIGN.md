@@ -1221,3 +1221,7 @@ Batch nine is documented in [src/batch-nine/DESIGN.md](src/batch-nine/DESIGN.md)
 ## Current main site — Soft Chalk
 
 As of 2026-10-18 the root site uses the complete src/batch-eleven design, with paper #f3f1ed, ink #21211f, Anton display type and Plex monospace. Earlier batch sections above are historical and do not override this selection. Shared styles and runtime remain in src/batch-ten; root palette and site settings match Soft Chalk.
+
+
+### Main palette refinement — 2026-10-18
+The main Soft Chalk palette now uses subtly blue-tinted off-white #f0f1f4 and off-black #202124 instead of warm brown neutrals. Muted text, divider lines, client-wheel inactive names, frosted navigation and media controls use matching cool grays; hover accent is restrained slate #48536a. Main and Batch Eleven stay identical. Other color options and artwork colors remain unchanged. This supersedes the earlier warm Soft Chalk token values.
