@@ -412,7 +412,8 @@
       const line = parseFloat(getComputedStyle(section).getPropertyValue('--wheel-line'));
       // Preserve the reference's scroll distance per degree with our longer list.
       const span = Math.max(0, links.length - 1) * 18 + 170;
-      track.style.height = reduced.matches ? '' : `${Math.max(line, span / 368 * (12 * line + .7 * viewportHeight) - .7 * viewportHeight)}px`;
+      // Reserve a viewport at the end so every client clears the section clip.
+      track.style.height = reduced.matches ? '' : `${Math.max(line, span / 368 * (12 * line + .7 * viewportHeight) - .7 * viewportHeight) + viewportHeight}px`;
       typeMeasure.font = '400 100px Anton';
       const stageWidth = stage.clientWidth;
       const labelWidth = sideLabel.offsetWidth;
@@ -435,7 +436,9 @@
       const bounds = track.getBoundingClientRect();
       // Match the reference: the full-screen stage starts one viewport before
       // the section; rotation starts when its top has passed -30vh.
-      const progress = Math.max(0, Math.min(1, (.7 * viewport - bounds.top) / (trackHeight + .7 * viewport)));
+      // Complete the exit roll while the track still fills the viewport,
+      // before its bottom clipping edge can cut through the centered names.
+      const progress = Math.max(0, Math.min(1, (.7 * viewport - bounds.top) / Math.max(1, trackHeight - .3 * viewport)));
       const lastAngle = Math.max(0, links.length - 1) * 18;
       const scrollRotation = -80 + progress * (lastAngle + 170);
       // Scroll distance selects a detent; the drum always settles on a whole name.

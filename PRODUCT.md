@@ -172,3 +172,9 @@ When autoplay is rejected, show the existing still beneath the video rather than
 Soft Chalk (previously Batch Eleven / option 15) is now the main site at `/`. Preserve its complete layout, typography, palette, navigation, project pages, client wheel and embeds. The main entry uses the shared Batch Ten runtime and styles so fixes remain consistent with all local options. `/batch-ten/` remains the collection gallery. Both build modes synchronize Work content to the main site and color options.
 
 Video startup now sets muted/inline properties before source loading, waits for canplay readiness, and then requests playback. Preserve the muted full-duration loops and clean poster fallback. This follows Sturdy's readiness sequencing; iPhone autoplay success is not yet confirmed.
+
+
+### Client wheel exit clearance — 2026-10-18
+The wheel reserves one viewport of exit runway and completes its rotation before the section bottom reaches the viewport bottom. Final clients must reach the center fully visible before the footer enters. Retain section clipping to prevent mobile compositor overlap. Applies to the main site and all shared color versions.
+
+YouTube project embeds span the full metadata-column width, aligned with its divider lines, while retaining a responsive 16:9 ratio. Applies to the main site and all shared color versions.

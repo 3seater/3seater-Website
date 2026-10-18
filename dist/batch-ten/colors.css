@@ -101,3 +101,7 @@ body.v3 .site-header nav{overflow:hidden;isolation:isolate;transform:translateZ(
 .project-media video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
 /* A rejected player must not expose browser play chrome over its still. */
 video[data-playback-state="blocked"]{opacity:0!important}
+
+/* YouTube players align with the full metadata column, like Spotify. */
+.project-secondary:has(.project-youtube){width:100%;max-width:none;justify-self:stretch}
+.project-youtube{width:100%;max-width:none;height:auto;aspect-ratio:16 / 9}
