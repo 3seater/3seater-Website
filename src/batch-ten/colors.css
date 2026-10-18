@@ -108,3 +108,8 @@ video[data-playback-state="blocked"]{opacity:0!important}
 
 /* The router restores scroll atomically; custom wheel/back-top motion is explicit. */
 html{scroll-behavior:auto}
+
+/* Slightly stronger tab fills, tinted by each palette's navigation text. */
+body.v3 .site-header nav a:is(:hover,:focus-visible){background:color-mix(in srgb,var(--nav-active) 72%,var(--nav-bg) 28%)}
+body.v3 .site-header nav a[aria-current=page]{background:color-mix(in srgb,var(--nav-active) 80%,var(--nav-text) 20%)}
+body.v3 .site-header nav a[aria-current=page]:is(:hover,:focus-visible){background:color-mix(in srgb,var(--nav-active) 80%,var(--nav-text) 20%)}
