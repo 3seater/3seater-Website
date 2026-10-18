@@ -94,3 +94,11 @@ Batch Ten footer statement approved: VISUAL WORLDS FOR ARTISTS AND BRANDS. Apply
 All Batch Ten project-page headings display in uppercase, retaining Anton and existing layout.
 
 Batch Ten navigation refinement: all 14 palettes use a translucent capsule (76% of nav color alpha), 26px backdrop blur and 1.15 saturation. Selected and hover fills are softened to 70% alpha. Geometry, spacing and type remain unchanged.
+
+Local-first review: serve all collections locally at http://127.0.0.1:4173/batch-ten/. Keep local previews running for user review. Only publish to Sites when explicitly requested. Use node scripts/serve.mjs --collections to serve dist without rebuilding the main portfolio; dist saves refresh open preview tabs.
+
+Media-control refinement is strictly icon geometry: angular arrow and stepped speaker/wave paths. Preserve the original circular background, size, colors, blur and tracking behavior; no text labels or terminal boxes. Applies across Batch Ten local versions.
+
+Superseding icon preference: restore original arrow and rounded speaker/wave icons across Batch Ten. No terminal icon treatment.
+
+Batch Ten navigation reliability: removed the fade-to-empty route animation; keep outgoing content visible during bounded poster decoding, commit new content and scroll together, reject stale navigation, reset Next Project and explicit top-level navigation to the top, and preserve browser-history restoration. Project video posters remain separate visible layers until a decoded video frame is ready. Prefetch upcoming project stills. Header height stays consistent across routes. Original controls and icon styling remain unchanged. Local-only update.

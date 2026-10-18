@@ -260,7 +260,10 @@
       if (canPlay) {
         if (!video.src) video.src = video.dataset.preview;
         if (!video.closest('.project-media')) video.muted = true;
-        video.play().then(() => video.classList.add('playing')).catch(() => video.classList.remove('playing'));
+        video.play().then(() => {
+          const reveal = () => { if (video.isConnected && !video.paused) video.classList.add('playing'); };
+          if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(reveal); else reveal();
+        }).catch(() => video.classList.remove('playing'));
       } else video.pause();
     }
   }
@@ -509,9 +512,10 @@
     const embed = youtubeEmbedUrl(p.link);
     const projectLink = embed ? `<iframe class="project-youtube" src="${embed}" title="${escape(p.title)} — YouTube video" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>` : /^https?:\/\//i.test(p.link || '') ? `<a href="${escape(p.link)}" target="_blank" rel="noopener noreferrer">View project</a>` : '';
     const rows = [[ 'Year', escape(p.year)], ['Client', p.client ? `<a href="${clientHref(p.client)}">${escape(p.client)}</a>` : ''], ['Category', p.categories.map(c => `<a href="${escape(feedHref(c, ''))}">${escape(c)}</a>`).join(', ')], ['Role', escape(p.role)], ['Link', '']];
-    main.innerHTML = `<a class="back-link utility" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media${p.media.length >= 2 ? ' project-media-grid' : ''}" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<video autoplay muted loop playsinline preload="metadata" data-preview="${escape(m.src)}" poster="${escape(m.poster)}" src="${escape(m.src)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}</figure>`).join('')}</section>${projectLink ? `<aside class="project-secondary">${projectLink}</aside>` : ''}</div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="utility">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
+    main.innerHTML = `<a class="back-link utility" href="#${escape(back)}">← Back to archive</a><div class="project-layout"><aside class="project-info"><h1>${escape(p.title)}</h1><dl class="project-meta">${rows.filter(([,v]) => v).map(([key,v]) => `<div><dt>${key}</dt><dd>${v}</dd></div>`).join('')}</dl>${p.description ? `<p class="project-description">${escape(p.description)}</p>` : ''}</aside><section class="project-media${p.media.length >= 2 ? ' project-media-grid' : ''}" aria-label="${escape(p.title)} media">${p.media.map((m, i) => `<figure id="media-${i}">${m.type === 'video' ? `<img class="project-poster" src="${escape(m.poster)}" width="${m.width}" height="${m.height}" alt="" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" data-preview="${escape(m.src)}" poster="${escape(m.poster)}" src="${escape(m.src)}" width="${m.width}" height="${m.height}" aria-label="${escape(p.title)}, video ${i + 1}"></video>` : `<a href="${escape(m.src)}" target="_blank" rel="noopener" data-cursor="Open"><img src="${escape(m.src)}" width="${m.width}" height="${m.height}" alt="${escape(p.title)}, image ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></a>`}</figure>`).join('')}</section>${projectLink ? `<aside class="project-secondary">${projectLink}</aside>` : ''}</div><a class="project-next" href="${projectHref(next)}" data-cursor="Next"><span class="utility">Next project</span><strong>${escape(next.title)} ↗</strong></a>`;
     initVideos();
     initProjectAudio();
+    prepareImages(next.id);
     balanceProjectTriptych(p);
   }
   function balanceProjectTriptych(p) {
@@ -608,29 +612,60 @@
     window.scrollTo({top: position, behavior: 'instant'});
     if (section === 'project' && params.has('media') && !positions.has(key)) {
       const index = Number(params.get('media'));
-      if (Number.isInteger(index) && index > 0) requestAnimationFrame(() => document.getElementById(`media-${index}`)?.scrollIntoView({behavior:'instant', block:'start'}));
+      if (Number.isInteger(index) && index > 0) document.getElementById(`media-${index}`)?.scrollIntoView({behavior:'instant', block:'start'});
     }
     // Route changes also have a sensible keyboard focus destination.
     main.focus({preventScroll:true});
   }
-  let navigationVersion = 0, pageFade;
+  // Keep the outgoing page visible while the next project's stills decode.
+  // Commit the DOM and scroll position together; never fade the document to blank.
+  let navigationVersion = 0, explicitDestination = '';
+  const preparedImages = new Map();
+  function prepareImages(id) {
+    const project = projects.find(p => p.id === id);
+    if (!project) return Promise.resolve();
+    return Promise.all(project.media.slice(0, 4).map(media => {
+      const url = media.type === 'video' ? media.poster : media.src;
+      if (!url) return Promise.resolve();
+      if (!preparedImages.has(url)) {
+        const image = new Image();
+        image.src = url;
+        preparedImages.set(url, image.decode().catch(() => {}));
+      }
+      return preparedImages.get(url);
+    }));
+  }
+  function updateNavigation() {
+    const section = route().path[0] || 'feed';
+    document.querySelectorAll('[data-nav]').forEach(a => {
+      if (a.dataset.nav === (['project', 'clients'].includes(section) ? 'feed' : section)) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
   async function navigate() {
     const version = ++navigationVersion;
-    pageFade?.cancel();
-    const filteringArchive = main.classList.contains('archive-page') && route().path[0] === 'archive';
-    const fadeTarget = () => filteringArchive ? main.querySelector('#feed-grid, .empty-state') : main;
-    const outgoing = fadeTarget();
-    if (reduced.matches || !outgoing?.animate) { render(); return; }
-    pageFade = outgoing.animate([{opacity:1}, {opacity:0}], {duration:110, easing:'ease-out', fill:'forwards'});
-    try { await pageFade.finished; } catch { return; }
+    stopSmoothScroll();
+    updateNavigation();
+    const {path, key} = route();
+    if (path[0] === 'project') {
+      let timeout;
+      await Promise.race([prepareImages(path[1]), new Promise(resolve => { timeout = setTimeout(resolve, 250); })]);
+      clearTimeout(timeout);
+    }
     if (version !== navigationVersion) return;
+    if (explicitDestination === key) positions.delete(key);
+    explicitDestination = '';
     render();
-    pageFade.cancel();
-    const incoming = fadeTarget();
-    if (!incoming) return;
-    pageFade = incoming.animate([{opacity:0}, {opacity:1}], {duration:220, easing:'ease-out'});
-    try { await pageFade.finished; } catch { /* A newer navigation replaces this fade. */ }
   }
+  document.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[href^="#/"]');
+    if (link?.matches('[data-nav], .project-next')) explicitDestination = link.hash.slice(1);
+  });
+  for (const eventName of ['pointerover', 'focusin']) document.addEventListener(eventName, event => {
+    const link = event.target.closest('a[href^="#/project/"]');
+    if (link) prepareImages(decodeURIComponent(link.hash.split('/')[2].split('?')[0]));
+  });
   document.querySelector('#back-top').addEventListener('click', () => window.scrollTo({top:0,behavior:reduced.matches ? 'instant' : 'smooth'}));
   document.querySelector('.skip-link').addEventListener('click', e => {e.preventDefault();main.focus();main.scrollIntoView({behavior:'instant'});});
   document.addEventListener('pointerdown', e => {

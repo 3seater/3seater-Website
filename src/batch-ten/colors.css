@@ -4,3 +4,12 @@ body.v3 .site-header nav{background:var(--nav-bg);background:color-mix(in srgb,v
 body.v3 .site-header nav a{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
 body.v3 .site-header nav a[aria-current=page],body.v3 .site-header nav a:is(:hover,:focus-visible){background:var(--nav-active);background:color-mix(in srgb,var(--nav-active) 70%,transparent)}
 
+
+/* Atomic navigation and stable media layers: no blank-page opacity fades. */
+body.v3 .site-header{padding:24px 0}
+@media(max-width:700px){body.v3 .site-header{padding:20px 0}}
+.project-media .video-player{display:grid;background:transparent}
+.project-media .video-player>.project-poster,.project-media .video-player>video{grid-area:1/1;width:100%;height:auto;min-width:0;align-self:start;background:transparent}
+.project-media .video-player>video{opacity:0}
+.project-media .video-player>video.playing{opacity:1}
+#main{overflow-anchor:none}
