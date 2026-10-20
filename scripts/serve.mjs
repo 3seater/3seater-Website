@@ -35,7 +35,10 @@ watch(path.resolve(project, '../Work'), () => {
   buildTimer = setTimeout(rebuild, 1200);
 });
 let reloadTimer;
-watch(collectionsOnly ? root : path.join(project, 'src'), () => {
+watch(collectionsOnly ? root : path.join(project, 'src'), (_event, filename) => {
+  // These files are build outputs; Work changes already trigger their rebuild.
+  const changed = String(filename || '').replaceAll('\\', '/');
+  if (!collectionsOnly && /^batch-(?:ten\/\d{2}|eleven)\/data\.json(?:\.tmp)?$/.test(changed)) return;
   if (!collectionsOnly) {
     clearTimeout(buildTimer);
     buildTimer = setTimeout(rebuild, 500);

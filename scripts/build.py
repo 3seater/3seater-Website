@@ -149,7 +149,7 @@ for project in projects:
 projects.sort(key=lambda p: (not p['featured'], -(int(p['year'][:4]) if p['year'][:4].isdigit() else 0), p['title'].lower()))
 (DIST / 'data.json').write_text(json.dumps({'projects': projects}, ensure_ascii=False), encoding='utf-8')
 # Remove only this builder's obsolete derived files inside its verified output directory.
-referenced = {m[key] for p in projects for m in p['media'] for key in ['src', 'poster', 'preview', 'loop'] if m.get(key)}
+referenced = {m[key] for p in projects for m in p['media'] for key in ['src', 'poster', 'preview', 'loop', 'loopSmall', 'playbackPoster'] if m.get(key)}
 for output in ([] if COLLECTIONS else MEDIA.iterdir()):
     if output.is_file() and re.fullmatch(r'[a-z0-9-]+-[a-f0-9]{12}(-preview|-loop-v1)?\.(mp4|webp)', output.name):
         if output.resolve().parent == MEDIA.resolve() and f'media/{output.name}' not in referenced:
@@ -158,20 +158,32 @@ for output in ([] if COLLECTIONS else MEDIA.iterdir()):
 collection_data = json.loads(json.dumps({'projects': projects}))
 for project in collection_data['projects']:
     for media in project['media']:
-        for key in ['src', 'poster', 'preview', 'loop']:
+        for key in ['src', 'poster', 'preview', 'loop', 'loopSmall', 'playbackPoster']:
             if media.get(key): media[key] = '/' + media[key]
 payload = json.dumps(collection_data, ensure_ascii=False)
 for base in [ROOT / 'src/batch-ten', DIST / 'batch-ten']:
     for variant in sorted(base.glob('[0-9][0-9]')):
         target = variant / 'data.json'
+        if target.exists() and target.read_text(encoding='utf-8') == payload:
+            continue
         temporary = target.with_suffix('.json.tmp')
         temporary.write_text(payload, encoding='utf-8')
         temporary.replace(target)
 for base in [ROOT / 'src/batch-eleven', DIST / 'batch-eleven']:
-    if base.exists():
+    if base.exists() and (not (base / 'data.json').exists() or (base / 'data.json').read_text(encoding='utf-8') != payload):
         temporary = base / 'data.json.tmp'
         temporary.write_text(payload, encoding='utf-8')
         temporary.replace(base / 'data.json')
+# Home membership is curated, never inferred from newly discovered Work folders.
+home_ids = json.loads((ROOT / 'src/site.json').read_text(encoding='utf-8'))['homeProjectIds']
+for root in [ROOT / 'src', DIST]:
+    for settings in [*root.glob('batch-ten/[0-9][0-9]/site.json'), root / 'batch-eleven/site.json']:
+        if settings.exists():
+            config = json.loads(settings.read_text(encoding='utf-8'))
+            config['homeProjectIds'] = home_ids
+            settings_payload = json.dumps(config, ensure_ascii=False, indent=2) + '\n'
+            if settings.read_text(encoding='utf-8') != settings_payload:
+                settings.write_text(settings_payload, encoding='utf-8')
 print('Synced project content to all local color versions.', flush=True)
 for path in (ROOT / "src").iterdir():
     if path.is_file(): shutil.copy2(path, DIST / path.name)

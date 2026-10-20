@@ -113,3 +113,13 @@ html{scroll-behavior:auto}
 body.v3 .site-header nav a:is(:hover,:focus-visible){background:color-mix(in srgb,var(--nav-active) 72%,var(--nav-bg) 28%)}
 body.v3 .site-header nav a[aria-current=page]{background:color-mix(in srgb,var(--nav-active) 80%,var(--nav-text) 20%)}
 body.v3 .site-header nav a[aria-current=page]:is(:hover,:focus-visible){background:color-mix(in srgb,var(--nav-active) 80%,var(--nav-text) 20%)}
+
+/* Local footer experiment: the existing wordmark is the video mask. */
+.footer-wordmark{position:relative}
+.footer-video-fill{position:absolute;inset:0;pointer-events:none;opacity:0;mask-size:100% 100%;-webkit-mask-size:100% 100%;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat}
+.footer-video-fill video{display:block;width:100%;height:100%;object-fit:cover;filter:brightness(.30)}
+.footer-wordmark.has-video-fill>svg{opacity:0}
+.footer-wordmark.has-video-fill>.footer-video-fill{opacity:1}
+
+/* Selected-project hover uses the same accent as other text links. */
+.selected-projects .selected-row:is(:hover,:focus-visible){color:var(--accent)}

@@ -371,7 +371,8 @@
   }
   function renderFeed(params, archive = false) {
     const category = archive ? params.get('category') || 'All' : 'All', year = archive ? params.get('year') || '' : '';
-    const list = projects.filter(p => (category === 'All' || p.categories.includes(category)) && (!year || projectYears(p).includes(year)));
+    const homeIds = new Set(config.homeProjectIds || []);
+    const list = projects.filter(p => (archive || homeIds.has(p.id)) && (category === 'All' || p.categories.includes(category)) && (!year || projectYears(p).includes(year)));
     const items = coverItems(list);
     main.innerHTML = `<h1 class="sr-only">${archive ? 'All work' : '3seater — Selected works'}</h1>${archive ? filterBar(category, year) : ''}<div class="feed-label utility"><span>${archive ? 'Archive' : 'Selected work — Archive'}</span>${archive ? `<span aria-live="polite">${numbered(list.length)} projects</span>` : '<a href="#/archive">All work / filter →</a>'}</div>${items.length ? '<section id="feed-grid" class="feed-grid home-feed" aria-label="Work archive"></section>' : '<div class="empty-state"><h2>No work in this selection.</h2><button id="reset-filters" class="utility">View all work ↗</button></div>'}${!archive && items.length ? selectedProjectsMarkup(list) + clientWheelMarkup() : ''}`;
     buildGrid(items);
@@ -748,7 +749,65 @@
     const svg = wordmark.querySelector('svg');
     const text = svg.querySelector('text');
     const measure = document.createElement('canvas').getContext('2d');
-    const fitPressure = () => {};
+    const fill = document.createElement('span');
+    fill.className = 'footer-video-fill';
+    fill.setAttribute('aria-hidden', 'true');
+    const video = document.createElement('video');
+    video.muted = video.defaultMuted = true;
+    video.loop = video.playsInline = true;
+    video.preload = 'none';
+    video.setAttribute('playsinline', '');
+    video.setAttribute('muted', '');
+    video.tabIndex = -1;
+    fill.append(video);
+    wordmark.append(fill);
+    let maskReady = false, nearby = false;
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => {
+      if (!nearby || document.hidden || motion.matches || navigator.connection?.saveData) {
+        video.pause();
+        return;
+      }
+      if (!video.hasAttribute('src')) video.src = '/footer-fill-v1.mp4';
+      video.play().catch(() => {});
+    };
+    video.addEventListener('playing', () => {
+      const reveal = () => { if (maskReady) wordmark.classList.add('has-video-fill'); };
+      if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(reveal);
+      else reveal();
+    });
+    video.addEventListener('error', () => wordmark.classList.remove('has-video-fill'));
+    new IntersectionObserver(entries => {
+      nearby = entries[0].isIntersecting;
+      update();
+    }, {rootMargin: '160px'}).observe(wordmark);
+    document.addEventListener('visibilitychange', update);
+    motion.addEventListener('change', () => {
+      if (motion.matches) wordmark.classList.remove('has-video-fill');
+      update();
+    });
+    wordmark.addEventListener('pointerdown', update, {passive:true});
+    const fitPressure = () => {
+      // Use the SVG's actual character positions, preserving its font and spacing.
+      const box = svg.viewBox.baseVal;
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.ceil(box.width * 3);
+      canvas.height = Math.ceil(box.height * 3);
+      const ctx = canvas.getContext('2d');
+      ctx.scale(canvas.width / box.width, canvas.height / box.height);
+      ctx.translate(-box.x, -box.y);
+      const style = getComputedStyle(text);
+      ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+      ctx.fillStyle = '#fff';
+      [...text.textContent].forEach((letter, i) => {
+        const point = text.getStartPositionOfChar(i);
+        ctx.fillText(letter, point.x, point.y);
+      });
+      const mask = `url("${canvas.toDataURL()}")`;
+      fill.style.maskImage = mask;
+      fill.style.webkitMaskImage = mask;
+      maskReady = true;
+    };
     const fit = () => {
       wordmark.style.setProperty('--viewport-width', `${document.documentElement.clientWidth}px`);
       // SVG text bounds include unused font descent. Measure the painted letters

@@ -1,6 +1,10 @@
 {
   "name": "3seater",
-  "featuredClientExclusions": ["Antonym", "Doji", "Polydupe"],
+  "featuredClientExclusions": [
+    "Antonym",
+    "Doji",
+    "Polydupe"
+  ],
   "homeProjectOrder": [
     "faze",
     "busta-rhymes-young-thug",
@@ -19,6 +23,44 @@
   ],
   "email": "contact@3seater.com",
   "instagram": "https://www.instagram.com/3seater",
-  "socials": [{"label":"YouTube","url":"https://www.youtube.com/3seater"}],
-  "intro": "A collection of selected works across graphic design, motion design, and 3D."
+  "socials": [
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/3seater"
+    }
+  ],
+  "intro": "A collection of selected works across graphic design, motion design, and 3D.",
+  "homeProjectIds": [
+    "doji",
+    "personal-work-iceman",
+    "g-herbo",
+    "polydupe",
+    "whop",
+    "yung-bans",
+    "personal-work-coded",
+    "2hollis",
+    "faze",
+    "pink-pantheress",
+    "personal-work-playboi-carti",
+    "03-greedo-halfway-there",
+    "burna-boy",
+    "don-toliver",
+    "jay-critch-jugg-season",
+    "lil-durk-loyal-bros",
+    "lil-nas-x",
+    "busta-rhymes-young-thug",
+    "mlb",
+    "lil-tjay",
+    "personal-work-pacmoon",
+    "snoop-dogg",
+    "tiesto-black-eyed-peas",
+    "03-greedo-free-03",
+    "antonym",
+    "trippie-redd-mp5",
+    "personal-work-yeat",
+    "42-dugg-young-turnt",
+    "migos",
+    "nba-youngboy",
+    "jay-critch-hood-favorite"
+  ]
 }

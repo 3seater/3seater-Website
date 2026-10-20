@@ -29,6 +29,7 @@ for i,row in enumerate(rows,1):
  row['id']=i; d=s/f'{i:02}';d.mkdir(exist_ok=True)
  for f in ['index.html','data.json','site.json']:
   if f != 'data.json' or not (d/f).exists(): shutil.copy2(old/'01'/f,d/f)
+ settings=json.loads((d/'site.json').read_text(encoding='utf-8')); settings['homeProjectIds']=json.loads((r/'src/site.json').read_text(encoding='utf-8'))['homeProjectIds']; (d/'site.json').write_text(json.dumps(settings,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  (d/'palette.css').write_text(':root{'+''.join(f'--{k}:{v};' for k,v in row['tokens'].items())+'}',encoding='utf-8')
 (s/'palettes.json').write_text(json.dumps(rows,indent=2),encoding='utf-8')
 g=(old/'index.html').read_text(encoding='utf-8');a=g.index('<main>');b=g.index('</main>',a)

@@ -182,3 +182,7 @@ YouTube project embeds span the full metadata-column width, aligned with its div
 
 ### Main palette refinement — 2026-10-18
 The main Soft Chalk palette now uses subtly blue-tinted off-white #f0f1f4 and off-black #202124 instead of warm brown neutrals. Muted text, divider lines, client-wheel inactive names, frosted navigation and media controls use matching cool grays; hover accent is restrained slate #48536a. Main and Batch Eleven stay identical. Other color options and artwork colors remain unchanged. This supersedes the earlier warm Soft Chalk token values.
+
+
+### Curated home membership — 2026-10-18
+Home is frozen to the 31 existing projects listed in src/site.json homeProjectIds. Future Work folders are included in Archive, Index and project routes, but must not be added to home automatically. Existing home projects continue receiving updated media and metadata. Home ordering remains separate in homeProjectOrder. Add home membership only at the user's explicit request. Apply this rule to the main site and all current color versions; rebuilds preserve the allowlist.
